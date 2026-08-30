@@ -73,9 +73,13 @@
     background: color-mix(in srgb, var(--bg) 78%, transparent);
     border-bottom:1px solid var(--line);
   }
+  .brand{ display:flex; flex-direction:column; gap:2px; }
   .wordmark{
     font-family:var(--font); font-weight:700; font-size:1.05rem;
     text-decoration:none; letter-spacing:0.01em;
+  }
+  .wordmark-role{
+    font-family:var(--font); font-size:0.78rem; color:var(--muted);
   }
   .topnav{ display:flex; flex-wrap:wrap; gap:6px clamp(12px,3vw,32px); font-size:0.92rem; }
   .topnav a{ text-decoration:none; color:var(--muted); padding:2px 0; border-bottom:1px solid transparent; transition:color .15s, border-color .15s; white-space:nowrap; }
@@ -224,9 +228,54 @@
   }
   .tl-detail a{ color:var(--accent-2); text-decoration:none; border-bottom:1px solid currentColor; }
   .tl-detail a:hover{ color:var(--accent); }
+
+  /* reveal-on-scroll */
+  .tl-item{
+    opacity:0; transform:translateY(18px);
+    transition:opacity .5s ease, transform .5s ease;
+  }
+  .tl-item.tl-inview{ opacity:1; transform:none; }
+  .tl-item.tl-hidden{ display:none; }
+
+  /* progress line drawn as the page scrolls (progressive enhancement) */
+  @supports (animation-timeline: scroll()){
+    @media (prefers-reduced-motion: no-preference){
+      .timeline::after{
+        content:""; position:absolute; left:5px; top:6px; bottom:14px; width:1px;
+        background:var(--accent); transform-origin:top; transform:scaleY(0);
+        animation:tl-grow linear forwards;
+        animation-timeline:scroll(nearest block);
+        animation-range:cover 0% cover 90%;
+      }
+      @media (min-width:700px){
+        .timeline::after{ left:50%; width:2px; margin-left:-1px; }
+      }
+    }
+    @keyframes tl-grow{ to{ transform:scaleY(1); } }
+  }
+
   @media (prefers-reduced-motion: reduce){
     .tl-detail, .tl-dot{ transition:none; }
+    .tl-item{ transition:none; opacity:1; transform:none; }
   }
+
+  /* toolbar: year + scope filters */
+  .tl-toolbar{ margin-top:22px; }
+  .tl-filters{ display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin-bottom:10px; }
+  .tl-year-select{
+    font:inherit; font-size:0.85rem; padding:6px 12px; border-radius:999px; cursor:pointer;
+    border:1px solid var(--line); background:var(--surface); color:var(--ink);
+  }
+  .tl-year-select:hover{ border-color:var(--accent-2); }
+  .chip{
+    font:inherit; font-size:0.85rem; padding:6px 14px; border-radius:999px; cursor:pointer;
+    border:1px solid var(--line); background:var(--surface); color:var(--muted);
+    transition:background .15s ease, color .15s ease, border-color .15s ease;
+  }
+  .chip:hover{ border-color:var(--accent-2); color:var(--ink); }
+  .chip.active{ background:var(--accent); color:var(--accent-contrast); border-color:var(--accent); }
+
+  .tl-count{ font-size:0.82rem; color:var(--muted); margin:0 0 18px; }
 
   /* zigzag layout once there's room for two columns */
   @media (min-width: 700px){
@@ -403,7 +452,10 @@
 
 <div class="shell">
   <header class="topbar">
-    <a class="wordmark" href="#top">Jonathan Cazabonne</a>
+    <div class="brand">
+      <a class="wordmark" href="#top">Jonathan Cazabonne</a>
+      <span class="wordmark-role">Mycologist, M.Sc, Ph.D. candidate</span>
+    </div>
     <nav class="topnav">
       <a href="#top">Home</a>
       <a href="#publications">Publications</a>
@@ -418,7 +470,7 @@
 
   <footer>
     <span id="site-footer-name">Jonathan Cazabonne</span>
-    <span>Fungal diversity · ecology · conservation</span>
+    <span id="site-footer-copyright">© 2026 Jonathan Cazabonne. All rights reserved.</span>
   </footer>
 </div>
 
@@ -666,6 +718,12 @@
   }
 
   // ---------- fungal conservation timeline ----------
+  function tlScopeGroup(e){
+    if (e.scope === "International") return "international";
+    if (e.scope === "Europe") return "europe";
+    return "regional";
+  }
+
   function renderTimelineItem(e){
     var parts = [];
     parts.push('<p class="tl-full-title">' + esc(e.title) + '</p>');
@@ -679,7 +737,7 @@
     }
     if (tags.length) parts.push('<p>' + tags.join(" &nbsp;·&nbsp; ") + '</p>');
 
-    return '<li class="tl-item" tabindex="0">' +
+    return '<li class="tl-item" tabindex="0" data-year="' + esc(e.year) + '" data-scope-group="' + tlScopeGroup(e) + '">' +
       '<span class="tl-dot" aria-hidden="true"></span>' +
       '<span class="tl-year">' + esc(e.dateLabel) + '</span>' +
       '<span class="tl-summary">' + esc(e.title) + '</span>' +
@@ -687,15 +745,47 @@
     '</li>';
   }
 
+  function renderTimelineToolbar(list){
+    var seen = {}, years = [];
+    list.forEach(function(e){
+      var y = e.year;
+      if (y != null && !seen[y]){ seen[y] = true; years.push(y); }
+    });
+    years.sort(function(a, b){ return b - a; });
+    var yearOptions = '<option value="all">All years</option>' + years.map(function(y){
+      return '<option value="' + y + '">' + y + '</option>';
+    }).join("");
+
+    var scopeGroups = [
+      { key: "all", label: "All" },
+      { key: "international", label: "International" },
+      { key: "europe", label: "Europe" },
+      { key: "regional", label: "Regional / national" }
+    ];
+    var chips = scopeGroups.map(function(g){
+      return '<button type="button" class="chip' + (g.key === "all" ? " active" : "") + '" data-scope-group="' + g.key + '">' + g.label + '</button>';
+    }).join("");
+
+    return '<div class="tl-toolbar">' +
+      '<div class="tl-filters" role="group" aria-label="Filter timeline by year and scope">' +
+        '<select id="tl-year-select" class="tl-year-select" aria-label="Filter by year">' + yearOptions + '</select>' +
+        chips +
+      '</div>' +
+      '<p class="tl-count" id="tl-count" aria-live="polite"></p>' +
+    '</div>';
+  }
+
   function renderConservationView(d){
     var items = d.timeline.length
       ? '<ol class="timeline">' + d.timeline.map(renderTimelineItem).join("") + '</ol>'
       : '<p class="page-intro">No milestones listed yet.</p>';
+    var toolbar = d.timeline.length ? renderTimelineToolbar(d.timeline) : "";
     return '' +
       '<section id="tl-top">' +
         '<p class="eyebrow">A history in the making</p>' +
         '<h1 class="page-title">Fungal Conservation</h1>' +
         '<p class="page-intro" id="f-tl-intro">' + esc(d.timelineIntro) + '</p>' +
+        toolbar +
       '</section>' +
       '<section>' + items + '</section>';
   }
@@ -1093,6 +1183,7 @@
   // ---------- app state / paint ----------
   var app = document.getElementById("app");
   var current = JSON.parse(JSON.stringify(window.__SITE_DATA__ || DEFAULT_DATA));
+  if (current.timeline) current.timeline.sort(function(a, b){ return (b.year || 0) - (a.year || 0); });
   try {
     var savedHash = sessionStorage.getItem("__site_hash__");
     if (savedHash && !location.hash){ history.replaceState(null, "", savedHash); }
@@ -1107,6 +1198,7 @@
   function paint(){
     app.innerHTML = editMode ? renderEdit(current) : renderView(current);
     document.getElementById("site-footer-name").textContent = current.name;
+    document.getElementById("site-footer-copyright").textContent = "© " + new Date().getFullYear() + " " + current.name + ". All rights reserved.";
     if (!editMode && view === "home"){ startCycle(current.topics); } else { stopCycle(); }
     if (editMode) wireEditHandlers();
     wireViewHandlers();
@@ -1121,6 +1213,71 @@
         track.scrollBy({ left: btn.classList.contains("prev") ? -amount : amount, behavior: "smooth" });
       });
     });
+    if (view === "conservation" && !editMode) wireTimelineHandlers();
+  }
+
+  // ---------- timeline toolbar: reveal-on-scroll + decade/scope filters ----------
+  function wireTimelineHandlers(){
+    var items = Array.prototype.slice.call(document.querySelectorAll(".tl-item"));
+    if (!items.length) return;
+
+    if ("IntersectionObserver" in window){
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if (entry.isIntersecting){
+            entry.target.classList.add("tl-inview");
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15, rootMargin: "0px 0px -8% 0px" });
+      items.forEach(function(el){ io.observe(el); });
+    } else {
+      items.forEach(function(el){ el.classList.add("tl-inview"); });
+    }
+
+    var yearSelect = document.getElementById("tl-year-select");
+    var chips = Array.prototype.slice.call(document.querySelectorAll(".tl-filters .chip"));
+    var countEl = document.getElementById("tl-count");
+    var activeYear = "all";
+    var activeScope = "all";
+
+    function applyFilters(){
+      var visible = 0;
+      items.forEach(function(el){
+        var matchYear = activeYear === "all" || el.dataset.year === activeYear;
+        var matchScope = activeScope === "all" || el.dataset.scopeGroup === activeScope;
+        var show = matchYear && matchScope;
+        el.classList.toggle("tl-hidden", !show);
+        if (show) visible++;
+      });
+      if (countEl) countEl.textContent = visible + " of " + items.length + " milestones shown";
+    }
+
+    function withTransition(run){
+      if (document.startViewTransition) document.startViewTransition(run);
+      else run();
+    }
+
+    if (yearSelect){
+      yearSelect.addEventListener("change", function(){
+        withTransition(function(){
+          activeYear = yearSelect.value;
+          applyFilters();
+        });
+      });
+    }
+
+    chips.forEach(function(chip){
+      chip.addEventListener("click", function(){
+        withTransition(function(){
+          activeScope = chip.dataset.scopeGroup;
+          chips.forEach(function(c){ c.classList.toggle("active", c === chip); });
+          applyFilters();
+        });
+      });
+    });
+
+    applyFilters();
   }
 
   function applyRoute(fromHashChange){
@@ -1259,7 +1416,7 @@
       var addTl = document.getElementById("add-tl");
       if (addTl) addTl.addEventListener("click", function(){
         readFormIntoCurrent();
-        current.timeline.push({ year: new Date().getFullYear(), dateLabel: String(new Date().getFullYear()), title: "New milestone", description: "", scope: "", notes: "", urls: [] });
+        current.timeline.unshift({ year: new Date().getFullYear(), dateLabel: String(new Date().getFullYear()), title: "New milestone", description: "", scope: "", notes: "", urls: [] });
         paint();
       });
       Array.prototype.forEach.call(document.querySelectorAll(".remove-tl"), function(btn){
@@ -1280,6 +1437,7 @@
           return;
         }
         readFormIntoCurrent();
+        parsed.sort(function(a, b){ return (b.year || 0) - (a.year || 0); });
         current.timeline = parsed;
         paint();
       });
@@ -1362,11 +1520,14 @@
       '<canvas id="myc-bg" aria-hidden="true"></canvas>' +
       '<div class="shell">' +
         '<header class="topbar">' +
-          '<a class="wordmark" href="#top">' + esc(d.name) + '</a>' +
+          '<div class="brand">' +
+            '<a class="wordmark" href="#top">' + esc(d.name) + '</a>' +
+            '<span class="wordmark-role">Mycologist, M.Sc, Ph.D. candidate</span>' +
+          '</div>' +
           '<nav class="topnav"><a href="#top">Home</a><a href="#publications">Publications</a><a href="#communications">Outreach</a><a href="#conservation">Conservation</a><a href="#study-areas">Study Areas</a><a href="#contact">Contact</a></nav>' +
         '</header>' +
         '<main id="app"></main>' +
-        '<footer><span id="site-footer-name">' + esc(d.name) + '</span><span>Fungal diversity · ecology · conservation</span></footer>' +
+        '<footer><span id="site-footer-name">' + esc(d.name) + '</span><span id="site-footer-copyright">© ' + new Date().getFullYear() + ' ' + esc(d.name) + '. All rights reserved.</span></footer>' +
       '</div>' +
       '<button id="edit-toggle" type="button" aria-label="Edit page content" title="Edit page">✎</button>' +
       '<div id="edit-bar" hidden>' +
@@ -1406,7 +1567,7 @@
 
   saveBtn.addEventListener("click", function(){
     readFormIntoCurrent();
-    if (current.timeline) current.timeline.sort(function(a, b){ return (a.year || 0) - (b.year || 0); });
+    if (current.timeline) current.timeline.sort(function(a, b){ return (b.year || 0) - (a.year || 0); });
     saveBtn.disabled = true;
     cancelBtn.disabled = true;
     statusEl.textContent = "Preparing download…";
