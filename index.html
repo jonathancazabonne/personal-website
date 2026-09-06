@@ -616,6 +616,73 @@
     { key: "literary", label: "Literary work" }
   ];
 
+  // ---------- export publications / communications as separate CSVs (owner-only, edit mode) ----------
+  function csvField(v){
+    var s = String(v == null ? "" : v);
+    if (/["\n,]/.test(s)) s = '"' + s.replace(/"/g, '""') + '"';
+    return s;
+  }
+
+  function downloadCSV(filename, header, rows){
+    var lines = [header.map(csvField).join(",")];
+    rows.forEach(function(r){ lines.push(r.map(csvField).join(",")); });
+    var csv = lines.join("\r\n");
+    var blob = new Blob(["﻿" + csv], { type: "text/csv;charset=utf-8" });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement("a");
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(function(){ URL.revokeObjectURL(url); }, 4000);
+  }
+
+  function downloadPublicationsCSV(){
+    var records = (current.publications || []).map(function(p){
+      return {
+        year: p.year || "",
+        category: PUB_CATEGORY_LABELS[p.category] || p.category || "",
+        title: p.title || "",
+        authors: p.authors || "",
+        venue: p.venue || "",
+        url: (p.url && p.url !== "#") ? p.url : ""
+      };
+    });
+    records.sort(function(a, b){
+      if (a.category !== b.category) return a.category < b.category ? -1 : 1;
+      if ((b.year || 0) !== (a.year || 0)) return (b.year || 0) - (a.year || 0);
+      return String(a.title).localeCompare(String(b.title));
+    });
+    downloadCSV(
+      "publications.csv",
+      ["Year", "Category", "Title", "Authors", "Venue", "URL"],
+      records.map(function(r){ return [r.year, r.category, r.title, r.authors, r.venue, r.url]; })
+    );
+  }
+
+  function downloadCommunicationsCSV(){
+    var records = (current.communications || []).map(function(c){
+      return {
+        year: c.year || "",
+        category: c.type || "",
+        title: c.title || "",
+        venue: c.venue || "",
+        url: (c.url && c.url !== "#") ? c.url : ""
+      };
+    });
+    records.sort(function(a, b){
+      if (a.category !== b.category) return a.category < b.category ? -1 : 1;
+      if ((b.year || 0) !== (a.year || 0)) return (b.year || 0) - (a.year || 0);
+      return String(a.title).localeCompare(String(b.title));
+    });
+    downloadCSV(
+      "outreach.csv",
+      ["Year", "Category", "Title", "Venue", "URL"],
+      records.map(function(r){ return [r.year, r.category, r.title, r.venue, r.url]; })
+    );
+  }
+
   function renderPubItem(p){
     var link = (p.url && p.url !== "#") ? ' <a class="entry-link" href="' + esc(p.url) + '" target="_blank" rel="noopener">↗</a>' : '';
     var catLabel = PUB_CATEGORY_LABELS[p.category] || "";
@@ -685,6 +752,7 @@
       '<section>' +
         '<div id="pubs-edit">' + cards +
           '<button class="add-row-btn" id="add-pub" type="button">+ Add publication</button>' +
+          '<button class="add-row-btn" id="export-pub-csv" type="button">Export publications as CSV ↓</button>' +
         '</div>' +
       '</section>';
   }
@@ -727,6 +795,7 @@
       '<section>' +
         '<div id="comms-edit">' + cards +
           '<button class="add-row-btn" id="add-comm" type="button">+ Add communication</button>' +
+          '<button class="add-row-btn" id="export-comm-csv" type="button">Export outreach as CSV ↓</button>' +
         '</div>' +
       '</section>';
   }
@@ -1355,6 +1424,11 @@
           paint();
         });
       });
+      var exportPub = document.getElementById("export-pub-csv");
+      if (exportPub) exportPub.addEventListener("click", function(){
+        readFormIntoCurrent();
+        downloadPublicationsCSV();
+      });
     } else if (view === "communications"){
       var addComm = document.getElementById("add-comm");
       if (addComm) addComm.addEventListener("click", function(){
@@ -1369,6 +1443,11 @@
           current.communications.splice(idx, 1);
           paint();
         });
+      });
+      var exportComm = document.getElementById("export-comm-csv");
+      if (exportComm) exportComm.addEventListener("click", function(){
+        readFormIntoCurrent();
+        downloadCommunicationsCSV();
       });
     } else if (view === "conservation"){
       var addTl = document.getElementById("add-tl");
