@@ -369,6 +369,7 @@ collections:
             fields:
               - { label: "Title", name: "title", widget: "string" }
               - { label: "Description", name: "description", widget: "text" }
+              - { label: "Photo", name: "image", widget: "image", required: false }
 
   - name: "homeGallery"
     label: "Home photo gallery"
