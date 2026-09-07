@@ -1,0 +1,32 @@
+{
+  "items": [
+    {
+      "src": "images/home-gallery-1.jpg",
+      "caption": "Conference group photo"
+    },
+    {
+      "src": "images/home-gallery-2.jpg",
+      "caption": "TeamLaboul, Ghent University, Belgium"
+    },
+    {
+      "src": "images/home-gallery-3.jpg",
+      "caption": "Fieldwork in the boreal forest"
+    },
+    {
+      "src": "images/home-gallery-4.jpg",
+      "caption": "Team dinner"
+    },
+    {
+      "src": "images/home-gallery-5.jpg",
+      "caption": "Réécrire la forêt boréale team"
+    },
+    {
+      "src": "images/home-gallery-6.jpg",
+      "caption": "Esker Saint-Mathieu-Berry field trip"
+    },
+    {
+      "src": "images/home-gallery-7.jpg",
+      "caption": "Réécrire la forêt boréale — reading event"
+    }
+  ]
+}

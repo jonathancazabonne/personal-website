@@ -6,8 +6,8 @@ backend:
   auth_endpoint: api/auth
 
 publish_mode: simple
-media_folder: ""
-public_folder: ""
+media_folder: "images"
+public_folder: "/images"
 
 collections:
   - name: "site"
@@ -340,6 +340,21 @@ collections:
             fields:
               - { label: "Title", name: "title", widget: "string" }
               - { label: "Description", name: "description", widget: "text" }
+
+  - name: "homeGallery"
+    label: "Home photo gallery"
+    files:
+      - file: "data/homeGallery.json"
+        label: "Home photo gallery"
+        name: "homeGallery"
+        fields:
+          - label: "Photos"
+            name: "items"
+            widget: "list"
+            summary: "{{caption}}"
+            fields:
+              - { label: "Photo", name: "src", widget: "image" }
+              - { label: "Caption", name: "caption", widget: "string" }
 
   - name: "cvSettings"
     label: "CV settings"

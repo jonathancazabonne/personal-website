@@ -111,6 +111,10 @@
   .bio{ max-width:78ch; font-size:1.02rem; }
   .bio .note{ color:var(--muted); font-size:0.9rem; display:block; margin-top:14px; }
 
+  .about-layout{ display:flex; gap:clamp(24px,4vw,48px); flex-wrap:wrap; align-items:flex-start; }
+  .about-layout .bio{ flex:1 1 420px; }
+  .about-gallery{ flex:1 1 300px; max-width:420px; }
+
 
   .contact-row{ display:flex; flex-wrap:wrap; align-items:baseline; gap:10px 14px; margin-bottom:22px; }
   .email-link{
@@ -570,6 +574,24 @@
     '</section>';
   }
 
+  function renderHomeGalleryView(d){
+    if (!d.homeGallery || !d.homeGallery.length) return "";
+    var items = d.homeGallery.map(function(p){
+      return '<figure class="carousel-item">' +
+        '<img src="' + esc(p.src) + '" alt="' + esc(p.caption || "") + '" loading="lazy" />' +
+        (p.caption ? '<figcaption>' + esc(p.caption) + '</figcaption>' : "") +
+      '</figure>';
+    }).join("");
+    return '' +
+      '<div class="about-gallery">' +
+        '<div class="carousel-wrap">' +
+          '<button class="carousel-arrow prev" type="button" data-target="carousel-home" aria-label="Scroll left">‹</button>' +
+          '<div class="carousel" id="carousel-home">' + items + '</div>' +
+          '<button class="carousel-arrow next" type="button" data-target="carousel-home" aria-label="Scroll right">›</button>' +
+        '</div>' +
+      '</div>';
+  }
+
   function renderHomeView(d){
     return '' +
       '<section id="top" class="hero">' +
@@ -579,7 +601,10 @@
       '</section>' +
       '<section id="about">' +
         '<h2>About the research</h2>' +
-        '<p class="bio" id="f-bio" contenteditable="false">' + esc(d.bio) + '</p>' +
+        '<div class="about-layout">' +
+          '<p class="bio" id="f-bio" contenteditable="false">' + esc(d.bio) + '</p>' +
+          renderHomeGalleryView(d) +
+        '</div>' +
       '</section>' +
       renderResearchAxesView(d) +
       renderEducationView(d) +
@@ -974,7 +999,7 @@
 
   // ---------- data loading ----------
   var DATA_FILES = ["site", "education", "links", "publications", "communications", "timeline", "studyAreas",
-    "experience", "training", "researchStays", "awards", "memberships", "committees", "peerReview", "editorialRoles", "teaching", "publicEngagement", "researchAxes"];
+    "experience", "training", "researchStays", "awards", "memberships", "committees", "peerReview", "editorialRoles", "teaching", "publicEngagement", "researchAxes", "homeGallery"];
 
   function loadSiteData(){
     if (window.__SITE_DATA__) return Promise.resolve(window.__SITE_DATA__);
