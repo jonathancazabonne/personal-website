@@ -21,6 +21,8 @@ collections:
           - { label: "Rotating words (under name, on Home)", name: "topics", widget: "list" }
           - { label: "Role / subtitle", name: "role", widget: "text" }
           - { label: "Bio", name: "bio", widget: "text" }
+          - { label: "About photo (next to bio, on Home)", name: "aboutPhoto", widget: "image", required: false }
+          - { label: "About photo caption", name: "aboutPhotoCaption", widget: "string", required: false }
           - { label: "Email", name: "email", widget: "string" }
           - { label: "Contact page intro", name: "contactIntro", widget: "text" }
           - { label: "Contact photo URL", name: "contactPhoto", widget: "string", required: false }

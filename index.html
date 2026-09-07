@@ -113,14 +113,20 @@
 
   .about-layout{ display:flex; gap:clamp(24px,4vw,48px); flex-wrap:wrap; align-items:flex-start; }
   .about-layout .bio{ flex:1 1 420px; }
-  .about-gallery{ flex:1 1 420px; max-width:560px; }
-  .about-gallery .carousel{ display:block; overflow:visible; padding:0; margin:0; }
-  .about-gallery .carousel-item{ display:none; width:100%; }
-  .about-gallery .carousel-item.active{ display:block; }
-  .about-gallery .carousel-item img{ width:100%; height:320px; }
-  .about-gallery .carousel-arrow{ top:150px; }
+  .about-photo{ flex:1 1 280px; max-width:340px; margin:0; }
+  .about-photo img{ width:100%; height:auto; border-radius:10px; display:block; }
+  .about-photo figcaption{ font-size:0.85rem; color:var(--muted); margin-top:8px; }
+
+  #gallery .carousel{ display:block; overflow:visible; padding:0; margin:0; }
+  #gallery .carousel-item{ display:none; width:100%; }
+  #gallery .carousel-item.active{ display:block; }
+  #gallery .carousel-item img{ width:100%; height:min(65vh, 620px); border-radius:14px; }
+  #gallery .carousel-item figcaption{ font-size:0.95rem; margin-top:12px; }
+  #gallery .carousel-arrow{ top:50%; transform:translateY(-50%); width:44px; height:44px; font-size:1.3rem; }
+  #gallery .carousel-arrow.prev{ left:16px; }
+  #gallery .carousel-arrow.next{ right:16px; }
   @media (max-width:640px){
-    .about-gallery .carousel-arrow{ display:flex; }
+    #gallery .carousel-arrow{ display:flex; }
   }
 
 
@@ -582,7 +588,15 @@
     '</section>';
   }
 
-  function renderHomeGalleryView(d){
+  function renderAboutPhoto(d){
+    if (!d.aboutPhoto) return "";
+    return '<figure class="about-photo">' +
+      '<img src="' + esc(d.aboutPhoto) + '" alt="' + esc(d.aboutPhotoCaption || d.name) + '" loading="lazy" />' +
+      (d.aboutPhotoCaption ? '<figcaption>' + esc(d.aboutPhotoCaption) + '</figcaption>' : "") +
+    '</figure>';
+  }
+
+  function renderPhotoGallerySection(d){
     if (!d.homeGallery || !d.homeGallery.length) return "";
     var items = d.homeGallery.map(function(p, idx){
       return '<figure class="carousel-item' + (idx === 0 ? " active" : "") + '">' +
@@ -591,13 +605,14 @@
       '</figure>';
     }).join("");
     return '' +
-      '<div class="about-gallery">' +
+      '<section id="gallery">' +
+        '<h2>Gallery</h2>' +
         '<div class="carousel-wrap">' +
           '<button class="carousel-arrow prev" type="button" data-target="carousel-home" aria-label="Previous photo">‹</button>' +
           '<div class="carousel slideshow" id="carousel-home">' + items + '</div>' +
           '<button class="carousel-arrow next" type="button" data-target="carousel-home" aria-label="Next photo">›</button>' +
         '</div>' +
-      '</div>';
+      '</section>';
   }
 
   function renderHomeView(d){
@@ -611,11 +626,12 @@
         '<h2>About the research</h2>' +
         '<div class="about-layout">' +
           '<p class="bio" id="f-bio" contenteditable="false">' + esc(d.bio) + '</p>' +
-          renderHomeGalleryView(d) +
+          renderAboutPhoto(d) +
         '</div>' +
       '</section>' +
       renderResearchAxesView(d) +
       renderEducationView(d) +
+      renderPhotoGallerySection(d) +
       renderExperienceView(d) +
       renderTrainingView(d) +
       renderResearchStaysView(d) +
@@ -1012,7 +1028,7 @@
   function loadSiteData(){
     if (window.__SITE_DATA__) return Promise.resolve(window.__SITE_DATA__);
     return Promise.all(DATA_FILES.map(function(name){
-      return fetch("data/" + name + ".json").then(function(res){
+      return fetch("data/" + name + ".json", { cache: "no-cache" }).then(function(res){
         if (!res.ok) throw new Error("Failed to load data/" + name + ".json (" + res.status + ")");
         return res.json();
       });
