@@ -124,6 +124,7 @@ collections:
               - { label: "Year", name: "year", widget: "number", value_type: "int" }
               - { label: "Type", name: "type", widget: "string" }
               - { label: "Title", name: "title", widget: "string" }
+              - { label: "Authors (optional — leave blank for solo media interviews)", name: "authors", widget: "string", required: false }
               - { label: "Venue", name: "venue", widget: "string" }
               - { label: "URL", name: "url", widget: "string" }
 
@@ -322,6 +323,21 @@ collections:
             summary: "{{year}} — {{title}}"
             fields:
               - { label: "Year", name: "year", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+
+  - name: "researchAxes"
+    label: "Research axes"
+    files:
+      - file: "data/researchAxes.json"
+        label: "Research axes"
+        name: "researchAxes"
+        fields:
+          - label: "Research axes"
+            name: "items"
+            widget: "list"
+            summary: "{{title}}"
+            fields:
               - { label: "Title", name: "title", widget: "string" }
               - { label: "Description", name: "description", widget: "text" }
 

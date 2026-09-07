@@ -145,6 +145,18 @@
   .year-block .marker::before{ content:"+"; }
   .year-block[open] .marker::before{ content:"–"; }
   .year-num{ font-family:var(--font); font-size:1.4rem; font-weight:700; margin:0; }
+
+  .axis-accordion{ border-top:1px dashed var(--line); border-bottom:1px dashed var(--line); margin-top:8px; }
+  .axis-block{ border-top:1px dashed var(--line); }
+  .axis-block:first-of-type{ border-top:none; }
+  .axis-block summary{
+    list-style:none; cursor:pointer; display:flex; align-items:baseline; gap:12px;
+    padding:18px 2px; -webkit-tap-highlight-color:transparent;
+  }
+  .axis-block summary::-webkit-details-marker{ display:none; }
+  .axis-block summary:hover .axis-title{ color:var(--accent); }
+  .axis-title{ font-family:var(--font); font-size:1.4rem; font-weight:700; margin:0; text-transform:uppercase; letter-spacing:0.02em; }
+  .axis-body{ padding:0 2px 22px; color:var(--muted); max-width:75ch; }
   .year-block summary:hover .year-num{ color:var(--accent); }
   .year-count{ color:var(--muted); font-size:0.8rem; text-transform:uppercase; letter-spacing:0.09em; }
 
@@ -540,6 +552,20 @@
       '<ul class="entry-list">' + d.publicEngagement.map(renderPublicEngagementItem).join("") + '</ul></section>';
   }
 
+  function renderResearchAxisItem(a){
+    return '<details class="axis-block">' +
+      '<summary><span class="marker" aria-hidden="true"></span><h3 class="axis-title">' + esc(a.title) + '</h3></summary>' +
+      '<p class="axis-body">' + esc(a.description) + '</p>' +
+    '</details>';
+  }
+  function renderResearchAxesView(d){
+    if (!d.researchAxes || !d.researchAxes.length) return "";
+    return '<section id="research-axes">' +
+      '<h2>Research Axes</h2>' +
+      '<div class="axis-accordion">' + d.researchAxes.map(renderResearchAxisItem).join("") + '</div>' +
+    '</section>';
+  }
+
   function renderHomeView(d){
     return '' +
       '<section id="top" class="hero">' +
@@ -551,6 +577,7 @@
         '<h2>About the research</h2>' +
         '<p class="bio" id="f-bio" contenteditable="false">' + esc(d.bio) + '</p>' +
       '</section>' +
+      renderResearchAxesView(d) +
       renderEducationView(d) +
       renderExperienceView(d) +
       renderTrainingView(d) +
@@ -698,7 +725,9 @@
     var titleHtml = hasLink
       ? '<a href="' + esc(c.url) + '" target="_blank" rel="noopener">' + esc(c.title) + '</a>'
       : esc(c.title);
+    var authorsHtml = c.authors ? '<span class="entry-meta">' + boldAuthorHighlight(c.authors) + '</span>' : '';
     return '<li data-group="' + group + '"><span class="entry-title"><span class="entry-type">' + esc(c.type) + '</span>' + titleHtml + '</span>' +
+      authorsHtml +
       '<span class="entry-meta">' + esc(c.venue) + '</span></li>';
   }
 
@@ -941,7 +970,7 @@
 
   // ---------- data loading ----------
   var DATA_FILES = ["site", "education", "links", "publications", "communications", "timeline", "studyAreas",
-    "experience", "training", "researchStays", "awards", "memberships", "committees", "peerReview", "editorialRoles", "teaching", "publicEngagement"];
+    "experience", "training", "researchStays", "awards", "memberships", "committees", "peerReview", "editorialRoles", "teaching", "publicEngagement", "researchAxes"];
 
   function loadSiteData(){
     if (window.__SITE_DATA__) return Promise.resolve(window.__SITE_DATA__);
