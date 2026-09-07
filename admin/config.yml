@@ -167,22 +167,6 @@ collections:
               - { label: "Description", name: "description", widget: "text" }
               - { label: "Photo URLs", name: "photos", widget: "list", required: false }
 
-  - name: "experience"
-    label: "Professional experience"
-    files:
-      - file: "data/experience.json"
-        label: "Professional experience"
-        name: "experience"
-        fields:
-          - label: "Experience entries"
-            name: "items"
-            widget: "list"
-            summary: "{{period}} — {{title}}"
-            fields:
-              - { label: "Period", name: "period", widget: "string" }
-              - { label: "Title", name: "title", widget: "string" }
-              - { label: "Institution", name: "institution", widget: "string" }
-
   - name: "training"
     label: "Scientific training"
     files:
@@ -201,13 +185,13 @@ collections:
               - { label: "Hours", name: "hours", widget: "string" }
 
   - name: "researchStays"
-    label: "Research stays"
+    label: "Professional experience & research stays"
     files:
       - file: "data/researchStays.json"
-        label: "Research stays"
+        label: "Professional experience & research stays"
         name: "researchStays"
         fields:
-          - label: "Research stay entries"
+          - label: "Entries"
             name: "items"
             widget: "list"
             summary: "{{period}} — {{institution}}"
@@ -216,7 +200,9 @@ collections:
               - { label: "Location", name: "location", widget: "string" }
               - { label: "Period", name: "period", widget: "string" }
               - { label: "Description", name: "description", widget: "text" }
-              - { label: "Supervisors", name: "supervisors", widget: "text" }
+              - { label: "Supervisors", name: "supervisors", widget: "text", required: false }
+              - { label: "Logo 1 (groups consecutive entries sharing the same pair of logos into one card)", name: "logo", widget: "image", required: false }
+              - { label: "Logo 2 (optional second logo, e.g. a co-supervising lab)", name: "logo2", widget: "image", required: false }
 
   - name: "awards"
     label: "Awards & funding"

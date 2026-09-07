@@ -1,53 +1,103 @@
 {
   "items": [
     {
+      "institution": "École d'ingénieurs de Purpan — UMR Dynafor",
+      "location": "Toulouse, France",
+      "period": "Septembre 2026 – Février 2027",
+      "description": "Stage : Analyses bioinformatiques et statistiques de données d'ADN environnemental sur les communautés fongiques des sols de vieilles forêts et forêts anciennes en milieu boréal et en France.",
+      "supervisors": "Antoine Brin",
+      "logo": "images/logo-purpan.png",
+      "logo2": "images/logo-dynafor.png"
+    },
+    {
       "institution": "Université de Ghent — Research group Mycology",
       "location": "Ghent, Belgium",
       "period": "Février 2024",
       "description": "Visite des locaux et des membres de la TeamLaboul, accueilli par Danny Haelewaters.",
-      "supervisors": "Danny Haelewaters"
+      "supervisors": "Danny Haelewaters",
+      "logo": "images/logo-ugent.png",
+      "logo2": "images/logo-teamlaboul.jpg"
     },
     {
-      "institution": "Université de Montréal & UQAT — Département des sciences littéraires et IRF",
-      "location": "Montréal, Canada",
+      "institution": "Résidences du Québec",
+      "location": "Amos, Québec, Canada",
+      "period": "2023–2024",
+      "description": "Responsable étudiant et gérant des risques incendie aux résidences de l'UQAT à Amos.",
+      "supervisors": "",
+      "logo": "",
+      "logo2": ""
+    },
+    {
+      "institution": "UQAT",
+      "location": "Amos, Québec, Canada",
+      "period": "2023–2024",
+      "description": "Surveillant d'examens universitaires.",
+      "supervisors": "",
+      "logo": "images/logo-uqat.jpg",
+      "logo2": ""
+    },
+    {
+      "institution": "Université du Québec à Montréal (UQAM) & UQAT — Département d'études littéraires et IRF",
+      "location": "Montréal et Amos, Canada",
       "period": "Novembre 2023 et Avril 2022",
       "description": "Ateliers d'écriture et de réflexion littéraire, dans le cadre du groupe de recherche Réécrire la forêt boréale. Respectivement à Montréal et à Amos.",
-      "supervisors": "Jonathan Hope, Cassie Bérard, Catherine Cyr, Miguel Montoro Girona (organisateur.rice.s)"
+      "supervisors": "Jonathan Hope, Cassie Bérard, Catherine Cyr, Miguel Montoro Girona (organisateur.rice.s)",
+      "logo": "images/logo-uqam.png",
+      "logo2": "images/logo-uqat.jpg"
     },
     {
       "institution": "Centre de foresterie des Laurentides (CFL) — Laboratoire de génomique environnementale de Dr. Christine Martineau",
       "location": "Québec, Canada",
       "period": "Décembre 2022",
       "description": "Séquençage illumina du mycobiome du sol et barcodage ADN de spécimens secs de fongarium.",
-      "supervisors": "Christine Martineau, Marie-Josée Morency et Marie-Josée Bergeron"
+      "supervisors": "Christine Martineau, Marie-Josée Morency et Marie-Josée Bergeron",
+      "logo": "images/logo-cfl.png",
+      "logo2": ""
     },
     {
       "institution": "Muséum d'Histoire Naturelle de Toulouse — Jardins botaniques de Borderouge, Toulouse métropole",
       "location": "Toulouse, France",
       "period": "Juillet-Août 2021",
       "description": "Inventaires de macrochampignons, de lichens, et de myxomycètes.",
-      "supervisors": "Olivier Puertas et Xavier Bossier"
+      "supervisors": "Olivier Puertas et Xavier Bossier",
+      "logo": "images/logo-museum-toulouse.gif",
+      "logo2": ""
     },
     {
       "institution": "Université Toulouse III – Paul Sabatier — UMR Évolution et diversité biologique",
       "location": "Toulouse, France",
       "period": "Juin-Juillet 2021",
       "description": "Projet \"Description of new species of the genus Cortinarius (Agaricales, Cortinariaceae) from New-Caledonia\".",
-      "supervisors": "Monique Gardes, Patricia Jargeat, Hervé Gryta, Guillaume Eyssartier, Fabian Carriconde, et Marc Ducousso"
+      "supervisors": "Monique Gardes, Patricia Jargeat, Hervé Gryta, Guillaume Eyssartier, Fabian Carriconde, et Marc Ducousso",
+      "logo": "images/logo-edb.jpeg",
+      "logo2": ""
     },
     {
       "institution": "Université Toulouse III – Paul Sabatier — UMR Évolution et diversité biologique",
       "location": "Toulouse, France",
       "period": "Fév.-Avril 2021",
       "description": "Projet \"Including rare lineages in plant phylogenomic studies by using herbarium collections\" et projet \"On the use of plastomes to understand the degeneration of ndh genes in the Lentibulariaceae family\".",
-      "supervisors": "Guillaume Besnard et Pauline Raimondeau"
+      "supervisors": "Guillaume Besnard et Pauline Raimondeau",
+      "logo": "images/logo-edb.jpeg",
+      "logo2": ""
+    },
+    {
+      "institution": "Muséum d'histoire naturelle de Toulouse et jardin botanique Henri-Gaussen, France",
+      "location": "Toulouse, France",
+      "period": "2020–2021",
+      "description": "Médiateur scientifique.",
+      "supervisors": "",
+      "logo": "images/logo-museum-toulouse.gif",
+      "logo2": "images/logo-jardin-henri-gaussen.jpg"
     },
     {
       "institution": "Muséum d'Histoire Naturelle de Toulouse — Jardins botaniques Henri-Gaussen",
       "location": "Toulouse, France",
       "period": "Fév.-Mars 2021",
       "description": "Formation avancée en taxonomie des plantes et identification sur le terrain des Magnoliophyta, gestion d'herbiers, revue de littérature: \"Plants with Medicinal Proprieties: A Review\".",
-      "supervisors": "Fatiha El-Babili"
+      "supervisors": "Fatiha El-Babili",
+      "logo": "images/logo-museum-toulouse.gif",
+      "logo2": "images/logo-jardin-henri-gaussen.jpg"
     }
   ]
 }

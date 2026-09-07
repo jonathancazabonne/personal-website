@@ -23,6 +23,7 @@
     --accent-2:#A8813C;
     --accent-contrast:#FBFAF4;
     --shadow: 0 1px 2px rgba(23,28,21,0.06), 0 8px 24px rgba(23,28,21,0.05);
+    --card-border:#000000;
   }
   /* Site is fixed to the light/white theme regardless of OS preference.
      The dark variant below is kept dormant (data-theme="dark") in case
@@ -199,13 +200,16 @@
   .entry-list .entry-link{ margin-left:6px; text-decoration:none; color:var(--muted); }
   .entry-list .entry-link:hover{ color:var(--accent); }
 
-  .edu-card{
-    position:relative; border:1px solid var(--line); border-radius:18px;
-    padding:24px clamp(90px,18vw,130px) 6px 24px; margin-bottom:24px; background:var(--surface);
+  .logo-card{
+    position:relative; border:2px solid var(--card-border); border-radius:18px;
+    padding:24px clamp(110px,22vw,220px) 6px 24px; margin-bottom:24px; background:#fff;
   }
-  .edu-card-logo{ position:absolute; top:20px; right:20px; height:34px; width:auto; max-width:30%; object-fit:contain; }
-  .edu-card .entry-list{ margin-bottom:0; padding-left:0; }
-  .edu-card .entry-list li + li{ padding-top:18px; border-top:1px dashed var(--line); }
+  .logo-card-logos{
+    position:absolute; top:18px; right:18px; display:flex; align-items:center; gap:12px; max-width:45%;
+  }
+  .logo-card-logo{ height:44px; width:auto; max-width:100%; object-fit:contain; }
+  .logo-card .entry-list{ margin-bottom:0; padding-left:0; }
+  .logo-card .entry-list li + li{ padding-top:18px; border-top:1px dashed var(--line); }
 
   /* ---- timeline ---- */
   .timeline{
@@ -457,6 +461,43 @@
     return renderHomeView(d);
   }
   // ---------- home page ----------
+  function logoCardKey(e){
+    return (e.logo || "") + "|" + (e.logo2 || "");
+  }
+
+  function renderLogoCard(group, itemRenderer){
+    var logosHtml = [group[0].logo, group[0].logo2].filter(Boolean).map(function(src){
+      return '<img class="logo-card-logo" src="' + esc(src) + '" alt="" loading="lazy" />';
+    }).join("");
+    return '<div class="logo-card">' +
+      '<div class="logo-card-logos">' + logosHtml + '</div>' +
+      '<ul class="entry-list logo-card-list">' + group.map(itemRenderer).join("") + '</ul>' +
+    '</div>';
+  }
+
+  function groupByLogo(items, itemRenderer){
+    var blocks = [];
+    var i = 0;
+    while (i < items.length){
+      var e = items[i];
+      if (e.logo){
+        var key = logoCardKey(e);
+        var group = [e];
+        var j = i + 1;
+        while (j < items.length && logoCardKey(items[j]) === key){
+          group.push(items[j]);
+          j++;
+        }
+        blocks.push(renderLogoCard(group, itemRenderer));
+        i = j;
+      } else {
+        blocks.push('<ul class="entry-list">' + itemRenderer(e) + '</ul>');
+        i++;
+      }
+    }
+    return blocks.join("");
+  }
+
   function renderEducationItem(e){
     var hasLink = e.url && e.url !== "#";
     var degreeHtml = hasLink
@@ -468,49 +509,12 @@
       '<span class="entry-meta">' + esc(e.years) + '</span></li>';
   }
 
-  function renderEduCard(group){
-    return '<div class="edu-card">' +
-      '<img class="edu-card-logo" src="' + esc(group[0].logo) + '" alt="" loading="lazy" />' +
-      '<ul class="entry-list edu-card-list">' + group.map(renderEducationItem).join("") + '</ul>' +
-    '</div>';
-  }
-
   function renderEducationView(d){
     if (!d.education || !d.education.length) return "";
-    var blocks = [];
-    var items = d.education;
-    var i = 0;
-    while (i < items.length){
-      var e = items[i];
-      if (e.logo){
-        var group = [e];
-        var j = i + 1;
-        while (j < items.length && items[j].logo === e.logo){
-          group.push(items[j]);
-          j++;
-        }
-        blocks.push(renderEduCard(group));
-        i = j;
-      } else {
-        blocks.push('<ul class="entry-list">' + renderEducationItem(e) + '</ul>');
-        i++;
-      }
-    }
     return '<section id="education">' +
       '<h2>Education</h2>' +
-      blocks.join("") +
+      groupByLogo(d.education, renderEducationItem) +
     '</section>';
-  }
-
-  function renderExperienceItem(x){
-    return '<li><span class="entry-title">' + esc(x.title) + '</span>' +
-      '<span class="entry-meta">' + esc(x.institution) + '</span>' +
-      '<span class="entry-meta">' + esc(x.period) + '</span></li>';
-  }
-  function renderExperienceView(d){
-    if (!d.experience || !d.experience.length) return "";
-    return '<section id="experience"><h2>Professional Experience</h2>' +
-      '<ul class="entry-list">' + d.experience.map(renderExperienceItem).join("") + '</ul></section>';
   }
 
   function renderTrainingItem(x){
@@ -533,8 +537,10 @@
   }
   function renderResearchStaysView(d){
     if (!d.researchStays || !d.researchStays.length) return "";
-    return '<section id="research-stays"><h2>Research Stays</h2>' +
-      '<ul class="entry-list">' + d.researchStays.map(renderResearchStayItem).join("") + '</ul></section>';
+    return '<section id="research-stays">' +
+      '<h2>Professional Experience &amp; Research Stays</h2>' +
+      groupByLogo(d.researchStays, renderResearchStayItem) +
+    '</section>';
   }
 
   function renderAwardItem(x){
@@ -656,7 +662,6 @@
         '<p class="hero-sub" id="f-role" contenteditable="false">' + esc(d.role) + '</p>' +
       '</section>' +
       '<section id="about">' +
-        '<h2>About the research</h2>' +
         '<div class="about-layout">' +
           '<p class="bio" id="f-bio" contenteditable="false">' + esc(d.bio) + '</p>' +
           renderAboutPhoto(d) +
@@ -664,10 +669,9 @@
       '</section>' +
       renderResearchAxesView(d) +
       renderEducationView(d) +
-      renderPhotoGallerySection(d) +
-      renderExperienceView(d) +
-      renderTrainingView(d) +
       renderResearchStaysView(d) +
+      renderPhotoGallerySection(d) +
+      renderTrainingView(d) +
       renderAwardsView(d) +
       renderMembershipsView(d) +
       renderCommitteesView(d) +
@@ -1056,7 +1060,7 @@
 
   // ---------- data loading ----------
   var DATA_FILES = ["site", "education", "links", "publications", "communications", "timeline", "studyAreas",
-    "experience", "training", "researchStays", "awards", "memberships", "committees", "peerReview", "editorialRoles", "teaching", "publicEngagement", "researchAxes", "homeGallery"];
+    "training", "researchStays", "awards", "memberships", "committees", "peerReview", "editorialRoles", "teaching", "publicEngagement", "researchAxes", "homeGallery"];
 
   function loadSiteData(){
     if (window.__SITE_DATA__) return Promise.resolve(window.__SITE_DATA__);
