@@ -1,0 +1,665 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="robots" content="noindex" />
+  <title>Generate CV</title>
+  <script src="https://unpkg.com/docx@9.7.1/dist/index.umd.cjs"></script>
+  <style>
+    body { font-family: -apple-system, Helvetica, Arial, sans-serif; max-width: 720px; margin: 3rem auto; padding: 0 1.5rem; color: #1a1a1a; background: #fff; }
+    h1 { font-size: 1.4rem; }
+    h2 { font-size: 1.05rem; margin-top: 2rem; border-bottom: 1px solid #ddd; padding-bottom: 0.3rem; }
+    table { border-collapse: collapse; width: 100%; margin-top: 0.5rem; font-size: 0.9rem; }
+    td, th { text-align: left; padding: 0.25rem 0.6rem 0.25rem 0; border-bottom: 1px solid #eee; }
+    .actions { margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem; }
+    .cv-option { display: flex; align-items: center; gap: 0.75rem; }
+    .cv-option label { font-size: 0.9rem; display: flex; align-items: center; gap: 0.25rem; cursor: pointer; }
+    button { font: inherit; padding: 0.6rem 1.1rem; border-radius: 6px; border: 1px solid #333; background: #1a1a1a; color: #fff; cursor: pointer; }
+    button:disabled { opacity: 0.5; cursor: not-allowed; }
+    .note { color: #666; font-size: 0.85rem; }
+    #status { margin-top: 1rem; font-size: 0.9rem; }
+    #gate { padding: 2rem; text-align: center; }
+    #gate a { color: inherit; }
+  </style>
+</head>
+<body>
+  <div id="gate" hidden>
+    <p>Please <a href="index.html">log in via /admin/</a> first.</p>
+  </div>
+
+  <div id="app" hidden>
+    <h1>Generate CV</h1>
+    <p class="note">Computed from the live site data. Review the numbers below before generating.</p>
+    <div id="stats"></div>
+    <div class="actions">
+      <div class="cv-option">
+        <button id="gen-resume" disabled>Generate résumé CV</button>
+        <label><input type="radio" name="lang-resume" value="en" checked> EN</label>
+        <label><input type="radio" name="lang-resume" value="fr"> FR</label>
+      </div>
+      <div class="cv-option">
+        <button id="gen-long" disabled>Generate long CV</button>
+        <label><input type="radio" name="lang-long" value="fr" checked> FR</label>
+        <label><input type="radio" name="lang-long" value="en"> EN</label>
+      </div>
+    </div>
+    <p id="status" class="note"></p>
+  </div>
+
+  <script>
+    var FILES = ["site","cvSettings","education","links","publications","communications",
+      "experience","training","researchStays","awards","memberships","committees",
+      "peerReview","editorialRoles","teaching","publicEngagement"];
+
+    var PUB_CATEGORY_ORDER = ["peer-reviewed","preprint","correspondence","book-chapter","literary","thesis-report","bulletin","popular","press"];
+    // [singular, plural] pairs per language, used both for section headers (plural) and prose (pluralized by count)
+    var PUB_CATEGORY_LABELS = {
+      fr: {
+        "peer-reviewed": ["article révisé par les pairs", "articles révisés par les pairs"],
+        "preprint": ["préprint", "préprints"],
+        "correspondence": ["article de correspondance", "articles de correspondance"],
+        "book-chapter": ["chapitre de livre", "chapitres de livre"],
+        "literary": ["œuvre littéraire", "œuvres littéraires"],
+        "thesis-report": ["thèse ou rapport", "thèses et rapports"],
+        "bulletin": ["article de bulletin", "articles de bulletin"],
+        "popular": ["article de vulgarisation scientifique", "articles de vulgarisation scientifique"],
+        "press": ["article de presse", "articles de presse"]
+      },
+      en: {
+        "peer-reviewed": ["peer-reviewed article", "peer-reviewed articles"],
+        "preprint": ["preprint", "preprints"],
+        "correspondence": ["correspondence piece", "correspondence pieces"],
+        "book-chapter": ["book chapter", "book chapters"],
+        "literary": ["literary work", "literary works"],
+        "thesis-report": ["thesis or report", "theses and reports"],
+        "bulletin": ["bulletin article", "bulletin articles"],
+        "popular": ["popular science article", "popular science articles"],
+        "press": ["press article", "press articles"]
+      }
+    };
+
+    var LONG_LABELS = {
+      fr: {
+        born: "né(e) à", position: "Position actuelle et contact", address: "Adresse postale",
+        academicMail: "Mail universitaire", mycosphaeraMail: "Mail Mycosphaera", phone: "Téléphone",
+        briefPresentation: "Brève présentation", academicBackground: "Parcours universitaire",
+        thesis: "Sujet de thèse", supervisors: "Superviseur.es", committee: "Comité d'encadrement", grade: "Note et mention du diplôme",
+        experience: "Expériences professionnelles", training: "Formations scientifiques",
+        researchStays: "Stages et séjours de recherche", awards: "Bourses, prix et distinctions",
+        totalAwarded: function(n){ return "total de " + n + "$ octroyés"; },
+        bibliography: "Bibliographie", inReview: "Articles en cours de révision par un comité de lecture",
+        presentations: "Présentations scientifiques", media: "Interviews et présence dans les médias",
+        readings: "Lectures publiques", uncategorized: "À classer",
+        memberships: "Appartenance à des sociétés savantes et associations", committees: "Participation à des comités d'organisation",
+        editorial: "Tâches éditoriales", peerReviewLine: "Relecteur pour des revues révisées par les pairs", reviewsTotal: "révisions au total",
+        teaching: "Enseignements", totalHours: function(n){ return "total de " + n + " heures"; },
+        publicEngagement: "Engagement dans des activités publiques ou privées", updated: "Actualisé le",
+        dob: "[DATE DE NAISSANCE]", birthplace: "[LIEU DE NAISSANCE]", personalAddress: "[ADRESSE POSTALE PERSONNELLE]", phonePlaceholder: "[TÉLÉPHONE]",
+        pubCat: PUB_CATEGORY_LABELS.fr
+      },
+      en: {
+        born: "born in", position: "Current position and contact", address: "Postal address",
+        academicMail: "Academic email", mycosphaeraMail: "Mycosphaera email", phone: "Phone",
+        briefPresentation: "Brief presentation", academicBackground: "Academic background",
+        thesis: "Thesis subject", supervisors: "Supervisors", committee: "Committee", grade: "Grade and honors",
+        experience: "Professional experience", training: "Scientific training",
+        researchStays: "Research stays and visits", awards: "Scholarships, awards and distinctions",
+        totalAwarded: function(n){ return "total of $" + n + " awarded"; },
+        bibliography: "Bibliography", inReview: "Manuscripts under peer review",
+        presentations: "Scientific presentations", media: "Media interviews and appearances",
+        readings: "Public readings", uncategorized: "Uncategorized",
+        memberships: "Society memberships", committees: "Organizing committee participation",
+        editorial: "Editorial duties", peerReviewLine: "Reviewer for peer-reviewed journals", reviewsTotal: "reviews total",
+        teaching: "Teaching", totalHours: function(n){ return "total of " + n + " hours"; },
+        publicEngagement: "Public and community engagement", updated: "Updated on",
+        dob: "[DATE OF BIRTH]", birthplace: "[PLACE OF BIRTH]", personalAddress: "[PERSONAL POSTAL ADDRESS]", phonePlaceholder: "[PHONE NUMBER]",
+        pubCat: PUB_CATEGORY_LABELS.en
+      }
+    };
+
+    var RESUME_LABELS = {
+      fr: {
+        leadership: "LEADERSHIP ET GOUVERNANCE", honour: "DISTINCTIONS ET RECONNAISSANCE",
+        academicResearch: "RECHERCHE ACADÉMIQUE", mediaOutreach: "MÉDIAS ET SENSIBILISATION",
+        educationTeaching: "FORMATION ET ENSEIGNEMENT"
+      },
+      en: {
+        leadership: "LEADERSHIP & GOVERNANCE", honour: "HONOUR & RECOGNITION",
+        academicResearch: "ACADEMIC RESEARCH", mediaOutreach: "MEDIA & OUTREACH",
+        educationTeaching: "EDUCATION & TEACHING"
+      }
+    };
+
+    // Communications: type (free string, editable in Decap) -> CV section bucket.
+    // Anything not listed here falls into "uncategorized" and is shown, not dropped,
+    // so a new type typed into Decap later never silently disappears from the CV.
+    var COMM_TYPE_MAP = {
+      "Invited talk": "presentations",
+      "Conference talk": "presentations",
+      "Talk": "presentations",
+      "Invited lecture": "presentations",
+      "Poster": "presentations",
+      "Public talk": "presentations",
+      "Radio interview": "media",
+      "TV interview": "media",
+      "Podcast": "media",
+      "Press feature": "media",
+      "Public interview": "media",
+      "Radio & press interview": "media",
+      "Video feature": "media",
+      "Public reading": "readings"
+    };
+
+    function loadAll(){
+      return Promise.all(FILES.map(function(name){
+        return fetch("../data/" + name + ".json").then(function(r){
+          if (!r.ok) throw new Error("Failed to load data/" + name + ".json");
+          return r.json();
+        });
+      })).then(function(results){
+        var data = {};
+        FILES.forEach(function(name, i){ data[name] = results[i]; });
+        return data;
+      });
+    }
+
+    function parseHours(str){
+      var matches = String(str == null ? "" : str).match(/\d+(\.\d+)?/g);
+      if (!matches) return 0;
+      return matches.reduce(function(sum, n){ return sum + parseFloat(n); }, 0);
+    }
+
+    function computeStats(data){
+      var pubs = data.publications.items;
+      var published = pubs.filter(function(p){ return p.status !== "in-review"; });
+      var inReview = pubs.filter(function(p){ return p.status === "in-review"; });
+      var byCategory = {};
+      PUB_CATEGORY_ORDER.forEach(function(c){ byCategory[c] = []; });
+      published.forEach(function(p){
+        if (!byCategory[p.category]) byCategory[p.category] = [];
+        byCategory[p.category].push(p);
+      });
+
+      var commBuckets = { presentations: [], media: [], readings: [], uncategorized: [] };
+      data.communications.items.forEach(function(c){
+        var bucket = COMM_TYPE_MAP[c.type] || "uncategorized";
+        commBuckets[bucket].push(c);
+      });
+
+      var awardItems = data.awards.items;
+      var awardTotal = awardItems.reduce(function(s, a){ return s + (typeof a.amount === "number" ? a.amount : 0); }, 0);
+
+      var peerReviewTotal = data.peerReview.items.reduce(function(s, r){ return s + (r.count || 0); }, 0);
+
+      var teachingHoursTotal = data.teaching.items.reduce(function(s, t){ return s + parseHours(t.hours); }, 0);
+
+      return {
+        publications: { total: published.length, byCategory: byCategory, inReview: inReview },
+        communications: commBuckets,
+        awards: { count: awardItems.length, totalAmount: awardTotal },
+        peerReview: { journalCount: data.peerReview.items.length, totalReviews: peerReviewTotal },
+        teaching: { count: data.teaching.items.length, totalHours: teachingHoursTotal },
+        researchStays: { count: data.researchStays.items.length },
+        memberships: { count: data.memberships.items.length },
+        committees: { count: data.committees.items.length },
+        publicEngagement: { count: data.publicEngagement.items.length },
+        experience: { count: data.experience.items.length },
+        training: { count: data.training.items.length },
+        education: { count: data.education.items.length }
+      };
+    }
+
+    function renderStats(stats){
+      var rows = [];
+      rows.push(["Publications (published)", stats.publications.total]);
+      PUB_CATEGORY_ORDER.forEach(function(c){
+        rows.push(["&nbsp;&nbsp;— " + PUB_CATEGORY_LABELS.fr[c][1], stats.publications.byCategory[c].length]);
+      });
+      rows.push(["Publications (in review)", stats.publications.inReview.length]);
+      rows.push(["Communications — présentations", stats.communications.presentations.length]);
+      rows.push(["Communications — médias/interviews", stats.communications.media.length]);
+      rows.push(["Communications — lectures publiques", stats.communications.readings.length]);
+      if (stats.communications.uncategorized.length){
+        rows.push(["Communications — à classer (type inconnu)", stats.communications.uncategorized.length]);
+      }
+      rows.push(["Awards / funding — count", stats.awards.count]);
+      rows.push(["Awards / funding — total $", stats.awards.totalAmount.toLocaleString()]);
+      rows.push(["Peer review — journals", stats.peerReview.journalCount]);
+      rows.push(["Peer review — total reviews", stats.peerReview.totalReviews]);
+      rows.push(["Teaching — entries", stats.teaching.count]);
+      rows.push(["Teaching — total hours", stats.teaching.totalHours]);
+      rows.push(["Research stays", stats.researchStays.count]);
+      rows.push(["Society memberships", stats.memberships.count]);
+      rows.push(["Organizing committees", stats.committees.count]);
+      rows.push(["Public engagement", stats.publicEngagement.count]);
+      rows.push(["Professional experience", stats.experience.count]);
+      rows.push(["Scientific training", stats.training.count]);
+      rows.push(["Education entries", stats.education.count]);
+
+      var html = "<h2>Computed stats</h2><table>" +
+        rows.map(function(r){ return "<tr><td>" + r[0] + "</td><td>" + r[1] + "</td></tr>"; }).join("") +
+        "</table>";
+      if (stats.communications.uncategorized.length){
+        html += "<p class='note'>Uncategorized communication types: " +
+          Array.from(new Set(stats.communications.uncategorized.map(function(c){ return c.type; }))).join(", ") +
+          "</p>";
+      }
+      document.getElementById("stats").innerHTML = html;
+    }
+
+    function hasDecapSession(){
+      try {
+        for (var i = 0; i < localStorage.length; i++){
+          var key = localStorage.key(i);
+          if (key && key.indexOf("decap-cms-user") !== -1) return true;
+        }
+      } catch (e) {}
+      return false;
+    }
+
+    // ---------- shared style spec (extracted from the two original CVs) ----------
+    var FONT = "Palatino Linotype";
+    var BODY_SIZE = 24;   // half-points -> 12pt
+    var HEADER_SIZE = 28; // half-points -> 14pt
+    var PAGE = {
+      size: { width: 12240, height: 15840 }, // US Letter, twips
+      margin: { top: 1440, bottom: 1440, left: 1440, right: 1440 } // 1 inch
+    };
+
+    function downloadBlob(blob, filename){
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement("a");
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(function(){ URL.revokeObjectURL(url); }, 4000);
+    }
+
+    function blobToBase64(blob){
+      return new Promise(function(resolve, reject){
+        var reader = new FileReader();
+        reader.onloadend = function(){ resolve(reader.result.split(",")[1]); };
+        reader.onerror = reject;
+        reader.readAsDataURL(blob);
+      });
+    }
+
+    // ---------- generic docx-building helpers ----------
+    function run(text, opts){
+      opts = opts || {};
+      return new docx.TextRun(Object.assign({ text: text, font: FONT, size: opts.size || BODY_SIZE }, opts));
+    }
+    function para(children, opts){
+      opts = opts || {};
+      if (typeof children === "string") children = [run(children, opts.runOpts)];
+      return new docx.Paragraph(Object.assign({
+        alignment: opts.align || docx.AlignmentType.JUSTIFIED,
+        spacing: opts.spacing || { after: 120 },
+        children: children
+      }, opts.extra || {}));
+    }
+    var HEADING_BORDER = { bottom: { style: docx.BorderStyle.SINGLE, size: 6, color: "auto" } };
+    function heading(text){
+      return new docx.Paragraph({
+        alignment: docx.AlignmentType.JUSTIFIED,
+        spacing: { before: 240, after: 120 },
+        border: HEADING_BORDER,
+        children: [ run(text, { bold: true }) ]
+      });
+    }
+    function subheading(text){
+      return para([run(text, { bold: true, italics: true })], { spacing: { before: 180, after: 100 } });
+    }
+    function borderedPara(children, opts){
+      opts = opts || {};
+      if (typeof children === "string") children = [run(children)];
+      return new docx.Paragraph(Object.assign({
+        alignment: docx.AlignmentType.JUSTIFIED,
+        spacing: opts.spacing || { after: 120 },
+        border: HEADING_BORDER,
+        children: children
+      }, opts.extra || {}));
+    }
+    function splitBold(text, needle){
+      var parts = [];
+      var idx = 0, pos;
+      while ((pos = text.indexOf(needle, idx)) !== -1){
+        if (pos > idx) parts.push(run(text.slice(idx, pos)));
+        parts.push(run(needle, { bold: true }));
+        idx = pos + needle.length;
+      }
+      if (idx < text.length) parts.push(run(text.slice(idx)));
+      return parts;
+    }
+    function bulletPara(children){
+      if (typeof children === "string") children = [run(children)];
+      return new docx.Paragraph({
+        alignment: docx.AlignmentType.JUSTIFIED,
+        indent: { left: 360, hanging: 360 },
+        spacing: { after: 80 },
+        children: [ run("•  ") ].concat(children)
+      });
+    }
+    function tabbedPara(leftText, rightText, opts){
+      opts = opts || {};
+      return new docx.Paragraph({
+        alignment: docx.AlignmentType.LEFT,
+        tabStops: [{ type: docx.TabStopType.RIGHT, position: 9360 }],
+        spacing: { after: opts.after != null ? opts.after : 0 },
+        children: [
+          run(leftText, { bold: opts.boldLeft }),
+          run("\t"),
+          run(rightText || "", { bold: opts.boldRight })
+        ]
+      });
+    }
+    function joinList(items, lang){
+      items = items.filter(Boolean);
+      if (!items.length) return "";
+      if (items.length === 1) return items[0];
+      var and = lang === "fr" ? "et" : "and";
+      return items.slice(0, -1).join(", ") + (items.length > 2 ? "," : "") + " " + and + " " + items[items.length - 1];
+    }
+    function fmtMoney(n){ return n.toLocaleString("en-CA"); }
+    function pluralize(n, singular, plural){ return n === 1 ? singular : plural; }
+
+    // ---------- résumé CV (GYBN-style; lang: "en" | "fr") ----------
+    function buildResumeDoc(data, stats, lang){
+      var d = docx;
+      var s = data.site, cv = data.cvSettings;
+      var L = RESUME_LABELS[lang];
+      var cat = PUB_CATEGORY_LABELS[lang];
+      var children = [];
+      var num = function(n){ return run(String(n), { bold: true }); };
+
+      children.push(para([run("CURRICULUM VITAE", { bold: true, size: HEADER_SIZE })], { align: d.AlignmentType.CENTER }));
+      children.push(para([run(s.name.toUpperCase(), { bold: true })]));
+      children.push(para([run(s.address.replace(/\n/g, ", "), { bold: true })]));
+      children.push(para([run(s.email, { bold: true })]));
+      if (cv.mycosphaeraEmail) children.push(para([run(cv.mycosphaeraEmail, { bold: true })]));
+      var scholarLink = (data.links.items.find(function(l){ return l.label === "Google Scholar"; }) || {}).href;
+      var linkedinLink = (data.links.items.find(function(l){ return l.label === "LinkedIn"; }) || {}).href;
+      if (scholarLink) children.push(para([ run("Google Scholar: ", { bold: true }), run(scholarLink, { bold: true }) ]));
+      if (linkedinLink) children.push(para([ run("LinkedIn: ", { bold: true }), run(linkedinLink, { bold: true }) ]));
+
+      var tagline = lang === "fr" ? cv.resumeTaglineFr : cv.resumeTagline;
+      children.push(para([run(tagline, { bold: true, size: HEADER_SIZE })], { align: d.AlignmentType.CENTER, spacing: { before: 240, after: 240 } }));
+      var bio = lang === "fr" ? cv.resumeBioFr : s.bio;
+      children.push(borderedPara(bio));
+
+      children.push(heading(L.leadership));
+      var highlights = lang === "fr" ? cv.leadershipHighlightsFr : cv.leadershipHighlights;
+      highlights.forEach(function(item){ children.push(bulletPara(run(item, { bold: true }))); });
+
+      var notableAwards = lang === "fr" ? cv.notableAwardsTextFr : cv.notableAwardsText;
+      children.push(heading(L.honour));
+      if (lang === "fr"){
+        children.push(para([
+          run("En tant qu'individu, Jonathan a reçu un total de "), num(fmtMoney(stats.awards.totalAmount) + " $ CAD"),
+          run(" en bourses et prix à ce jour. "), run(notableAwards)
+        ]));
+      } else {
+        children.push(para([
+          run("As an individual, Jonathan has received a total of "), num("CAD $" + fmtMoney(stats.awards.totalAmount)),
+          run(" in scholarships and awards to date. "), run(notableAwards)
+        ]));
+      }
+
+      children.push(heading(L.academicResearch));
+      var pubRuns = [];
+      PUB_CATEGORY_ORDER.forEach(function(c, i){
+        var n = stats.publications.byCategory[c].length;
+        if (!n) return;
+        if (pubRuns.length) pubRuns.push(run(i === PUB_CATEGORY_ORDER.length - 1 || isLastNonZero(c, stats) ? (lang === "fr" ? ", et " : ", and ") : ", "));
+        pubRuns.push(num(n));
+        pubRuns.push(run(" " + pluralize(n, cat[c][0], cat[c][1])));
+      });
+      function isLastNonZero(c, stats){
+        var idx = PUB_CATEGORY_ORDER.indexOf(c);
+        for (var j = idx + 1; j < PUB_CATEGORY_ORDER.length; j++){
+          if (stats.publications.byCategory[PUB_CATEGORY_ORDER[j]].length) return false;
+        }
+        return true;
+      }
+      if (lang === "fr"){
+        children.push(para(
+          [run("À ce jour, Jonathan a publié un total de ")].concat(pubRuns).concat([
+            run(" dans les domaines de la mycologie, de la conservation fongique, de la taxonomie et de la science citoyenne. Jonathan a également agi à titre de réviseur pour "),
+            num(stats.peerReview.totalReviews), run(" manuscrits dans "), num(stats.peerReview.journalCount),
+            run(" revues scientifiques à comité de lecture différentes.")
+          ])
+        ));
+      } else {
+        children.push(para(
+          [run("To date, Jonathan has published a total of ")].concat(pubRuns).concat([
+            run(" in the fields of mycology, fungal conservation, taxonomy, and citizen science. Jonathan has also served as a reviewer for "),
+            num(stats.peerReview.totalReviews), run(" manuscripts across "), num(stats.peerReview.journalCount),
+            run(" different peer-reviewed scientific journals.")
+          ])
+        ));
+      }
+
+      children.push(heading(L.mediaOutreach));
+      if (lang === "fr"){
+        children.push(para([
+          run("À ce jour, Jonathan a donné un total de "), num(stats.communications.presentations.length),
+          run(" " + pluralize(stats.communications.presentations.length, "conférence", "conférences") + " pour des publics spécialisés et généraux, "),
+          num(stats.communications.readings.length),
+          run(" " + pluralize(stats.communications.readings.length, "lecture publique", "lectures publiques") + " de textes littéraires, ainsi que plus de "),
+          num(stats.communications.media.length),
+          run(" apparitions médiatiques à la radio et dans la presse écrite pour sensibiliser le public au monde des champignons et à leur conservation.")
+        ]));
+      } else {
+        children.push(para([
+          run("To date, Jonathan has given a total of "), num(stats.communications.presentations.length),
+          run(" " + pluralize(stats.communications.presentations.length, "conference", "conferences") + " for both specialist and general audiences, "),
+          num(stats.communications.readings.length),
+          run(" public " + pluralize(stats.communications.readings.length, "reading", "readings") + " of literary texts, as well as more than "),
+          num(stats.communications.media.length),
+          run(" media appearances on radio and in print to raise awareness about the world of fungi and their conservation.")
+        ]));
+      }
+
+      children.push(heading(L.educationTeaching));
+      if (lang === "fr"){
+        children.push(para([
+          run("Jonathan a donné un total de "), num(stats.teaching.totalHours),
+          run(" heures de cours, de séances pratiques et de sorties de terrain en mycologie et conservation fongique.")
+        ]));
+      } else {
+        children.push(para([
+          run("Jonathan has delivered a total of "), num(stats.teaching.totalHours),
+          run(" hours of lectures, practical sessions, and field courses in mycology and fungal conservation.")
+        ]));
+      }
+
+      var doc = new d.Document({ sections: [{ properties: { page: PAGE }, children: children }] });
+      return d.Packer.toBlob(doc);
+    }
+
+    // ---------- long CV (Force Avenir-style; lang: "fr" | "en") ----------
+    function buildLongCVDoc(data, stats, lang){
+      var d = docx;
+      var s = data.site, cv = data.cvSettings;
+      var L = LONG_LABELS[lang];
+      var children = [];
+      var sep = lang === "fr" ? " : " : ": ";
+
+      children.push(para([run("CURRICULUM VITAE", { bold: true, italics: true })], { align: d.AlignmentType.CENTER }));
+      children.push(para([run(s.name + ", " + L.dob + ", " + L.born + " " + L.birthplace, { bold: true })]));
+      children.push(para([ run(L.position + sep, { bold: true }), run(lang === "fr" ? cv.positionSummary : cv.positionSummaryEn, { bold: true }) ]));
+      children.push(para([ run(L.address + sep, { bold: true }), run(L.personalAddress, { bold: true }) ]));
+      children.push(para([ run(L.academicMail + sep, { bold: true }), run(cv.academicEmail + " ; " + s.email, { bold: true }) ]));
+      children.push(para([ run(L.mycosphaeraMail + sep, { bold: true }), run(cv.mycosphaeraEmail, { bold: true }) ]));
+      children.push(para([ run(L.phone + sep, { bold: true }), run(L.phonePlaceholder, { bold: true }) ]));
+      data.links.items.forEach(function(l){
+        children.push(para([ run(l.label + sep, { bold: true }), run(l.href, { bold: true }) ]));
+      });
+
+      children.push(heading(L.briefPresentation));
+      children.push(para(lang === "fr" ? cv.bioFr : cv.bioEn));
+
+      children.push(heading(L.academicBackground));
+      data.education.items.forEach(function(e){
+        children.push(tabbedPara(e.institution, "", { boldLeft: true, boldRight: true }));
+        children.push(tabbedPara(e.degree, e.years));
+        if (e.thesisTitleFr) children.push(para([ run(L.thesis + sep), run(e.thesisTitleFr, { italics: true }) ]));
+        if (e.supervisors) children.push(para(L.supervisors + sep + e.supervisors));
+        if (e.committee) children.push(para(L.committee + sep + e.committee));
+        if (e.grade) children.push(para([ run(L.grade + sep), run(e.grade, { bold: true }) ]));
+      });
+
+      children.push(heading(L.experience));
+      data.experience.items.forEach(function(x){ children.push(tabbedPara(x.period + "   " + x.title, x.institution)); });
+
+      children.push(heading(L.training));
+      data.training.items.forEach(function(x){ children.push(tabbedPara(x.year + "   " + x.title + " (" + x.hours + ")", x.provider)); });
+
+      children.push(heading(L.researchStays + " (n = " + stats.researchStays.count + ")"));
+      data.researchStays.items.forEach(function(x){
+        children.push(tabbedPara(x.institution, x.location, { boldLeft: true, boldRight: true }));
+        children.push(tabbedPara(x.description, x.period));
+        if (x.supervisors) children.push(para(L.supervisors + sep + x.supervisors));
+      });
+
+      children.push(heading(L.awards + " (n = " + stats.awards.count + " ; " + L.totalAwarded(fmtMoney(stats.awards.totalAmount)) + ")"));
+      data.awards.items.forEach(function(x){
+        var label = x.title + (x.amount != null ? " (" + fmtMoney(x.amount) + "$)" : "") + (x.status ? " — " + x.status : "");
+        children.push(tabbedPara(String(x.year), label, { boldRight: true }));
+      });
+
+      var cat = L.pubCat;
+      var bibSections = [
+        { key: "in-review", label: L.inReview, items: stats.publications.inReview },
+        { key: "preprint", label: cat.preprint[1], items: stats.publications.byCategory.preprint },
+        { key: "peer-reviewed", label: cat["peer-reviewed"][1], items: stats.publications.byCategory["peer-reviewed"] },
+        { key: "correspondence", label: cat.correspondence[1], items: stats.publications.byCategory.correspondence },
+        { key: "book-chapter", label: cat["book-chapter"][1], items: stats.publications.byCategory["book-chapter"] },
+        { key: "literary", label: cat.literary[1], items: stats.publications.byCategory.literary },
+        { key: "thesis-report", label: cat["thesis-report"][1], items: stats.publications.byCategory["thesis-report"] },
+        { key: "bulletin", label: cat.bulletin[1], items: stats.publications.byCategory.bulletin },
+        { key: "popular", label: cat.popular[1], items: stats.publications.byCategory.popular },
+        { key: "press", label: cat.press[1], items: stats.publications.byCategory.press }
+      ];
+      var totalBib = stats.publications.total + stats.publications.inReview.length;
+      children.push(heading(L.bibliography + " (n = " + totalBib + ")"));
+      bibSections.forEach(function(sec){
+        if (!sec.items.length) return;
+        children.push(subheading(sec.label + " (n = " + sec.items.length + ")"));
+        sec.items.slice().sort(function(a,b){ return (b.year||0) - (a.year||0); }).forEach(function(p){
+          var citation = p.authors + " " + p.year + ". " + p.title + ". " + p.venue + (p.url && p.url !== "#" ? ". " + p.url : "");
+          children.push(bulletPara(splitBold(citation, "Cazabonne")));
+        });
+      });
+
+      children.push(heading(L.presentations + " (n = " + stats.communications.presentations.length + ")"));
+      data.communications.items.filter(function(c){ return COMM_TYPE_MAP[c.type] === "presentations"; })
+        .forEach(function(c){ children.push(bulletPara(c.year + ". " + c.title + ". " + c.venue + ".")); });
+
+      children.push(heading(L.media + " (n = " + stats.communications.media.length + ")"));
+      data.communications.items.filter(function(c){ return COMM_TYPE_MAP[c.type] === "media"; })
+        .forEach(function(c){ children.push(bulletPara(c.year + ". " + c.title + ". " + c.venue + ".")); });
+
+      children.push(heading(L.readings + " (n = " + stats.communications.readings.length + ")"));
+      data.communications.items.filter(function(c){ return COMM_TYPE_MAP[c.type] === "readings"; })
+        .forEach(function(c){ children.push(bulletPara(c.year + ". " + c.title + ". " + c.venue + ".")); });
+
+      if (stats.communications.uncategorized.length){
+        children.push(heading(L.uncategorized + " (n = " + stats.communications.uncategorized.length + ")"));
+        data.communications.items.filter(function(c){ return !COMM_TYPE_MAP[c.type]; })
+          .forEach(function(c){ children.push(bulletPara("[" + c.type + "] " + c.year + ". " + c.title + ". " + c.venue + ".")); });
+      }
+
+      children.push(heading(L.memberships + " (n = " + stats.memberships.count + ")"));
+      data.memberships.items.forEach(function(x){
+        children.push(new docx.Paragraph({
+          alignment: docx.AlignmentType.LEFT,
+          tabStops: [{ type: docx.TabStopType.RIGHT, position: 9360 }],
+          children: [ run(x.period), run("\t"), run(x.organization, { bold: true }), run(" — " + x.role) ]
+        }));
+      });
+
+      children.push(heading(L.committees));
+      data.committees.items.forEach(function(x){ children.push(tabbedPara(String(x.year), x.description)); });
+
+      children.push(heading(L.editorial));
+      var reviewLine = L.peerReviewLine + sep +
+        data.peerReview.items.map(function(r){ return r.journal + " (" + r.count + ")"; }).join(", ") +
+        " — " + stats.peerReview.totalReviews + " " + L.reviewsTotal + ".";
+      children.push(bulletPara(run(reviewLine, { bold: true })));
+      data.editorialRoles.items.forEach(function(x){
+        children.push(bulletPara(run(x.description + (x.period ? " (" + x.period + ")" : ""), { bold: true })));
+      });
+
+      children.push(heading(L.teaching + " (n = " + stats.teaching.count + " ; " + L.totalHours(stats.teaching.totalHours) + ")"));
+      data.teaching.items.forEach(function(x){ children.push(tabbedPara(x.year, x.title + " (" + x.hours + ")   " + x.institution, { boldRight: true })); });
+
+      children.push(heading(L.publicEngagement));
+      data.publicEngagement.items.forEach(function(x){ children.push(tabbedPara(String(x.year), x.title + " — " + x.description)); });
+
+      var today = new Date();
+      var locale = lang === "fr" ? "fr-CA" : "en-CA";
+      children.push(para(L.updated + " " + today.toLocaleDateString(locale, { year: "numeric", month: "long", day: "numeric" }), { spacing: { before: 360 } }));
+
+      var doc = new d.Document({ sections: [{ properties: { page: PAGE }, children: children }] });
+      return d.Packer.toBlob(doc);
+    }
+
+    if (!hasDecapSession()){
+      document.getElementById("gate").hidden = false;
+    } else {
+      document.getElementById("app").hidden = false;
+      loadAll().then(function(data){
+        window.__cvData = data;
+        var stats = computeStats(data);
+        window.__cvStats = stats;
+        console.log("CV stats", stats);
+        renderStats(stats);
+        document.getElementById("status").textContent = "Data loaded.";
+
+        var resumeBtn = document.getElementById("gen-resume");
+        var longBtn = document.getElementById("gen-long");
+        resumeBtn.disabled = false;
+        longBtn.disabled = false;
+
+        function selectedLang(name){
+          var el = document.querySelector('input[name="' + name + '"]:checked');
+          return el ? el.value : "en";
+        }
+
+        resumeBtn.addEventListener("click", function(){
+          var lang = selectedLang("lang-resume");
+          document.getElementById("status").textContent = "Generating…";
+          buildResumeDoc(data, stats, lang).then(function(blob){
+            downloadBlob(blob, "Cazabonne_Jonathan_CV_resume_" + lang.toUpperCase() + ".docx");
+            document.getElementById("status").textContent = "Downloaded.";
+          }).catch(function(err){
+            document.getElementById("status").textContent = "Error: " + err.message;
+            console.error(err);
+          });
+        });
+
+        longBtn.addEventListener("click", function(){
+          var lang = selectedLang("lang-long");
+          document.getElementById("status").textContent = "Generating…";
+          buildLongCVDoc(data, stats, lang).then(function(blob){
+            downloadBlob(blob, "Cazabonne_Jonathan_CV_long_" + lang.toUpperCase() + ".docx");
+            document.getElementById("status").textContent = "Downloaded.";
+          }).catch(function(err){
+            document.getElementById("status").textContent = "Error: " + err.message;
+            console.error(err);
+          });
+        });
+
+        window.__buildResumeDoc = function(lang){ return buildResumeDoc(data, stats, lang || "en").then(blobToBase64); };
+        window.__buildLongCVDoc = function(lang){ return buildLongCVDoc(data, stats, lang || "fr").then(blobToBase64); };
+      }).catch(function(err){
+        document.getElementById("status").textContent = "Error loading data: " + err.message;
+        console.error(err);
+      });
+    }
+  </script>
+</body>
+</html>

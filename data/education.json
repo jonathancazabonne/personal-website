@@ -5,21 +5,33 @@
       "degree": "Ph.D. candidate in forest ecology and management",
       "institution": "Institut de recherche sur les forêts, Université du Québec en Abitibi-Témiscamingue (UQAT), Rouyn-Noranda, Québec, Canada",
       "detail": "Thesis: “Diversité et rôles écologiques des communautés fongiques du sol des vieilles forêts boréales de l'est du Canada : perspectives pour la conservation de la fonge forestière.” Supervised by Maxence Martin and Mélanie Roy.",
-      "url": "#"
+      "url": "#",
+      "thesisTitleFr": "Diversité et rôles écologiques des champignons du sol dans les vieilles forêts boréales de l'est du Canada : perspectives pour la conservation de la fonge forestière",
+      "supervisors": "Maxence Martin (IRF-UQAT) et Mélanie Roy (Maître de conférences à l'Université Paul Sabatier Toulouse III et délégation IRD à l'IFAECI)",
+      "committee": "Christine Martineau (Centre de foresterie des Laurentides) et Antoine Brin (École d'ingénieur de Purpan, UMR Dynafor)",
+      "grade": ""
     },
     {
       "years": "2022–2024",
       "degree": "M.Sc. in Forest Ecology and Management",
       "institution": "Institut de recherche sur les forêts, Université du Québec en Abitibi-Témiscamingue (UQAT), Amos, Québec, Canada",
       "detail": "Thesis: “Influence de la zonation verticale sur les communautés fongiques du sol des pinèdes grises naturelles dans les écosystèmes d'esker.” Supervised by Miguel Montoro Girona and Annie Desrochers.",
-      "url": "https://depositum.uqat.ca/id/eprint/1592/1/M%c3%a9moire_Jonathan_Cazabonne_uqat_2024_30052024_V2.pdf"
+      "url": "https://depositum.uqat.ca/id/eprint/1592/1/M%c3%a9moire_Jonathan_Cazabonne_uqat_2024_30052024_V2.pdf",
+      "thesisTitleFr": "Influence du type de sol et des horizons sur les communautés fongiques du sol dans les pinèdes grises des écosystèmes d'eskers",
+      "supervisors": "Miguel Montoro Girona (IRF-UQAT) et Annie DesRochers (IRF-UQAT)",
+      "committee": "Christine Martineau et Mélanie Roy",
+      "grade": "4,17/4,30 - Excellent"
     },
     {
       "years": "2018–2021",
       "degree": "B.Sc. in Biology — Organismal, Population & Ecosystem Biology",
       "institution": "Université Paul Sabatier, Toulouse, France",
       "detail": "Specialization in plant physiology, diversity and systematics; concurrent enrollment in the BCPST preparatory program (biology, chemistry, physics & earth sciences) at Lycée Toulouse-Auzeville.",
-      "url": "#"
+      "url": "#",
+      "thesisTitleFr": "",
+      "supervisors": "",
+      "committee": "",
+      "grade": "Rang 3/190 – avec les honneurs"
     }
   ]
 }

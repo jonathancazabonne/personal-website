@@ -47,6 +47,10 @@ collections:
               - { label: "Institution", name: "institution", widget: "string" }
               - { label: "Detail (thesis title, supervisors, etc.)", name: "detail", widget: "text", required: false }
               - { label: "Link (thesis PDF, etc.)", name: "url", widget: "string", required: false }
+              - { label: "Thesis title (French, for CV)", name: "thesisTitleFr", widget: "text", required: false }
+              - { label: "Supervisors (French, for CV)", name: "supervisors", widget: "text", required: false }
+              - { label: "Committee (French, for CV)", name: "committee", widget: "text", required: false }
+              - { label: "Grade / honors (for CV)", name: "grade", widget: "string", required: false }
 
   - name: "links"
     label: "Links"
@@ -63,7 +67,7 @@ collections:
               - label: "Icon"
                 name: "icon"
                 widget: "select"
-                options: ["link", "researchgate", "orcid", "linkedin"]
+                options: ["link", "researchgate", "orcid", "linkedin", "scholar", "institution"]
               - { label: "Label", name: "label", widget: "string" }
               - { label: "URL", name: "href", widget: "string" }
 
@@ -97,6 +101,13 @@ collections:
                   - { label: "Bulletin articles", value: "bulletin" }
                   - { label: "Popular science articles", value: "popular" }
                   - { label: "Press articles", value: "press" }
+              - label: "Status"
+                name: "status"
+                widget: "select"
+                default: "published"
+                options:
+                  - { label: "Published", value: "published" }
+                  - { label: "In review (submitted, not yet accepted)", value: "in-review" }
 
   - name: "communications"
     label: "Outreach"
@@ -151,3 +162,186 @@ collections:
               - { label: "Name", name: "name", widget: "string" }
               - { label: "Description", name: "description", widget: "text" }
               - { label: "Photo URLs", name: "photos", widget: "list", required: false }
+
+  - name: "experience"
+    label: "Professional experience"
+    files:
+      - file: "data/experience.json"
+        label: "Professional experience"
+        name: "experience"
+        fields:
+          - label: "Experience entries"
+            name: "items"
+            widget: "list"
+            summary: "{{period}} — {{title}}"
+            fields:
+              - { label: "Period", name: "period", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Institution", name: "institution", widget: "string" }
+
+  - name: "training"
+    label: "Scientific training"
+    files:
+      - file: "data/training.json"
+        label: "Scientific training"
+        name: "training"
+        fields:
+          - label: "Training entries"
+            name: "items"
+            widget: "list"
+            summary: "{{year}} — {{title}}"
+            fields:
+              - { label: "Year", name: "year", widget: "number", value_type: "int" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Provider", name: "provider", widget: "string" }
+              - { label: "Hours", name: "hours", widget: "string" }
+
+  - name: "researchStays"
+    label: "Research stays"
+    files:
+      - file: "data/researchStays.json"
+        label: "Research stays"
+        name: "researchStays"
+        fields:
+          - label: "Research stay entries"
+            name: "items"
+            widget: "list"
+            summary: "{{period}} — {{institution}}"
+            fields:
+              - { label: "Institution", name: "institution", widget: "string" }
+              - { label: "Location", name: "location", widget: "string" }
+              - { label: "Period", name: "period", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Supervisors", name: "supervisors", widget: "text" }
+
+  - name: "awards"
+    label: "Awards & funding"
+    files:
+      - file: "data/awards.json"
+        label: "Awards & funding"
+        name: "awards"
+        fields:
+          - label: "Award entries"
+            name: "items"
+            widget: "list"
+            summary: "{{year}} — {{title}}"
+            fields:
+              - { label: "Year", name: "year", widget: "number", value_type: "int" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Amount ($)", name: "amount", widget: "number", value_type: "int", required: false }
+              - { label: "Status", name: "status", widget: "string", required: false }
+
+  - name: "memberships"
+    label: "Society memberships"
+    files:
+      - file: "data/memberships.json"
+        label: "Society memberships"
+        name: "memberships"
+        fields:
+          - label: "Membership entries"
+            name: "items"
+            widget: "list"
+            summary: "{{period}} — {{organization}}"
+            fields:
+              - { label: "Period", name: "period", widget: "string" }
+              - { label: "Organization", name: "organization", widget: "string" }
+              - { label: "Role", name: "role", widget: "string" }
+
+  - name: "committees"
+    label: "Organizing committees"
+    files:
+      - file: "data/committees.json"
+        label: "Organizing committees"
+        name: "committees"
+        fields:
+          - label: "Committee entries"
+            name: "items"
+            widget: "list"
+            summary: "{{year}} — {{description}}"
+            fields:
+              - { label: "Year", name: "year", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+
+  - name: "peerReview"
+    label: "Peer review"
+    files:
+      - file: "data/peerReview.json"
+        label: "Peer review"
+        name: "peerReview"
+        fields:
+          - label: "Peer review entries"
+            name: "items"
+            widget: "list"
+            summary: "{{journal}} ({{count}})"
+            fields:
+              - { label: "Journal", name: "journal", widget: "string" }
+              - { label: "Count", name: "count", widget: "number", value_type: "int" }
+
+  - name: "editorialRoles"
+    label: "Editorial roles"
+    files:
+      - file: "data/editorialRoles.json"
+        label: "Editorial roles"
+        name: "editorialRoles"
+        fields:
+          - label: "Editorial role entries"
+            name: "items"
+            widget: "list"
+            summary: "{{period}} — {{description}}"
+            fields:
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Period", name: "period", widget: "string" }
+
+  - name: "teaching"
+    label: "Teaching"
+    files:
+      - file: "data/teaching.json"
+        label: "Teaching"
+        name: "teaching"
+        fields:
+          - label: "Teaching entries"
+            name: "items"
+            widget: "list"
+            summary: "{{year}} — {{title}}"
+            fields:
+              - { label: "Year", name: "year", widget: "number", value_type: "int" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Hours", name: "hours", widget: "string" }
+              - { label: "Institution", name: "institution", widget: "string" }
+
+  - name: "publicEngagement"
+    label: "Public engagement"
+    files:
+      - file: "data/publicEngagement.json"
+        label: "Public engagement"
+        name: "publicEngagement"
+        fields:
+          - label: "Public engagement entries"
+            name: "items"
+            widget: "list"
+            summary: "{{year}} — {{title}}"
+            fields:
+              - { label: "Year", name: "year", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+
+  - name: "cvSettings"
+    label: "CV settings"
+    files:
+      - file: "data/cvSettings.json"
+        label: "CV settings"
+        name: "cvSettings"
+        fields:
+          - { label: "Bio — long CV, French", name: "bioFr", widget: "text" }
+          - { label: "Bio — long CV, English", name: "bioEn", widget: "text" }
+          - { label: "Bio — résumé CV, French", name: "resumeBioFr", widget: "text", hint: "The résumé CV's English bio reuses the site's General info bio." }
+          - { label: "Position summary — long CV, French", name: "positionSummary", widget: "text" }
+          - { label: "Position summary — long CV, English", name: "positionSummaryEn", widget: "text" }
+          - { label: "Résumé tagline — English", name: "resumeTagline", widget: "string" }
+          - { label: "Résumé tagline — French", name: "resumeTaglineFr", widget: "string" }
+          - { label: "Leadership highlights — English (curated bullets)", name: "leadershipHighlights", widget: "list" }
+          - { label: "Leadership highlights — French (curated bullets)", name: "leadershipHighlightsFr", widget: "list" }
+          - { label: "Notable awards text — English (curated)", name: "notableAwardsText", widget: "text" }
+          - { label: "Notable awards text — French (curated)", name: "notableAwardsTextFr", widget: "text" }
+          - { label: "Academic email (CV only)", name: "academicEmail", widget: "string" }
+          - { label: "Mycosphaera email (CV only)", name: "mycosphaeraEmail", widget: "string" }

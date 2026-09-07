@@ -1,0 +1,53 @@
+{
+  "items": [
+    {
+      "institution": "Université de Ghent — Research group Mycology",
+      "location": "Ghent, Belgium",
+      "period": "Février 2024",
+      "description": "Visite des locaux et des membres de la TeamLaboul, accueilli par Danny Haelewaters.",
+      "supervisors": "Danny Haelewaters"
+    },
+    {
+      "institution": "Université de Montréal & UQAT — Département des sciences littéraires et IRF",
+      "location": "Montréal, Canada",
+      "period": "Novembre 2023 et Avril 2022",
+      "description": "Ateliers d'écriture et de réflexion littéraire, dans le cadre du groupe de recherche Réécrire la forêt boréale. Respectivement à Montréal et à Amos.",
+      "supervisors": "Jonathan Hope, Cassie Bérard, Catherine Cyr, Miguel Montoro Girona (organisateur.rice.s)"
+    },
+    {
+      "institution": "Centre de foresterie des Laurentides (CFL) — Laboratoire de génomique environnementale de Dr. Christine Martineau",
+      "location": "Québec, Canada",
+      "period": "Décembre 2022",
+      "description": "Séquençage illumina du mycobiome du sol et barcodage ADN de spécimens secs de fongarium.",
+      "supervisors": "Christine Martineau, Marie-Josée Morency et Marie-Josée Bergeron"
+    },
+    {
+      "institution": "Muséum d'Histoire Naturelle de Toulouse — Jardins botaniques de Borderouge, Toulouse métropole",
+      "location": "Toulouse, France",
+      "period": "Juillet-Août 2021",
+      "description": "Inventaires de macrochampignons, de lichens, et de myxomycètes.",
+      "supervisors": "Olivier Puertas et Xavier Bossier"
+    },
+    {
+      "institution": "Université Toulouse III – Paul Sabatier — UMR Évolution et diversité biologique",
+      "location": "Toulouse, France",
+      "period": "Juin-Juillet 2021",
+      "description": "Projet \"Description of new species of the genus Cortinarius (Agaricales, Cortinariaceae) from New-Caledonia\".",
+      "supervisors": "Monique Gardes, Patricia Jargeat, Hervé Gryta, Guillaume Eyssartier, Fabian Carriconde, et Marc Ducousso"
+    },
+    {
+      "institution": "Université Toulouse III – Paul Sabatier — UMR Évolution et diversité biologique",
+      "location": "Toulouse, France",
+      "period": "Fév.-Avril 2021",
+      "description": "Projet \"Including rare lineages in plant phylogenomic studies by using herbarium collections\" et projet \"On the use of plastomes to understand the degeneration of ndh genes in the Lentibulariaceae family\".",
+      "supervisors": "Guillaume Besnard et Pauline Raimondeau"
+    },
+    {
+      "institution": "Muséum d'Histoire Naturelle de Toulouse — Jardins botaniques Henri-Gaussen",
+      "location": "Toulouse, France",
+      "period": "Fév.-Mars 2021",
+      "description": "Formation avancée en taxonomie des plantes et identification sur le terrain des Magnoliophyta, gestion d'herbiers, revue de littérature: \"Plants with Medicinal Proprieties: A Review\".",
+      "supervisors": "Fatiha El-Babili"
+    }
+  ]
+}

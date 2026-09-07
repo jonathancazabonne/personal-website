@@ -507,11 +507,12 @@
   }
 
   function renderPublicationsView(d){
-    var groups = groupByYear(d.publications);
+    var published = d.publications.filter(function(p){ return p.status !== "in-review"; });
+    var groups = groupByYear(published);
     var body = groups.length
       ? renderPubYearAccordion(groups)
       : '<p class="page-intro">No publications listed yet.</p>';
-    var toolbar = d.publications.length ? renderPubFilters() : "";
+    var toolbar = published.length ? renderPubFilters() : "";
     return '' +
       '<section id="pub-top">' +
         '<h1 class="page-title">Publications</h1>' +

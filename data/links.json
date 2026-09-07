@@ -11,6 +11,11 @@
       "href": "https://www.researchgate.net/profile/Jonathan-Cazabonne"
     },
     {
+      "icon": "scholar",
+      "label": "Google Scholar",
+      "href": "https://scholar.google.com/citations?user=flLmD24AAAAJ&hl=en"
+    },
+    {
       "icon": "orcid",
       "label": "ORCID",
       "href": "https://orcid.org/0000-0001-9056-4368"
@@ -39,6 +44,11 @@
       "icon": "link",
       "label": "Mycosphaera",
       "href": "https://www.mycosphaera.ca"
+    },
+    {
+      "icon": "institution",
+      "label": "Centre d'étude sur la forêt (CEF)",
+      "href": "https://www.cef-cfr.ca/pmwiki.php?n=Membres.JonathanCazabonne"
     }
   ]
 }

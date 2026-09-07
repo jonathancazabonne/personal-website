@@ -1,0 +1,34 @@
+{
+  "items": [
+    {
+      "year": 2026,
+      "title": "Cours sur la conservation de la fonge",
+      "hours": "1h",
+      "institution": "Cégep de Sainte-Foy, technique de bioécologie, Enseignement Écologie de la conservation. 18 mars 2026"
+    },
+    {
+      "year": 2026,
+      "title": "Cours sur fonctions écologiques et services écosystémiques rendus par les champignons au sein des territoires forestiers boréaux dans un contexte de gestion durable des forêts",
+      "hours": "1h",
+      "institution": "Master en Bioéthique et Écoresponsabilité, Université de Toulouse. 9 mars 2026"
+    },
+    {
+      "year": 2024,
+      "title": "Travaux dirigés en lichénologie et science citoyenne",
+      "hours": "6h",
+      "institution": "Licence parcours Biodiversité & biologie environnementale, Université de Toulouse (KSVC5AFU Biodiversité des champignons)"
+    },
+    {
+      "year": 2021,
+      "title": "Travaux pratiques et assistant de sorties mycologiques",
+      "hours": "4h + 18h",
+      "institution": "Licence biologie des organismes, des populations et des écosystèmes, Université Paul Sabatier (UE ELSVC5JM Biodiversité des champignons)"
+    },
+    {
+      "year": 2021,
+      "title": "Assistant de sorties mycologiques",
+      "hours": "8h",
+      "institution": "Doctorat en pharmacie, Faculté de Pharmacie de Toulouse (6ème année) (UE11.3 Intoxications courantes, addictions et conseils à l'officine)"
+    }
+  ]
+}
