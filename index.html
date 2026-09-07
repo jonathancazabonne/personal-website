@@ -14,29 +14,19 @@
   }
   :root{
     --font: Helvetica, Arial, Verdana, 'Liberation Sans', 'Segoe UI', Roboto, sans-serif;
-    --bg:#EFF1E8;
-    --surface:#FBFAF4;
+    --bg:#FFFFFF;
+    --surface:#F7F7F4;
     --ink:#171C15;
     --muted:#5B6355;
-    --line:#D7DACB;
+    --line:#DEDEDA;
     --accent:#3F5C3F;
     --accent-2:#A8813C;
     --accent-contrast:#FBFAF4;
     --shadow: 0 1px 2px rgba(23,28,21,0.06), 0 8px 24px rgba(23,28,21,0.05);
   }
-  @media (prefers-color-scheme: dark){
-    :root:not([data-theme="light"]){
-      --bg:#12140F;
-      --surface:#181C13;
-      --ink:#ECEAE0;
-      --muted:#9AA08C;
-      --line:#2B3023;
-      --accent:#8FBB7B;
-      --accent-2:#D8B872;
-      --accent-contrast:#12140F;
-      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.35);
-    }
-  }
+  /* Site is fixed to the light/white theme regardless of OS preference.
+     The dark variant below is kept dormant (data-theme="dark") in case
+     a manual toggle is added later. */
   :root[data-theme="dark"]{
     --bg:#12140F;
     --surface:#181C13;
@@ -137,8 +127,9 @@
   .page-title{ margin:0 0 16px; font-weight:700; font-size:clamp(2rem,5vw,2.7rem); line-height:1.08; text-align:center; }
   .page-intro{ max-width:60ch; color:var(--muted); font-size:1.02rem; }
 
-  .year-block{ border-top:1px solid var(--line); }
-  .year-block:first-of-type{ border-top:none; margin-top:8px; }
+  .year-accordion{ border-top:1px dashed var(--line); border-bottom:1px dashed var(--line); margin-top:8px; }
+  .year-block{ border-top:1px dashed var(--line); }
+  .year-block:first-of-type{ border-top:none; }
   .year-block summary{
     list-style:none; cursor:pointer; display:flex; align-items:baseline; gap:12px;
     padding:18px 2px; -webkit-tap-highlight-color:transparent;
@@ -791,7 +782,7 @@
         '<p class="page-intro" id="f-pub-intro">' + esc(d.publicationsIntro) + '</p>' +
         toolbar +
       '</section>' +
-      '<section id="pub-list">' + body + '</section>';
+      '<section id="pub-list" class="' + (groups.length ? "year-accordion" : "") + '">' + body + '</section>';
   }
 
   function entryCard(item, idx, fields, removeClass){
@@ -851,7 +842,7 @@
         '<h1 class="page-title">Communication &amp; scientific outreach</h1>' +
         '<p class="page-intro" id="f-comm-intro">' + esc(d.communicationsIntro) + '</p>' +
       '</section>' +
-      '<section>' + body + '</section>';
+      '<section class="' + (groups.length ? "year-accordion" : "") + '">' + body + '</section>';
   }
 
   function renderCommunicationsEdit(d){
