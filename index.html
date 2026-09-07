@@ -525,8 +525,10 @@
   }
   function renderTrainingView(d){
     if (!d.training || !d.training.length) return "";
-    return '<section id="training"><h2>Scientific training</h2>' +
-      '<ul class="entry-list">' + d.training.map(renderTrainingItem).join("") + '</ul></section>';
+    return '<section id="training">' +
+      '<h2>Scientific and professional training</h2>' +
+      groupByLogo(d.training, renderTrainingItem) +
+    '</section>';
   }
 
   function renderResearchStayItem(x){

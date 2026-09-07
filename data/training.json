@@ -4,31 +4,36 @@
       "year": 2026,
       "title": "Formation biologie moléculaire appliquée à la taxonomie des champignons",
       "provider": "Nicolas Van Vooren, en ligne",
-      "hours": "18h"
+      "hours": "18h",
+      "logo": ""
     },
     {
       "year": 2025,
       "title": "Certification « Identifying and delineating Key Biodiversity Areas »",
       "provider": "En ligne",
-      "hours": "10h"
+      "hours": "10h",
+      "logo": "images/logo-kba.svg"
     },
     {
       "year": 2025,
       "title": "Certification d'assesseur global et régional de la Liste rouge de l'UICN (Red List Assessor Training)",
       "provider": "En ligne",
-      "hours": "14h"
+      "hours": "14h",
+      "logo": "images/logo-iucn-redlist.png"
     },
     {
       "year": 2022,
       "title": "Formation professionnelle sur l'écriture et la communication scientifique en français et en anglais",
       "provider": "Institut GRAMMATA, en présentiel",
-      "hours": "12h"
+      "hours": "12h",
+      "logo": "images/logo-grammata.jpg"
     },
     {
       "year": 2022,
       "title": "Formation professionnelle en vulgarisation scientifique (module 101)",
       "provider": "Sophie Malavoy, Association des communicateurs scientifiques du Québec, en présentiel",
-      "hours": "4h"
+      "hours": "4h",
+      "logo": "images/logo-acs-quebec.png"
     }
   ]
 }

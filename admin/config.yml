@@ -168,10 +168,10 @@ collections:
               - { label: "Photo URLs", name: "photos", widget: "list", required: false }
 
   - name: "training"
-    label: "Scientific training"
+    label: "Scientific and professional training"
     files:
       - file: "data/training.json"
-        label: "Scientific training"
+        label: "Scientific and professional training"
         name: "training"
         fields:
           - label: "Training entries"
@@ -183,6 +183,7 @@ collections:
               - { label: "Title", name: "title", widget: "string" }
               - { label: "Provider", name: "provider", widget: "string" }
               - { label: "Hours", name: "hours", widget: "string" }
+              - { label: "Provider logo (groups consecutive entries sharing the same logo into one card)", name: "logo", widget: "image", required: false }
 
   - name: "researchStays"
     label: "Professional experience & research stays"
