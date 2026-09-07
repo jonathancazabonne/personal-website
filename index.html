@@ -670,14 +670,16 @@
   // ---------- communications page ----------
   var COMM_TYPE_GROUPS = {
     "Invited talk": "presentations", "Conference talk": "presentations", "Talk": "presentations",
-    "Invited lecture": "presentations", "Poster": "presentations", "Public talk": "presentations",
+    "Invited lecture": "presentations", "Public talk": "presentations",
+    "Poster": "posters",
     "Radio interview": "media", "TV interview": "media", "Podcast": "media", "Press feature": "media",
     "Public interview": "media", "Radio & press interview": "media", "Video feature": "media",
     "Public reading": "readings"
   };
-  var COMM_GROUP_ORDER = ["presentations", "media", "readings", "other"];
+  var COMM_GROUP_ORDER = ["presentations", "posters", "media", "readings", "other"];
   var COMM_GROUP_LABELS = {
     presentations: "Conferences & talks",
+    posters: "Scientific posters",
     media: "Media & interviews",
     readings: "Public readings",
     other: "Other"
@@ -685,6 +687,7 @@
   var COMM_GROUPS_FILTER = [
     { key: "all", label: "All" },
     { key: "presentations", label: "Conferences & talks" },
+    { key: "posters", label: "Scientific posters" },
     { key: "media", label: "Media & interviews" },
     { key: "readings", label: "Public readings" }
   ];
