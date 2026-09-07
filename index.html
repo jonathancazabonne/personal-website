@@ -208,6 +208,7 @@
     position:absolute; top:18px; right:18px; display:flex; align-items:center; gap:12px; max-width:45%;
   }
   .logo-card-logo{ height:44px; width:auto; max-width:100%; object-fit:contain; }
+  .logo-card-logo[src*="logo-uqam"]{ height:32px; }
   .logo-card .entry-list{ margin-bottom:0; padding-left:0; }
   .logo-card .entry-list li + li{ padding-top:18px; border-top:1px dashed var(--line); }
 
@@ -524,7 +525,7 @@
   }
   function renderTrainingView(d){
     if (!d.training || !d.training.length) return "";
-    return '<section id="training"><h2>Scientific Training</h2>' +
+    return '<section id="training"><h2>Scientific training</h2>' +
       '<ul class="entry-list">' + d.training.map(renderTrainingItem).join("") + '</ul></section>';
   }
 
@@ -532,13 +533,13 @@
     return '<li><span class="entry-title">' + esc(x.institution) + '</span>' +
       '<span class="entry-meta">' + esc(x.location) + '</span>' +
       (x.description ? '<span class="entry-meta">' + esc(x.description) + '</span>' : '') +
-      (x.supervisors ? '<span class="entry-meta">' + esc(x.supervisors) + '</span>' : '') +
+      (x.supervisors ? '<span class="entry-meta">Supervised by ' + esc(x.supervisors) + '</span>' : '') +
       '<span class="entry-meta">' + esc(x.period) + '</span></li>';
   }
   function renderResearchStaysView(d){
     if (!d.researchStays || !d.researchStays.length) return "";
     return '<section id="research-stays">' +
-      '<h2>Professional Experience &amp; Research Stays</h2>' +
+      '<h2>Professional experience &amp; research stays</h2>' +
       groupByLogo(d.researchStays, renderResearchStayItem) +
     '</section>';
   }
@@ -551,7 +552,7 @@
   }
   function renderAwardsView(d){
     if (!d.awards || !d.awards.length) return "";
-    return '<section id="awards"><h2>Awards &amp; Funding</h2>' +
+    return '<section id="awards"><h2>Awards &amp; funding</h2>' +
       '<ul class="entry-list">' + d.awards.map(renderAwardItem).join("") + '</ul></section>';
   }
 
@@ -562,7 +563,7 @@
   }
   function renderMembershipsView(d){
     if (!d.memberships || !d.memberships.length) return "";
-    return '<section id="memberships"><h2>Society Memberships</h2>' +
+    return '<section id="memberships"><h2>Society memberships</h2>' +
       '<ul class="entry-list">' + d.memberships.map(renderMembershipItem).join("") + '</ul></section>';
   }
 
@@ -572,7 +573,7 @@
   }
   function renderCommitteesView(d){
     if (!d.committees || !d.committees.length) return "";
-    return '<section id="committees"><h2>Organizing Committees</h2>' +
+    return '<section id="committees"><h2>Organizing committees</h2>' +
       '<ul class="entry-list">' + d.committees.map(renderCommitteeItem).join("") + '</ul></section>';
   }
 
@@ -588,7 +589,7 @@
       ? '<li><span class="entry-title">Peer review</span><span class="entry-meta">' +
         d.peerReview.map(function(r){ return esc(r.journal) + " (" + r.count + ")"; }).join(", ") + '</span></li>'
       : "";
-    return '<section id="editorial"><h2>Editorial Duties</h2><ul class="entry-list">' +
+    return '<section id="editorial"><h2>Editorial duties</h2><ul class="entry-list">' +
       reviewLi + (hasRoles ? d.editorialRoles.map(renderEditorialItem).join("") : "") + '</ul></section>';
   }
 
@@ -610,7 +611,7 @@
   }
   function renderPublicEngagementView(d){
     if (!d.publicEngagement || !d.publicEngagement.length) return "";
-    return '<section id="public-engagement"><h2>Public Engagement</h2>' +
+    return '<section id="public-engagement"><h2>Public engagement</h2>' +
       '<ul class="entry-list">' + d.publicEngagement.map(renderPublicEngagementItem).join("") + '</ul></section>';
   }
 
@@ -623,7 +624,7 @@
   function renderResearchAxesView(d){
     if (!d.researchAxes || !d.researchAxes.length) return "";
     return '<section id="research-axes">' +
-      '<h2>Research Axes</h2>' +
+      '<h2>Research axes</h2>' +
       '<div class="axis-accordion">' + d.researchAxes.map(renderResearchAxisItem).join("") + '</div>' +
     '</section>';
   }
@@ -935,7 +936,7 @@
     var toolbar = d.timeline.length ? renderTimelineToolbar(d.timeline) : "";
     return '' +
       '<section id="tl-top">' +
-        '<h1 class="page-title">Fungal Conservation</h1>' +
+        '<h1 class="page-title">Fungal conservation</h1>' +
         '<p class="page-intro" id="f-tl-intro">' + esc(d.timelineIntro) + '</p>' +
         toolbar +
       '</section>' +
