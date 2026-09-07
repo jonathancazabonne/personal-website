@@ -163,20 +163,6 @@
   .entry-list .entry-link{ margin-left:6px; text-decoration:none; color:var(--muted); }
   .entry-list .entry-link:hover{ color:var(--accent); }
 
-  .entry-card{
-    border:1px solid var(--line); border-radius:9px; padding:16px 44px 4px 16px;
-    margin-bottom:14px; background:var(--surface); position:relative;
-  }
-  .entry-card .remove-entry{ position:absolute; top:12px; right:12px; }
-  .entry-card .field-row, .study-area-card .field-row{ display:flex; gap:8px; margin-bottom:10px; }
-  .entry-card .field-row input, .study-area-card .field-row input{
-    font:inherit; padding:8px 10px; border:1px solid var(--line); border-radius:6px;
-    background:var(--bg); color:var(--ink); min-width:0; width:100%;
-  }
-  .entry-card .year-input{ width:84px; flex:0 0 auto; }
-  .entry-card .grow-input, .study-area-card .grow-input{ flex:1 1 auto; }
-  .entry-card .url-field{ font-size:0.88rem; color:var(--muted); }
-
   /* ---- timeline ---- */
   .timeline{
     list-style:none; margin:0; padding:4px 0 0 26px; position:relative;
@@ -291,27 +277,6 @@
     .tl-summary, .tl-detail{ max-width:none; }
   }
 
-  .import-box{
-    border:1px dashed var(--line); border-radius:9px; padding:16px; margin-bottom:22px;
-  }
-  .import-box .import-hint{ margin:0 0 10px; color:var(--muted); font-size:0.9rem; }
-  .import-box textarea{
-    width:100%; font:0.85rem/1.5 ui-monospace, SFMono-Regular, Menlo, monospace;
-    padding:10px; border:1px solid var(--line); border-radius:6px;
-    background:var(--surface); color:var(--ink); resize:vertical; margin-bottom:10px;
-  }
-  .import-feedback{ font-size:0.85rem; color:var(--muted); margin-left:10px; }
-
-  .entry-scroll{
-    max-height:480px; overflow-y:auto; padding-right:6px; margin-bottom:6px;
-  }
-  .entry-card.compact{ padding:14px 44px 4px 14px; }
-
-  textarea{
-    font:inherit; width:100%; padding:10px 12px; border:1px solid var(--line); border-radius:6px;
-    background:var(--surface); color:var(--ink); resize:vertical; margin:10px 0;
-  }
-
   /* ---- contact page ---- */
   .contact-grid{ display:flex; gap:36px; flex-wrap:wrap; align-items:flex-start; margin-top:4px; }
   .contact-photo-wrap{ flex:0 0 auto; width:180px; display:flex; flex-direction:column; gap:8px; }
@@ -324,7 +289,6 @@
   }
   .contact-info{ flex:1 1 280px; min-width:240px; }
   .contact-address{ white-space:pre-line; color:var(--muted); margin:16px 0 0; }
-  .photo-upload-btn{ display:inline-block; text-align:center; }
 
   .icon-links{ display:flex; flex-wrap:wrap; gap:10px; margin-top:20px; }
   .icon-link{
@@ -335,10 +299,6 @@
   .icon-link:hover{ border-color:var(--accent); color:var(--accent); }
   .icon-link-glyph{ width:18px; height:18px; flex:0 0 auto; color:var(--accent); }
   .icon-link-glyph svg{ width:100%; height:100%; display:block; }
-  .icon-edit-row select.icon-select{
-    font:inherit; padding:8px 6px; border:1px solid var(--line); border-radius:6px;
-    background:var(--surface); color:var(--ink); flex:0 0 auto; max-width:150px;
-  }
 
   /* ---- study areas / carousel ---- */
   .study-area-block{ padding-top:clamp(40px,7vw,64px); padding-bottom:clamp(28px,5vw,44px); }
@@ -368,73 +328,10 @@
     .carousel-arrow{ display:none; }
   }
 
-  .study-area-card{
-    position:relative; border:1px solid var(--line); border-radius:9px;
-    padding:16px 44px 16px 16px; margin-bottom:14px; background:var(--surface);
-  }
-  .study-area-card .remove-study-area{ position:absolute; top:12px; right:12px; }
-  .area-thumbs{ display:flex; flex-wrap:wrap; gap:10px; margin:4px 0 12px; }
-  .area-thumb{ position:relative; width:84px; height:84px; }
-  .area-thumb img{ width:100%; height:100%; object-fit:cover; border-radius:7px; display:block; }
-  .area-thumb .remove-area-photo{
-    position:absolute; top:-7px; right:-7px; width:22px; height:22px; font-size:0.8rem;
-    border-radius:50%; padding:0;
-  }
-
   footer{
     max-width:760px; margin:0 auto; padding: 28px clamp(20px,6vw,64px) 64px;
     color:var(--muted); font-size:0.85rem; display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
   }
-
-  /* ---- edit mode ---- */
-  [contenteditable="true"]{
-    outline: 1px dashed color-mix(in srgb, var(--accent) 55%, transparent);
-    outline-offset:6px; border-radius:2px;
-  }
-  [contenteditable="true"]:focus{ outline-style:solid; }
-
-  .edit-row{ display:flex; gap:8px; align-items:center; margin-bottom:8px; }
-  .edit-row input{
-    font:inherit; padding:8px 10px; border:1px solid var(--line); border-radius:6px;
-    background:var(--surface); color:var(--ink); flex:1 1 auto; min-width:0;
-  }
-  .edit-row input.url-input{ font-size:0.88rem; color:var(--muted); }
-  .icon-btn{
-    border:1px solid var(--line); background:var(--surface); color:var(--muted);
-    width:30px; height:30px; border-radius:6px; cursor:pointer; flex:0 0 auto;
-    font-size:0.95rem; line-height:1;
-  }
-  .icon-btn:hover{ color:var(--ink); border-color:var(--accent); }
-  .add-row-btn{
-    font:inherit; font-size:0.88rem; background:none; border:1px dashed var(--line);
-    color:var(--muted); padding:7px 12px; border-radius:6px; cursor:pointer; margin-top:2px;
-  }
-  .add-row-btn:hover{ color:var(--accent); border-color:var(--accent); }
-
-  #edit-toggle{
-    position:fixed; right:22px; bottom:22px; z-index:30;
-    width:46px; height:46px; border-radius:50%;
-    background:var(--accent); color:var(--accent-contrast); border:none;
-    box-shadow:var(--shadow); cursor:pointer; font-size:1.15rem;
-    display:flex; align-items:center; justify-content:center;
-  }
-  #edit-toggle:hover{ transform:translateY(-1px); }
-  #edit-toggle[hidden]{ display:none; }
-
-  #edit-bar{
-    position:fixed; left:0; right:0; bottom:0; z-index:30;
-    display:flex; align-items:center; justify-content:center; gap:14px;
-    padding:14px 20px; background:var(--surface); border-top:1px solid var(--line);
-    box-shadow:0 -8px 24px rgba(0,0,0,0.08); flex-wrap:wrap;
-  }
-  #edit-bar[hidden]{ display:none; }
-  #edit-bar .status{ font-size:0.85rem; color:var(--muted); min-width:120px; }
-  .btn{
-    font:inherit; font-size:0.92rem; padding:9px 18px; border-radius:7px; cursor:pointer;
-    border:1px solid var(--line); background:var(--surface); color:var(--ink);
-  }
-  .btn.primary{ background:var(--accent); color:var(--accent-contrast); border-color:var(--accent); }
-  .btn:disabled{ opacity:0.6; cursor:default; }
 
   :focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
 </style>
@@ -463,13 +360,6 @@
   <footer>
     <span id="site-footer-copyright">© 2026 Jonathan Cazabonne. All rights reserved.</span>
   </footer>
-</div>
-
-<button id="edit-toggle" type="button" aria-label="Edit page content" title="Edit page">✎</button>
-<div id="edit-bar" hidden>
-  <span class="status" id="edit-status">Editing — click any text to change it.</span>
-  <button class="btn" id="edit-cancel" type="button">Cancel</button>
-  <button class="btn primary" id="edit-save" type="button">Save changes</button>
 </div>
 
 <script id="app-script">
@@ -511,15 +401,6 @@
     if (view === "study-areas") return renderStudyView(d);
     return renderHomeView(d);
   }
-  function renderEdit(d){
-    if (view === "publications") return renderPublicationsEdit(d);
-    if (view === "communications") return renderCommunicationsEdit(d);
-    if (view === "conservation") return renderConservationEdit(d);
-    if (view === "contact") return renderContactEdit(d);
-    if (view === "study-areas") return renderStudyEdit(d);
-    return renderHomeEdit(d);
-  }
-
   // ---------- home page ----------
   function renderEducationItem(e){
     var link = (e.url && e.url !== "#") ? ' <a class="entry-link" href="' + esc(e.url) + '" target="_blank" rel="noopener">↗</a>' : '';
@@ -537,24 +418,6 @@
     '</section>';
   }
 
-  function renderEducationEdit(d){
-    var cards = (d.education || []).map(function(e, i){
-      return entryCard(e, i, [
-        { key: "years", cls: "year-input", placeholder: "Years" },
-        { key: "degree", cls: "grow-input", placeholder: "Degree" },
-        { key: "institution", cls: "grow-input", placeholder: "Institution" },
-        { key: "detail", cls: "grow-input", placeholder: "Thesis title, supervisors, etc. (optional)" },
-        { key: "url", cls: "grow-input url-field", placeholder: "https:// (link to thesis PDF, optional)" }
-      ], "remove-edu");
-    }).join("");
-    return '<section id="education">' +
-      '<h2>Education</h2>' +
-      '<div id="education-edit">' + cards +
-        '<button class="add-row-btn" id="add-edu" type="button">+ Add degree</button>' +
-      '</div>' +
-    '</section>';
-  }
-
   function renderHomeView(d){
     return '' +
       '<section id="top" class="hero">' +
@@ -567,29 +430,6 @@
         '<p class="bio" id="f-bio" contenteditable="false">' + esc(d.bio) + '</p>' +
       '</section>' +
       renderEducationView(d);
-  }
-
-  function renderHomeEdit(d){
-    return '' +
-      '<section id="top" class="hero">' +
-        '<h1 id="f-name" contenteditable="true">' + esc(d.name) + '</h1>' +
-        '<p class="hero-line"><span class="fixed-word">Fungal&nbsp;</span><span class="cycle-word" id="topic-cycle"></span></p>' +
-        '<div id="topics-edit">' +
-          d.topics.map(function(t,i){
-            return '<div class="edit-row" data-idx="' + i + '">' +
-              '<input class="topic-input" value="' + esc(t) + '" placeholder="e.g. ecology." />' +
-              '<button class="icon-btn remove-topic" type="button" aria-label="Remove topic">×</button>' +
-            '</div>';
-          }).join("") +
-          '<button class="add-row-btn" id="add-topic" type="button">+ Add rotating word</button>' +
-        '</div>' +
-        '<p class="hero-sub" id="f-role" contenteditable="true">' + esc(d.role) + '</p>' +
-      '</section>' +
-      '<section id="about">' +
-        '<h2>About the research</h2>' +
-        '<p class="bio" id="f-bio" contenteditable="true">' + esc(d.bio) + '</p>' +
-      '</section>' +
-      renderEducationEdit(d);
   }
 
   // ---------- publications page ----------
@@ -627,73 +467,6 @@
     { key: "popular", label: "Popular science" },
     { key: "press", label: "Press articles" }
   ];
-
-  // ---------- export publications / communications as separate CSVs (owner-only, edit mode) ----------
-  function csvField(v){
-    var s = String(v == null ? "" : v);
-    if (/["\n,]/.test(s)) s = '"' + s.replace(/"/g, '""') + '"';
-    return s;
-  }
-
-  function downloadCSV(filename, header, rows){
-    var lines = [header.map(csvField).join(",")];
-    rows.forEach(function(r){ lines.push(r.map(csvField).join(",")); });
-    var csv = lines.join("\r\n");
-    var blob = new Blob(["﻿" + csv], { type: "text/csv;charset=utf-8" });
-    var url = URL.createObjectURL(blob);
-    var a = document.createElement("a");
-    a.href = url;
-    a.download = filename;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    setTimeout(function(){ URL.revokeObjectURL(url); }, 4000);
-  }
-
-  function downloadPublicationsCSV(){
-    var records = (current.publications || []).map(function(p){
-      return {
-        year: p.year || "",
-        category: PUB_CATEGORY_LABELS[p.category] || p.category || "",
-        title: p.title || "",
-        authors: p.authors || "",
-        venue: p.venue || "",
-        url: (p.url && p.url !== "#") ? p.url : ""
-      };
-    });
-    records.sort(function(a, b){
-      if (a.category !== b.category) return a.category < b.category ? -1 : 1;
-      if ((b.year || 0) !== (a.year || 0)) return (b.year || 0) - (a.year || 0);
-      return String(a.title).localeCompare(String(b.title));
-    });
-    downloadCSV(
-      "publications.csv",
-      ["Year", "Category", "Title", "Authors", "Venue", "URL"],
-      records.map(function(r){ return [r.year, r.category, r.title, r.authors, r.venue, r.url]; })
-    );
-  }
-
-  function downloadCommunicationsCSV(){
-    var records = (current.communications || []).map(function(c){
-      return {
-        year: c.year || "",
-        category: c.type || "",
-        title: c.title || "",
-        venue: c.venue || "",
-        url: (c.url && c.url !== "#") ? c.url : ""
-      };
-    });
-    records.sort(function(a, b){
-      if (a.category !== b.category) return a.category < b.category ? -1 : 1;
-      if ((b.year || 0) !== (a.year || 0)) return (b.year || 0) - (a.year || 0);
-      return String(a.title).localeCompare(String(b.title));
-    });
-    downloadCSV(
-      "outreach.csv",
-      ["Year", "Category", "Title", "Venue", "URL"],
-      records.map(function(r){ return [r.year, r.category, r.title, r.venue, r.url]; })
-    );
-  }
 
   function renderPubItem(p){
     var link = (p.url && p.url !== "#") ? ' <a class="entry-link" href="' + esc(p.url) + '" target="_blank" rel="noopener">↗</a>' : '';
@@ -748,46 +521,6 @@
       '<section id="pub-list" class="' + (groups.length ? "year-accordion" : "") + '">' + body + '</section>';
   }
 
-  function entryCard(item, idx, fields, removeClass){
-    var rows = fields.map(function(f){
-      var cls = f.cls || "grow-input";
-      var val = item[f.key] == null ? "" : item[f.key];
-      return '<input class="' + cls + ' ' + f.key + '-input" data-key="' + f.key + '" value="' + esc(val) + '" placeholder="' + esc(f.placeholder) + '" ' + (f.type ? 'type="' + f.type + '"' : '') + ' />';
-    });
-    // year + second field share a row, rest stack below
-    var firstRow = rows.slice(0, 2).join("");
-    var restRows = rows.slice(2).map(function(r){ return '<div class="field-row">' + r + '</div>'; }).join("");
-    return '<div class="entry-card" data-idx="' + idx + '">' +
-      '<button class="icon-btn ' + removeClass + '" type="button" aria-label="Remove entry">×</button>' +
-      '<div class="field-row">' + firstRow + '</div>' +
-      restRows +
-    '</div>';
-  }
-
-  function renderPublicationsEdit(d){
-    var cards = d.publications.map(function(p, i){
-      return entryCard(p, i, [
-        { key: "year", cls: "year-input", placeholder: "Year", type: "number" },
-        { key: "authors", cls: "grow-input", placeholder: "Authors" },
-        { key: "title", cls: "grow-input", placeholder: "Title" },
-        { key: "venue", cls: "grow-input", placeholder: "Journal / venue" },
-        { key: "url", cls: "grow-input url-field", placeholder: "https:// (link to PDF or DOI)" },
-        { key: "category", cls: "grow-input", placeholder: "Category: peer-reviewed, popular, opinion, book-chapter, thesis-report, bulletin, or literary" }
-      ], "remove-pub");
-    }).join("");
-    return '' +
-      '<section id="pub-top">' +
-        '<h1 class="page-title">Publications</h1>' +
-        '<p class="page-intro" id="f-pub-intro" contenteditable="true">' + esc(d.publicationsIntro) + '</p>' +
-      '</section>' +
-      '<section>' +
-        '<div id="pubs-edit">' + cards +
-          '<button class="add-row-btn" id="add-pub" type="button">+ Add publication</button>' +
-          '<button class="add-row-btn" id="export-pub-csv" type="button">Export publications as CSV ↓</button>' +
-        '</div>' +
-      '</section>';
-  }
-
   // ---------- communications page ----------
   function renderCommItem(c){
     var link = (c.url && c.url !== "#") ? ' <a class="entry-link" href="' + esc(c.url) + '" target="_blank" rel="noopener">↗</a>' : '';
@@ -806,29 +539,6 @@
         '<p class="page-intro" id="f-comm-intro">' + esc(d.communicationsIntro) + '</p>' +
       '</section>' +
       '<section class="' + (groups.length ? "year-accordion" : "") + '">' + body + '</section>';
-  }
-
-  function renderCommunicationsEdit(d){
-    var cards = d.communications.map(function(c, i){
-      return entryCard(c, i, [
-        { key: "year", cls: "year-input", placeholder: "Year", type: "number" },
-        { key: "type", cls: "grow-input", placeholder: "Type (talk, poster, radio…)" },
-        { key: "title", cls: "grow-input", placeholder: "Title" },
-        { key: "venue", cls: "grow-input", placeholder: "Event / outlet, location" },
-        { key: "url", cls: "grow-input url-field", placeholder: "https:// (recording, article…)" }
-      ], "remove-comm");
-    }).join("");
-    return '' +
-      '<section id="comm-top">' +
-        '<h1 class="page-title">Communication &amp; scientific outreach</h1>' +
-        '<p class="page-intro" id="f-comm-intro" contenteditable="true">' + esc(d.communicationsIntro) + '</p>' +
-      '</section>' +
-      '<section>' +
-        '<div id="comms-edit">' + cards +
-          '<button class="add-row-btn" id="add-comm" type="button">+ Add communication</button>' +
-          '<button class="add-row-btn" id="export-comm-csv" type="button">Export outreach as CSV ↓</button>' +
-        '</div>' +
-      '</section>';
   }
 
   // ---------- fungal conservation timeline ----------
@@ -903,119 +613,7 @@
       '<section>' + items + '</section>';
   }
 
-  function renderConservationEdit(d){
-    var cards = d.timeline.map(function(t, i){
-      return '<div class="entry-card compact" data-idx="' + i + '">' +
-        '<button class="icon-btn remove-tl" type="button" aria-label="Remove milestone">×</button>' +
-        '<div class="field-row">' +
-          '<input class="year-input" data-key="year" type="number" value="' + esc(t.year) + '" placeholder="Year" />' +
-          '<input class="grow-input" data-key="title" value="' + esc(t.title) + '" placeholder="Event title" />' +
-        '</div>' +
-        '<div class="field-row">' +
-          '<input class="grow-input" data-key="scope" value="' + esc(t.scope) + '" placeholder="Country / scope" />' +
-          '<input class="grow-input url-field" data-key="urlsText" value="' + esc((t.urls || []).join(", ")) + '" placeholder="Source URL(s), comma-separated" />' +
-        '</div>' +
-      '</div>';
-    }).join("");
-
-    return '' +
-      '<section id="tl-top">' +
-        '<h1 class="page-title">Fungal Conservation</h1>' +
-        '<p class="page-intro" id="f-tl-intro" contenteditable="true">' + esc(d.timelineIntro) + '</p>' +
-      '</section>' +
-      '<section>' +
-        '<div class="import-box">' +
-          '<p class="import-hint">Paste rows copied straight from your Google Sheet (same column order: <em>Name, Description, Country/Scope, Category, Date, Link(s), Notes</em>). This replaces the whole list below with what you paste — copy your full sheet each time you want to resync.</p>' +
-          '<textarea id="tl-import-text" rows="5" placeholder="Paste your spreadsheet rows here…"></textarea>' +
-          '<button class="btn" id="tl-import-btn" type="button">Replace timeline with pasted data</button>' +
-          '<span class="import-feedback" id="tl-import-feedback"></span>' +
-        '</div>' +
-        '<div class="entry-scroll" id="tl-edit-list">' + cards + '</div>' +
-        '<button class="add-row-btn" id="add-tl" type="button">+ Add one milestone</button>' +
-      '</section>';
-  }
-
-  function parseTimelineTSV(text){
-    var lines = text.split(/\r\n|\n|\r/).filter(function(l){ return l.trim() !== ""; });
-    var out = [];
-    lines.forEach(function(line){
-      var cols = line.split("\t");
-      var name = (cols[0] || "").trim();
-      var desc = (cols[1] || "").trim();
-      var scope = (cols[2] || "").trim();
-      var dateStr = (cols[4] || "").trim();
-      var links = (cols[5] || "").trim();
-      var notes = (cols[6] || "").trim();
-      var yearMatch = dateStr.match(/(\d{4})/);
-      if (!name || !yearMatch) return;
-      out.push({
-        year: parseInt(yearMatch[1], 10),
-        dateLabel: dateStr || yearMatch[1],
-        title: name,
-        description: (desc && desc !== "-") ? desc : "",
-        scope: (scope && scope !== "-" && scope !== "?") ? scope : "",
-        notes: (notes && notes !== "-") ? notes : "",
-        urls: links.match(/https?:\/\/\S+/g) || []
-      });
-    });
-    out.sort(function(a, b){ return a.year - b.year; });
-    return out;
-  }
-
-  function readConservationForm(d){
-    var introEl = document.getElementById("f-tl-intro");
-    if (introEl) d.timelineIntro = introEl.textContent;
-    var cards = document.querySelectorAll("#tl-edit-list .entry-card");
-    Array.prototype.forEach.call(cards, function(card){
-      var idx = Number(card.dataset.idx);
-      var item = d.timeline[idx];
-      if (!item) return;
-      var yearInput = card.querySelector('[data-key="year"]');
-      var titleInput = card.querySelector('[data-key="title"]');
-      var scopeInput = card.querySelector('[data-key="scope"]');
-      var urlsInput = card.querySelector('[data-key="urlsText"]');
-      if (yearInput && yearInput.value){ item.year = Number(yearInput.value) || item.year; item.dateLabel = String(item.year); }
-      if (titleInput) item.title = titleInput.value.trim();
-      if (scopeInput) item.scope = scopeInput.value.trim();
-      if (urlsInput) item.urls = urlsInput.value.split(/[,\s]+/).filter(function(u){ return /^https?:\/\//.test(u); });
-    });
-  }
-
-  // ---------- shared: image upload / compression ----------
-  function fileToCompressedDataURL(file, maxDim, quality){
-    return new Promise(function(resolve, reject){
-      var reader = new FileReader();
-      reader.onload = function(e){
-        var img = new Image();
-        img.onload = function(){
-          var w = img.width, h = img.height;
-          var scale = Math.min(1, maxDim / Math.max(w, h));
-          var cw = Math.max(1, Math.round(w * scale));
-          var ch = Math.max(1, Math.round(h * scale));
-          var canvas = document.createElement("canvas");
-          canvas.width = cw; canvas.height = ch;
-          var ctx = canvas.getContext("2d");
-          ctx.drawImage(img, 0, 0, cw, ch);
-          resolve(canvas.toDataURL("image/jpeg", quality));
-        };
-        img.onerror = function(){ reject(new Error("image load failed")); };
-        img.src = e.target.result;
-      };
-      reader.onerror = function(){ reject(new Error("file read failed")); };
-      reader.readAsDataURL(file);
-    });
-  }
-
   // ---------- shared: small line icons for contact links ----------
-  var ICON_TYPES = [
-    { key: "link", label: "Link (generic)" },
-    { key: "email", label: "Email" },
-    { key: "linkedin", label: "LinkedIn" },
-    { key: "scholar", label: "Google Scholar" },
-    { key: "researchgate", label: "ResearchGate" },
-    { key: "orcid", label: "ORCID" },
-    { key: "institution", label: "Institution / lab" }
-  ];
   function iconSvg(type){
     var s = 'viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"';
     var icons = {
@@ -1056,43 +654,6 @@
       '</section>';
   }
 
-  function renderContactEdit(d){
-    var photoHtml = d.contactPhoto
-      ? '<img src="' + esc(d.contactPhoto) + '" alt="Photo of ' + esc(d.name) + '" />'
-      : '<div class="contact-photo-placeholder">No photo yet</div>';
-    var linkRows = d.links.map(function(l, i){
-      var options = ICON_TYPES.map(function(o){
-        return '<option value="' + o.key + '"' + (o.key === l.icon ? " selected" : "") + '>' + esc(o.label) + '</option>';
-      }).join("");
-      return '<div class="edit-row icon-edit-row" data-idx="' + i + '">' +
-        '<select class="icon-select" data-key="icon">' + options + '</select>' +
-        '<input class="link-label" value="' + esc(l.label) + '" placeholder="Label" />' +
-        '<input class="url-input link-url" value="' + esc(l.href) + '" placeholder="https://" />' +
-        '<button class="icon-btn remove-icon-link" type="button" aria-label="Remove link">×</button>' +
-      '</div>';
-    }).join("");
-
-    return '' +
-      '<section id="contact-top">' +
-        '<h1 class="page-title">Contact</h1>' +
-        '<p class="page-intro" id="f-contact-intro" contenteditable="true">' + esc(d.contactIntro) + '</p>' +
-      '</section>' +
-      '<section class="contact-grid">' +
-        '<div class="contact-photo-wrap">' +
-          photoHtml +
-          '<label class="add-row-btn photo-upload-btn">Upload photo<input type="file" id="contact-photo-input" accept="image/*" hidden /></label>' +
-          (d.contactPhoto ? '<button class="add-row-btn" id="remove-contact-photo" type="button">Remove photo</button>' : "") +
-        '</div>' +
-        '<div class="contact-info">' +
-          '<div class="edit-row"><input class="url-input" id="edit-email" value="' + esc(d.email) + '" placeholder="you@example.com" /></div>' +
-          '<textarea id="edit-address" rows="3" placeholder="Address / institution">' + esc(d.address) + '</textarea>' +
-          '<div id="icon-links-edit">' + linkRows +
-            '<button class="add-row-btn" id="add-icon-link" type="button">+ Add link</button>' +
-          '</div>' +
-        '</div>' +
-      '</section>';
-  }
-
   // ---------- study areas page ----------
   function renderCarousel(area, idx){
     if (!area.photos.length){
@@ -1126,37 +687,6 @@
         '<p class="page-intro" id="f-study-intro">' + esc(d.studyAreasIntro) + '</p>' +
       '</section>' +
       areas;
-  }
-
-  function renderStudyEdit(d){
-    var areaCards = d.studyAreas.map(function(area, idx){
-      var thumbs = area.photos.map(function(p, pi){
-        return '<div class="area-thumb">' +
-          '<img src="' + esc(p.src) + '" alt="" />' +
-          '<button class="icon-btn remove-area-photo" type="button" data-photo-idx="' + pi + '" aria-label="Remove photo">×</button>' +
-        '</div>';
-      }).join("");
-      return '<div class="study-area-card" data-idx="' + idx + '">' +
-        '<button class="icon-btn remove-study-area" type="button" aria-label="Remove study area">×</button>' +
-        '<div class="field-row">' +
-          '<input class="grow-input" data-key="name" value="' + esc(area.name) + '" placeholder="Area name" />' +
-        '</div>' +
-        '<div class="field-row">' +
-          '<input class="grow-input" data-key="description" value="' + esc(area.description) + '" placeholder="Short description (optional)" />' +
-        '</div>' +
-        '<div class="area-thumbs">' + thumbs + '</div>' +
-        '<label class="add-row-btn photo-upload-btn">Add photos<input type="file" class="area-photo-input" accept="image/*" multiple hidden /></label>' +
-      '</div>';
-    }).join("");
-    return '' +
-      '<section id="study-top">' +
-        '<h1 class="page-title">Study Areas</h1>' +
-        '<p class="page-intro" id="f-study-intro" contenteditable="true">' + esc(d.studyAreasIntro) + '</p>' +
-      '</section>' +
-      '<section>' +
-        '<div id="study-edit-list">' + areaCards + '</div>' +
-        '<button class="add-row-btn" id="add-study-area" type="button">+ Add study area</button>' +
-      '</section>';
   }
 
   // ---------- topic typewriter ----------
@@ -1198,10 +728,6 @@
   var app = document.getElementById("app");
   var current = null;
   var view = null;
-  var editMode = false;
-  var snapshot = null;
-  var writeDisabled = false;
-  var artifactCap = null;
 
   // ---------- data loading ----------
   var DATA_FILES = ["site", "education", "links", "publications", "communications", "timeline", "studyAreas"];
@@ -1221,10 +747,9 @@
   }
 
   function paint(){
-    app.innerHTML = editMode ? renderEdit(current) : renderView(current);
+    app.innerHTML = renderView(current);
     document.getElementById("site-footer-copyright").textContent = "© " + new Date().getFullYear() + " " + current.name + ". All rights reserved.";
-    if (!editMode && view === "home"){ startCycle(current.topics); } else { stopCycle(); }
-    if (editMode) wireEditHandlers();
+    if (view === "home"){ startCycle(current.topics); } else { stopCycle(); }
     wireViewHandlers();
   }
 
@@ -1237,8 +762,8 @@
         track.scrollBy({ left: btn.classList.contains("prev") ? -amount : amount, behavior: "smooth" });
       });
     });
-    if (view === "conservation" && !editMode) wireTimelineHandlers();
-    if (view === "publications" && !editMode) wirePublicationsHandlers();
+    if (view === "conservation") wireTimelineHandlers();
+    if (view === "publications") wirePublicationsHandlers();
   }
 
   // ---------- publications: category filter ----------
@@ -1351,14 +876,7 @@
   }
 
   function applyRoute(fromHashChange){
-    var wasEditing = editMode;
     view = currentRoute();
-    if (wasEditing){
-      current = snapshot || current;
-      editMode = false;
-      editBar.hidden = true;
-      toggleBtn.hidden = false;
-    }
     paint();
     var anchor = (location.hash || "").replace(/^#/, "");
     if (view === "home" && anchor && !PAGE_ROUTES[anchor]){
@@ -1370,322 +888,6 @@
       window.scrollTo(0, 0);
     }
   }
-
-  function readFormIntoCurrent(){
-    var d = current;
-    if (view === "home"){
-      d.name = (document.getElementById("f-name") || {}).textContent || d.name;
-      d.role = (document.getElementById("f-role") || {}).textContent || d.role;
-      d.bio = (document.getElementById("f-bio") || {}).textContent || d.bio;
-      var topicInputs = document.querySelectorAll("#topics-edit .topic-input");
-      d.topics = Array.prototype.map.call(topicInputs, function(i){ return i.value.trim(); }).filter(Boolean);
-      if (!d.topics.length) d.topics = ["research."];
-      d.education = readEntryCards("#education-edit", ["years", "degree", "institution", "detail", "url"]);
-    } else if (view === "publications"){
-      var introEl = document.getElementById("f-pub-intro");
-      if (introEl) d.publicationsIntro = introEl.textContent;
-      d.publications = readEntryCards("#pubs-edit", ["year", "authors", "title", "venue", "url", "category"]);
-    } else if (view === "communications"){
-      var cIntroEl = document.getElementById("f-comm-intro");
-      if (cIntroEl) d.communicationsIntro = cIntroEl.textContent;
-      d.communications = readEntryCards("#comms-edit", ["year", "type", "title", "venue", "url"]);
-    } else if (view === "conservation"){
-      readConservationForm(d);
-    } else if (view === "contact"){
-      var cxIntro = document.getElementById("f-contact-intro");
-      if (cxIntro) d.contactIntro = cxIntro.textContent;
-      var emailInput = document.getElementById("edit-email");
-      if (emailInput) d.email = emailInput.value.trim();
-      var addressInput = document.getElementById("edit-address");
-      if (addressInput) d.address = addressInput.value;
-      var linkRows = document.querySelectorAll("#icon-links-edit .icon-edit-row");
-      d.links = Array.prototype.map.call(linkRows, function(row){
-        return {
-          icon: row.querySelector(".icon-select").value,
-          label: row.querySelector(".link-label").value.trim() || "Link",
-          href: row.querySelector(".link-url").value.trim() || "#"
-        };
-      });
-    } else if (view === "study-areas"){
-      var stIntro = document.getElementById("f-study-intro");
-      if (stIntro) d.studyAreasIntro = stIntro.textContent;
-      var areaCards = document.querySelectorAll("#study-edit-list .study-area-card");
-      Array.prototype.forEach.call(areaCards, function(card){
-        var idx = Number(card.dataset.idx);
-        var area = d.studyAreas[idx];
-        if (!area) return;
-        var nameInput = card.querySelector('[data-key="name"]');
-        var descInput = card.querySelector('[data-key="description"]');
-        if (nameInput) area.name = nameInput.value.trim() || area.name;
-        if (descInput) area.description = descInput.value;
-      });
-    }
-    return d;
-  }
-
-  function readEntryCards(containerSel, keys){
-    var cards = document.querySelectorAll(containerSel + " .entry-card");
-    return Array.prototype.map.call(cards, function(card){
-      var obj = {};
-      keys.forEach(function(k){
-        var input = card.querySelector('[data-key="' + k + '"]');
-        var val = input ? input.value.trim() : "";
-        obj[k] = (k === "year") ? (Number(val) || new Date().getFullYear()) : val;
-      });
-      return obj;
-    });
-  }
-
-  function wireEditHandlers(){
-    if (view === "home"){
-      var addTopic = document.getElementById("add-topic");
-      if (addTopic) addTopic.addEventListener("click", function(){
-        readFormIntoCurrent();
-        current.topics.push("new topic.");
-        paint();
-      });
-      Array.prototype.forEach.call(document.querySelectorAll(".remove-topic"), function(btn){
-        btn.addEventListener("click", function(){
-          readFormIntoCurrent();
-          var idx = Number(btn.closest(".edit-row").dataset.idx);
-          current.topics.splice(idx, 1);
-          paint();
-        });
-      });
-      var addEdu = document.getElementById("add-edu");
-      if (addEdu) addEdu.addEventListener("click", function(){
-        readFormIntoCurrent();
-        current.education.push({ years: "", degree: "New degree", institution: "", detail: "", url: "#" });
-        paint();
-      });
-      Array.prototype.forEach.call(document.querySelectorAll(".remove-edu"), function(btn){
-        btn.addEventListener("click", function(){
-          readFormIntoCurrent();
-          var idx = Number(btn.closest(".entry-card").dataset.idx);
-          current.education.splice(idx, 1);
-          paint();
-        });
-      });
-    } else if (view === "publications"){
-      var addPub = document.getElementById("add-pub");
-      if (addPub) addPub.addEventListener("click", function(){
-        readFormIntoCurrent();
-        current.publications.push({ year: new Date().getFullYear(), authors: "", title: "New publication", venue: "", url: "#", category: "peer-reviewed" });
-        paint();
-      });
-      Array.prototype.forEach.call(document.querySelectorAll(".remove-pub"), function(btn){
-        btn.addEventListener("click", function(){
-          readFormIntoCurrent();
-          var idx = Number(btn.closest(".entry-card").dataset.idx);
-          current.publications.splice(idx, 1);
-          paint();
-        });
-      });
-      var exportPub = document.getElementById("export-pub-csv");
-      if (exportPub) exportPub.addEventListener("click", function(){
-        readFormIntoCurrent();
-        downloadPublicationsCSV();
-      });
-    } else if (view === "communications"){
-      var addComm = document.getElementById("add-comm");
-      if (addComm) addComm.addEventListener("click", function(){
-        readFormIntoCurrent();
-        current.communications.push({ year: new Date().getFullYear(), type: "Talk", title: "New communication", venue: "", url: "#" });
-        paint();
-      });
-      Array.prototype.forEach.call(document.querySelectorAll(".remove-comm"), function(btn){
-        btn.addEventListener("click", function(){
-          readFormIntoCurrent();
-          var idx = Number(btn.closest(".entry-card").dataset.idx);
-          current.communications.splice(idx, 1);
-          paint();
-        });
-      });
-      var exportComm = document.getElementById("export-comm-csv");
-      if (exportComm) exportComm.addEventListener("click", function(){
-        readFormIntoCurrent();
-        downloadCommunicationsCSV();
-      });
-    } else if (view === "conservation"){
-      var addTl = document.getElementById("add-tl");
-      if (addTl) addTl.addEventListener("click", function(){
-        readFormIntoCurrent();
-        current.timeline.unshift({ year: new Date().getFullYear(), dateLabel: String(new Date().getFullYear()), title: "New milestone", description: "", scope: "", notes: "", urls: [] });
-        paint();
-      });
-      Array.prototype.forEach.call(document.querySelectorAll(".remove-tl"), function(btn){
-        btn.addEventListener("click", function(){
-          readFormIntoCurrent();
-          var idx = Number(btn.closest(".entry-card").dataset.idx);
-          current.timeline.splice(idx, 1);
-          paint();
-        });
-      });
-      var importBtn = document.getElementById("tl-import-btn");
-      if (importBtn) importBtn.addEventListener("click", function(){
-        var text = (document.getElementById("tl-import-text") || {}).value || "";
-        var parsed = parseTimelineTSV(text);
-        var feedback = document.getElementById("tl-import-feedback");
-        if (!parsed.length){
-          if (feedback) feedback.textContent = "No valid rows found — check the column order and try again.";
-          return;
-        }
-        readFormIntoCurrent();
-        parsed.sort(function(a, b){ return (b.year || 0) - (a.year || 0); });
-        current.timeline = parsed;
-        paint();
-      });
-    } else if (view === "contact"){
-      var photoInput = document.getElementById("contact-photo-input");
-      if (photoInput) photoInput.addEventListener("change", function(){
-        var file = photoInput.files && photoInput.files[0];
-        if (!file || file.type.indexOf("image/") !== 0) return;
-        readFormIntoCurrent();
-        fileToCompressedDataURL(file, 800, 0.82).then(function(dataUrl){
-          current.contactPhoto = dataUrl;
-          paint();
-        }).catch(function(){});
-      });
-      var removePhoto = document.getElementById("remove-contact-photo");
-      if (removePhoto) removePhoto.addEventListener("click", function(){
-        readFormIntoCurrent();
-        current.contactPhoto = "";
-        paint();
-      });
-      var addIconLink = document.getElementById("add-icon-link");
-      if (addIconLink) addIconLink.addEventListener("click", function(){
-        readFormIntoCurrent();
-        current.links.push({ icon: "link", label: "New link", href: "#" });
-        paint();
-      });
-      Array.prototype.forEach.call(document.querySelectorAll(".remove-icon-link"), function(btn){
-        btn.addEventListener("click", function(){
-          readFormIntoCurrent();
-          var idx = Number(btn.closest(".icon-edit-row").dataset.idx);
-          current.links.splice(idx, 1);
-          paint();
-        });
-      });
-    } else if (view === "study-areas"){
-      var addArea = document.getElementById("add-study-area");
-      if (addArea) addArea.addEventListener("click", function(){
-        readFormIntoCurrent();
-        current.studyAreas.push({ name: "New study area", description: "", photos: [] });
-        paint();
-      });
-      Array.prototype.forEach.call(document.querySelectorAll(".remove-study-area"), function(btn){
-        btn.addEventListener("click", function(){
-          readFormIntoCurrent();
-          var idx = Number(btn.closest(".study-area-card").dataset.idx);
-          current.studyAreas.splice(idx, 1);
-          paint();
-        });
-      });
-      Array.prototype.forEach.call(document.querySelectorAll(".area-photo-input"), function(input){
-        input.addEventListener("change", function(){
-          var files = Array.prototype.slice.call(input.files || []);
-          if (!files.length) return;
-          var idx = Number(input.closest(".study-area-card").dataset.idx);
-          readFormIntoCurrent();
-          Promise.all(files.filter(function(f){ return f.type.indexOf("image/") === 0; }).map(function(f){
-            return fileToCompressedDataURL(f, 1400, 0.78);
-          })).then(function(dataUrls){
-            dataUrls.forEach(function(src){ current.studyAreas[idx].photos.push({ src: src, caption: "" }); });
-            paint();
-          }).catch(function(){});
-        });
-      });
-      Array.prototype.forEach.call(document.querySelectorAll(".remove-area-photo"), function(btn){
-        btn.addEventListener("click", function(){
-          readFormIntoCurrent();
-          var areaIdx = Number(btn.closest(".study-area-card").dataset.idx);
-          var photoIdx = Number(btn.dataset.photoIdx);
-          current.studyAreas[areaIdx].photos.splice(photoIdx, 1);
-          paint();
-        });
-      });
-    }
-  }
-
-  // ---------- full document builder (for publish) ----------
-  function buildFullDocument(d){
-    var headInner = document.head.innerHTML;
-    var bodyInner =
-      '<div class="shell">' +
-        '<header class="topbar">' +
-          '<div class="brand">' +
-            '<a class="wordmark" href="#top">' + esc(d.name) + '</a>' +
-            '<span class="wordmark-role">Mycologist, M.Sc | Ph.D. candidate</span>' +
-          '</div>' +
-          '<nav class="topnav"><a href="#top">Home</a><a href="#publications">Publications</a><a href="#communications">Outreach</a><!-- <a href="#conservation">Conservation</a> --><a href="#study-areas">Study Areas</a><a href="#contact">Contact</a></nav>' +
-        '</header>' +
-        '<main id="app"></main>' +
-        '<footer><span id="site-footer-copyright">© ' + new Date().getFullYear() + ' ' + esc(d.name) + '. All rights reserved.</span></footer>' +
-      '</div>' +
-      '<button id="edit-toggle" type="button" aria-label="Edit page content" title="Edit page">✎</button>' +
-      '<div id="edit-bar" hidden>' +
-        '<span class="status" id="edit-status">Editing — click any text to change it.</span>' +
-        '<button class="btn" id="edit-cancel" type="button">Cancel</button>' +
-        '<button class="btn primary" id="edit-save" type="button">Save changes</button>' +
-      '</div>' +
-      '<script>window.__SITE_DATA__ = ' + JSON.stringify(d).replace(/</g, '\\u003c') + ';<' + '/script>' +
-      '<script id="app-script">' + document.getElementById("app-script").textContent + '<' + '/script>';
-
-    return '<!doctype html>\n<html lang="en">\n<head>' + headInner + '</head>\n<body>' + bodyInner + '</body>\n</html>';
-  }
-
-  // ---------- edit toggle / save / cancel ----------
-  var toggleBtn = document.getElementById("edit-toggle");
-  var editBar = document.getElementById("edit-bar");
-  var statusEl = document.getElementById("edit-status");
-  var saveBtn = document.getElementById("edit-save");
-  var cancelBtn = document.getElementById("edit-cancel");
-
-  toggleBtn.addEventListener("click", function(){
-    snapshot = JSON.parse(JSON.stringify(current));
-    editMode = true;
-    editBar.hidden = false;
-    toggleBtn.hidden = true;
-    statusEl.textContent = "Editing — click any text to change it.";
-    paint();
-  });
-
-  cancelBtn.addEventListener("click", function(){
-    current = snapshot || current;
-    editMode = false;
-    editBar.hidden = true;
-    toggleBtn.hidden = false;
-    paint();
-  });
-
-  saveBtn.addEventListener("click", function(){
-    readFormIntoCurrent();
-    if (current.timeline) current.timeline.sort(function(a, b){ return (b.year || 0) - (a.year || 0); });
-    saveBtn.disabled = true;
-    cancelBtn.disabled = true;
-    statusEl.textContent = "Preparing download…";
-    try {
-      var html = buildFullDocument(current);
-      var blob = new Blob([html], { type: "text/html" });
-      var url = URL.createObjectURL(blob);
-      var a = document.createElement("a");
-      a.href = url;
-      a.download = "index.html";
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      setTimeout(function(){ URL.revokeObjectURL(url); }, 4000);
-      statusEl.textContent = "Downloaded index.html — replace the file in your project, then commit & push to update the live site.";
-      editMode = false;
-      editBar.hidden = true;
-      toggleBtn.hidden = false;
-      paint();
-    } catch (e) {
-      statusEl.textContent = "Couldn't prepare the download. Try again.";
-    }
-    saveBtn.disabled = false;
-    cancelBtn.disabled = false;
-  });
 
   // ---------- timeline tap-to-open (desktop keeps hover; touch/keyboard get a toggle) ----------
   app.addEventListener("click", function(ev){
@@ -1716,8 +918,6 @@
     console.error(err);
   });
 
-  // Standalone build: no Claude Artifact host here, so editing always stays available
-  // and "Save changes" downloads an updated index.html instead of publishing in place.
 })();
 </script>
 </body>
