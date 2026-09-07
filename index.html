@@ -114,9 +114,14 @@
   .about-layout{ display:flex; gap:clamp(24px,4vw,48px); flex-wrap:wrap; align-items:flex-start; }
   .about-layout .bio{ flex:1 1 420px; }
   .about-gallery{ flex:1 1 420px; max-width:560px; }
-  .about-gallery .carousel-item{ width:min(80vw, 460px); }
-  .about-gallery .carousel-item img{ height:320px; }
+  .about-gallery .carousel{ display:block; overflow:visible; padding:0; margin:0; }
+  .about-gallery .carousel-item{ display:none; width:100%; }
+  .about-gallery .carousel-item.active{ display:block; }
+  .about-gallery .carousel-item img{ width:100%; height:320px; }
   .about-gallery .carousel-arrow{ top:150px; }
+  @media (max-width:640px){
+    .about-gallery .carousel-arrow{ display:flex; }
+  }
 
 
   .contact-row{ display:flex; flex-wrap:wrap; align-items:baseline; gap:10px 14px; margin-bottom:22px; }
@@ -579,8 +584,8 @@
 
   function renderHomeGalleryView(d){
     if (!d.homeGallery || !d.homeGallery.length) return "";
-    var items = d.homeGallery.map(function(p){
-      return '<figure class="carousel-item">' +
+    var items = d.homeGallery.map(function(p, idx){
+      return '<figure class="carousel-item' + (idx === 0 ? " active" : "") + '">' +
         '<img src="' + esc(p.src) + '" alt="' + esc(p.caption || "") + '" loading="lazy" />' +
         (p.caption ? '<figcaption>' + esc(p.caption) + '</figcaption>' : "") +
       '</figure>';
@@ -588,9 +593,9 @@
     return '' +
       '<div class="about-gallery">' +
         '<div class="carousel-wrap">' +
-          '<button class="carousel-arrow prev" type="button" data-target="carousel-home" aria-label="Scroll left">‹</button>' +
-          '<div class="carousel" id="carousel-home">' + items + '</div>' +
-          '<button class="carousel-arrow next" type="button" data-target="carousel-home" aria-label="Scroll right">›</button>' +
+          '<button class="carousel-arrow prev" type="button" data-target="carousel-home" aria-label="Previous photo">‹</button>' +
+          '<div class="carousel slideshow" id="carousel-home">' + items + '</div>' +
+          '<button class="carousel-arrow next" type="button" data-target="carousel-home" aria-label="Next photo">›</button>' +
         '</div>' +
       '</div>';
   }
@@ -1030,6 +1035,17 @@
       btn.addEventListener("click", function(){
         var track = document.getElementById(btn.dataset.target);
         if (!track) return;
+        if (track.classList.contains("slideshow")){
+          var items = Array.prototype.slice.call(track.querySelectorAll(".carousel-item"));
+          if (!items.length) return;
+          var idx = items.findIndex(function(it){ return it.classList.contains("active"); });
+          if (idx === -1) idx = 0;
+          items[idx].classList.remove("active");
+          var dir = btn.classList.contains("prev") ? -1 : 1;
+          idx = (idx + dir + items.length) % items.length;
+          items[idx].classList.add("active");
+          return;
+        }
         var amount = Math.min(track.clientWidth * 0.85, 400);
         track.scrollBy({ left: btn.classList.contains("prev") ? -amount : amount, behavior: "smooth" });
       });
