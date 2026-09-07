@@ -159,6 +159,7 @@
   .axis-body{ padding:0 2px 22px; color:var(--muted); max-width:75ch; }
   .year-block summary:hover .year-num{ color:var(--accent); }
   .year-count{ color:var(--muted); font-size:0.8rem; text-transform:uppercase; letter-spacing:0.09em; }
+  .lc{ text-transform:lowercase; }
 
   .pub-category-group{ padding-left:26px; }
   .pub-category-header{
@@ -431,8 +432,11 @@
   }
   // ---------- home page ----------
   function renderEducationItem(e){
-    var link = (e.url && e.url !== "#") ? ' <a class="entry-link" href="' + esc(e.url) + '" target="_blank" rel="noopener">↗</a>' : '';
-    return '<li><span class="entry-title">' + esc(e.degree) + link + '</span>' +
+    var hasLink = e.url && e.url !== "#";
+    var degreeHtml = hasLink
+      ? '<a href="' + esc(e.url) + '" target="_blank" rel="noopener">' + esc(e.degree) + '</a>'
+      : esc(e.degree);
+    return '<li><span class="entry-title">' + degreeHtml + '</span>' +
       '<span class="entry-meta">' + esc(e.institution) + '</span>' +
       (e.detail ? '<span class="entry-meta">' + esc(e.detail) + '</span>' : '') +
       '<span class="entry-meta">' + esc(e.years) + '</span></li>';
@@ -595,7 +599,7 @@
     return groups.map(function(g){
       return '<details class="year-block">' +
         '<summary><span class="marker" aria-hidden="true"></span><h2 class="year-num">' + esc(g.year) + '</h2>' +
-        '<span class="year-count">(n = ' + g.items.length + ')</span></summary>' +
+        '<span class="year-count">(<span class="lc">n</span> = ' + g.items.length + ')</span></summary>' +
         '<ul class="entry-list">' + g.items.map(itemRenderer).join("") + '</ul>' +
       '</details>';
     }).join("");
@@ -653,13 +657,13 @@
       });
       var sections = PUB_CATEGORY_ORDER.filter(function(c){ return byCat[c] && byCat[c].length; }).map(function(c){
         return '<div class="pub-category-group" data-category="' + c + '">' +
-          '<h3 class="pub-category-header">' + esc(PUB_CATEGORY_LABELS[c] || c) + ' (n = ' + byCat[c].length + ')</h3>' +
+          '<h3 class="pub-category-header">' + esc(PUB_CATEGORY_LABELS[c] || c) + ' (<span class="lc">n</span> = ' + byCat[c].length + ')</h3>' +
           '<ul class="entry-list">' + byCat[c].map(renderPubItem).join("") + '</ul>' +
         '</div>';
       }).join("");
       return '<details class="year-block">' +
         '<summary><span class="marker" aria-hidden="true"></span><h2 class="year-num">' + esc(g.year) + '</h2>' +
-        '<span class="year-count">(n = ' + g.items.length + ')</span></summary>' +
+        '<span class="year-count">(<span class="lc">n</span> = ' + g.items.length + ')</span></summary>' +
         sections +
       '</details>';
     }).join("");
@@ -740,13 +744,13 @@
       });
       var sections = COMM_GROUP_ORDER.filter(function(grp){ return byGroup[grp] && byGroup[grp].length; }).map(function(grp){
         return '<div class="pub-category-group" data-group="' + grp + '">' +
-          '<h3 class="pub-category-header">' + esc(COMM_GROUP_LABELS[grp]) + ' (n = ' + byGroup[grp].length + ')</h3>' +
+          '<h3 class="pub-category-header">' + esc(COMM_GROUP_LABELS[grp]) + ' (<span class="lc">n</span> = ' + byGroup[grp].length + ')</h3>' +
           '<ul class="entry-list">' + byGroup[grp].map(renderCommItem).join("") + '</ul>' +
         '</div>';
       }).join("");
       return '<details class="year-block">' +
         '<summary><span class="marker" aria-hidden="true"></span><h2 class="year-num">' + esc(g.year) + '</h2>' +
-        '<span class="year-count">(n = ' + g.items.length + ')</span></summary>' +
+        '<span class="year-count">(<span class="lc">n</span> = ' + g.items.length + ')</span></summary>' +
         sections +
       '</details>';
     }).join("");
@@ -1028,7 +1032,7 @@
         });
         block.style.display = visible ? "" : "none";
         var countSpan = block.querySelector(".year-count");
-        if (countSpan) countSpan.textContent = "(n = " + visible + ")";
+        if (countSpan) countSpan.innerHTML = "(<span class=\"lc\">n</span> = " + visible + ")";
         visibleTotal += visible;
       });
       if (countEl) countEl.textContent = visibleTotal + " of " + totalItems + " publications shown";
@@ -1077,7 +1081,7 @@
         });
         block.style.display = visible ? "" : "none";
         var countSpan = block.querySelector(".year-count");
-        if (countSpan) countSpan.textContent = "(n = " + visible + ")";
+        if (countSpan) countSpan.innerHTML = "(<span class=\"lc\">n</span> = " + visible + ")";
         visibleTotal += visible;
       });
       if (countEl) countEl.textContent = visibleTotal + " of " + totalItems + " entries shown";
