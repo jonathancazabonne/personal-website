@@ -53,6 +53,7 @@ collections:
               - { label: "Supervisors (French, for CV)", name: "supervisors", widget: "text", required: false }
               - { label: "Committee (French, for CV)", name: "committee", widget: "text", required: false }
               - { label: "Grade / honors (for CV)", name: "grade", widget: "string", required: false }
+              - { label: "Institution logo (groups consecutive degrees at the same institution into one card)", name: "logo", widget: "image", required: false }
 
   - name: "links"
     label: "Links"

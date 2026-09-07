@@ -120,7 +120,7 @@
   #gallery .carousel{ display:block; overflow:visible; padding:0; margin:0; }
   #gallery .carousel-item{ display:none; width:100%; }
   #gallery .carousel-item.active{ display:block; }
-  #gallery .carousel-item img{ width:100%; height:min(65vh, 620px); border-radius:14px; }
+  #gallery .carousel-item img{ width:100%; height:min(65vh, 620px); border-radius:14px; object-fit:contain; background:var(--surface); }
   #gallery .carousel-item figcaption{ font-size:0.95rem; margin-top:12px; }
   #gallery .carousel-arrow{ top:50%; transform:translateY(-50%); width:44px; height:44px; font-size:1.3rem; }
   #gallery .carousel-arrow.prev{ left:16px; }
@@ -198,6 +198,14 @@
   }
   .entry-list .entry-link{ margin-left:6px; text-decoration:none; color:var(--muted); }
   .entry-list .entry-link:hover{ color:var(--accent); }
+
+  .edu-card{
+    position:relative; border:1px solid var(--line); border-radius:18px;
+    padding:24px clamp(90px,18vw,130px) 6px 24px; margin-bottom:24px; background:var(--surface);
+  }
+  .edu-card-logo{ position:absolute; top:20px; right:20px; height:34px; width:auto; max-width:30%; object-fit:contain; }
+  .edu-card .entry-list{ margin-bottom:0; padding-left:0; }
+  .edu-card .entry-list li + li{ padding-top:18px; border-top:1px dashed var(--line); }
 
   /* ---- timeline ---- */
   .timeline{
@@ -460,11 +468,37 @@
       '<span class="entry-meta">' + esc(e.years) + '</span></li>';
   }
 
+  function renderEduCard(group){
+    return '<div class="edu-card">' +
+      '<img class="edu-card-logo" src="' + esc(group[0].logo) + '" alt="" loading="lazy" />' +
+      '<ul class="entry-list edu-card-list">' + group.map(renderEducationItem).join("") + '</ul>' +
+    '</div>';
+  }
+
   function renderEducationView(d){
     if (!d.education || !d.education.length) return "";
+    var blocks = [];
+    var items = d.education;
+    var i = 0;
+    while (i < items.length){
+      var e = items[i];
+      if (e.logo){
+        var group = [e];
+        var j = i + 1;
+        while (j < items.length && items[j].logo === e.logo){
+          group.push(items[j]);
+          j++;
+        }
+        blocks.push(renderEduCard(group));
+        i = j;
+      } else {
+        blocks.push('<ul class="entry-list">' + renderEducationItem(e) + '</ul>');
+        i++;
+      }
+    }
     return '<section id="education">' +
       '<h2>Education</h2>' +
-      '<ul class="entry-list">' + d.education.map(renderEducationItem).join("") + '</ul>' +
+      blocks.join("") +
     '</section>';
   }
 
@@ -606,7 +640,6 @@
     }).join("");
     return '' +
       '<section id="gallery">' +
-        '<h2>Gallery</h2>' +
         '<div class="carousel-wrap">' +
           '<button class="carousel-arrow prev" type="button" data-target="carousel-home" aria-label="Previous photo">‹</button>' +
           '<div class="carousel slideshow" id="carousel-home">' + items + '</div>' +
