@@ -205,6 +205,45 @@ collections:
               - { label: "Logo 1 (groups consecutive entries sharing the same pair of logos into one card)", name: "logo", widget: "image", required: false }
               - { label: "Logo 2 (optional second logo, e.g. a co-supervising lab)", name: "logo2", widget: "image", required: false }
 
+  - name: "scientificAffiliations"
+    label: "Main scientific affiliations"
+    files:
+      - file: "data/scientificAffiliations.json"
+        label: "Main scientific affiliations"
+        name: "scientificAffiliations"
+        fields:
+          - label: "Affiliations"
+            name: "items"
+            widget: "list"
+            summary: "{{organization}}"
+            fields:
+              - { label: "Organization", name: "organization", widget: "string" }
+              - { label: "Role", name: "role", widget: "string", required: false }
+              - { label: "Period (leave blank if ongoing/not dated)", name: "period", widget: "string", required: false }
+              - { label: "Logo 1", name: "logo", widget: "image", required: false }
+              - { label: "Logo 2", name: "logo2", widget: "image", required: false }
+              - { label: "Logo 3", name: "logo3", widget: "image", required: false }
+
+  - name: "communityEngagement"
+    label: "Community & volunteer engagement"
+    files:
+      - file: "data/communityEngagement.json"
+        label: "Community & volunteer engagement"
+        name: "communityEngagement"
+        fields:
+          - label: "Engagements"
+            name: "items"
+            widget: "list"
+            summary: "{{organization}}"
+            fields:
+              - { label: "Organization", name: "organization", widget: "string" }
+              - { label: "Role", name: "role", widget: "string", required: false }
+              - { label: "Period", name: "period", widget: "string", required: false }
+              - { label: "Description", name: "description", widget: "text", required: false }
+              - { label: "Logo 1", name: "logo", widget: "image", required: false }
+              - { label: "Logo 2", name: "logo2", widget: "image", required: false }
+              - { label: "Logo 3", name: "logo3", widget: "image", required: false }
+
   - name: "awards"
     label: "Awards & funding"
     files:

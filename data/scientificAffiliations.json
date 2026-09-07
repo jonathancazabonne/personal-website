@@ -1,0 +1,44 @@
+{
+  "items": [
+    {
+      "organization": "IUCN SSC Mushroom, Bracket and Puffball Fungi Specialist Group",
+      "role": "Membre",
+      "period": "",
+      "logo": "images/logo-iucn-mushroom-group.jpg",
+      "logo2": "images/logo-iucn-redlist.png",
+      "logo3": "images/logo-iucn.png"
+    },
+    {
+      "organization": "Centre d'étude de la forêt (CEF)",
+      "role": "Membre",
+      "period": "",
+      "logo": "images/logo-cef.gif",
+      "logo2": "",
+      "logo3": ""
+    },
+    {
+      "organization": "Chaire UQAT-UQAM en aménagement forestier durable",
+      "role": "Membre",
+      "period": "",
+      "logo": "images/logo-chaire-afd.jpg",
+      "logo2": "",
+      "logo3": ""
+    },
+    {
+      "organization": "TeamLaboul",
+      "role": "Membre",
+      "period": "",
+      "logo": "images/logo-teamlaboul.jpg",
+      "logo2": "",
+      "logo3": ""
+    },
+    {
+      "organization": "Réécrire la forêt boréale",
+      "role": "Membre",
+      "period": "2022–2024",
+      "logo": "images/logo-reecrire-foret-boreale.jpeg",
+      "logo2": "",
+      "logo3": ""
+    }
+  ]
+}
