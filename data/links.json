@@ -1,0 +1,44 @@
+{
+  "items": [
+    {
+      "icon": "link",
+      "label": "Personal website",
+      "href": "https://sites.google.com/view/jonathan-cazabonne"
+    },
+    {
+      "icon": "researchgate",
+      "label": "ResearchGate",
+      "href": "https://www.researchgate.net/profile/Jonathan-Cazabonne"
+    },
+    {
+      "icon": "orcid",
+      "label": "ORCID",
+      "href": "https://orcid.org/0000-0001-9056-4368"
+    },
+    {
+      "icon": "linkedin",
+      "label": "LinkedIn",
+      "href": "https://www.linkedin.com/in/jonathan-cazabonne-7ab044177/"
+    },
+    {
+      "icon": "link",
+      "label": "Bluesky",
+      "href": "https://bsky.app/profile/jonathancazabonne.bsky.social"
+    },
+    {
+      "icon": "link",
+      "label": "TeamLaboul",
+      "href": "https://beetlehangers.org/about-us/"
+    },
+    {
+      "icon": "link",
+      "label": "Réécrire la forêt boréale",
+      "href": "https://reecrire.uqam.ca"
+    },
+    {
+      "icon": "link",
+      "label": "Mycosphaera",
+      "href": "https://www.mycosphaera.ca"
+    }
+  ]
+}

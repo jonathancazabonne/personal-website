@@ -1,0 +1,153 @@
+backend:
+  name: github
+  repo: jonathancazabonne/personal-website
+  branch: master
+  base_url: https://personal-website-oauth.pages.dev
+  auth_endpoint: api/auth
+
+publish_mode: simple
+media_folder: ""
+public_folder: ""
+
+collections:
+  - name: "site"
+    label: "General info"
+    files:
+      - file: "data/site.json"
+        label: "General info"
+        name: "site"
+        fields:
+          - { label: "Name", name: "name", widget: "string" }
+          - { label: "Rotating words (under name, on Home)", name: "topics", widget: "list" }
+          - { label: "Role / subtitle", name: "role", widget: "text" }
+          - { label: "Bio", name: "bio", widget: "text" }
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "Contact page intro", name: "contactIntro", widget: "text" }
+          - { label: "Contact photo URL", name: "contactPhoto", widget: "string", required: false }
+          - { label: "Address", name: "address", widget: "text" }
+          - { label: "Publications page intro", name: "publicationsIntro", widget: "text" }
+          - { label: "Outreach page intro", name: "communicationsIntro", widget: "text" }
+          - { label: "Conservation timeline intro", name: "timelineIntro", widget: "text" }
+          - { label: "Study areas page intro", name: "studyAreasIntro", widget: "text" }
+
+  - name: "education"
+    label: "Education"
+    files:
+      - file: "data/education.json"
+        label: "Education"
+        name: "education"
+        fields:
+          - label: "Degrees"
+            name: "items"
+            widget: "list"
+            summary: "{{degree}} — {{years}}"
+            fields:
+              - { label: "Years", name: "years", widget: "string" }
+              - { label: "Degree", name: "degree", widget: "string" }
+              - { label: "Institution", name: "institution", widget: "string" }
+              - { label: "Detail (thesis title, supervisors, etc.)", name: "detail", widget: "text", required: false }
+              - { label: "Link (thesis PDF, etc.)", name: "url", widget: "string", required: false }
+
+  - name: "links"
+    label: "Links"
+    files:
+      - file: "data/links.json"
+        label: "Links"
+        name: "links"
+        fields:
+          - label: "Links"
+            name: "items"
+            widget: "list"
+            summary: "{{label}}"
+            fields:
+              - label: "Icon"
+                name: "icon"
+                widget: "select"
+                options: ["link", "researchgate", "orcid", "linkedin"]
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "URL", name: "href", widget: "string" }
+
+  - name: "publications"
+    label: "Publications"
+    files:
+      - file: "data/publications.json"
+        label: "Publications"
+        name: "publications"
+        fields:
+          - label: "Publications"
+            name: "items"
+            widget: "list"
+            summary: "{{year}} — {{title}}"
+            fields:
+              - { label: "Year", name: "year", widget: "number", value_type: "int" }
+              - { label: "Authors", name: "authors", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Venue", name: "venue", widget: "string" }
+              - { label: "URL", name: "url", widget: "string" }
+              - label: "Category"
+                name: "category"
+                widget: "select"
+                options:
+                  - { label: "Peer-reviewed scientific articles", value: "peer-reviewed" }
+                  - { label: "Preprints", value: "preprint" }
+                  - { label: "Correspondence", value: "correspondence" }
+                  - { label: "Book chapters", value: "book-chapter" }
+                  - { label: "Literary book chapters", value: "literary" }
+                  - { label: "Thesis and reports", value: "thesis-report" }
+                  - { label: "Bulletin articles", value: "bulletin" }
+                  - { label: "Popular science articles", value: "popular" }
+                  - { label: "Press articles", value: "press" }
+
+  - name: "communications"
+    label: "Outreach"
+    files:
+      - file: "data/communications.json"
+        label: "Outreach"
+        name: "communications"
+        fields:
+          - label: "Outreach entries"
+            name: "items"
+            widget: "list"
+            summary: "{{year}} — {{title}}"
+            fields:
+              - { label: "Year", name: "year", widget: "number", value_type: "int" }
+              - { label: "Type", name: "type", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Venue", name: "venue", widget: "string" }
+              - { label: "URL", name: "url", widget: "string" }
+
+  - name: "timeline"
+    label: "Conservation timeline"
+    files:
+      - file: "data/timeline.json"
+        label: "Conservation timeline"
+        name: "timeline"
+        fields:
+          - label: "Milestones"
+            name: "items"
+            widget: "list"
+            summary: "{{dateLabel}} — {{title}}"
+            fields:
+              - { label: "Year", name: "year", widget: "number", value_type: "int" }
+              - { label: "Date label", name: "dateLabel", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text", required: false }
+              - { label: "Scope", name: "scope", widget: "string", required: false }
+              - { label: "Notes", name: "notes", widget: "text", required: false }
+              - { label: "URLs", name: "urls", widget: "list", required: false }
+
+  - name: "studyAreas"
+    label: "Study areas"
+    files:
+      - file: "data/studyAreas.json"
+        label: "Study areas"
+        name: "studyAreas"
+        fields:
+          - label: "Study areas"
+            name: "items"
+            widget: "list"
+            summary: "{{name}}"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Photo URLs", name: "photos", widget: "list", required: false }

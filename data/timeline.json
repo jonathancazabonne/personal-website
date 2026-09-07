@@ -1,0 +1,857 @@
+{
+  "items": [
+    {
+      "year": 1971,
+      "dateLabel": "1971",
+      "title": "Creation of the International Mycological Association (IMA)",
+      "description": "",
+      "scope": "Europe",
+      "notes": "Perhaps more general and not so important for conservation (don't think its ever been a priority/focus of IMA)?",
+      "urls": []
+    },
+    {
+      "year": 1980,
+      "dateLabel": "1980s",
+      "title": "↘︎ Reported population declines of some macrofungal species in Europe (Germany, the Netherlands, and the Czech Republic)",
+      "description": "",
+      "scope": "Europe",
+      "notes": "1990s instead of 80s?",
+      "urls": [
+        "https://doi.org/10.1016/0167-8809(91)90052-Y",
+        "https://doi.org/10.1126/science.254.5037.1458"
+      ]
+    },
+    {
+      "year": 1982,
+      "dateLabel": "1982",
+      "title": "First red list of macrofungi (Germany)",
+      "description": "",
+      "scope": "Europe",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 1985,
+      "dateLabel": "1985",
+      "title": "Creation of the European Committee for the Protection of Fungi",
+      "description": "",
+      "scope": "Europe",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 1986,
+      "dateLabel": "1986",
+      "title": "Creation of the Lichen Specialist Group in the IUCN SSC",
+      "description": "",
+      "scope": "International",
+      "notes": "Group not particularly active; reformed in 1994",
+      "urls": []
+    },
+    {
+      "year": 1988,
+      "dateLabel": "1988",
+      "title": "Creation of the Fungi Specialist Group in the IUCN SSC",
+      "description": "",
+      "scope": "International",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 1991,
+      "dateLabel": "1991",
+      "title": "European Committee for the Protection of Fungi renamed as the European Council for Conservation of Fungi (ECCF)",
+      "description": "",
+      "scope": "Europe",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 1992,
+      "dateLabel": "1992",
+      "title": "Creation of the International Committee for the Conservation of Lichens",
+      "description": "Occurred at International Association for Lichenology Meeting",
+      "scope": "International",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 1992,
+      "dateLabel": "1992",
+      "title": "Red Lists of macrofungi in 11 European countries",
+      "description": "",
+      "scope": "Europe",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 1992,
+      "dateLabel": "1992",
+      "title": "Rio Convention: fungi absent from the discussions",
+      "description": "\"The orphans of Rio\"",
+      "scope": "International",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 1994,
+      "dateLabel": "1994",
+      "title": "Re-formation of the Lichen Specialist Group in the IUCN SSC from members of the International Committee for the Conservation of Lichens",
+      "description": "",
+      "scope": "International",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 1995,
+      "dateLabel": "1995",
+      "title": "Publication of \"Conservation Biology of Lichenized Fungi\"",
+      "description": "",
+      "scope": "International",
+      "notes": "",
+      "urls": [
+        "https://www.researchgate.net/profile/Christoph-Scheidegger/publication/229071450_Conservation_biology_of_lichenised_fungi/links/5745bbab08ae9ace84241ba2/Conservation-biology-of-lichenised-fungi.pdf"
+      ]
+    },
+    {
+      "year": 1996,
+      "dateLabel": "1996",
+      "title": "First cryptogamic sanctuary established to protect a macrofungal species (Scotland)",
+      "description": "",
+      "scope": "UK",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 1996,
+      "dateLabel": "1996",
+      "title": "Creation of The Fungus Conservation Trust was founded in 1996, UK (as the former Association of British Fungus Groups), Registered Charity No. 1118651, first charity body in the UK for fungal conservation",
+      "description": "",
+      "scope": "UK",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 1999,
+      "dateLabel": "1999",
+      "title": "19th Meeting of the Bern Convention (1999): Report on threatened macrofungi (document T-PVS (99) 39)",
+      "description": "",
+      "scope": "International",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2001,
+      "dateLabel": "2001",
+      "title": "Publication of \"Fungal Conservation: Issues and Solutions\"",
+      "description": "",
+      "scope": "International",
+      "notes": "",
+      "urls": [
+        "https://www.researchgate.net/profile/David-Moore-25/publication/345259434_Fungal_conservation_issues_recognising_the_problem_finding_solutions/links/5fe26d9b92851c13feb18a98/Fungal-conservation-issues-recognising-the-problem-finding-solutions.pdf"
+      ]
+    },
+    {
+      "year": 2001,
+      "dateLabel": "2001",
+      "title": "Adoption of the IUCN Red List criteria for fungal Red Lists",
+      "description": "",
+      "scope": "International",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2001,
+      "dateLabel": "2001",
+      "title": "21st Meeting of the Bern Convention (2001): Proposal to include 33 macrofungal species in the Bern Convention (document T-PVS (2001) 34)",
+      "description": "",
+      "scope": "Europe",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2001,
+      "dateLabel": "2001–2003",
+      "title": "Australian fungal mapping scheme Fungimap",
+      "description": "",
+      "scope": "Australia",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2002,
+      "dateLabel": "2002",
+      "title": "Fungi cited in the European Plant Conservation Strategy since 2002",
+      "description": "",
+      "scope": "Europe",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2002,
+      "dateLabel": "2002",
+      "title": "The Convention on International Trade in Endangered Species of Wild Fauna and Flora (CITES) recognizes fungi",
+      "description": "",
+      "scope": "International",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2003,
+      "dateLabel": "2003",
+      "title": "First lichen species included on the Red List",
+      "description": "",
+      "scope": "International",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2003,
+      "dateLabel": "2003",
+      "title": "The ECCF becomes the official conservation body of the European Mycological Association (EMA) and is recognized by the International Mycological Association (IMA)",
+      "description": "",
+      "scope": "Europe",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2006,
+      "dateLabel": "2006",
+      "title": "First non-lichenized macrofungal species included on the IUCN Red List (Pleurotus nebrodensis)",
+      "description": "",
+      "scope": "International",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2007,
+      "dateLabel": "2007",
+      "title": "Fungal Red Lists available present 31 european countries",
+      "description": "",
+      "scope": "Europe",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2007,
+      "dateLabel": "2007",
+      "title": "First World Conference on the Conservation and Sustainable Use of Wild Fungi – Fungi of the Earth: Declaration of Córdoba",
+      "description": "",
+      "scope": "International",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2007,
+      "dateLabel": "2007",
+      "title": "Publication of the docume Guidance for the Conservation of Mushrooms in Europe (document T-PVS (2007) 13)",
+      "description": "",
+      "scope": "Europe",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2009,
+      "dateLabel": "2009",
+      "title": "International meeting Fungal Conservation: Science, Infrastructure and Politics (United Kingdom)",
+      "description": "",
+      "scope": "International",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2009,
+      "dateLabel": "2009",
+      "title": "IUCN SSC Fungi Specialist Group is split into four",
+      "description": "",
+      "scope": "International",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2010,
+      "dateLabel": "2010",
+      "title": "Establishment of the International Society for Fungal Conservation (ISFC) and rewording of the Rio Convention at the Nagoya Conference (COP10)",
+      "description": "",
+      "scope": "International",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2010,
+      "dateLabel": "2010",
+      "title": "Several countries, as well as Japan and New Zealand, include fungi in their national Red Lists",
+      "description": "",
+      "scope": "",
+      "notes": "Japan included lichenized and non-lichenized fungi on their Red Lists as far back as 1997 (see https://ikilog.biodic.go.jp/Rdb/booklist)",
+      "urls": []
+    },
+    {
+      "year": 2011,
+      "dateLabel": "2011",
+      "title": "Publication of guidelines for IUCN red listing macrofungi (Dahlberg & Mueller 2011)",
+      "description": "",
+      "scope": "International",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2012,
+      "dateLabel": "2012",
+      "title": "IUCN World Conservation Congress, Jeju, Republic of Korea: adoption of a motion calling for greater attention to fungal conservation (WCC-2012-Res-033-EN, Increasing the Attention Given to the Conservation of Fungi)",
+      "description": "",
+      "scope": "International",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2012,
+      "dateLabel": "2012",
+      "title": "Creation of the NGO Fungi Foundation, first NGO entirely dedicated to fungal conservation",
+      "description": "",
+      "scope": "International",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2013,
+      "dateLabel": "2013",
+      "title": "European Charter on Fungi-Gathering and Biodiversity (document T-PVS/Inf (2013))",
+      "description": "",
+      "scope": "Europe",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2013,
+      "dateLabel": "2013",
+      "title": "Fungi are formally included in Chilean environmental law through the reform of the Law on General Bases of the Environment (Law No. 19.300)",
+      "description": "",
+      "scope": "Chile",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2013,
+      "dateLabel": "2013",
+      "title": "Launch of the Global Fungal Red List Initiative (first workshop held in 2015; 28 workshops/events organized to date)",
+      "description": "",
+      "scope": "International",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2013,
+      "dateLabel": "2013",
+      "title": "Creation of the Arab Society for Fungal conservation (decreed by No. 699/2013), based in Egypt",
+      "description": "",
+      "scope": "Egypt",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2015,
+      "dateLabel": "2015",
+      "title": "First inclusion of fungi in a case study of the Australia State of the Environment Report (Commonwealth of Australia), followed by dedicated sections in the 2016 and 2021 editions",
+      "description": "",
+      "scope": "Australia",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2016,
+      "dateLabel": "2016",
+      "title": "Designation of five Key Biodiversity Areas (KBAs) for fungi in North Macedonia",
+      "description": "",
+      "scope": "North Macedonia",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2018,
+      "dateLabel": "2018",
+      "title": "Launch of the Triple F Initiative",
+      "description": "",
+      "scope": "International",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2018,
+      "dateLabel": "2018",
+      "title": "Pubication of the first \"State of the World's Fungi\" by the Kew gardens (followed by editions published in 2020, 2023 and 2026)",
+      "description": "",
+      "scope": "International",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2020,
+      "dateLabel": "2020",
+      "title": "Approximately 40 countries have national Red Lists of macrofungi (>10,000 species assessed)",
+      "description": "",
+      "scope": "International",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2021,
+      "dateLabel": "2021",
+      "title": "Fungi included in the Important Plant Areas (IPA) programme",
+      "description": "",
+      "scope": "International",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2021,
+      "dateLabel": "2021",
+      "title": "Two open letters published in the journal Science: \"Include macrofungi in biodiversity targets\" (June 2021), and \"Include all fungi in biodiversity targets\" (July 2021)",
+      "description": "",
+      "scope": "International",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2021,
+      "dateLabel": "2021",
+      "title": "Re:wild and the IUCN become the first two global organizations to recognize fungi as a separate kingdom in conservation",
+      "description": "",
+      "scope": "International",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2021,
+      "dateLabel": "2021",
+      "title": "FairWild includes fungi in its mission",
+      "description": "",
+      "scope": "International",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2021,
+      "dateLabel": "2021",
+      "title": "Creation of the Society for the Protection of Underground Networks (SPUN)",
+      "description": "",
+      "scope": "International",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2021,
+      "dateLabel": "2021",
+      "title": "Creation of the Fungal Conservation Working Group of the Canadian Institute of Ecology and Evolution (still active)",
+      "description": "",
+      "scope": "Canada",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2022,
+      "dateLabel": "2022",
+      "title": "Broad audience article published in The Conversation \"Beyond flora and fauna: Why it's time to include fungi in global conservation goals\"",
+      "description": "",
+      "scope": "International",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2022,
+      "dateLabel": "2022",
+      "title": "Open letter on the crucial role of fungi in preserving and enhancing biodiversity published by the European Forest Institute",
+      "description": "",
+      "scope": "International",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2022,
+      "dateLabel": "2022",
+      "title": "First time a IPBES report feature fungi in its cover page \"The assessment report on the sustainable use of wild species - summary for policymakers\"",
+      "description": "",
+      "scope": "International",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2023,
+      "dateLabel": "2023",
+      "title": "Establishment of the Joint Network for Wild Fungi (JoNeF): A European Network for Fungal Conservation",
+      "description": "",
+      "scope": "Europe",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2023,
+      "dateLabel": "2023",
+      "title": "Designation of the first Key Biodiversity Area (KBA) based on fungi in Gabon",
+      "description": "",
+      "scope": "Gabon",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2023,
+      "dateLabel": "2023",
+      "title": "Establishment of the IUCN Fungal Specialist Groups for Brazil and Colombia",
+      "description": "",
+      "scope": "International",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2023,
+      "dateLabel": "2023",
+      "title": "Launch of the Biodiversa+-funded FUNACTION project (2023–2026)",
+      "description": "",
+      "scope": "Europe",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2023,
+      "dateLabel": "2023",
+      "title": "Launch of the Conservation and Stewardship section of the North American Mycological Ass (NAMA)",
+      "description": "",
+      "scope": "North America",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2024,
+      "dateLabel": "2024",
+      "title": "Launch of the Biodiversa+-funded MoSTFun (2024–2027) and FunDive (2024–2026) projects",
+      "description": "",
+      "scope": "Europe",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2024,
+      "dateLabel": "2024",
+      "title": "Establishment of the IUCN Fungal Specialist Groups on Aquatic Fungi and Uses",
+      "description": "",
+      "scope": "International",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2024,
+      "dateLabel": "2024",
+      "title": "Launch of the Fungal Pledge at COP16 by the UK, Republic of Chile and Fungi Foundation (+13 countries signed the pledge to date)",
+      "description": "",
+      "scope": "International",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2024,
+      "dateLabel": "2024",
+      "title": "Publication of the article \"A call to include fungi in wildlife trade research and policy\"",
+      "description": "",
+      "scope": "International",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2024,
+      "dateLabel": "2024",
+      "title": "Publication of the 2030 Declaration on Scientific plant and Fungal Collecting",
+      "description": "",
+      "scope": "International",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2024,
+      "dateLabel": "2024",
+      "title": "Publication of an open letter \"Le Québec doit miser sur les champignons pour préserver la biodiversité\" calling on the Québec government to make fungal conservation a priority, co-signed by >70 scientists, mycologists and conservation professionals",
+      "description": "",
+      "scope": "Quebec, Canada",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2024,
+      "dateLabel": "2024",
+      "title": "Fungi officially become part of the mandate of the Centro Nacional de Conservação da Flora (CNCFlora), Brazil, Dectree No. 12.137 of August 12, 2024, signed by the President of the Republic, Ministério do Meio Ambiente e Mundança do Clima",
+      "description": "",
+      "scope": "Brazil",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2025,
+      "dateLabel": "2025",
+      "title": "Publication of the document SC78 Doc. 75 at the Seventy-eighth meeting of the Standing Committee Geneva (Switzerland) of the CITES, 3-8 February 2025, Species conservation and trade, Fungi, \"An assessment of the practicalities of the COP12 decision that the convention appmlies to fungi\"",
+      "description": "",
+      "scope": "International",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2025,
+      "dateLabel": "2025",
+      "title": "Launch of the Fungal Futures: Conservation news and views of the Field Mycology journal",
+      "description": "",
+      "scope": "UK",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2025,
+      "dateLabel": "2025",
+      "title": "Borad audience article published in The Conversation Canada \"Fungi are among the planet's most important organisms - yet they're overlooked in conservation strategies\"",
+      "description": "",
+      "scope": "International",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2025,
+      "dateLabel": "2025",
+      "title": "The milestone of 1000 (i.e. 1300 as of 27 march 2025) macrofungal species assessed on the IUCN Red List is reached",
+      "description": "",
+      "scope": "International",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2025,
+      "dateLabel": "2025",
+      "title": "IUCN World Conservation Congress in Abu Dhabi, UAE, 9-15 October: several sessions and talks dedicated to fungi: 1484 sessions, 3 entirely dedicated to fungi 1) The Diverse Illegal Trade in Funga, Flora, and Fauna — 2) Le règne oublié : La fonge comme socle de la conservation — 3) Saving Fungi: Conservation Strategies for Earth's Hidden Kingdom — 4) From Baseline to Breakthrough: Fungal Conservation in the UAE and the Middle Eastern Region",
+      "description": "",
+      "scope": "International",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2025,
+      "dateLabel": "2025",
+      "title": "IUCN World Conservation Congress in Abu Dhabi, UAE, 9-15 October: vote of several motion linked to fungi (motion 091 \"Strengthening conservation efforts for fungi and invertebrates\"; motion 078 \"Encouraging agroforestry and mycorrhization practices that promote soil biodiversity\", motion 093 \"Recognise and strengthen the fundamental role of plant and fungal taxonomy and associated herbaria for the conservation of biodiversity, particularly in Global South countries\", and motion 010 \"Preserving forest soils and their biodiversity\"",
+      "description": "",
+      "scope": "International",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2025,
+      "dateLabel": "2025",
+      "title": "IUCN World Conservation Congress in Abu Dhabi, UAE, 9-15 October: First Reverse the Red Accelerator Award Grants: Fungi Foundation for their project on the endangered Loyo Mushroom (Butyriboletus loyo)",
+      "description": "",
+      "scope": "International",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2025,
+      "dateLabel": "2025",
+      "title": "Fourth International Congress on Fungal Conservation [ICFC4], Benin, West Africa, 3-7 November 2025",
+      "description": "",
+      "scope": "International",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2025,
+      "dateLabel": "2025",
+      "title": "Establishment of the first IUCN Species Centre dedicated to fungal conservation: the Dubai IUCN Species Centre (also the first in the Middle East)",
+      "description": "",
+      "scope": "UAE/International",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2025,
+      "dateLabel": "2025",
+      "title": "Promotional video on fungal conservation produced by Planet Wild",
+      "description": "",
+      "scope": "International",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2025,
+      "dateLabel": "2025?",
+      "title": "Lecture entirely dedicated to fungal conservation (FAP51004, 3 credits) available at the Universidade Federal de Santa Catarina, Brazil",
+      "description": "",
+      "scope": "Brazil",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2025,
+      "dateLabel": "2025",
+      "title": "The term Funga to be included in Vienna's Nature Conservation Law, Austria",
+      "description": "",
+      "scope": "Austria",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2025,
+      "dateLabel": "2025",
+      "title": "Launch of the IUCN SSC Microbial conservation Specialist Group",
+      "description": "",
+      "scope": "International",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2025,
+      "dateLabel": "2025",
+      "title": "Launch of the UK Network for Fungal Conservation (UK NFC) by Plantlife International, September 2025",
+      "description": "",
+      "scope": "UK",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2025,
+      "dateLabel": "2025",
+      "title": "Creation of the non-profit organization Mycosphaera, entirely dedicated to fungal conservation in Québec and Canada",
+      "description": "",
+      "scope": "Quebec/Canada",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2025,
+      "dateLabel": "2025",
+      "title": "Fungi foundation recommendations for the 27th meeting of the Subsidiary Body on Scientific, Technical & Technological Advice (SBSTTA27) - Convention on Biological Diversity (CBD), Panama city, Panama, 20-24 October 2025",
+      "description": "",
+      "scope": "International",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2026,
+      "dateLabel": "2026",
+      "title": "The Mohamed bin Zayed Species Conservation Fund (created in 2009 by the president of the UAE): 67 project on fungi granted as of 4 August 2026, totalling $806,018 awarded",
+      "description": "",
+      "scope": "International",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2026,
+      "dateLabel": "2026",
+      "title": "Launch of a fungal conservation project \"Certified Fungal Habitat\" by MycoMap for North America",
+      "description": "",
+      "scope": "North America",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2026,
+      "dateLabel": "2026",
+      "title": "Special issue entirely dedicated to fungal conservation \"Fungal conservation: from knowledge to actions\" for the Fungal Ecology journal",
+      "description": "",
+      "scope": "International",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2026,
+      "dateLabel": "2026",
+      "title": "Fungal Conservation in Europe: Evidence to Action congress held at Upssala, Sweden, 14-17 April 2026",
+      "description": "",
+      "scope": "Europe",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2026,
+      "dateLabel": "2026",
+      "title": "The term Funga is now a word in the Cambridge Dictionary, July 2026",
+      "description": "",
+      "scope": "International",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2026,
+      "dateLabel": "2026",
+      "title": "Fungi Foundation, and the Governments of the United Kingdom, Chile, and Armenia joined the SBSTTA-28 online from Trieste and present Armenia's work on fungal conservation and the sustainable use of fungi in a side event called \"Advancing the Fungal Conservation Pledge: Insights from Fungal Biodiversity to Support Sustainable Wildlife Management Practices\", 28 July 2026",
+      "description": "",
+      "scope": "International",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2026,
+      "dateLabel": "2026",
+      "title": "1,351 fungal species IUCN red listed",
+      "description": "",
+      "scope": "International",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2026,
+      "dateLabel": "2026",
+      "title": "Launch of the Global Strategy for Fungal Conservation (GSFC) at COP17 in Yerevan, Armenia, general secretariat by Plantlife International + Fungi booth to showcase the diversity of great work on fungal conservation across the world and how it connects to the Global Strategy for Fungal Conservation and the Fungal Conservation Pledge. Representatives present from Plantlife International, IUCN FunCC, SPUN, Fungi Foundation, Royal Botanic Gardens, Kew, the IUCN SSC Centre for Species Survival - Fungi (Terra), Mycosphaera, the American University of Armenia, the International Congress of Armenian Mycologists (ICAM) and Vienna University.",
+      "description": "",
+      "scope": "International",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2026,
+      "dateLabel": "2026",
+      "title": "Creation of the Global Fungal Conservation Network",
+      "description": "",
+      "scope": "International",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2026,
+      "dateLabel": "2026",
+      "title": "The Ministry of the Environment and Climate Change published the first Official National List of Threatened Fungal Species, recognizing 24 fungal species as threatened for the first time in Brazil, June 2026",
+      "description": "",
+      "scope": "Brazil",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2026,
+      "dateLabel": "2026",
+      "title": "Publication of an open letter \"Au secours des champignons\" calling on governmental and non-governmental organizations in Québec to adopt the third \"F\", co-signed by >20 conservation organizations and professionals",
+      "description": "",
+      "scope": "Quebec, Canada",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2026,
+      "dateLabel": "2026",
+      "title": "Book \"Fungi for Land - A practical guide for Australian land managers\" realeased",
+      "description": "",
+      "scope": "Australia",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2026,
+      "dateLabel": "2026",
+      "title": "The Australian Labor Party has become the first major Australian political party to explicitly recognise fungi alongside flora and fauna in its National Platform.",
+      "description": "",
+      "scope": "Australia",
+      "notes": "",
+      "urls": []
+    },
+    {
+      "year": 2026,
+      "dateLabel": "2026",
+      "title": "Publication of the opinion paper Mongès et al. (2026 \"Exploring the concept of longevity in fungi\"",
+      "description": "",
+      "scope": "International",
+      "notes": "",
+      "urls": []
+    }
+  ]
+}
