@@ -90,6 +90,7 @@
 
   section{ position:relative; padding: clamp(56px,10vw,104px) 0 clamp(40px,7vw,72px); border-left:1px solid transparent; }
   section + section{ border-top:1px solid var(--line); }
+  #app.view-home section + section{ border-top:none; }
 
   .hero h1{
     margin:0; font-weight:700; font-size:clamp(2.4rem, 6vw, 3.6rem); line-height:1.04;
@@ -170,12 +171,6 @@
     padding:18px 2px; -webkit-tap-highlight-color:transparent;
   }
   .year-block summary::-webkit-details-marker{ display:none; }
-  .year-block .marker{
-    font-family:var(--font); color:var(--accent); width:14px; flex:0 0 auto;
-    font-size:1.05rem;
-  }
-  .year-block .marker::before{ content:"+"; }
-  .year-block[open] .marker::before{ content:"–"; }
   .year-num{ font-family:var(--font); font-size:1.4rem; font-weight:700; margin:0; }
 
   .axes-grid{
@@ -223,16 +218,19 @@
   .bullet-list .meta{ color:var(--muted); }
 
   .logo-card{
-    position:relative; border:3px solid var(--card-border); border-radius:18px;
-    padding:24px clamp(110px,22vw,220px) 6px 24px; margin-bottom:24px; background:#fff;
+    display:flex; align-items:flex-start; gap:18px;
+    border:none; border-bottom:1px solid var(--line); border-radius:0;
+    padding:22px 0; margin-bottom:0; background:none;
   }
-  .logo-card.no-logo{ padding-right:24px; }
+  .logo-card:first-of-type{ padding-top:0; }
   .logo-card-logos{
-    position:absolute; top:18px; right:18px; display:flex; align-items:center; gap:12px; max-width:45%;
+    flex:0 0 auto; display:flex; flex-direction:column; gap:8px; width:48px;
   }
-  .logo-card-logo{ height:44px; width:auto; max-width:100%; object-fit:contain; }
-  .logo-card-logo[src*="logo-uqam"]{ height:32px; }
-  .logo-card .entry-list{ margin-bottom:0; padding-left:0; }
+  .logo-card-logo{
+    width:48px; height:48px; object-fit:contain; background:#fff;
+    border:1px solid var(--line); border-radius:8px; padding:6px; box-sizing:border-box; display:block;
+  }
+  .logo-card .entry-list{ flex:1; margin-bottom:0; padding-left:0; }
   .logo-card .entry-list li + li{ padding-top:18px; border-top:1px dashed var(--line); }
   .logo-card .entry-list .entry-title{ font-weight:700; }
   .logo-card .entry-list .entry-title a{ color:inherit; }
@@ -761,7 +759,7 @@
   function renderYearAccordion(groups, itemRenderer){
     return groups.map(function(g){
       return '<details class="year-block">' +
-        '<summary><span class="marker" aria-hidden="true"></span><h2 class="year-num">' + esc(g.year) + '</h2>' +
+        '<summary><h2 class="year-num">' + esc(g.year) + '</h2>' +
         '<span class="year-count">(<span class="lc">n</span> = ' + g.items.length + ')</span></summary>' +
         '<ul class="entry-list">' + g.items.map(itemRenderer).join("") + '</ul>' +
       '</details>';
@@ -825,7 +823,7 @@
         '</div>';
       }).join("");
       return '<details class="year-block">' +
-        '<summary><span class="marker" aria-hidden="true"></span><h2 class="year-num">' + esc(g.year) + '</h2>' +
+        '<summary><h2 class="year-num">' + esc(g.year) + '</h2>' +
         '<span class="year-count">(<span class="lc">n</span> = ' + g.items.length + ')</span></summary>' +
         sections +
       '</details>';
@@ -911,7 +909,7 @@
         '</div>';
       }).join("");
       return '<details class="year-block">' +
-        '<summary><span class="marker" aria-hidden="true"></span><h2 class="year-num">' + esc(g.year) + '</h2>' +
+        '<summary><h2 class="year-num">' + esc(g.year) + '</h2>' +
         '<span class="year-count">(<span class="lc">n</span> = ' + g.items.length + ')</span></summary>' +
         sections +
       '</details>';
@@ -1140,6 +1138,7 @@
   }
 
   function paint(){
+    app.className = "view-" + view;
     app.innerHTML = renderView(current);
     document.getElementById("site-footer-copyright").textContent = "© " + new Date().getFullYear() + " " + current.name + ". All rights reserved.";
     if (view === "home"){ startCycle(current.topics); } else { stopCycle(); }
