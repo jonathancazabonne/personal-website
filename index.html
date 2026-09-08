@@ -102,8 +102,6 @@
   main{ max-width:1600px; margin:0 auto; padding: 0 clamp(20px,6vw,64px) 40px; }
 
   section{ position:relative; padding: clamp(56px,10vw,104px) 0 clamp(40px,7vw,72px); border-left:1px solid transparent; }
-  section + section{ border-top:1px solid var(--line); }
-  #app.view-home section + section{ border-top:none; }
 
   .hero h1{
     margin:0; font-weight:700; font-size:clamp(2.4rem, 6vw, 3.6rem); line-height:1.04;
@@ -145,6 +143,8 @@
   }
   .pull-quote cite{ display:block; margin-top:12px; font-style:normal; font-size:0.85rem; color:var(--muted); }
   .pull-quote cite::before{ content:"— "; }
+  .quote-inner{ transition:opacity .4s ease, transform .4s ease; }
+  .quote-inner.quote-hidden{ opacity:0; transform:translateY(10px); }
 
   #gallery .carousel{ display:block; overflow:visible; padding:0; margin:0; }
   #gallery .carousel-item{ display:none; width:100%; }
@@ -431,7 +431,7 @@
           <ul class="home-menu" id="home-menu" hidden></ul>
         </div>
         <a href="#publications">Publications</a>
-        <a href="#communications">Communication and scientific outreach</a>
+        <a href="#communications">Communication &amp; scientific outreach</a>
         <!-- Conservation page hidden on purpose — see PAGE_ROUTES below to bring it back online -->
         <!-- <a href="#conservation">Conservation</a> -->
         <a href="#study-areas">In the field</a>
@@ -685,8 +685,10 @@
     if (!quotes || !quotes.length) return "";
     var q = quotes[0];
     return '<blockquote class="pull-quote" id="hero-quote">' +
-      '<span id="hero-quote-text">' + esc(q.text) + '</span>' +
-      '<cite id="hero-quote-cite">' + esc(q.attribution || "") + '</cite>' +
+      '<div class="quote-inner" id="hero-quote-inner">' +
+        '<span id="hero-quote-text">' + esc(q.text) + '</span>' +
+        '<cite id="hero-quote-cite">' + esc(q.attribution || "") + '</cite>' +
+      '</div>' +
     '</blockquote>';
   }
 
@@ -1128,12 +1130,18 @@
     if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     var i = 0;
     quoteCycleTimer = setInterval(function(){
-      i = (i + 1) % quotes.length;
-      var q = quotes[i];
-      var textEl = document.getElementById("hero-quote-text");
-      var citeEl = document.getElementById("hero-quote-cite");
-      if (textEl) textEl.textContent = q.text;
-      if (citeEl) citeEl.textContent = q.attribution || "";
+      var inner = document.getElementById("hero-quote-inner");
+      if (!inner) return;
+      inner.classList.add("quote-hidden");
+      setTimeout(function(){
+        i = (i + 1) % quotes.length;
+        var q = quotes[i];
+        var textEl = document.getElementById("hero-quote-text");
+        var citeEl = document.getElementById("hero-quote-cite");
+        if (textEl) textEl.textContent = q.text;
+        if (citeEl) citeEl.textContent = q.attribution || "";
+        inner.classList.remove("quote-hidden");
+      }, 400);
     }, 10000);
   }
   function stopQuoteCycle(){ if (quoteCycleTimer) { clearInterval(quoteCycleTimer); quoteCycleTimer = null; } }
@@ -1386,11 +1394,10 @@
 
   // ---------- Home section jump-menu ----------
   function homeSectionsMenu(d){
-    var items = [{ id: "top", label: "Top" }, { id: "about", label: "About" }];
+    var items = [];
     if (d.researchAxes && d.researchAxes.length) items.push({ id: "research-axes", label: "Research axes" });
     if (d.education && d.education.length) items.push({ id: "education", label: "Education" });
     if (d.researchStays && d.researchStays.length) items.push({ id: "research-stays", label: "Professional experience & research stays" });
-    if (d.homeGallery && d.homeGallery.length) items.push({ id: "gallery", label: "Gallery" });
     if (d.training && d.training.length) items.push({ id: "training", label: "Scientific and professional training" });
     if (d.scientificAffiliations && d.scientificAffiliations.length) items.push({ id: "scientific-affiliations", label: "Main scientific affiliations" });
     if (d.communityEngagement && d.communityEngagement.length) items.push({ id: "community-engagement", label: "Community & volunteer engagement" });
