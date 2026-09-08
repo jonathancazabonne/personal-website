@@ -387,7 +387,7 @@ collections:
               - { label: "Caption", name: "caption", widget: "string" }
 
   - name: "quotes"
-    label: "Quotes"
+    label: "Quotes (rotate under your name on Home)"
     files:
       - file: "data/quotes.json"
         label: "Quotes"
@@ -396,15 +396,10 @@ collections:
           - label: "Quotes"
             name: "items"
             widget: "list"
-            summary: "{{placement}} — {{attribution}}"
+            summary: "{{attribution}}"
             fields:
               - { label: "Quote text", name: "text", widget: "text" }
               - { label: "Attribution", name: "attribution", widget: "string" }
-              - label: "Placement"
-                name: "placement"
-                widget: "select"
-                options: ["hero", "axis-0", "axis-1", "axis-2", "study-areas"]
-                hint: "hero = Home page opening; axis-0/1/2 = the 3 Research Axes cards in order; study-areas = In the field page"
 
   - name: "cvSettings"
     label: "CV settings"

@@ -86,6 +86,19 @@
     .topnav{ width:100%; gap:6px 16px; font-size:0.86rem; }
   }
 
+  .home-nav-item{ position:relative; }
+  .home-menu{
+    list-style:none; margin:0; padding:8px; position:absolute; top:calc(100% + 12px); left:0;
+    background:var(--bg); border:1px solid var(--line); border-radius:10px; box-shadow:var(--shadow);
+    min-width:260px; max-height:70vh; overflow-y:auto; z-index:20;
+  }
+  .home-menu li + li{ margin-top:2px; }
+  .home-menu a{
+    display:block; padding:8px 10px; border-radius:6px; font-family:var(--font); font-weight:400;
+    font-size:0.9rem; color:var(--ink); text-decoration:none; border-bottom:none; white-space:normal;
+  }
+  .home-menu a:hover, .home-menu a:focus{ background:var(--surface); color:var(--accent); }
+
   main{ max-width:1600px; margin:0 auto; padding: 0 clamp(20px,6vw,64px) 40px; }
 
   section{ position:relative; padding: clamp(56px,10vw,104px) 0 clamp(40px,7vw,72px); border-left:1px solid transparent; }
@@ -132,12 +145,6 @@
   }
   .pull-quote cite{ display:block; margin-top:12px; font-style:normal; font-size:0.85rem; color:var(--muted); }
   .pull-quote cite::before{ content:"— "; }
-  .axis-card-quote{
-    border-left:3px solid var(--accent); margin-top:18px; padding:1px 0 1px 16px;
-    font-style:italic; font-size:0.92rem; line-height:1.5; color:var(--ink);
-  }
-  .axis-card-quote cite{ display:block; margin-top:6px; font-style:normal; font-size:0.78rem; color:var(--muted); }
-  .axis-card-quote cite::before{ content:"— "; }
 
   #gallery .carousel{ display:block; overflow:visible; padding:0; margin:0; }
   #gallery .carousel-item{ display:none; width:100%; }
@@ -419,9 +426,12 @@
         <span class="wordmark-role">Mycologist, M.Sc | Ph.D. candidate</span>
       </div>
       <nav class="topnav">
-        <a href="#top">Home</a>
+        <div class="home-nav-item">
+          <a href="#top" id="home-nav-link" aria-haspopup="true" aria-expanded="false" aria-controls="home-menu">Home</a>
+          <ul class="home-menu" id="home-menu" hidden></ul>
+        </div>
         <a href="#publications">Publications</a>
-        <a href="#communications">Outreach</a>
+        <a href="#communications">Communication and scientific outreach</a>
         <!-- Conservation page hidden on purpose — see PAGE_ROUTES below to bring it back online -->
         <!-- <a href="#conservation">Conservation</a> -->
         <a href="#study-areas">In the field</a>
@@ -671,18 +681,16 @@
       '<ul class="bullet-list">' + d.publicEngagement.map(renderPublicEngagementItem).join("") + '</ul></section>';
   }
 
-  function findQuote(d, placement){
-    return (d.quotes || []).filter(function(q){ return q.placement === placement; })[0];
-  }
-
-  function renderQuoteBlock(q, cls){
-    if (!q) return "";
-    return '<blockquote class="' + cls + '">' + esc(q.text) +
-      (q.attribution ? '<cite>' + esc(q.attribution) + '</cite>' : '') +
+  function renderQuoteCycler(quotes){
+    if (!quotes || !quotes.length) return "";
+    var q = quotes[0];
+    return '<blockquote class="pull-quote" id="hero-quote">' +
+      '<span id="hero-quote-text">' + esc(q.text) + '</span>' +
+      '<cite id="hero-quote-cite">' + esc(q.attribution || "") + '</cite>' +
     '</blockquote>';
   }
 
-  function renderResearchAxisItem(a, idx, d){
+  function renderResearchAxisItem(a){
     var imageHtml = a.image
       ? '<div class="axis-card-image"><img src="' + esc(a.image) + '" alt="" loading="lazy" /></div>'
       : '<div class="axis-card-image empty">No photo yet</div>';
@@ -690,14 +698,13 @@
       imageHtml +
       '<h3 class="axis-card-title">' + esc(a.title) + '</h3>' +
       '<p class="axis-card-text">' + esc(a.description) + '</p>' +
-      renderQuoteBlock(findQuote(d, "axis-" + idx), "axis-card-quote") +
     '</div>';
   }
   function renderResearchAxesView(d){
     if (!d.researchAxes || !d.researchAxes.length) return "";
     return '<section id="research-axes">' +
       '<h2>Research axes</h2>' +
-      '<div class="axes-grid">' + d.researchAxes.map(function(a, idx){ return renderResearchAxisItem(a, idx, d); }).join("") + '</div>' +
+      '<div class="axes-grid">' + d.researchAxes.map(renderResearchAxisItem).join("") + '</div>' +
     '</section>';
   }
 
@@ -732,7 +739,7 @@
       '<section id="top" class="hero">' +
         '<h1 id="f-name" contenteditable="false">' + esc(d.name) + '</h1>' +
         '<p class="hero-line"><span class="fixed-word">Fungal&nbsp;</span><span class="cycle-word" id="topic-cycle"></span></p>' +
-        renderQuoteBlock(findQuote(d, "hero"), "pull-quote") +
+        renderQuoteCycler(d.quotes) +
       '</section>' +
       '<section id="about">' +
         '<div class="about-layout">' +
@@ -1074,7 +1081,6 @@
     return '' +
       '<section id="study-top">' +
         '<h1 class="page-title">In the field</h1>' +
-        renderQuoteBlock(findQuote(d, "study-areas"), "pull-quote") +
       '</section>' +
       areas;
   }
@@ -1114,6 +1120,24 @@
   }
   function stopCycle(){ if (cycleTimer) { clearTimeout(cycleTimer); cycleTimer = null; } }
 
+  // ---------- rotating hero quote ----------
+  var quoteCycleTimer = null;
+  function startQuoteCycle(quotes){
+    var el = document.getElementById("hero-quote");
+    if (!el || !quotes || quotes.length < 2) return;
+    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    var i = 0;
+    quoteCycleTimer = setInterval(function(){
+      i = (i + 1) % quotes.length;
+      var q = quotes[i];
+      var textEl = document.getElementById("hero-quote-text");
+      var citeEl = document.getElementById("hero-quote-cite");
+      if (textEl) textEl.textContent = q.text;
+      if (citeEl) citeEl.textContent = q.attribution || "";
+    }, 10000);
+  }
+  function stopQuoteCycle(){ if (quoteCycleTimer) { clearInterval(quoteCycleTimer); quoteCycleTimer = null; } }
+
   // ---------- app state / paint ----------
   var app = document.getElementById("app");
   var current = null;
@@ -1141,7 +1165,8 @@
     app.className = "view-" + view;
     app.innerHTML = renderView(current);
     document.getElementById("site-footer-copyright").textContent = "© " + new Date().getFullYear() + " " + current.name + ". All rights reserved.";
-    if (view === "home"){ startCycle(current.topics); } else { stopCycle(); }
+    stopQuoteCycle();
+    if (view === "home"){ startCycle(current.topics); startQuoteCycle(current.quotes); } else { stopCycle(); }
     wireViewHandlers();
   }
 
@@ -1358,6 +1383,49 @@
       window.scrollTo(0, 0);
     }
   }
+
+  // ---------- Home section jump-menu ----------
+  function homeSectionsMenu(d){
+    var items = [{ id: "top", label: "Top" }, { id: "about", label: "About" }];
+    if (d.researchAxes && d.researchAxes.length) items.push({ id: "research-axes", label: "Research axes" });
+    if (d.education && d.education.length) items.push({ id: "education", label: "Education" });
+    if (d.researchStays && d.researchStays.length) items.push({ id: "research-stays", label: "Professional experience & research stays" });
+    if (d.homeGallery && d.homeGallery.length) items.push({ id: "gallery", label: "Gallery" });
+    if (d.training && d.training.length) items.push({ id: "training", label: "Scientific and professional training" });
+    if (d.scientificAffiliations && d.scientificAffiliations.length) items.push({ id: "scientific-affiliations", label: "Main scientific affiliations" });
+    if (d.communityEngagement && d.communityEngagement.length) items.push({ id: "community-engagement", label: "Community & volunteer engagement" });
+    if (d.awards && d.awards.length) items.push({ id: "awards", label: "Awards & funding" });
+    if (d.memberships && d.memberships.length) items.push({ id: "memberships", label: "Society memberships" });
+    if (d.committees && d.committees.length) items.push({ id: "committees", label: "Organizing committees" });
+    if ((d.editorialRoles && d.editorialRoles.length) || (d.peerReview && d.peerReview.length)) items.push({ id: "editorial", label: "Editorial duties" });
+    if (d.teaching && d.teaching.length) items.push({ id: "teaching", label: "Teaching" });
+    if (d.publicEngagement && d.publicEngagement.length) items.push({ id: "public-engagement", label: "Public engagement" });
+    return items;
+  }
+  var homeMenuEl = document.getElementById("home-menu");
+  var homeLinkEl = document.getElementById("home-nav-link");
+  function toggleHomeMenu(open){
+    var next = open != null ? open : homeMenuEl.hidden;
+    homeMenuEl.hidden = !next;
+    homeLinkEl.setAttribute("aria-expanded", String(next));
+  }
+  homeLinkEl.addEventListener("click", function(){
+    if (current){
+      homeMenuEl.innerHTML = homeSectionsMenu(current).map(function(it){
+        return '<li><a href="#' + it.id + '">' + esc(it.label) + '</a></li>';
+      }).join("");
+    }
+    toggleHomeMenu(true);
+  });
+  homeMenuEl.addEventListener("click", function(ev){
+    if (ev.target.closest("a")) toggleHomeMenu(false);
+  });
+  document.addEventListener("click", function(ev){
+    if (!ev.target.closest(".home-nav-item")) toggleHomeMenu(false);
+  });
+  document.addEventListener("keydown", function(ev){
+    if (ev.key === "Escape") toggleHomeMenu(false);
+  });
 
   // ---------- timeline tap-to-open (desktop keeps hover; touch/keyboard get a toggle) ----------
   app.addEventListener("click", function(ev){

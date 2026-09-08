@@ -2,28 +2,23 @@
   "items": [
     {
       "text": "We are unthinkable without fungi, yet seldom do we think about them. It is an ignorance we can't afford to sustain.",
-      "attribution": "FaunaFloraFunga (FFF) initiative",
-      "placement": "hero"
+      "attribution": "FaunaFloraFunga (FFF) initiative"
     },
     {
       "text": "Les champignons sont si fugaces, si polymorphes, qu'avec eux nous devons nous contenter de connaître nos incertitudes.",
-      "attribution": "Georges Becker, 1974",
-      "placement": "axis-0"
+      "attribution": "Georges Becker, 1974"
     },
     {
       "text": "En réalité nous sommes démesurés. Nous faisons partie des rares espèces qui aient franchi la taille [...] du millimètre.",
-      "attribution": "Marc-André Selosse",
-      "placement": "axis-1"
+      "attribution": "Marc-André Selosse"
     },
     {
       "text": "Fungi? Why should I care about fungi? If I save the plants and animals, won't the fungi be fine as well? Actually, it's very likely the real truth is the other way around.",
-      "attribution": "George Christie, 2024",
-      "placement": "axis-2"
+      "attribution": "George Christie, 2024"
     },
     {
       "text": "Si vous voulez vraiment savoir ce que l'intelligence est à la plante, et bien essayez les branchies de l'Homme...",
-      "attribution": "Marc-André Selosse, Colloque JNE",
-      "placement": "study-areas"
+      "attribution": "Marc-André Selosse, Colloque JNE"
     }
   ]
 }
