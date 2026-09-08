@@ -24,9 +24,7 @@ collections:
           - { label: "About photo (next to bio, on Home)", name: "aboutPhoto", widget: "image", required: false }
           - { label: "About photo caption", name: "aboutPhotoCaption", widget: "string", required: false }
           - { label: "Email", name: "email", widget: "string" }
-          - { label: "Contact page intro", name: "contactIntro", widget: "text" }
-          - { label: "Contact photo URL", name: "contactPhoto", widget: "string", required: false }
-          - { label: "Address", name: "address", widget: "text" }
+          - { label: "Address (shown in the site footer)", name: "address", widget: "text" }
           - { label: "Publications page intro", name: "publicationsIntro", widget: "text" }
           - { label: "Outreach page intro", name: "communicationsIntro", widget: "text" }
           - { label: "Conservation timeline intro", name: "timelineIntro", widget: "text" }
@@ -56,10 +54,10 @@ collections:
               - { label: "Institution logo (groups consecutive degrees at the same institution into one card)", name: "logo", widget: "image", required: false }
 
   - name: "links"
-    label: "Links"
+    label: "Links (shown in the site footer)"
     files:
       - file: "data/links.json"
-        label: "Links"
+        label: "Links (shown in the site footer)"
         name: "links"
         fields:
           - label: "Links"
