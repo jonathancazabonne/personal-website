@@ -10,7 +10,8 @@
       "supervisors": "Maxence Martin (IRF-UQAT) et Mélanie Roy (Maître de conférences à l'Université Paul Sabatier Toulouse III et délégation IRD à l'IFAECI)",
       "committee": "Christine Martineau (Centre de foresterie des Laurentides) et Antoine Brin (École d'ingénieur de Purpan, UMR Dynafor)",
       "grade": "",
-      "logo": "images/logo-uqat.jpg"
+      "logo": "images/logo-uqat.jpg",
+      "institutionUrl": "https://www.uqat.ca/irf/programmes/doctorat-en-ecologie-et-amenagement-des-ecosystemes-forestiers/"
     },
     {
       "years": "2022–2024",
@@ -22,7 +23,8 @@
       "supervisors": "Miguel Montoro Girona (IRF-UQAT) et Annie DesRochers (IRF-UQAT)",
       "committee": "Christine Martineau et Mélanie Roy",
       "grade": "4,17/4,30 - Excellent",
-      "logo": "images/logo-uqat.jpg"
+      "logo": "images/logo-uqat.jpg",
+      "institutionUrl": "https://www.uqat.ca/irf/programmes/maitrise-en-ecologie/"
     },
     {
       "years": "2018–2021",
@@ -34,7 +36,8 @@
       "supervisors": "",
       "committee": "",
       "grade": "Rang 3/190 – avec les honneurs",
-      "logo": "images/logo-univ-toulouse.png"
+      "logo": "images/logo-univ-toulouse.png",
+      "institutionUrl": "https://www.utoulouse.fr/decouvrir-nos-diplomes/licence-mention-sciences-de-la-vie"
     }
   ]
 }

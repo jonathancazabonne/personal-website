@@ -25,10 +25,7 @@ collections:
           - { label: "About photo caption", name: "aboutPhotoCaption", widget: "string", required: false }
           - { label: "Email", name: "email", widget: "string" }
           - { label: "Address (shown in the site footer)", name: "address", widget: "text" }
-          - { label: "Publications page intro", name: "publicationsIntro", widget: "text" }
-          - { label: "Outreach page intro", name: "communicationsIntro", widget: "text" }
           - { label: "Conservation timeline intro", name: "timelineIntro", widget: "text" }
-          - { label: "Study areas page intro", name: "studyAreasIntro", widget: "text" }
 
   - name: "education"
     label: "Education"
@@ -45,6 +42,7 @@ collections:
               - { label: "Years", name: "years", widget: "string" }
               - { label: "Degree", name: "degree", widget: "string" }
               - { label: "Institution", name: "institution", widget: "string" }
+              - { label: "Institution link (makes the institution name clickable)", name: "institutionUrl", widget: "string", required: false }
               - { label: "Detail (thesis title, supervisors, etc.)", name: "detail", widget: "text", required: false }
               - { label: "Link (thesis PDF, etc.)", name: "url", widget: "string", required: false }
               - { label: "Thesis title (French, for CV)", name: "thesisTitleFr", widget: "text", required: false }
@@ -179,6 +177,7 @@ collections:
             fields:
               - { label: "Year", name: "year", widget: "number", value_type: "int" }
               - { label: "Title", name: "title", widget: "string" }
+              - { label: "Title link (makes the title clickable)", name: "url", widget: "string", required: false }
               - { label: "Provider", name: "provider", widget: "string" }
               - { label: "Hours", name: "hours", widget: "string" }
               - { label: "Provider logo (groups consecutive entries sharing the same logo into one card)", name: "logo", widget: "image", required: false }
@@ -202,6 +201,8 @@ collections:
               - { label: "Supervisors", name: "supervisors", widget: "text", required: false }
               - { label: "Logo 1 (groups consecutive entries sharing the same pair of logos into one card)", name: "logo", widget: "image", required: false }
               - { label: "Logo 2 (optional second logo, e.g. a co-supervising lab)", name: "logo2", widget: "image", required: false }
+              - { label: "Link 1 (for the institution name matching Logo 1 — if the institution has one name, use this)", name: "url", widget: "string", required: false }
+              - { label: "Link 2 (for the institution name matching Logo 2, when the institution text has two parts separated by an em dash)", name: "url2", widget: "string", required: false }
 
   - name: "scientificAffiliations"
     label: "Main scientific affiliations"
@@ -216,6 +217,7 @@ collections:
             summary: "{{organization}}"
             fields:
               - { label: "Organization", name: "organization", widget: "string" }
+              - { label: "Organization link (makes the name clickable)", name: "url", widget: "string", required: false }
               - { label: "Role", name: "role", widget: "string", required: false }
               - { label: "Period (leave blank if ongoing/not dated)", name: "period", widget: "string", required: false }
               - { label: "Logo 1", name: "logo", widget: "image", required: false }
@@ -383,6 +385,26 @@ collections:
             fields:
               - { label: "Photo", name: "src", widget: "image" }
               - { label: "Caption", name: "caption", widget: "string" }
+
+  - name: "quotes"
+    label: "Quotes"
+    files:
+      - file: "data/quotes.json"
+        label: "Quotes"
+        name: "quotes"
+        fields:
+          - label: "Quotes"
+            name: "items"
+            widget: "list"
+            summary: "{{placement}} — {{attribution}}"
+            fields:
+              - { label: "Quote text", name: "text", widget: "text" }
+              - { label: "Attribution", name: "attribution", widget: "string" }
+              - label: "Placement"
+                name: "placement"
+                widget: "select"
+                options: ["hero", "axis-0", "axis-1", "axis-2", "study-areas"]
+                hint: "hero = Home page opening; axis-0/1/2 = the 3 Research Axes cards in order; study-areas = In the field page"
 
   - name: "cvSettings"
     label: "CV settings"

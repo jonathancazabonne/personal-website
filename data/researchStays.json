@@ -7,7 +7,9 @@
       "description": "Stage : Analyses bioinformatiques et statistiques de données d'ADN environnemental sur les communautés fongiques des sols de vieilles forêts et forêts anciennes en milieu boréal et en France.",
       "supervisors": "Antoine Brin",
       "logo": "images/logo-purpan.png",
-      "logo2": "images/logo-dynafor.png"
+      "logo2": "images/logo-dynafor.png",
+      "url": "https://www.purpan.fr",
+      "url2": "https://www.dynafor.fr"
     },
     {
       "institution": "Université de Ghent — Research group Mycology",
@@ -16,7 +18,9 @@
       "description": "Visite des locaux et des membres de la TeamLaboul, accueilli par Danny Haelewaters.",
       "supervisors": "Danny Haelewaters",
       "logo": "images/logo-ugent.png",
-      "logo2": "images/logo-teamlaboul.jpg"
+      "logo2": "images/logo-teamlaboul.jpg",
+      "url": "https://www.ugent.be/en",
+      "url2": "https://beetlehangers.org/about-us/"
     },
     {
       "institution": "Université du Québec à Montréal (UQAM) & UQAT — Département d'études littéraires et IRF",
@@ -25,7 +29,9 @@
       "description": "Ateliers d'écriture et de réflexion littéraire, dans le cadre du groupe de recherche Réécrire la forêt boréale. Respectivement à Montréal et à Amos.",
       "supervisors": "Jonathan Hope, Cassie Bérard, Catherine Cyr, Miguel Montoro Girona (organisateur.rice.s)",
       "logo": "images/logo-uqam.png",
-      "logo2": "images/logo-uqat.jpg"
+      "logo2": "images/logo-uqat.jpg",
+      "url": "https://litterature.uqam.ca",
+      "url2": ""
     },
     {
       "institution": "Centre de foresterie des Laurentides (CFL) — Laboratoire de génomique environnementale de Dr. Christine Martineau",
@@ -34,7 +40,9 @@
       "description": "Séquençage illumina du mycobiome du sol et barcodage ADN de spécimens secs de fongarium.",
       "supervisors": "Christine Martineau, Marie-Josée Morency et Marie-Josée Bergeron",
       "logo": "images/logo-cfl.png",
-      "logo2": ""
+      "logo2": "",
+      "url": "https://ressources-naturelles.canada.ca/science-donnees/science-recherche/centre-recherche/centre-foresterie-laurentides",
+      "url2": ""
     },
     {
       "institution": "Muséum d'Histoire Naturelle de Toulouse — Jardins botaniques de Borderouge, Toulouse métropole",
@@ -43,7 +51,9 @@
       "description": "Inventaires de macrochampignons, de lichens, et de myxomycètes.",
       "supervisors": "Olivier Puertas et Xavier Bossier",
       "logo": "images/logo-museum-toulouse.gif",
-      "logo2": ""
+      "logo2": "",
+      "url": "",
+      "url2": "https://museum.toulouse-metropole.fr/decouvrir-les-jardins-du-museum-a-borderouge/"
     },
     {
       "institution": "Université Toulouse III – Paul Sabatier — UMR Évolution et diversité biologique",
@@ -52,7 +62,9 @@
       "description": "Projet \"Description of new species of the genus Cortinarius (Agaricales, Cortinariaceae) from New-Caledonia\".",
       "supervisors": "Monique Gardes, Patricia Jargeat, Hervé Gryta, Guillaume Eyssartier, Fabian Carriconde, et Marc Ducousso",
       "logo": "images/logo-edb.jpeg",
-      "logo2": ""
+      "logo2": "",
+      "url": "",
+      "url2": "https://crbe.cnrs.fr"
     },
     {
       "institution": "Université Toulouse III – Paul Sabatier — UMR Évolution et diversité biologique",
@@ -61,7 +73,9 @@
       "description": "Projet \"Including rare lineages in plant phylogenomic studies by using herbarium collections\" et projet \"On the use of plastomes to understand the degeneration of ndh genes in the Lentibulariaceae family\".",
       "supervisors": "Guillaume Besnard et Pauline Raimondeau",
       "logo": "images/logo-edb.jpeg",
-      "logo2": ""
+      "logo2": "",
+      "url": "",
+      "url2": "https://crbe.cnrs.fr"
     },
     {
       "institution": "Muséum d'histoire naturelle de Toulouse et jardin botanique Henri-Gaussen, France",
@@ -70,7 +84,9 @@
       "description": "Médiateur scientifique.",
       "supervisors": "",
       "logo": "images/logo-museum-toulouse.gif",
-      "logo2": "images/logo-jardin-henri-gaussen.jpg"
+      "logo2": "images/logo-jardin-henri-gaussen.jpg",
+      "url": "https://museum.toulouse-metropole.fr/le-jardin-botanique/",
+      "url2": ""
     },
     {
       "institution": "Muséum d'Histoire Naturelle de Toulouse — Jardins botaniques Henri-Gaussen",
@@ -79,7 +95,9 @@
       "description": "Formation avancée en taxonomie des plantes et identification sur le terrain des Magnoliophyta, gestion d'herbiers, revue de littérature: \"Plants with Medicinal Proprieties: A Review\".",
       "supervisors": "Fatiha El-Babili",
       "logo": "images/logo-museum-toulouse.gif",
-      "logo2": "images/logo-jardin-henri-gaussen.jpg"
+      "logo2": "images/logo-jardin-henri-gaussen.jpg",
+      "url": "",
+      "url2": "https://museum.toulouse-metropole.fr/le-jardin-botanique/"
     }
   ]
 }

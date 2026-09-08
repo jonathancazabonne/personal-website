@@ -1,11 +1,6 @@
 {
   "items": [
     {
-      "icon": "link",
-      "label": "Personal website",
-      "href": "https://sites.google.com/view/jonathan-cazabonne"
-    },
-    {
       "icon": "researchgate",
       "label": "ResearchGate",
       "href": "https://www.researchgate.net/profile/Jonathan-Cazabonne"
@@ -29,26 +24,6 @@
       "icon": "link",
       "label": "Bluesky",
       "href": "https://bsky.app/profile/jonathancazabonne.bsky.social"
-    },
-    {
-      "icon": "link",
-      "label": "TeamLaboul",
-      "href": "https://beetlehangers.org/about-us/"
-    },
-    {
-      "icon": "link",
-      "label": "Réécrire la forêt boréale",
-      "href": "https://reecrire.uqam.ca"
-    },
-    {
-      "icon": "link",
-      "label": "Mycosphaera",
-      "href": "https://www.mycosphaera.ca"
-    },
-    {
-      "icon": "institution",
-      "label": "Centre d'étude sur la forêt (CEF)",
-      "href": "https://www.cef-cfr.ca/pmwiki.php?n=Membres.JonathanCazabonne"
     }
   ]
 }
