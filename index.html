@@ -239,6 +239,14 @@
   }
   .logo-card .entry-list{ flex:1; margin-bottom:0; padding-left:0; }
   .logo-card .entry-list li + li{ padding-top:18px; border-top:1px dashed var(--line); }
+
+  .timeline-list{ position:relative; }
+  .timeline-list::before{
+    content:""; position:absolute; left:24px; top:24px; bottom:24px; width:2px;
+    background:var(--line); z-index:0;
+  }
+  .timeline-list .logo-card{ position:relative; z-index:1; }
+  .timeline-list .logo-card-logo{ position:relative; z-index:2; }
   .logo-card .entry-list .entry-title{ font-weight:700; }
   .logo-card .entry-list .entry-title a{ color:inherit; }
 
@@ -554,51 +562,41 @@
     if (!d.education || !d.education.length) return "";
     return '<section id="education">' +
       '<h2>Education</h2>' +
-      groupByLogo(d.education, renderEducationItem) +
+      '<div class="timeline-list">' + groupByLogo(d.education, renderEducationItem) + '</div>' +
     '</section>';
   }
 
   function renderTrainingItem(x){
     var titleHtml = linkedText(x.title, x.url) + (x.hours ? ' (' + esc(x.hours) + ')' : '');
-    return '<li><span class="entry-title">' + titleHtml + '</span>' +
-      '<span class="entry-meta">' + esc(x.provider) + '</span>' +
-      '<span class="entry-meta">' + esc(x.year) + '</span></li>';
+    return '<li>' + titleHtml + ' — <span class="meta">' + esc(x.provider) + '</span> <span class="meta">(' + esc(x.year) + ')</span></li>';
   }
   function renderTrainingView(d){
     if (!d.training || !d.training.length) return "";
-    return '<section id="training">' +
-      '<h2>Scientific and professional training</h2>' +
-      groupByLogo(d.training, renderTrainingItem) +
-    '</section>';
+    return '<section id="training"><h2>Scientific and professional training</h2>' +
+      '<ul class="bullet-list">' + d.training.map(renderTrainingItem).join("") + '</ul></section>';
   }
 
   function renderScientificAffiliationItem(x){
-    return '<li><span class="entry-title">' + linkedText(x.organization, x.url) + '</span>' +
-      (x.role ? '<span class="entry-meta">' + esc(x.role) + '</span>' : '') +
-      (x.period ? '<span class="entry-meta">' + esc(x.period) + '</span>' : '') +
+    return '<li>' + linkedText(x.organization, x.url) + ': <span class="meta">' + esc(x.role) + '</span>' +
+      (x.period ? ' <span class="meta">(' + esc(x.period) + ')</span>' : '') +
       '</li>';
   }
   function renderScientificAffiliationsView(d){
     if (!d.scientificAffiliations || !d.scientificAffiliations.length) return "";
-    return '<section id="scientific-affiliations">' +
-      '<h2>Main scientific affiliations</h2>' +
-      groupByLogo(d.scientificAffiliations, renderScientificAffiliationItem) +
-    '</section>';
+    return '<section id="scientific-affiliations"><h2>Main scientific affiliations</h2>' +
+      '<ul class="bullet-list">' + d.scientificAffiliations.map(renderScientificAffiliationItem).join("") + '</ul></section>';
   }
 
   function renderCommunityEngagementItem(x){
-    return '<li><span class="entry-title">' + esc(x.organization) + '</span>' +
-      (x.role ? '<span class="entry-meta">' + esc(x.role) + '</span>' : '') +
-      (x.description ? '<span class="entry-meta">' + esc(x.description) + '</span>' : '') +
-      (x.period ? '<span class="entry-meta">' + esc(x.period) + '</span>' : '') +
+    return '<li>' + esc(x.organization) + ': <span class="meta">' + esc(x.role) + '</span>' +
+      (x.description ? ' — <span class="meta">' + esc(x.description) + '</span>' : '') +
+      (x.period ? ' <span class="meta">(' + esc(x.period) + ')</span>' : '') +
       '</li>';
   }
   function renderCommunityEngagementView(d){
     if (!d.communityEngagement || !d.communityEngagement.length) return "";
-    return '<section id="community-engagement">' +
-      '<h2>Community &amp; volunteer engagement</h2>' +
-      groupByLogo(d.communityEngagement, renderCommunityEngagementItem) +
-    '</section>';
+    return '<section id="community-engagement"><h2>Community &amp; volunteer engagement</h2>' +
+      '<ul class="bullet-list">' + d.communityEngagement.map(renderCommunityEngagementItem).join("") + '</ul></section>';
   }
 
   function renderResearchStayItem(x){
@@ -612,16 +610,14 @@
     if (!d.researchStays || !d.researchStays.length) return "";
     return '<section id="research-stays">' +
       '<h2>Professional experience &amp; research stays</h2>' +
-      groupByLogo(d.researchStays, renderResearchStayItem) +
+      '<div class="timeline-list">' + groupByLogo(d.researchStays, renderResearchStayItem) + '</div>' +
     '</section>';
   }
 
   function renderAwardItem(x){
     var amt = x.amount != null ? ' (CAD $' + Number(x.amount).toLocaleString("en-CA") + ')' : '';
-    var parts = [esc(x.title) + amt];
-    if (x.status) parts.push('<span class="meta">' + esc(x.status) + '</span>');
-    parts.push('<span class="meta">' + esc(x.year) + '</span>');
-    return '<li>' + parts.join(" — ") + '</li>';
+    var statusHtml = x.status ? ' — <span class="meta">' + esc(x.status) + '</span>' : '';
+    return '<li>' + esc(x.title) + amt + statusHtml + ' <span class="meta">(' + esc(x.year) + ')</span></li>';
   }
   function renderAwardsView(d){
     if (!d.awards || !d.awards.length) return "";
@@ -630,7 +626,8 @@
   }
 
   function renderMembershipItem(x){
-    return '<li>' + esc(x.organization) + ' — <span class="meta">' + esc(x.role) + '</span> — <span class="meta">' + esc(x.period) + '</span></li>';
+    return '<li>' + esc(x.organization) + ': <span class="meta">' + esc(x.role) + '</span>' +
+      (x.period ? ' <span class="meta">(' + esc(x.period) + ')</span>' : '') + '</li>';
   }
   function renderMembershipsView(d){
     if (!d.memberships || !d.memberships.length) return "";
@@ -639,7 +636,7 @@
   }
 
   function renderCommitteeItem(x){
-    return '<li>' + esc(x.description) + ' — <span class="meta">' + esc(x.year) + '</span></li>';
+    return '<li>' + esc(x.description) + ' <span class="meta">(' + esc(x.year) + ')</span></li>';
   }
   function renderCommitteesView(d){
     if (!d.committees || !d.committees.length) return "";
@@ -648,14 +645,14 @@
   }
 
   function renderEditorialItem(x){
-    return '<li>' + esc(x.description) + (x.period ? ' — <span class="meta">' + esc(x.period) + '</span>' : '') + '</li>';
+    return '<li>' + esc(x.description) + (x.period ? ' <span class="meta">(' + esc(x.period) + ')</span>' : '') + '</li>';
   }
   function renderEditorialView(d){
     var hasRoles = d.editorialRoles && d.editorialRoles.length;
     var hasReview = d.peerReview && d.peerReview.length;
     if (!hasRoles && !hasReview) return "";
     var reviewLi = hasReview
-      ? '<li>Peer review — <span class="meta">' +
+      ? '<li>Peer review: <span class="meta">' +
         d.peerReview.map(function(r){ return esc(r.journal) + " (" + r.count + ")"; }).join(", ") + '</span></li>'
       : "";
     return '<section id="editorial"><h2>Editorial duties</h2><ul class="bullet-list">' +
@@ -664,7 +661,7 @@
 
   function renderTeachingItem(x){
     return '<li>' + esc(x.title) + (x.hours ? ' (' + esc(x.hours) + ')' : '') +
-      ' — <span class="meta">' + esc(x.institution) + '</span> — <span class="meta">' + esc(x.year) + '</span></li>';
+      ' — <span class="meta">' + esc(x.institution) + '</span> <span class="meta">(' + esc(x.year) + ')</span></li>';
   }
   function renderTeachingView(d){
     if (!d.teaching || !d.teaching.length) return "";
@@ -673,7 +670,7 @@
   }
 
   function renderPublicEngagementItem(x){
-    return '<li>' + esc(x.title) + ' — <span class="meta">' + esc(x.description) + '</span> — <span class="meta">' + esc(x.year) + '</span></li>';
+    return '<li>' + esc(x.title) + ' — <span class="meta">' + esc(x.description) + '</span> <span class="meta">(' + esc(x.year) + ')</span></li>';
   }
   function renderPublicEngagementView(d){
     if (!d.publicEngagement || !d.publicEngagement.length) return "";
@@ -1124,9 +1121,39 @@
 
   // ---------- rotating hero quote ----------
   var quoteCycleTimer = null;
+  function measureMaxQuoteHeight(quotes){
+    var real = document.getElementById("hero-quote");
+    if (!real) return 0;
+    var probe = document.createElement("blockquote");
+    probe.className = "pull-quote";
+    probe.style.cssText = "position:absolute; visibility:hidden; height:auto; left:-9999px; top:0; margin:0; width:" + real.clientWidth + "px;";
+    document.body.appendChild(probe);
+    var max = 0;
+    quotes.forEach(function(q){
+      probe.innerHTML = '<div class="quote-inner"><span>' + esc(q.text) + '</span><cite>' + esc(q.attribution || "") + '</cite></div>';
+      max = Math.max(max, probe.scrollHeight);
+    });
+    document.body.removeChild(probe);
+    return max;
+  }
+  function applyQuoteMinHeight(quotes){
+    var el = document.getElementById("hero-quote");
+    if (!el || !quotes || !quotes.length) return;
+    el.style.minHeight = measureMaxQuoteHeight(quotes) + "px";
+  }
+  var quoteResizeHandler = null;
   function startQuoteCycle(quotes){
     var el = document.getElementById("hero-quote");
-    if (!el || !quotes || quotes.length < 2) return;
+    if (!el || !quotes || !quotes.length) return;
+    applyQuoteMinHeight(quotes);
+    if (quoteResizeHandler) window.removeEventListener("resize", quoteResizeHandler);
+    var resizeTimer = null;
+    quoteResizeHandler = function(){
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function(){ applyQuoteMinHeight(quotes); }, 200);
+    };
+    window.addEventListener("resize", quoteResizeHandler);
+    if (quotes.length < 2) return;
     if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     var i = 0;
     quoteCycleTimer = setInterval(function(){
@@ -1142,9 +1169,12 @@
         if (citeEl) citeEl.textContent = q.attribution || "";
         inner.classList.remove("quote-hidden");
       }, 400);
-    }, 6000);
+    }, 10000);
   }
-  function stopQuoteCycle(){ if (quoteCycleTimer) { clearInterval(quoteCycleTimer); quoteCycleTimer = null; } }
+  function stopQuoteCycle(){
+    if (quoteCycleTimer) { clearInterval(quoteCycleTimer); quoteCycleTimer = null; }
+    if (quoteResizeHandler) { window.removeEventListener("resize", quoteResizeHandler); quoteResizeHandler = null; }
+  }
 
   // ---------- app state / paint ----------
   var app = document.getElementById("app");
