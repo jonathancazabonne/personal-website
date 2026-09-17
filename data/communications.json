@@ -2,6 +2,29 @@
   "items": [
     {
       "year": 2026,
+      "type": "Radio interview",
+      "title": "Les actualités scientifiques avec Joël Leblanc et Marianne Desaultels-Marissal : la pleurote jaune",
+      "venue": "Pénélope, avec Pénélope McQuade, Radio-Canada, 16 septembre 2026",
+      "url": "https://ici.radio-canada.ca/ohdio/premiere/emissions/penelope/segments/rattrapage/2478644/actualites-scientifiques-avec-joel-leblanc-et-marianne-desaultels-marissal"
+    },
+    {
+      "year": 2026,
+      "type": "Poster",
+      "title": "Diversité et hétérogénéité locale des communautés fongiques du sol le long d'une chronoséquence post-feu de vieilles forêts boréales",
+      "venue": "19e colloque annuel du CEF, Québec city, 25-26 mai 2026",
+      "url": "#",
+      "authors": "Cazabonne, J.*, Roy, M., Martin, M."
+    },
+    {
+      "year": 2025,
+      "type": "Poster",
+      "title": "Diversité et rôles écologiques des communautés fongiques du sol dans les vieilles forêts boréales de l'est du Canada : perspectives pour la conservation de la fonge forestière",
+      "venue": "18e colloque annuel du CEF, Rimouski, 7-8 mai 2025",
+      "url": "#",
+      "authors": "Cazabonne, J.*, Roy, M., Martin, M."
+    },
+    {
+      "year": 2026,
       "type": "Invited talk",
       "title": "Fungal conservation in Canada and Québec: current state, challenges and ongoing efforts to move it forward",
       "venue": "Online webinar, Ontario Land Trust Alliance Inc., 15 July 2026",
