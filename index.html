@@ -779,7 +779,7 @@
     return escaped;
   }
 
-  var PUB_CATEGORY_ORDER = ["peer-reviewed", "preprint", "correspondence", "book-chapter", "literary", "thesis-report", "bulletin", "popular", "press"];
+  var PUB_CATEGORY_ORDER = ["peer-reviewed", "preprint", "correspondence", "book-chapter", "literary", "thesis-report", "bulletin", "popular", "press", "press-release"];
   var PUB_CATEGORY_LABELS = {
     "peer-reviewed": "Peer-reviewed scientific articles",
     "preprint": "Preprints",
@@ -789,7 +789,8 @@
     "bulletin": "Bulletin articles",
     "literary": "Literary book chapters",
     "popular": "Popular science articles",
-    "press": "Press articles"
+    "press": "Press articles",
+    "press-release": "Press releases"
   };
   var PUB_CATEGORIES = [
     { key: "all", label: "All" },
@@ -801,7 +802,8 @@
     { key: "thesis-report", label: "Theses & reports" },
     { key: "bulletin", label: "Bulletin articles" },
     { key: "popular", label: "Popular science" },
-    { key: "press", label: "Press articles" }
+    { key: "press", label: "Press articles" },
+    { key: "press-release", label: "Press releases" }
   ];
 
   function renderPubItem(p){

@@ -2,6 +2,22 @@
   "items": [
     {
       "year": 2026,
+      "authors": "Cazabonne, J.",
+      "title": "Des découvertes fongiques inédites dans une forêt québécoise menacée par des coupes",
+      "venue": "Nature Québec, 15 avril 2026",
+      "url": "https://naturequebec.org/des-decouvertes-fongiques-inedites-dans-une-foret-quebecoise-menacee-par-des-coupes/",
+      "category": "press-release"
+    },
+    {
+      "year": 2026,
+      "authors": "Cazabonne, J.",
+      "title": "Organisation d'un Mycoblitz lors de la 11e édition du Festival des champignons forestiers du Kamouraska",
+      "venue": "Mycosphaera, 26 août 2026",
+      "url": "files/communique-mycoblitz-kamouraska-2026.pdf",
+      "category": "press-release"
+    },
+    {
+      "year": 2026,
       "authors": "Cazabonne, J., De Wint, F.C., Hughes, M., Martin, T.E., Pan, J.Y. & Haelewaters, D.",
       "title": "La-Bools, Mysterious Fungi that Deserve Your Attention",
       "venue": "Frontiers for Young Minds, 14:1606219",
