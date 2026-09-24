@@ -813,7 +813,7 @@
       : esc(p.title);
     return '<li data-category="' + esc(p.category || "") + '"><span class="entry-title">' +
       titleHtml + '</span>' +
-      '<span class="entry-meta">' + boldAuthorHighlight(p.authors) + '</span>' +
+      (p.authors ? '<span class="entry-meta">' + boldAuthorHighlight(p.authors) + '</span>' : '') +
       '<span class="entry-meta">' + esc(p.venue) + '</span></li>';
   }
 

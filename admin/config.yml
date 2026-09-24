@@ -83,7 +83,7 @@ collections:
             summary: "{{year}} — {{title}}"
             fields:
               - { label: "Year", name: "year", widget: "number", value_type: "int" }
-              - { label: "Authors", name: "authors", widget: "string" }
+              - { label: "Authors (optional — leave blank when the venue already credits the issuer, e.g. a press release)", name: "authors", widget: "string", required: false }
               - { label: "Title", name: "title", widget: "string" }
               - { label: "Venue", name: "venue", widget: "string" }
               - { label: "URL", name: "url", widget: "string" }
