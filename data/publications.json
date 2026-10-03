@@ -2,6 +2,38 @@
   "items": [
     {
       "year": 2026,
+      "authors": "Cazabonne, J.",
+      "title": "Cartographier les champignons mycorhiziens pour mieux les protéger",
+      "venue": "Couvert boréal, 23(4): 39–41, automne 2026",
+      "url": "#",
+      "category": "popular"
+    },
+    {
+      "year": 2026,
+      "authors": "Cazabonne, J.",
+      "title": "Les rôles écologiques des champignons",
+      "venue": "L'Indice bohémien, 29 septembre 2026",
+      "url": "https://indicebohemien.org/2026/09/les-roles-ecologiques-des-champignons/",
+      "category": "popular"
+    },
+    {
+      "year": 2026,
+      "authors": "Fequino, L. et plus de 50 cosignataires (incl. Cazabonne, J.)",
+      "title": "Les jeunes du Québec veulent qu'on protège mieux la biodiversité : est-ce que les élu·es seront au rendez-vous?",
+      "venue": "Les Ateliers de la biodiversité",
+      "url": "https://www.ateliersbiodiversite.org/post/les-jeunes-du-qu%C3%A9bec-veulent-qu-on-prot%C3%A8ge-mieux-la-biodiversit%C3%A9-est-ce-que-les-%C3%A9lu-es-seront-au-r",
+      "category": "press"
+    },
+    {
+      "year": 2026,
+      "authors": "Cazabonne, J. et 19 cosignataires",
+      "title": "Le Québec doit agir contre les champignons envahissants",
+      "venue": "La Presse",
+      "url": "https://www.lapresse.ca/dialogue/opinions/2026-09-28/le-quebec-doit-agir-contre-les-champignons-envahissants.php",
+      "category": "press"
+    },
+    {
+      "year": 2026,
       "authors": "",
       "title": "Des découvertes fongiques inédites dans une forêt québécoise menacée par des coupes",
       "venue": "Nature Québec et Mycosphaera, 15 avril 2026",

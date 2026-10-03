@@ -2,6 +2,20 @@
   "items": [
     {
       "year": 2026,
+      "type": "Radio & press interview",
+      "title": "Un champignon invasif sème l'inquiétude",
+      "venue": "La Presse, 30 septembre 2026",
+      "url": "https://www.lapresse.ca/actualites/sciences/2026-09-29/un-champignon-invasif-seme-l-inquietude.php"
+    },
+    {
+      "year": 2026,
+      "type": "Radio & press interview",
+      "title": "Un champignon envahissant et délicieux nous arrive des États-Unis",
+      "venue": "Radio-Canada, 29 septembre 2026",
+      "url": "https://ici.radio-canada.ca/nouvelle/2287273/pleurote-jaune-champignon-envahissant-delicieux-etats-unis"
+    },
+    {
+      "year": 2026,
       "type": "Radio interview",
       "title": "Les actualités scientifiques avec Joël Leblanc et Marianne Desaultels-Marissal : la pleurote jaune",
       "venue": "Pénélope, avec Pénélope McQuade, Radio-Canada, 16 septembre 2026",
