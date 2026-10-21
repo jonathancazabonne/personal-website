@@ -2,6 +2,14 @@
   "items": [
     {
       "year": 2026,
+      "type": "Invited talk",
+      "title": "Democratizing genomics for fungal conservation: from Québec to the Global Strategy for Fungal Conservation",
+      "venue": "Institut d'étude nordique, 22 octobre 2026",
+      "url": "#",
+      "authors": "Rocheleau-Duplain, M.*, Cazabonne, J."
+    },
+    {
+      "year": 2026,
       "type": "Radio & press interview",
       "title": "Un champignon invasif sème l'inquiétude",
       "venue": "La Presse, 30 septembre 2026",
