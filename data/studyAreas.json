@@ -1,13 +1,81 @@
 {
   "items": [
     {
-      "name": "Old-growth boreal forests — Abitibi-Témiscamingue, Québec",
+      "name": "Esker jack pine forests — Abitibi, Québec",
+      "short": "Esker pine forests",
+      "place": "Eskers near Amos, Abitibi",
+      "country": "Canada",
+      "lat": 48.6,
+      "lng": -78.1,
+      "period": "M.Sc. · 2022–2024",
+      "role": "M.Sc. research",
+      "partners": "",
+      "description": "Soil fungal communities across the vertical zonation of natural jack pine stands on esker landforms — the subject of my M.Sc. research.",
+      "cover": "images/field-esker-1.jpg",
+      "photos": [
+        {
+          "src": "images/field-esker-1.jpg",
+          "caption": "Provisional photo — esker field find"
+        },
+        {
+          "src": "images/field-esker-2.jpg",
+          "caption": "Provisional photo — esker field find"
+        },
+        {
+          "src": "images/field-esker-3.jpg",
+          "caption": "Provisional photo — esker field find"
+        }
+      ]
+    },
+    {
+      "name": "Old-growth mixed boreal forest — Lac Duparquet, Québec",
+      "short": "Lac Duparquet old-growth",
+      "place": "Lac Duparquet Teaching and Research Forest (SERLD), Abitibi-Témiscamingue",
+      "country": "Canada",
+      "lat": 48.5,
+      "lng": -79.4,
+      "period": "Ph.D. · 2024–present",
+      "role": "Ph.D. fieldwork",
+      "partners": "",
       "description": "Soil fungal diversity and ecological functions in old-growth boreal stands of eastern Canada — my current Ph.D. fieldwork, looking at links between fungal communities, forest carbon cycling and canopy structure (airborne LiDAR, Potential Biodiversity Index).",
+      "cover": "images/hero-forest.jpg",
+      "photos": [
+        {
+          "src": "images/hero-forest.jpg",
+          "caption": "Provisional photo — old-growth boreal forest"
+        },
+        {
+          "src": "images/band-canopy.jpg",
+          "caption": "Provisional photo — canopy"
+        }
+      ]
+    },
+    {
+      "name": "MetaMyco — Chamalières biological reserve, France",
+      "short": "Chamalières RBI (MetaMyco)",
+      "place": "Chamalières integral biological reserve (RBI), Cantal",
+      "country": "France",
+      "lat": 45.08,
+      "lng": 2.77,
+      "period": "[X — dates to confirm]",
+      "role": "[X — role to confirm]",
+      "partners": "Office national des forêts (ONF)",
+      "description": "[X — short description of the MetaMyco project to write]",
+      "cover": "",
       "photos": []
     },
     {
-      "name": "Esker pine forests — Abitibi, Québec",
-      "description": "Soil fungal communities across the vertical zonation of natural jack pine stands on esker landforms — the subject of my M.Sc. research.",
+      "name": "ORCHAMP — Pyrenees, France",
+      "short": "ORCHAMP (Pyrenees)",
+      "place": "Pyrenees mountains",
+      "country": "France",
+      "lat": 42.85,
+      "lng": 0.1,
+      "period": "[X — dates to confirm]",
+      "role": "[X — role to confirm]",
+      "partners": "",
+      "description": "[X — short description of the ORCHAMP project to write]",
+      "cover": "",
       "photos": []
     }
   ]

@@ -167,9 +167,25 @@ collections:
             widget: "list"
             summary: "{{name}}"
             fields:
-              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Name (full title, shown on the page)", name: "name", widget: "string" }
+              - { label: "Short name (label next to the point on the map)", name: "short", widget: "string", required: false }
+              - { label: "Place (e.g. station, reserve, region)", name: "place", widget: "string", required: false }
+              - { label: "Country", name: "country", widget: "string", required: false }
+              - { label: "Latitude (decimal, e.g. 48.5 — keep it approximate, a few km, to protect fragile sites)", name: "lat", widget: "number", value_type: "float", required: false }
+              - { label: "Longitude (decimal, e.g. -79.4 — negative = west)", name: "lng", widget: "number", value_type: "float", required: false }
+              - { label: "Period (e.g. Ph.D. · 2024–present)", name: "period", widget: "string", required: false }
+              - { label: "Role", name: "role", widget: "string", required: false }
+              - { label: "Partners", name: "partners", widget: "string", required: false }
               - { label: "Description", name: "description", widget: "text" }
-              - { label: "Photo URLs", name: "photos", widget: "list", required: false }
+              - { label: "Cover photo (big picture at the top of the section)", name: "cover", widget: "image", required: false }
+              - label: "Photos"
+                name: "photos"
+                widget: "list"
+                required: false
+                summary: "{{caption}}"
+                fields:
+                  - { label: "Photo", name: "src", widget: "image" }
+                  - { label: "Caption", name: "caption", widget: "string", required: false }
 
   - name: "training"
     label: "Scientific and professional training"
