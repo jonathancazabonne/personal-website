@@ -762,8 +762,8 @@
   .fm-map{ position:absolute; inset:0; z-index:0; isolation:isolate; background:#0b100c; }
   .fm-hero .leaflet-container{ background:#0b100c; font-family:var(--font); }
   .fm-shade{ position:absolute; inset:0; z-index:2; pointer-events:none; background:
-    linear-gradient(180deg, rgba(8,12,9,.78) 0%, rgba(8,12,9,.1) 26%, rgba(8,12,9,0) 58%, rgba(8,12,9,.72) 100%),
-    linear-gradient(90deg, rgba(8,12,9,.55) 0%, rgba(8,12,9,0) 40%); }
+    linear-gradient(180deg, rgba(8,12,9,.7) 0%, rgba(8,12,9,.08) 24%, rgba(8,12,9,0) 60%, rgba(8,12,9,.62) 100%),
+    linear-gradient(90deg, rgba(8,12,9,.5) 0%, rgba(8,12,9,0) 38%); }
   .fm-head{ position:absolute; z-index:3; left:clamp(20px,4vw,64px); top:128px; max-width:min(560px,70vw); pointer-events:none; }
   .fm-head h1{ margin:0; font-family:var(--display); font-weight:800; font-size:clamp(48px,7vw,104px); line-height:.95; letter-spacing:-.035em; text-align:left; }
   .fm-head h1 em{ font-family:var(--serif); font-weight:400; color:var(--hx-accent); letter-spacing:-.01em; }
@@ -776,11 +776,17 @@
   .fm-stats b{ display:block; font-family:var(--display); font-weight:700; font-size:clamp(26px,3vw,40px); line-height:1; letter-spacing:-.03em; }
   .fm-stats span{ display:block; margin-top:6px; font-size:.6rem; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--mist); }
 
-  .fm-hero .leaflet-tile-pane{ filter:brightness(2.1) contrast(1.05) sepia(.3) hue-rotate(70deg) saturate(.8); }
+  .fm-hero .fm-map:not(.is-sat) .leaflet-tile-pane{ filter:brightness(2.1) contrast(1.05) sepia(.3) hue-rotate(70deg) saturate(.8); }
+  .fm-hero .fm-map.is-sat .leaflet-tile-pane{ filter:saturate(1.08) contrast(1.03); }
+  .fm-basectl{ display:flex; margin:0 0 10px clamp(20px,4vw,64px); border-radius:999px; overflow:hidden; border:1px solid rgba(243,246,241,.3); background:rgba(8,12,9,.7); backdrop-filter:blur(6px); }
+  .fm-basectl button{ font:inherit; font-size:.72rem; font-weight:600; letter-spacing:.04em; padding:9px 16px; border:0; background:transparent; color:#F3F6F1; cursor:pointer; transition:background .2s, color .2s; }
+  .fm-basectl button:hover{ background:rgba(243,246,241,.14); }
+  .fm-basectl button.on{ background:#E5A03A; color:#0D130E; }
   .leaflet-bar{ border:0 !important; box-shadow:none !important; }
   .leaflet-bar a{ background:rgba(8,12,9,.75); color:#F3F6F1; border:1px solid rgba(243,246,241,.25) !important; width:38px; height:38px; line-height:36px; }
   .leaflet-bar a:hover{ background:#E5A03A; color:#0D130E; }
-  .leaflet-control-zoom{ margin-bottom:200px !important; margin-left:clamp(20px,4vw,64px) !important; }
+  .leaflet-control-zoom{ margin-bottom:8px !important; margin-left:clamp(20px,4vw,64px) !important; }
+  .leaflet-bottom.leaflet-left{ margin-bottom:190px; }
   .leaflet-control-attribution{ background:rgba(8,12,9,.7) !important; color:#A9B7AA !important; font-size:10px; }
   .leaflet-control-attribution a{ color:#D3DCD2 !important; }
   .fm-pin-wrap{ background:none; border:0; }
@@ -1254,6 +1260,8 @@
     "I got your message and will get back to you soon.": "J’ai bien reçu votre message et je vous répondrai bientôt.",
     "Close": "Fermer",
     "Play video": "Lire la vidéo",
+    "Satellite": "Satellite",
+    "Map": "Carte",
     "Sending opens your email app with this message ready to go.": "L’envoi ouvre votre application de courriel avec le message prêt à partir.",
     "Write the email": "Rédiger le courriel",
     "Sending…": "Envoi en cours…",
@@ -2527,13 +2535,39 @@
     loadLeaflet(function(){
       if (!document.getElementById("fm-map") || el !== document.getElementById("fm-map")) return;
       var mobile = L.Browser.mobile;
-      fieldMap = L.map(el, { zoomControl: false, scrollWheelZoom: false, worldCopyJump: true, minZoom: 2, maxZoom: 12, zoomSnap: 0.25, dragging: !mobile, tap: false }).setView([32, -40], 2);
+      fieldMap = L.map(el, { zoomControl: false, scrollWheelZoom: false, worldCopyJump: true, minZoom: 2, maxZoom: 16, zoomSnap: 0.25, dragging: !mobile, tap: false }).setView([32, -40], 2);
       L.control.zoom({ position: "bottomleft", zoomInTitle: t("Zoom in"), zoomOutTitle: t("Zoom out") }).addTo(fieldMap);
-      L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}", {
-        maxZoom: 16, maxNativeZoom: 16,
-        attribution: 'Tiles &copy; Esri &mdash; Esri, HERE, Garmin, FAO, NOAA, USGS | Map data &copy; OpenStreetMap contributors'
-      }).addTo(fieldMap);
-      L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}", { maxZoom: 16, maxNativeZoom: 16, opacity: .8 }).addTo(fieldMap);
+      var ESRI = "https://server.arcgisonline.com/ArcGIS/rest/services/";
+      var satLayer = L.layerGroup([
+        L.tileLayer(ESRI + "World_Imagery/MapServer/tile/{z}/{y}/{x}", { maxZoom: 18, maxNativeZoom: 17, attribution: 'Tiles &copy; Esri &mdash; Source: Esri, Maxar, Earthstar Geographics, and the GIS User Community' }),
+        L.tileLayer(ESRI + "Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}", { maxZoom: 18, maxNativeZoom: 17, opacity: .95 })
+      ]);
+      var mapLayer = L.layerGroup([
+        L.tileLayer(ESRI + "Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}", { maxZoom: 16, maxNativeZoom: 16, attribution: 'Tiles &copy; Esri &mdash; Esri, HERE, Garmin, FAO, NOAA, USGS | Map data &copy; OpenStreetMap contributors' }),
+        L.tileLayer(ESRI + "Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}", { maxZoom: 16, maxNativeZoom: 16, opacity: .8 })
+      ]);
+      var baseMode = "sat";
+      try { if (localStorage.getItem("fmBase") === "map") baseMode = "map"; } catch (e) {}
+      var baseBtns = {};
+      function setBase(mode){
+        baseMode = mode;
+        fieldMap.removeLayer(mode === "sat" ? mapLayer : satLayer);
+        (mode === "sat" ? satLayer : mapLayer).addTo(fieldMap);
+        el.classList.toggle("is-sat", mode === "sat");
+        Object.keys(baseBtns).forEach(function(k){ baseBtns[k].classList.toggle("on", k === mode); baseBtns[k].setAttribute("aria-pressed", k === mode ? "true" : "false"); });
+        try { localStorage.setItem("fmBase", mode); } catch (e) {}
+      }
+      var BaseCtl = L.Control.extend({ options: { position: "bottomleft" }, onAdd: function(){
+        var box = L.DomUtil.create("div", "fm-basectl");
+        [["sat", t("Satellite")], ["map", t("Map")]].forEach(function(p){
+          var b = L.DomUtil.create("button", "", box); b.type = "button"; b.textContent = p[1]; baseBtns[p[0]] = b;
+          L.DomEvent.on(b, "click", function(ev){ L.DomEvent.stop(ev); setBase(p[0]); });
+        });
+        L.DomEvent.disableClickPropagation(box);
+        return box;
+      }});
+      new BaseCtl().addTo(fieldMap);
+      setBase(baseMode);
       areas.forEach(function(a, i){
         if (!isFinite(a.lat) || !isFinite(a.lng)) { markers.push(L.marker([0, 0], { opacity: 0 })); return; }
         var icon = L.divIcon({ className: "fm-pin-wrap", html: '<span class="fm-pin"><i></i><b>' + esc(LF(a, "short") || LF(a, "name")) + '</b></span>', iconSize: [18, 18], iconAnchor: [9, 9] });
