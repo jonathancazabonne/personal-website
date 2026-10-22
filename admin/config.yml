@@ -26,6 +26,7 @@ collections:
           - { label: "About photo (next to bio, on Home)", name: "aboutPhoto", widget: "image", required: false }
           - { label: "About photo caption", name: "aboutPhotoCaption", widget: "string", required: false }
           - { label: "Email", name: "email", widget: "string" }
+          - { label: "Intro text above the people photos (Education & background page)", name: "connectionsIntro", widget: "text", required: false }
           - { label: "Contact form access key (Web3Forms — see setup note; leave blank to open the visitor’s email app instead)", name: "contactFormKey", widget: "string", required: false }
           - { label: "Address (shown in the site footer)", name: "address", widget: "text" }
           - { label: "Conservation timeline intro", name: "timelineIntro", widget: "text" }
@@ -396,10 +397,10 @@ collections:
               - { label: "Photo", name: "image", widget: "image", required: false }
 
   - name: "homeGallery"
-    label: "Home photo gallery"
+    label: "People photos (Education & background page)"
     files:
       - file: "data/homeGallery.json"
-        label: "Home photo gallery"
+        label: "People photos (Education & background page)"
         name: "homeGallery"
         fields:
           - label: "Photos"
