@@ -696,6 +696,42 @@
   .cm-feat-card.text-only{ height:460px; }
   .cm-feat-card .cm-authors{ color:#D3DCD2; margin-top:10px; }
   .cm-feat-card .cm-authors strong{ color:#fff; }
+
+  /* contact form */
+  .nav-contact{
+    font:inherit; font-size:.92rem; font-weight:600; cursor:pointer; padding:7px 18px; border-radius:999px; border:1px solid var(--accent);
+    background:var(--accent); color:var(--accent-contrast); transition:background .2s, color .2s, border-color .2s;
+  }
+  .nav-contact:hover{ background:transparent; color:var(--accent); }
+  body.is-home .nav-contact{ background:#E5A03A; border-color:#E5A03A; color:#0D130E; }
+  body.is-home .nav-contact:hover{ background:transparent; color:#E5A03A; }
+  .hx-foot-actions{ display:flex; flex-wrap:wrap; gap:16px 28px; align-items:center; margin-top:34px; }
+  button.hx-cta{ border:0; font-family:var(--font); cursor:pointer; }
+  .cf-dialog{ padding:0; border:0; width:min(640px, calc(100vw - 32px)); max-height:calc(100vh - 32px); overflow:auto; background:#F3F6F1; color:#0D130E; box-shadow:0 30px 80px rgba(0,0,0,.45); }
+  .cf-dialog::backdrop{ background:rgba(8,12,9,.72); backdrop-filter:blur(4px); }
+  .cf-inner{ padding:clamp(26px,5vw,48px); }
+  .cf-close{ position:absolute; top:14px; right:16px; width:40px; height:40px; border:0; border-radius:50%; background:transparent; cursor:pointer; font-size:1.6rem; line-height:1; color:#0D130E; }
+  .cf-close:hover{ background:rgba(13,19,14,.08); }
+  .cf-eyebrow{ margin:0 0 10px; font-size:.65rem; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:#9a6a1a; }
+  .cf-dialog h2.cf-title{ margin:0 0 8px; font-family:var(--display); font-weight:800; font-size:clamp(30px,5vw,46px); line-height:1; letter-spacing:-.03em; text-transform:none; text-align:left; background:none; padding:0; width:auto; left:auto; margin-left:0; margin-right:0; position:static; }
+  .cf-lede{ margin:0 0 26px; font-size:.82rem; color:#4A5A4E; }
+  .cf-field{ display:block; margin-bottom:18px; }
+  .cf-field > span{ display:block; margin-bottom:6px; font-size:.65rem; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:#4A5A4E; }
+  .cf-field input, .cf-field textarea{ width:100%; font:inherit; font-size:.9rem; padding:12px 14px; border:1px solid #b9c5b8; border-radius:0; background:#fff; color:#0D130E; }
+  .cf-field textarea{ min-height:150px; resize:vertical; }
+  .cf-field input:focus, .cf-field textarea:focus{ outline:2px solid #3F5C3F; outline-offset:1px; }
+  .cf-hp{ position:absolute; left:-9999px; width:1px; height:1px; opacity:0; }
+  .cf-row{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .cf-actions{ display:flex; flex-wrap:wrap; align-items:center; gap:14px 20px; margin-top:6px; }
+  .cf-send{ display:inline-flex; align-items:center; gap:12px; min-height:50px; padding:0 28px; border:0; border-radius:999px; background:#0D130E; color:#F3F6F1; font:inherit; font-size:.82rem; font-weight:600; cursor:pointer; transition:background .2s; }
+  .cf-send:hover{ background:#3F5C3F; }
+  .cf-send[disabled]{ opacity:.6; cursor:wait; }
+  .cf-status{ margin:0; font-size:.78rem; color:#4A5A4E; }
+  .cf-status.err{ color:#a33; }
+  .cf-note{ margin:22px 0 0; font-size:.65rem; line-height:1.5; color:#6a7a6c; }
+  .cf-done{ padding:30px 0 6px; }
+  .cf-done h3{ margin:0 0 10px; font-family:var(--display); font-size:1.6rem; letter-spacing:-.02em; }
+  @media (max-width:560px){ .cf-row{ grid-template-columns:1fr; gap:0; } }
 </style>
 
 </head>
@@ -719,6 +755,7 @@
         <!-- Conservation page hidden on purpose — see PAGE_ROUTES below to bring it back online -->
         <!-- <a href="#conservation">Conservation</a> -->
         <a href="#study-areas">In the field</a>
+        <button type="button" class="nav-contact" data-contact>Contact</button>
       </nav>
     </div>
   </header>
@@ -729,6 +766,7 @@
     <div class="reveal">
       <p class="hx-foot-lede">Get in touch</p>
       <a class="hx-mail" id="site-footer-mail" href="#"></a>
+      <div class="hx-foot-actions"><button type="button" class="hx-cta" data-contact>Or send me a message here <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
     </div>
     <div>
       <div class="hx-foot-cols" id="site-footer-contact"></div>
@@ -738,6 +776,37 @@
     </div>
   </footer>
 </div>
+
+<dialog id="contact-dialog" class="cf-dialog" aria-labelledby="cf-title">
+  <div class="cf-inner">
+    <button type="button" class="cf-close" id="cf-close" aria-label="Close">&times;</button>
+    <div id="cf-formwrap">
+      <p class="cf-eyebrow">Contact</p>
+      <h2 class="cf-title hx" id="cf-title">Write to me</h2>
+      <p class="cf-lede">Questions, collaborations, talks, press — I read everything and reply as soon as I can.</p>
+      <form id="cf-form" novalidate>
+        <div class="cf-row">
+          <label class="cf-field"><span>Your name</span><input type="text" name="name" autocomplete="name" required></label>
+          <label class="cf-field"><span>Your email</span><input type="email" name="email" autocomplete="email" required></label>
+        </div>
+        <label class="cf-field"><span>Subject</span><input type="text" name="subject" required></label>
+        <label class="cf-field"><span>Message</span><textarea name="message" required></textarea></label>
+        <input type="checkbox" name="botcheck" class="cf-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div class="cf-actions">
+          <button type="submit" class="cf-send" id="cf-send">Send message</button>
+          <p class="cf-status" id="cf-status" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+      <p class="cf-note" id="cf-note">Your message is sent securely to my inbox. Your name and email are used only to reply to you.</p>
+    </div>
+    <div class="cf-done" id="cf-done" hidden>
+      <p class="cf-eyebrow">Message sent</p>
+      <h3>Thank you!</h3>
+      <p class="cf-lede">I got your message and will get back to you soon.</p>
+      <button type="button" class="cf-send" id="cf-done-close">Close</button>
+    </div>
+  </div>
+</dialog>
 
 <script id="app-script">
 (function(){
@@ -1510,6 +1579,10 @@
       if (d.email){ mailEl.href = "mailto:" + d.email; mailEl.textContent = d.email; }
       else mailEl.parentNode.style.display = "none";
     }
+    var noteEl = document.getElementById("cf-note");
+    if (noteEl && !d.contactFormKey) noteEl.textContent = "Sending opens your email app with this message ready to go.";
+    var sendBtn = document.getElementById("cf-send");
+    if (sendBtn && !d.contactFormKey) sendBtn.textContent = "Write the email";
     var addressHtml = d.address ? '<div><h4>Address</h4><address>' + esc(d.address).replace(/\n/g, "<br>") + '</address></div>' : "";
     var linksHtml = (d.links || []).map(function(l){
       return '<li><a href="' + esc(l.href) + '" target="_blank" rel="noopener">' + esc(l.label) + '</a></li>';
@@ -1931,6 +2004,62 @@
     if (ev.key !== "Enter" && ev.key !== " ") return;
     var item = ev.target.closest && ev.target.closest(".tl-item");
     if (item){ ev.preventDefault(); item.classList.toggle("tl-open"); }
+  });
+
+  // ---------- contact form ----------
+  var contactDlg = document.getElementById("contact-dialog");
+  var contactForm = document.getElementById("cf-form");
+  function openContact(){
+    if (!contactDlg) return;
+    document.getElementById("cf-formwrap").hidden = false;
+    document.getElementById("cf-done").hidden = true;
+    var st = document.getElementById("cf-status"); st.textContent = ""; st.className = "cf-status";
+    if (typeof contactDlg.showModal === "function") { if (!contactDlg.open) contactDlg.showModal(); }
+    else contactDlg.setAttribute("open", "");
+    var first = contactForm.querySelector("input[name=name]"); if (first) first.focus();
+  }
+  function closeContact(){
+    if (!contactDlg) return;
+    if (typeof contactDlg.close === "function") contactDlg.close(); else contactDlg.removeAttribute("open");
+  }
+  document.addEventListener("click", function(ev){
+    if (ev.target.closest("[data-contact]")) openContact();
+    else if (ev.target === contactDlg) closeContact();
+  });
+  document.getElementById("cf-close").addEventListener("click", closeContact);
+  document.getElementById("cf-done-close").addEventListener("click", closeContact);
+
+  contactForm.addEventListener("submit", function(ev){
+    ev.preventDefault();
+    var f = contactForm, status = document.getElementById("cf-status"), btn = document.getElementById("cf-send");
+    status.className = "cf-status";
+    if (!f.reportValidity()) return;
+    var data = { name: f.name.value.trim(), email: f.email.value.trim(), subject: f.subject.value.trim(), message: f.message.value.trim() };
+    var key = current && current.contactFormKey;
+    var to = current && current.email;
+    function viaMailto(){
+      var body = data.message + "\n\n— " + data.name + " (" + data.email + ")";
+      window.location.href = "mailto:" + (to || "") + "?subject=" + encodeURIComponent(data.subject) + "&body=" + encodeURIComponent(body);
+    }
+    if (!key){ viaMailto(); return; }
+    btn.disabled = true; status.textContent = "Sending…";
+    fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify({
+        access_key: key, name: data.name, email: data.email,
+        subject: "[Website] " + data.subject, message: data.message,
+        from_name: "Website contact form", botcheck: f.botcheck.checked
+      })
+    }).then(function(r){ return r.json(); }).then(function(res){
+      if (!res || !res.success) throw new Error((res && res.message) || "failed");
+      f.reset();
+      document.getElementById("cf-formwrap").hidden = true;
+      document.getElementById("cf-done").hidden = false;
+    }).catch(function(){
+      status.className = "cf-status err";
+      status.innerHTML = "Sorry, the message couldn’t be sent. Please write to " + (to ? '<a href="mailto:' + esc(to) + '">' + esc(to) + '</a>' : "me by email") + ".";
+    }).then(function(){ btn.disabled = false; });
   });
 
   // ---------- init ----------
