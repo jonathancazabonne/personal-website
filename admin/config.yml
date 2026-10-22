@@ -19,7 +19,9 @@ collections:
         fields:
           - { label: "Name", name: "name", widget: "string" }
           - { label: "Rotating words (under name, on Home)", name: "topics", widget: "list" }
+          - { label: "Small line above the name (Home hero)", name: "heroEyebrow", widget: "string", required: false }
           - { label: "Role / subtitle", name: "role", widget: "text" }
+          - { label: "Big statement on Home (wrap words in **double asterisks** to highlight them)", name: "statement", widget: "text", required: false }
           - { label: "Bio", name: "bio", widget: "text" }
           - { label: "About photo (next to bio, on Home)", name: "aboutPhoto", widget: "image", required: false }
           - { label: "About photo caption", name: "aboutPhotoCaption", widget: "string", required: false }
