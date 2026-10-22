@@ -547,11 +547,11 @@
   .hx-foot-cols ul a:hover{ color:var(--hx-accent); border-color:var(--hx-accent); }
   .hx-foot-logos{ margin-top:56px; }
   .hx-foot-logos h4{ margin:0 0 16px; font-size:.63rem; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--mist); }
-  .hx-logo-row{ display:flex; flex-wrap:wrap; gap:14px; }
-  .hx-logo{ display:flex; align-items:center; justify-content:center; width:176px; height:88px; padding:14px 20px; background:#fff; transition:transform .3s, box-shadow .3s; }
-  .hx-logo img{ max-width:100%; max-height:100%; width:auto; height:auto; object-fit:contain; display:block; }
-  a.hx-logo:hover{ transform:translateY(-4px); box-shadow:0 14px 30px rgba(0,0,0,.45); }
-  @media (max-width:640px){ .hx-logo{ width:calc(50% - 7px); height:76px; } }
+  .hx-logo-row{ display:flex; flex-wrap:wrap; align-items:center; gap:26px 48px; }
+  .hx-logo{ display:flex; align-items:center; opacity:.9; transition:opacity .3s, transform .3s; }
+  .hx-logo img{ height:62px; width:auto; max-width:210px; object-fit:contain; display:block; }
+  a.hx-logo:hover{ opacity:1; transform:translateY(-3px); }
+  @media (max-width:640px){ .hx-logo-row{ gap:22px 32px; } .hx-logo img{ height:46px; max-width:150px; } }
   .hx-legal{ display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; padding-top:28px; border-top:1px solid rgba(243,246,241,.14); font-size:.68rem; color:var(--mist); }
 
   /* scroll reveal: elements fade/slide in as they enter the viewport (JS adds html.rv and .in) */
