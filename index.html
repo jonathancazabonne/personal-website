@@ -669,8 +669,6 @@
   .cm-card h3{ margin:0; font-family:var(--display); font-weight:600; font-size:clamp(19px,1.5vw,23px); line-height:1.18; letter-spacing:-.012em; }
   .cm-card h3 a{ text-decoration:none; color:inherit; }
   .cm-card h3 a:hover{ color:var(--moss); }
-  .cm-orig{ margin:-4px 0 0; font-size:.72rem; font-style:italic; line-height:1.45; color:#5a6a5d; }
-  html[data-theme="dark"] .cm-orig, .cm-feat-card .cm-orig{ color:#A9B7AA; }
   .cm-authors{ margin:0; font-size:.74rem; color:#33423A; }
   .cm-venue{ margin:0; font-size:.78rem; line-height:1.5; color:#4A5A4E; }
   .cm-todo{ color:#9a6a1a; font-style:italic; }
@@ -1262,7 +1260,6 @@
     "I got your message and will get back to you soon.": "J’ai bien reçu votre message et je vous répondrai bientôt.",
     "Close": "Fermer",
     "Play video": "Lire la vidéo",
-    "Original title": "Titre original",
     "Satellite": "Satellite",
     "Map": "Carte",
     "Sending opens your email app with this message ready to go.": "L’envoi ouvre votre application de courriel avec le message prêt à partir.",
@@ -1894,19 +1891,15 @@
       (v.date ? '<span class="cm-date">' + esc(v.date) + '</span>' : '') + '</div>';
   }
   function pubSearchText(v){
-    return (v.p.title + " " + (v.p.title_fr || "") + " " + (v.p.authors || "") + " " + (v.p.venue || "") + " " + (PUB_SHORT[v.cat] || "") + " " + (v.p.year || "")).toLowerCase();
+    return (v.p.title + " " + (v.p.authors || "") + " " + (v.p.venue || "") + " " + (PUB_SHORT[v.cat] || "") + " " + (v.p.year || "")).toLowerCase();
   }
-
-  function pubTitleFr(p){ return lang === "fr" && p.title_fr ? p.title_fr : p.title; }
-  function pubOrigHtml(p){ return lang === "fr" && p.title_fr ? '<p class="cm-orig">' + esc(t("Original title")) + ' : ' + esc(p.title) + '</p>' : ''; }
 
   function renderPubCard(v){
     var p = v.p, label = pubActionLabel(p), hasLink = !!label;
-    var shownTitle = pubTitleFr(p);
-    var titleHtml = hasLink ? '<a href="' + esc(p.url) + '" target="_blank" rel="noopener">' + esc(shownTitle) + '</a>' : esc(shownTitle);
+    var titleHtml = hasLink ? '<a href="' + esc(p.url) + '" target="_blank" rel="noopener">' + esc(p.title) + '</a>' : esc(p.title);
     return '<article class="cm-card" data-key="' + esc(srNorm(p.title)) + '" data-group="' + esc(v.cat) + '" data-text="' + esc(pubSearchText(v)) + '">' +
       pubTagHtml(v) +
-      '<h3>' + titleHtml + '</h3>' + pubOrigHtml(p) +
+      '<h3>' + titleHtml + '</h3>' +
       (p.authors ? '<p class="cm-authors">' + boldAuthorHighlight(p.authors) + '</p>' : '') +
       '<p class="cm-venue">' + commVenueHtml(v.venue) + '</p>' +
       (hasLink ? '<a class="cm-action" href="' + esc(p.url) + '" target="_blank" rel="noopener">' + label + ' ' + COMM_ARROW + '</a>' : '') +
@@ -1919,7 +1912,7 @@
     var cards = feat.map(function(v){
       var p = v.p, label = pubActionLabel(p);
       var inner = (p.image ? '<img src="' + esc(p.image) + '" alt="" loading="lazy" />' : '<span class="cm-feat-year" aria-hidden="true">' + esc(p.year || "") + '</span>') +
-        '<div class="cm-feat-body">' + pubTagHtml(v) + '<h3>' + esc(pubTitleFr(p)) + '</h3>' + pubOrigHtml(p) +
+        '<div class="cm-feat-body">' + pubTagHtml(v) + '<h3>' + esc(p.title) + '</h3>' +
         (p.authors ? '<p class="cm-authors">' + boldAuthorHighlight(p.authors) + '</p>' : '') +
         '<p class="cm-venue">' + commVenueHtml(v.venue) + '</p>' +
         (label ? '<span class="cm-action">' + label + ' ' + COMM_ARROW + '</span>' : '') + '</div>';
@@ -3086,7 +3079,7 @@
     (d.researchAxes || []).forEach(function(a){ add("Research", LF(a, "title"), LF(a, "description"), "research axis", { hash: "research-axes", id: "research-axes" }); });
     (d.publications || []).forEach(function(p){
       if (p.status === "in-review") return;
-      add("Publications", pubTitleFr(p), [p.year, p.venue, p.authors].filter(Boolean).join(" · "), (PUB_SHORT[p.category] || p.category) + " " + t(PUB_SHORT[p.category] || p.category) + " " + p.title + " " + (p.title_fr || ""), { hash: "publications", key: srNorm(p.title) });
+      add("Publications", p.title, [p.year, p.venue, p.authors].filter(Boolean).join(" · "), (PUB_SHORT[p.category] || p.category) + " " + t(PUB_SHORT[p.category] || p.category), { hash: "publications", key: srNorm(p.title) });
     });
     (d.communications || []).forEach(function(c){
       add("Outreach", c.title, [c.year, t(c.type), c.venue].filter(Boolean).join(" · "), c.authors, { hash: "communications", key: srNorm(c.title) });
