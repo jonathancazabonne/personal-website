@@ -973,6 +973,25 @@
     .sr-field{ padding-left:16px; }
     .sr-go{ display:none; }
   }
+
+  /* embedded media (YouTube video, podcasts / audio) inside outreach cards */
+  .cm-thumb.is-video{ position:relative; display:block; width:100%; padding:0; border:0; cursor:pointer; background:#0b100c; }
+  .cm-thumb.is-video::after{ content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(8,12,9,.05), rgba(8,12,9,.45)); transition:opacity .3s; }
+  .cm-thumb.is-video .cm-playbadge{ position:absolute; z-index:2; left:50%; top:50%; width:64px; height:64px; margin:-32px 0 0 -32px; border-radius:50%; background:#E5A03A; color:#0D130E; display:flex; align-items:center; justify-content:center; box-shadow:0 10px 30px rgba(0,0,0,.45); transition:transform .3s; }
+  .cm-thumb.is-video:hover .cm-playbadge{ transform:scale(1.1); }
+  .cm-playbadge svg{ width:26px; height:26px; margin-left:3px; }
+  .cm-player{ position:relative; width:100%; background:#000; }
+  .cm-player.video{ aspect-ratio:16/9; }
+  .cm-player iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; display:block; }
+  .cm-player.audio{ background:transparent; }
+  .cm-player.audio iframe{ position:static; height:var(--ph,152px); border-radius:12px; }
+  .cm-player audio{ width:100%; display:block; }
+  .cm-actions{ display:flex; flex-wrap:wrap; align-items:center; gap:10px 22px; margin-top:auto; padding-top:2px; }
+  .cm-actions .cm-action{ margin-top:0; }
+  .cm-play{ display:inline-flex; align-items:center; gap:9px; font:inherit; font-size:.75rem; font-weight:600; letter-spacing:.03em; padding:9px 18px 9px 14px; border-radius:999px; border:0; background:#0D130E; color:#F3F6F1; cursor:pointer; transition:background .2s; }
+  .cm-play:hover{ background:#3F5C3F; }
+  .cm-play svg{ width:15px; height:15px; }
+  .cm-play.open{ background:#E5A03A; color:#0D130E; }
 </style>
 
 </head>
@@ -1635,6 +1654,39 @@
   function commVenueHtml(v){
     return esc(v).replace(/\[X — [^\]]*\]/g, '<span class="cm-todo">$&</span>');
   }
+  // ---------- embedded media (video / audio) ----------
+  function mediaEmbed(url){
+    if (!url || url === "#") return null;
+    var u;
+    try { u = new URL(url, location.href); } catch (e) { return null; }
+    var h = u.hostname.replace(/^www\./, ""), p = u.pathname, m;
+    // YouTube
+    var yid = null;
+    if (h === "youtu.be") yid = p.slice(1).split("/")[0];
+    else if (/(^|\.)youtube(-nocookie)?\.com$/.test(h)){
+      if (u.searchParams.get("v")) yid = u.searchParams.get("v");
+      else if ((m = p.match(/^\/(?:embed|shorts|live)\/([^/?]+)/))) yid = m[1];
+    }
+    if (yid){
+      var start = parseInt((u.searchParams.get("t") || u.searchParams.get("start") || "").replace(/s$/, ""), 10);
+      return { kind: "video", src: "https://www.youtube-nocookie.com/embed/" + encodeURIComponent(yid) + "?rel=0&autoplay=1" + (start ? "&start=" + start : ""),
+        thumb: "https://i.ytimg.com/vi/" + encodeURIComponent(yid) + "/hqdefault.jpg" };
+    }
+    if (h === "vimeo.com" && (m = p.match(/\/(\d+)/))) return { kind: "video", src: "https://player.vimeo.com/video/" + m[1] + "?autoplay=1" };
+    if (h === "player.vimeo.com") return { kind: "video", src: url };
+    // audio / podcasts
+    if (h === "mixcloud.com") return { kind: "audio", h: 120, src: "https://www.mixcloud.com/widget/iframe/?hide_cover=1&light=1&autoplay=1&feed=" + encodeURIComponent(p) };
+    if (h === "open.spotify.com" && (m = p.match(/\/(episode|show|track)\/([A-Za-z0-9]+)/))) return { kind: "audio", h: 152, src: "https://open.spotify.com/embed/" + m[1] + "/" + m[2] };
+    if (h === "soundcloud.com") return { kind: "audio", h: 166, src: "https://w.soundcloud.com/player/?auto_play=true&url=" + encodeURIComponent(url) };
+    if (h === "podcasts.apple.com") return { kind: "audio", h: 175, src: "https://embed.podcasts.apple.com" + p + u.search };
+    if (/\.(mp3|m4a|ogg|wav)(\?|$)/i.test(p)) return { kind: "file", src: url };
+    return null;
+  }
+  function mediaPlayerHtml(kind, src, h, title){
+    if (kind === "file") return '<div class="cm-player audio"><audio controls autoplay preload="none" src="' + esc(src) + '"></audio></div>';
+    return '<div class="cm-player ' + (kind === "video" ? "video" : "audio") + '"' + (h ? ' style="--ph:' + h + 'px"' : '') + '><iframe src="' + esc(src) + '" title="' + esc(title) + '" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>';
+  }
+  var PLAY_ICON = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg>';
   function commActionLabel(c){
     var u = c.url || "";
     if (!u || u === "#") return "";
@@ -1692,14 +1744,23 @@
 
   function renderCommCard(v){
     var c = v.c, label = commActionLabel(c), hasLink = !!label;
+    var media = mediaEmbed(c.embed || c.url);
     var titleHtml = hasLink ? '<a href="' + esc(c.url) + '" target="_blank" rel="noopener">' + esc(c.title) + '</a>' : esc(c.title);
-    var thumb = (c.image && !c.featured) ? '<span class="cm-thumb"><img src="' + esc(c.image) + '" alt="" loading="lazy" /></span>' : '';
-    return '<article class="cm-card" data-key="' + esc(srNorm(c.title)) + '" data-group="' + v.group + '" data-text="' + esc(commSearchText(v)) + '">' +
+    var thumb = "";
+    if (media && media.kind === "video" && media.thumb){
+      thumb = '<button type="button" class="cm-thumb is-video" data-embed data-kind="video" data-src="' + esc(media.src) + '" data-title="' + esc(c.title) + '" aria-label="Play video"><img src="' + esc(media.thumb) + '" alt="" loading="lazy" /><span class="cm-playbadge">' + PLAY_ICON + '</span></button>';
+    } else if (c.image && !c.featured){
+      thumb = '<span class="cm-thumb"><img src="' + esc(c.image) + '" alt="" loading="lazy" /></span>';
+    }
+    var playBtn = media && !(media.kind === "video" && media.thumb)
+      ? '<button type="button" class="cm-play" data-embed data-kind="' + media.kind + '" data-src="' + esc(media.src) + '"' + (media.h ? ' data-h="' + media.h + '"' : '') + ' data-title="' + esc(c.title) + '">' + PLAY_ICON + (media.kind === "video" ? 'Watch here' : 'Listen here') + '</button>' : '';
+    var openLink = hasLink ? '<a class="cm-action" href="' + esc(c.url) + '" target="_blank" rel="noopener">' + (media ? 'Open original' : label) + ' ' + COMM_ARROW + '</a>' : '';
+    return '<article class="cm-card' + (media ? ' has-media' : '') + '" data-key="' + esc(srNorm(c.title)) + '" data-group="' + v.group + '" data-text="' + esc(commSearchText(v)) + '">' +
       commTagHtml(v) + thumb +
       '<h3>' + titleHtml + '</h3>' +
       (c.authors ? '<p class="cm-authors">' + boldAuthorHighlight(c.authors) + '</p>' : '') +
       '<p class="cm-venue">' + commVenueHtml(v.venue) + '</p>' +
-      (hasLink ? '<a class="cm-action" href="' + esc(c.url) + '" target="_blank" rel="noopener">' + label + ' ' + COMM_ARROW + '</a>' : '') +
+      ((playBtn || openLink) ? '<div class="cm-actions">' + playBtn + openLink + '</div>' : '') +
     '</article>';
   }
 
@@ -2077,12 +2138,15 @@
       var sc = ev.target.closest("[data-scrollsite]");
       if (sc){ var t = document.getElementById("fa-" + sc.dataset.scrollsite); if (t) t.scrollIntoView({ behavior: "smooth", block: "start" }); }
     });
-    document.getElementById("app").addEventListener("click", function(ev){
+    var appRoot = document.getElementById("app");
+    if (appRoot.__showMapHandler) appRoot.removeEventListener("click", appRoot.__showMapHandler);
+    appRoot.__showMapHandler = function(ev){
       var sm = ev.target.closest("[data-showmap]");
       if (!sm) return;
       window.scrollTo({ top: 0, behavior: "smooth" });
       setTimeout(function(){ select(Number(sm.dataset.showmap)); }, reduce ? 0 : 500);
-    });
+    };
+    appRoot.addEventListener("click", appRoot.__showMapHandler);
 
     loadLeaflet(function(){
       if (!document.getElementById("fm-map") || el !== document.getElementById("fm-map")) return;
@@ -2401,6 +2465,34 @@
     });
     if (search) search.addEventListener("input", function(){ query = search.value.trim().toLowerCase(); applyFilter(); });
 
+    var appEl = document.getElementById("app");
+    if (appEl.__embedHandler) appEl.removeEventListener("click", appEl.__embedHandler);
+    appEl.__embedHandler = function(ev){
+      var btn = ev.target.closest("[data-embed]");
+      if (!btn) return;
+      var card = btn.closest(".cm-card");
+      if (!card) return;
+      var existing = card.querySelector(".cm-player");
+      var thumb = card.querySelector(".cm-thumb.is-video");
+      var play = card.querySelector(".cm-play");
+      if (existing){
+        existing.remove();
+        if (thumb) thumb.hidden = false;
+        if (play){ play.classList.remove("open"); play.lastChild.textContent = play.dataset.kind === "video" ? "Watch here" : "Listen here"; }
+        return;
+      }
+      var html = mediaPlayerHtml(btn.dataset.kind, btn.dataset.src, btn.dataset.h, btn.dataset.title || "");
+      if (btn.classList.contains("is-video")){
+        btn.insertAdjacentHTML("afterend", html);
+        btn.hidden = true;
+      } else {
+        var anchor = card.querySelector(".cm-actions");
+        anchor.insertAdjacentHTML("beforebegin", html);
+        btn.classList.add("open");
+        btn.lastChild.textContent = "Close player";
+      }
+    };
+    appEl.addEventListener("click", appEl.__embedHandler);
     animateCounts();
     var barEl = document.querySelector(".cm-bar");
     if (barEl) document.documentElement.style.setProperty("--tb-h", barEl.offsetHeight + "px");
