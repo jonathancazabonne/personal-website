@@ -129,6 +129,8 @@ collections:
               - { label: "Authors (optional — leave blank for solo media interviews)", name: "authors", widget: "string", required: false }
               - { label: "Venue", name: "venue", widget: "string" }
               - { label: "URL", name: "url", widget: "string" }
+              - { label: "Show in the Highlights section (max 3)", name: "featured", widget: "boolean", default: false, required: false }
+              - { label: "Photo (shown on the card — optional)", name: "image", widget: "image", required: false }
 
   - name: "timeline"
     label: "Conservation timeline"

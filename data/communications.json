@@ -112,7 +112,9 @@
       "title": "Faire avancer la conservation de la fonge au Québec grâce à la science citoyenne",
       "venue": "49e congrès de l'Association des biologistes du Québec, Sherbrooke, 21 novembre 2025",
       "url": "#",
-      "authors": "Cazabonne, J.*"
+      "authors": "Cazabonne, J.*",
+      "featured": true,
+      "image": "images/outreach-abq.jpg"
     },
     {
       "year": 2025,
@@ -120,7 +122,9 @@
       "title": "Le règne oublié : La fonge comme socle de la conservation",
       "venue": "Panel de discussion, Pavillon du Canada, Congrès mondial sur la nature de l'UICN, Abu Dhabi, 10 octobre 2025",
       "url": "#",
-      "authors": "Cazabonne, J.*"
+      "authors": "Cazabonne, J.*",
+      "featured": true,
+      "image": "images/outreach-iucn.jpg"
     },
     {
       "year": 2025,
@@ -326,7 +330,9 @@
       "type": "Radio interview",
       "title": "Pourquoi faut-il mieux protéger les champignons ?",
       "venue": "Des matins en or, Radio-Canada, 14 octobre 2025",
-      "url": "#"
+      "url": "#",
+      "featured": true,
+      "image": "images/outreach-radio.jpg"
     },
     {
       "year": 2025,
