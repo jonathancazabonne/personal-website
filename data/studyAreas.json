@@ -25,7 +25,14 @@
           "src": "images/field-esker-3.jpg",
           "caption": "Provisional photo — esker field find"
         }
-      ]
+      ],
+      "name_fr": "Forêts d’esker de pin gris — Abitibi, Québec",
+      "short_fr": "Eskers de pin gris",
+      "place_fr": "Eskers près d’Amos, Abitibi",
+      "period_fr": "M.Sc. · 2022–2024",
+      "role_fr": "Recherche de maîtrise",
+      "description_fr": "Communautés fongiques du sol le long de la zonation verticale de peuplements naturels de pin gris sur des formes de relief de type esker — sujet de ma recherche de maîtrise.",
+      "country_fr": "Canada"
     },
     {
       "name": "Old-growth mixed boreal forest — Lac Duparquet, Québec",
@@ -48,7 +55,14 @@
           "src": "images/band-canopy.jpg",
           "caption": "Provisional photo — canopy"
         }
-      ]
+      ],
+      "name_fr": "Vieille forêt boréale mixte — lac Duparquet, Québec",
+      "short_fr": "Vieille forêt du lac Duparquet",
+      "place_fr": "Forêt d’enseignement et de recherche du lac Duparquet (FERLD), Abitibi-Témiscamingue",
+      "period_fr": "Doctorat · 2024–présent",
+      "role_fr": "Terrain de doctorat",
+      "description_fr": "Diversité fongique du sol et fonctions écologiques dans les vieux peuplements boréaux de l’est du Canada — mon terrain de doctorat actuel, qui explore les liens entre communautés fongiques, cycle du carbone forestier et structure de la canopée (LiDAR aéroporté, Indice de biodiversité potentielle).",
+      "country_fr": "Canada"
     },
     {
       "name": "MetaMyco — Chamalières biological reserve, France",
@@ -62,7 +76,14 @@
       "partners": "Office national des forêts (ONF)",
       "description": "[X — short description of the MetaMyco project to write]",
       "cover": "",
-      "photos": []
+      "photos": [],
+      "name_fr": "MetaMyco — réserve biologique de Chamalières, France",
+      "short_fr": "RBI de Chamalières (MetaMyco)",
+      "place_fr": "Réserve biologique intégrale (RBI) de Chamalières, Cantal",
+      "period_fr": "[X — dates à confirmer]",
+      "role_fr": "[X — rôle à confirmer]",
+      "description_fr": "[X — courte description du projet MetaMyco à rédiger]",
+      "country_fr": "France"
     },
     {
       "name": "ORCHAMP — Pyrenees, France",
@@ -76,7 +97,14 @@
       "partners": "",
       "description": "[X — short description of the ORCHAMP project to write]",
       "cover": "",
-      "photos": []
+      "photos": [],
+      "name_fr": "ORCHAMP — Pyrénées, France",
+      "short_fr": "ORCHAMP (Pyrénées)",
+      "place_fr": "Massif des Pyrénées",
+      "period_fr": "[X — dates à confirmer]",
+      "role_fr": "[X — rôle à confirmer]",
+      "description_fr": "[X — courte description du projet ORCHAMP à rédiger]",
+      "country_fr": "France"
     }
   ]
 }

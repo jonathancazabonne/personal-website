@@ -19,14 +19,19 @@ collections:
         fields:
           - { label: "Name", name: "name", widget: "string" }
           - { label: "Rotating words (under name, on Home)", name: "topics", widget: "list" }
+          - { label: "Rotating phrases — French version (full phrases, e.g. Diversité fongique.)", name: "topics_fr", widget: "list", required: false }
           - { label: "Small line above the name (Home hero)", name: "heroEyebrow", widget: "string", required: false }
           - { label: "Role / subtitle", name: "role", widget: "text" }
+          - { label: "Role / subtitle — French version", name: "role_fr", widget: "text", required: false }
           - { label: "Big statement on Home (wrap words in **double asterisks** to highlight them)", name: "statement", widget: "text", required: false }
+          - { label: "Big statement on Home — French version", name: "statement_fr", widget: "text", required: false }
           - { label: "Bio", name: "bio", widget: "text" }
+          - { label: "Bio — French version (shown when the site is in French)", name: "bio_fr", widget: "text", required: false }
           - { label: "About photo (next to bio, on Home)", name: "aboutPhoto", widget: "image", required: false }
           - { label: "About photo caption", name: "aboutPhotoCaption", widget: "string", required: false }
           - { label: "Email", name: "email", widget: "string" }
           - { label: "Intro text above the people photos (Education & background page)", name: "connectionsIntro", widget: "text", required: false }
+          - { label: "Intro text above the people photos — French version", name: "connectionsIntro_fr", widget: "text", required: false }
           - { label: "Contact form access key (Web3Forms — see setup note; leave blank to open the visitor’s email app instead)", name: "contactFormKey", widget: "string", required: false }
           - { label: "Address (shown in the site footer)", name: "address", widget: "text" }
           - { label: "Conservation timeline intro", name: "timelineIntro", widget: "text" }
@@ -44,10 +49,13 @@ collections:
             summary: "{{degree}} — {{years}}"
             fields:
               - { label: "Years", name: "years", widget: "string" }
+              - { label: "Years — French", name: "years_fr", widget: "string", required: false }
               - { label: "Degree", name: "degree", widget: "string" }
+              - { label: "Degree — French", name: "degree_fr", widget: "string", required: false }
               - { label: "Institution", name: "institution", widget: "string" }
               - { label: "Institution link (makes the institution name clickable)", name: "institutionUrl", widget: "string", required: false }
               - { label: "Detail (thesis title, supervisors, etc.)", name: "detail", widget: "text", required: false }
+              - { label: "Detail — French", name: "detail_fr", widget: "text", required: false }
               - { label: "Link (thesis PDF, etc.)", name: "url", widget: "string", required: false }
               - { label: "Thesis title (French, for CV)", name: "thesisTitleFr", widget: "text", required: false }
               - { label: "Supervisors (French, for CV)", name: "supervisors", widget: "text", required: false }
@@ -180,6 +188,13 @@ collections:
               - { label: "Partners", name: "partners", widget: "string", required: false }
               - { label: "Description", name: "description", widget: "text" }
               - { label: "Cover photo (big picture at the top of the section)", name: "cover", widget: "image", required: false }
+              - { label: "Name — French", name: "name_fr", widget: "string", required: false }
+              - { label: "Short name — French", name: "short_fr", widget: "string", required: false }
+              - { label: "Place — French", name: "place_fr", widget: "string", required: false }
+              - { label: "Period — French", name: "period_fr", widget: "string", required: false }
+              - { label: "Role — French", name: "role_fr", widget: "string", required: false }
+              - { label: "Partners — French", name: "partners_fr", widget: "string", required: false }
+              - { label: "Description — French", name: "description_fr", widget: "text", required: false }
               - label: "Photos"
                 name: "photos"
                 widget: "list"
@@ -410,7 +425,9 @@ collections:
             summary: "{{title}}"
             fields:
               - { label: "Title", name: "title", widget: "string" }
+              - { label: "Title — French", name: "title_fr", widget: "string", required: false }
               - { label: "Description", name: "description", widget: "text" }
+              - { label: "Description — French", name: "description_fr", widget: "text", required: false }
               - { label: "Photo", name: "image", widget: "image", required: false }
 
   - name: "homeGallery"

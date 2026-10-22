@@ -11,7 +11,10 @@
       "committee": "Christine Martineau (Centre de foresterie des Laurentides) et Antoine Brin (École d'ingénieur de Purpan, UMR Dynafor)",
       "grade": "",
       "logo": "images/logo-uqat.jpg",
-      "institutionUrl": "https://www.uqat.ca/irf/programmes/doctorat-en-ecologie-et-amenagement-des-ecosystemes-forestiers/"
+      "institutionUrl": "https://www.uqat.ca/irf/programmes/doctorat-en-ecologie-et-amenagement-des-ecosystemes-forestiers/",
+      "degree_fr": "Doctorat (en cours) en écologie et aménagement forestiers",
+      "detail_fr": "Thèse : « Diversité et rôles écologiques des communautés fongiques du sol des vieilles forêts boréales de l’est du Canada : perspectives pour la conservation de la fonge forestière. » Sous la supervision de Maxence Martin et Mélanie Roy.",
+      "years_fr": "2024–présent"
     },
     {
       "years": "2022–2024",
@@ -24,7 +27,10 @@
       "committee": "Christine Martineau et Mélanie Roy",
       "grade": "4,17/4,30 - Excellent",
       "logo": "images/logo-uqat.jpg",
-      "institutionUrl": "https://www.uqat.ca/irf/programmes/maitrise-en-ecologie/"
+      "institutionUrl": "https://www.uqat.ca/irf/programmes/maitrise-en-ecologie/",
+      "degree_fr": "Maîtrise en écologie et aménagement forestiers",
+      "detail_fr": "Mémoire : « Influence de la zonation verticale sur les communautés fongiques du sol des pinèdes grises naturelles dans les écosystèmes d’esker. » Sous la supervision de Miguel Montoro Girona et Annie Desrochers.",
+      "years_fr": "2022–2024"
     },
     {
       "years": "2018–2021",
@@ -37,7 +43,10 @@
       "committee": "",
       "grade": "Rang 3/190 – avec les honneurs",
       "logo": "images/logo-univ-toulouse.png",
-      "institutionUrl": "https://www.utoulouse.fr/decouvrir-nos-diplomes/licence-mention-sciences-de-la-vie"
+      "institutionUrl": "https://www.utoulouse.fr/decouvrir-nos-diplomes/licence-mention-sciences-de-la-vie",
+      "degree_fr": "Licence en biologie — Biologie des organismes, des populations et des écosystèmes",
+      "detail_fr": "Spécialisation en physiologie, diversité et systématique végétales ; inscription simultanée à la classe préparatoire BCPST (biologie, chimie, physique et sciences de la Terre) au lycée Toulouse-Auzeville.",
+      "years_fr": "2018–2021"
     }
   ]
 }

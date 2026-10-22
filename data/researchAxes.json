@@ -3,17 +3,23 @@
     {
       "title": "Diversity and taxonomy",
       "description": "Describing and classifying fungal diversity through integrative taxonomy — combining morphological characters with molecular data (DNA barcoding, phylogenetics) to resolve species boundaries, especially in understudied groups such as Laboulbeniomycetes and other arthropod-associated fungi.",
-      "image": "images/axis-taxonomy.jpg"
+      "image": "images/axis-taxonomy.jpg",
+      "title_fr": "Diversité et taxonomie",
+      "description_fr": "Décrire et classer la diversité fongique grâce à la taxonomie intégrative — en combinant caractères morphologiques et données moléculaires (codes-barres ADN, phylogénétique) pour préciser les limites entre espèces, en particulier chez des groupes peu étudiés comme les Laboulbeniomycètes et d’autres champignons associés aux arthropodes."
     },
     {
       "title": "Community Ecology",
       "description": "Studying how fungal communities are structured and how they interact with other kingdoms — plants, arthropods, and beyond. My doctoral work focuses on soil fungal communities in old-growth boreal forests, looking at how factors like forest structure, canopy composition, and airborne LiDAR-derived habitat metrics shape fungal diversity.",
-      "image": "images/axis-ecology.jpg"
+      "image": "images/axis-ecology.jpg",
+      "title_fr": "Écologie des communautés",
+      "description_fr": "Étudier comment les communautés fongiques sont structurées et comment elles interagissent avec les autres règnes — plantes, arthropodes, et au-delà. Mes travaux de doctorat portent sur les communautés fongiques du sol des vieilles forêts boréales, en examinant comment des facteurs comme la structure forestière, la composition de la canopée et des métriques d’habitat issues du LiDAR aéroporté influencent la diversité fongique."
     },
     {
       "title": "Conservation and community science",
       "description": "Working to bring fungi into biodiversity conservation and sustainable, ecosystem-based forest management — through applied research, citizen science, Red List assessments, and advocacy for the recognition of fungi as a distinct kingdom deserving the same conservation attention as plants and animals.",
-      "image": "images/axis-conservation.jpg"
+      "image": "images/axis-conservation.jpg",
+      "title_fr": "Conservation et science citoyenne",
+      "description_fr": "Œuvrer pour intégrer les champignons à la conservation de la biodiversité et à un aménagement forestier durable, fondé sur les écosystèmes — par la recherche appliquée, la science citoyenne, les évaluations de la Liste rouge et le plaidoyer pour que la fonge soit reconnue comme un règne à part entière, digne de la même attention que les plantes et les animaux."
     }
   ]
 }

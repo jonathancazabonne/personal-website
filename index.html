@@ -86,7 +86,8 @@
   .wordmark-role{
     font-family:var(--font); font-size:0.78rem; color:var(--muted);
   }
-  .topnav{ display:flex; flex-wrap:wrap; gap:6px clamp(12px,3vw,32px); font-size:0.92rem; }
+  .topnav{ display:flex; flex-wrap:wrap; align-items:center; gap:6px clamp(10px,1.7vw,26px); font-size:0.92rem; }
+  @media (max-width:1400px){ .wordmark-role{ display:none; } }
   .topnav a{ font-family:"Raleway", var(--font); font-weight:700; text-decoration:none; color:var(--muted); padding:2px 0; border-bottom:1px solid transparent; transition:color .15s, border-color .15s; white-space:nowrap; }
   .topnav a:hover{ color:var(--ink); border-color:var(--accent); }
   @media (max-width: 560px){
@@ -1093,6 +1094,16 @@
     .nav-theme-m{ display:inline-flex; position:absolute; top:12px; right:calc(clamp(20px,5vw,64px) + 46px); width:38px; height:38px; }
   }
   .nav-theme-m{ display:none; }
+
+  .nav-lang{ display:inline-flex; align-items:center; justify-content:center; min-width:46px; height:42px; padding:0 12px; border-radius:999px; cursor:pointer; border:1px solid currentColor; background:transparent; color:var(--ink); font:inherit; font-size:.78rem; font-weight:600; letter-spacing:.08em; transition:background .2s, color .2s, border-color .2s; }
+  .nav-lang:hover{ background:var(--accent); color:var(--accent-contrast); border-color:var(--accent); }
+  body.is-home .nav-lang{ color:#F3F6F1; }
+  body.is-home .nav-lang:hover{ background:#E5A03A; border-color:#E5A03A; color:#0D130E; }
+  .nav-lang-m{ display:none; }
+  @media (max-width:720px){
+    .nav-lang{ display:none; }
+    .nav-lang-m{ display:inline-flex; position:absolute; top:12px; right:calc(clamp(20px,5vw,64px) + 92px); min-width:40px; height:38px; padding:0 8px; }
+  }
 </style>
 
 </head>
@@ -1106,6 +1117,7 @@
         <a class="wordmark" href="#top">Jonathan Cazabonne</a>
         <span class="wordmark-role">Mycologist, M.Sc | Ph.D. candidate</span>
       </div>
+      <button type="button" class="nav-lang nav-lang-m" data-lang-toggle data-notr aria-label="Passer en français" title="Français">FR</button>
       <button type="button" class="nav-search nav-search-m" data-search aria-label="Search the site"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></button>
       <button type="button" class="nav-theme nav-theme-m" data-theme-toggle aria-label="Switch between light and dark mode"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" /></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4" /> <path d="M12 2v2" /> <path d="M12 20v2" /> <path d="m4.93 4.93 1.41 1.41" /> <path d="m17.66 17.66 1.41 1.41" /> <path d="M2 12h2" /> <path d="M20 12h2" /> <path d="m6.34 17.66-1.41 1.41" /> <path d="m19.07 4.93-1.41 1.41" /></svg></button>
       <nav class="topnav">
@@ -1115,10 +1127,11 @@
         </div>
         <a href="#background">Background</a>
         <a href="#publications">Publications</a>
-        <a href="#communications">Communication &amp; scientific outreach</a>
+        <a href="#communications">Outreach</a>
         <!-- Conservation page hidden on purpose — see PAGE_ROUTES below to bring it back online -->
         <!-- <a href="#conservation">Conservation</a> -->
         <a href="#study-areas">In the field</a>
+        <button type="button" class="nav-lang" data-lang-toggle data-notr aria-label="Passer en français" title="Français">FR</button>
         <button type="button" class="nav-search" data-search aria-label="Search the site" title="Search (press / )"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></button>
         <button type="button" class="nav-theme" data-theme-toggle aria-label="Switch between light and dark mode" title="Light / dark mode"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" /></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4" /> <path d="M12 2v2" /> <path d="M12 20v2" /> <path d="m4.93 4.93 1.41 1.41" /> <path d="m17.66 17.66 1.41 1.41" /> <path d="M2 12h2" /> <path d="M20 12h2" /> <path d="m6.34 17.66-1.41 1.41" /> <path d="m19.07 4.93-1.41 1.41" /></svg></button>
         <button type="button" class="nav-contact" data-contact>Contact</button>
@@ -1200,6 +1213,263 @@
     return String(s == null ? "" : s)
       .replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
   }
+
+  // ---------- language (EN / FR) ----------
+  var DICT_FR = {
+    "Skip to content": "Aller au contenu",
+    "Mycologist, M.Sc | Ph.D. candidate": "Mycologue, M.Sc. | Doctorat en cours",
+    "Home": "Accueil",
+    "Background": "Parcours",
+    "Publications": "Publications",
+    "Communication & scientific outreach": "Communication & vulgarisation scientifique",
+    "Outreach": "Communications",
+    "In the field": "Sur le terrain",
+    "Contact": "Contact",
+    "Scroll": "Défiler",
+    "Research axes": "Axes de recherche",
+    "Where the research <i>happens.</i>": "Là où la recherche <i>se passe.</i>",
+    "See the field sites": "Voir les terrains",
+    "Latest outreach": "Dernières communications",
+    "All communications": "Toutes les communications",
+    "Education": "Formation",
+    "background": "parcours",
+    "Degrees, research stays, training, awards and funding, teaching and service — the path that led here.": "Diplômes, séjours de recherche, formations, prix et financements, enseignement et engagement — le chemin parcouru.",
+    "See the full background": "Voir tout le parcours",
+    "Get in touch": "Me joindre",
+    "Or send me a message here": "Ou écrivez-moi directement ici",
+    "Address": "Adresse",
+    "Elsewhere": "Ailleurs sur le web",
+    "Affiliations": "Affiliations",
+    "© {y} {n}. All rights reserved.": "© {y} {n}. Tous droits réservés.",
+    "Write to me": "Écrivez-moi",
+    "Questions, collaborations, talks, press — I read everything and reply as soon as I can.": "Questions, collaborations, conférences, presse — je lis tout et je réponds dès que possible.",
+    "Your name": "Votre nom",
+    "Your email": "Votre courriel",
+    "Subject": "Objet",
+    "Message": "Message",
+    "Send message": "Envoyer le message",
+    "Your message is sent securely to my inbox. Your name and email are used only to reply to you.": "Votre message arrive directement dans ma boîte de réception. Votre nom et votre courriel servent uniquement à vous répondre.",
+    "Message sent": "Message envoyé",
+    "Thank you!": "Merci !",
+    "I got your message and will get back to you soon.": "J’ai bien reçu votre message et je vous répondrai bientôt.",
+    "Close": "Fermer",
+    "Play video": "Lire la vidéo",
+    "Sending opens your email app with this message ready to go.": "L’envoi ouvre votre application de courriel avec le message prêt à partir.",
+    "Write the email": "Rédiger le courriel",
+    "Sending…": "Envoi en cours…",
+    "Sorry, the message couldn’t be sent. Please write to {to}.": "Désolé, le message n’a pas pu être envoyé. Écrivez-moi plutôt à {to}.",
+    "Search the site": "Rechercher sur le site",
+    "Switch between light and dark mode": "Basculer entre le mode clair et le mode sombre",
+    "Search (press / )": "Rechercher (touche / )",
+    "Light / dark mode": "Mode clair / sombre",
+    "Scroll to the introduction": "Aller à l’introduction",
+    "Photo viewer": "Visionneuse de photos",
+    "Previous photo": "Photo précédente",
+    "Next photo": "Photo suivante",
+    "Looking for something?": "Vous cherchez quelque chose ?",
+    "Close search": "Fermer la recherche",
+    "Degrees": "Diplômes",
+    "Positions & stays": "Postes et séjours",
+    "Awards & grants": "Prix et bourses",
+    "Courses taught": "Cours donnés",
+    "People": "Personnes",
+    "Experience": "Expérience",
+    "Training": "Formations",
+    "Awards": "Prix",
+    "Societies": "Sociétés",
+    "Committees": "Comités",
+    "Editorial": "Éditorial",
+    "Teaching": "Enseignement",
+    "Public engagement": "Engagement public",
+    "Community": "Communauté",
+    "The human side": "Le côté humain",
+    "People <em>along the way</em>": "Des gens <em>croisés en chemin</em>",
+    "Professional experience & research stays": "Expérience professionnelle et séjours de recherche",
+    "Scientific & professional training": "Formations scientifiques et professionnelles",
+    "Main scientific affiliations": "Principales affiliations scientifiques",
+    "Awards & funding": "Prix et financements",
+    "Society memberships": "Adhésions à des sociétés",
+    "Organizing committees": "Comités organisateurs",
+    "Editorial duties": "Fonctions éditoriales",
+    "Community & volunteer engagement": "Engagement communautaire et bénévole",
+    "Peer review": "Révision par les pairs",
+    "Jump to a section": "Aller à une section",
+    "Scroll to the content": "Aller au contenu",
+    "Scroll to the publications": "Aller aux publications",
+    "Scroll to the highlights": "Aller aux faits saillants",
+    "papers, press & more": "articles, presse et plus",
+    "Peer-reviewed": "Évalués par les pairs",
+    "As first author": "En première position",
+    "Public writing": "Textes grand public",
+    "Selected work": "Travaux choisis",
+    "Correspondence": "Correspondance",
+    "All": "Tout",
+    "Preprints": "Prépublications",
+    "Book chapters": "Chapitres de livre",
+    "Literary chapters": "Chapitres littéraires",
+    "Theses & reports": "Thèses et rapports",
+    "Bulletin articles": "Articles de bulletin",
+    "Popular science": "Vulgarisation",
+    "Press articles": "Articles de presse",
+    "Press releases": "Communiqués de presse",
+    "{n} of {m} shown": "{n} sur {m} affichés",
+    "entries": "entrées",
+    "Open": "Ouvrir",
+    "Read": "Lire",
+    "Listen": "Écouter",
+    "Watch": "Regarder",
+    "Listen here": "Écouter ici",
+    "Watch here": "Regarder ici",
+    "Open original": "Ouvrir l’original",
+    "Close player": "Fermer le lecteur",
+    "No publication matches your search.": "Aucune publication ne correspond à votre recherche.",
+    "No entry matches your search.": "Aucune entrée ne correspond à votre recherche.",
+    "Nothing listed yet.": "Rien pour l’instant.",
+    "No publications listed yet.": "Aucune publication pour l’instant.",
+    "Search {n} publications — e.g. Mycosphere, Laboulbeniomycetes, Le Devoir…": "Rechercher parmi {n} publications — p. ex. Mycosphere, Laboulbeniomycetes, Le Devoir…",
+    "Search {n} entries — e.g. Radio-Canada, poster, 2024…": "Rechercher parmi {n} entrées — p. ex. Radio-Canada, affiche, 2024…",
+    "Search publications": "Rechercher dans les publications",
+    "Search outreach entries": "Rechercher dans les communications",
+    "Filter publications by category": "Filtrer les publications par catégorie",
+    "Filter outreach by type": "Filtrer par type",
+    "Communication": "Communication",
+    "scientific outreach": "vulgarisation scientifique",
+    "Entries": "Entrées",
+    "Talks": "Conférences",
+    "Posters": "Affiches",
+    "Media": "Médias",
+    "Highlights": "À la une",
+    "Conferences & talks": "Conférences",
+    "Scientific posters": "Affiches scientifiques",
+    "Media & interviews": "Médias et entrevues",
+    "Public readings": "Lectures publiques",
+    "Radio interview": "Entrevue radio",
+    "Invited talk": "Conférence invitée",
+    "Radio & press interview": "Entrevue radio et presse",
+    "Poster": "Affiche",
+    "Invited lecture": "Cours invité",
+    "Public interview": "Entrevue publique",
+    "Press feature": "Article de presse",
+    "Podcast": "Balado",
+    "Conference talk": "Communication orale",
+    "Public reading": "Lecture publique",
+    "Talk": "Présentation",
+    "Video feature": "Reportage vidéo",
+    "TV interview": "Entrevue télévisée",
+    "Public talk": "Conférence grand public",
+    "Fieldwork": "Terrain",
+    "In the <em>field</em>": "Sur le <em>terrain</em>",
+    "Forests I have walked, sampled and learned from. Click a point on the map to explore.": "Des forêts que j’ai parcourues, échantillonnées et qui m’ont appris. Cliquez sur un point de la carte pour explorer.",
+    "Field sites": "Terrains",
+    "Countries": "Pays",
+    "Photos": "Photos",
+    "Show on the map": "Voir sur la carte",
+    "Photos coming soon.": "Photos à venir.",
+    "Approximate location": "Position approximative",
+    "With {x}": "Avec {x}",
+    "Read more below": "En savoir plus ci-dessous",
+    "The map could not be loaded. Use the buttons below to browse the field sites.": "La carte n’a pas pu être chargée. Utilisez les boutons ci-dessous pour parcourir les terrains.",
+    "Zoom in": "Zoomer",
+    "Zoom out": "Dézoomer",
+    "Previous site": "Terrain précédent",
+    "Next site": "Terrain suivant",
+    "Enlarge photo": "Agrandir la photo",
+    "Field sites ": "Terrains",
+    "Where the research": "Là où la recherche",
+    "Pages": "Pages",
+    "Research": "Recherche",
+    "Home — research, outreach, field work": "Accueil — recherche, communications, terrain",
+    "Degrees, experience, training, awards, teaching, people": "Diplômes, expérience, formations, prix, enseignement, rencontres",
+    "Papers, press and more": "Articles, presse et plus",
+    "Talks, posters, interviews, press": "Conférences, affiches, entrevues, presse",
+    "Interactive map of field sites": "Carte interactive des terrains",
+    "Nothing found for “{q}”. Try another word, or write to me with the Contact button.": "Rien trouvé pour « {q} ». Essayez un autre mot, ou écrivez-moi avec le bouton Contact.",
+    "Couldn’t load site content. Please refresh the page.": "Impossible de charger le contenu du site. Veuillez actualiser la page.",
+    "Education and background": "Formation et parcours",
+    "{n} entries": "{n} entrées",
+    "Entries ": "Entrées"
+  };
+  var lang = "en";
+  try {
+    var __l = localStorage.getItem("lang");
+    if (!__l) __l = /^fr/i.test(navigator.language || "") ? "fr" : "en";
+    lang = __l === "fr" ? "fr" : "en";
+  } catch (e) {}
+  document.documentElement.lang = lang;
+  function t(str){ return lang === "fr" && DICT_FR[str] ? DICT_FR[str] : str; }
+  function tf(str, vars){
+    var out = t(str);
+    Object.keys(vars || {}).forEach(function(k){ out = out.split("{" + k + "}").join(vars[k]); });
+    return out;
+  }
+  // data field with an optional French twin: field_fr
+  function LF(obj, key){
+    if (!obj) return "";
+    if (lang === "fr" && obj[key + "_fr"] != null && obj[key + "_fr"] !== "" && !(Array.isArray(obj[key + "_fr"]) && !obj[key + "_fr"].length)) return obj[key + "_fr"];
+    return obj[key];
+  }
+  var TR_ATTRS = ["placeholder", "aria-label", "title"];
+  function translateDom(root){
+    var fr = lang === "fr";
+    var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, { acceptNode: function(n){
+      var p = n.parentNode;
+      if (!p || /^(SCRIPT|STYLE|NOSCRIPT|TEXTAREA)$/.test(p.tagName) || (p.closest && p.closest("[data-notr]"))) return NodeFilter.FILTER_REJECT;
+      return NodeFilter.FILTER_ACCEPT;
+    }});
+    var nodes = [], n;
+    while ((n = walker.nextNode())) nodes.push(n);
+    nodes.forEach(function(node){
+      if (node.__en !== undefined && node.nodeValue !== node.__tr){ node.__en = undefined; }
+      if (node.__en !== undefined){
+        if (!fr){ node.nodeValue = node.__en; node.__en = undefined; }
+        return;
+      }
+      if (!fr) return;
+      var cur = node.nodeValue, key = cur.trim().replace(/\s+/g, " ");
+      if (!key || !DICT_FR[key]) return;
+      var lead = cur.match(/^\s*/)[0], trail = cur.match(/\s*$/)[0];
+      node.__en = cur;
+      node.nodeValue = lead + DICT_FR[key] + trail;
+      node.__tr = node.nodeValue;
+    });
+    var els = root.querySelectorAll ? root.querySelectorAll("[placeholder],[aria-label],[title]") : [];
+    Array.prototype.forEach.call(els, function(el){
+      if (el.closest("[data-notr]")) return;
+      el.__enA = el.__enA || {};
+      TR_ATTRS.forEach(function(a){
+        if (!el.hasAttribute(a)) return;
+        var cur = el.getAttribute(a);
+        if (el.__enA[a] !== undefined && cur !== el.__enA[a].tr) el.__enA[a] = undefined;
+        if (el.__enA[a] !== undefined){
+          if (!fr){ el.setAttribute(a, el.__enA[a].en); el.__enA[a] = undefined; }
+          return;
+        }
+        if (!fr || !DICT_FR[cur]) return;
+        el.__enA[a] = { en: cur, tr: DICT_FR[cur] };
+        el.setAttribute(a, DICT_FR[cur]);
+      });
+    });
+  }
+  function setLang(l){
+    lang = l === "fr" ? "fr" : "en";
+    try { localStorage.setItem("lang", lang); } catch (e) {}
+    document.documentElement.lang = lang;
+    srIndex = null;
+    updateLangButtons();
+    if (current){ renderSiteFooter(current); paint(); }
+    else translateDom(document.body);
+  }
+  function updateLangButtons(){
+    Array.prototype.forEach.call(document.querySelectorAll("[data-lang-toggle]"), function(b){
+      b.textContent = lang === "fr" ? "EN" : "FR";
+      b.setAttribute("aria-label", lang === "fr" ? "Switch to English" : "Passer en français");
+      b.setAttribute("title", lang === "fr" ? "English" : "Français");
+    });
+  }
+  document.addEventListener("click", function(ev){
+    if (ev.target.closest("[data-lang-toggle]")) setLang(lang === "fr" ? "en" : "fr");
+  });
+  updateLangButtons();
 
   // ---------- routing ----------
   // Conservation page hidden on purpose (kept in the code, just unreachable) —
@@ -1291,12 +1561,12 @@
   function renderEducationItem(e){
     var hasLink = e.url && e.url !== "#";
     var degreeHtml = hasLink
-      ? '<a href="' + esc(e.url) + '" target="_blank" rel="noopener">' + esc(e.degree) + '</a>'
-      : esc(e.degree);
+      ? '<a href="' + esc(e.url) + '" target="_blank" rel="noopener">' + esc(LF(e, "degree")) + '</a>'
+      : esc(LF(e, "degree"));
     return '<li><span class="entry-title">' + degreeHtml + '</span>' +
       '<span class="entry-meta">' + linkedInstitution(e.institution, e.institutionUrl) + '</span>' +
-      (e.detail ? '<span class="entry-meta">' + esc(e.detail) + '</span>' : '') +
-      '<span class="entry-meta">' + esc(e.years) + '</span></li>';
+      (LF(e, "detail") ? '<span class="entry-meta">' + esc(LF(e, "detail")) + '</span>' : '') +
+      '<span class="entry-meta">' + esc(LF(e, "years")) + '</span></li>';
   }
 
   function renderResearchStayItem(x){
@@ -1319,6 +1589,7 @@
   }
   function bgRows(list, fn){ return '<ul class="bg-rows">' + list.map(fn).join("") + '</ul>'; }
 
+  var DEFAULT_PEOPLE_INTRO_FR = "La science est avant tout une aventure humaine. En chemin — en laboratoire, en forêt, dans les congrès et autour de longues tables — j’ai eu la chance de rencontrer et de travailler avec des gens extraordinaires. Ces photos sont pour elles et eux.";
   var DEFAULT_PEOPLE_INTRO = "Science is first and foremost a human adventure. Along the way — in labs, in forests, at conferences and around long dinner tables — I have been lucky to meet and work with incredible people. These pictures are for them.";
   function renderPeople(d){
     if (!d.homeGallery || !d.homeGallery.length) return "";
@@ -1326,8 +1597,8 @@
       return '<figure class="reveal"><img src="' + esc(p.src) + '" alt="' + esc(p.caption || "") + '" loading="lazy" />' + (p.caption ? '<figcaption>' + esc(p.caption) + '</figcaption>' : '') + '</figure>';
     }).join("");
     return '<section id="people" class="bg-people">' +
-      '<div class="bg-people-head"><div><p class="hx-eyebrow">The human side</p><h2 class="hx reveal">People <em>along the way</em></h2></div>' +
-      '<p class="bg-people-text reveal">' + esc(d.connectionsIntro || DEFAULT_PEOPLE_INTRO) + '</p></div>' +
+      '<div class="bg-people-head"><div><p class="hx-eyebrow">' + t("The human side") + '</p><h2 class="hx reveal">' + t("People <em>along the way</em>") + '</h2></div>' +
+      '<p class="bg-people-text reveal">' + esc(LF(d, "connectionsIntro") || (lang === "fr" ? DEFAULT_PEOPLE_INTRO_FR : DEFAULT_PEOPLE_INTRO)) + '</p></div>' +
       '<div class="bg-wall">' + items + '</div>' +
     '</section>';
   }
@@ -1397,8 +1668,8 @@
         '<img class="hx-hero-img" src="images/home-gallery-3.jpg" alt="Field team gathered in the snowy boreal forest" fetchpriority="high" />' +
         '<div class="hx-scrim"></div>' +
         '<div class="hx-hero-body"><div class="hx-col">' +
-          '<p class="hx-eyebrow">Background</p>' +
-          '<h1 class="cm-title" aria-label="Education and background"><span class="ln"><i>Education</i></span><span class="ln"><i><em>&amp; background</em></i></span></h1>' +
+          '<p class="hx-eyebrow">' + t("Background") + '</p>' +
+          '<h1 class="cm-title" aria-label="' + esc(t("Education and background")) + '"><span class="ln"><i>' + t("Education") + '</i></span><span class="ln"><i><em>&amp; ' + t("background") + '</em></i></span></h1>' +
           '<div class="cm-stats">' + stat(count(d.education), "Degrees", "graduation-cap") + stat(count(d.researchStays), "Positions &amp; stays", "briefcase") + stat(count(d.awards), "Awards &amp; grants", "award") + stat(count(d.teaching), "Courses taught", "school") + '</div>' +
         '</div></div>' +
         '<a class="hx-cue" href="#background" data-scroll="' + (people ? "people" : (secs[0] ? secs[0].id : "top")) + '" aria-label="Scroll to the content"><span class="hx-cue-line" aria-hidden="true"></span>Scroll</a>' +
@@ -1433,7 +1704,7 @@
     var n = (d.education || []).length;
     if (!n && !(d.researchStays || []).length) return "";
     return '<section id="background-teaser" class="hx-sec hx-teaser">' +
-      '<div class="reveal"><h2 class="hx">Education <em>&amp; background</em></h2>' +
+      '<div class="reveal"><h2 class="hx">' + t("Education") + ' <em>&amp; ' + t("background") + '</em></h2>' +
       '<p>Degrees, research stays, training, awards and funding, teaching and service — the path that led here.</p></div>' +
       '<a class="hx-cta dark reveal" href="#background">See the full background ' + ARROW_SVG + '</a>' +
     '</section>';
@@ -1454,8 +1725,8 @@
     return '<article class="hx-axis reveal">' +
       (a.image ? '<img src="' + esc(a.image) + '" alt="" loading="lazy" />' : '') +
       '<div class="hx-axis-body">' +
-        '<h3>' + esc(a.title) + '</h3>' +
-        '<p>' + esc(a.description) + '</p>' +
+        '<h3>' + esc(LF(a, "title")) + '</h3>' +
+        '<p>' + esc(LF(a, "description")) + '</p>' +
       '</div>' +
     '</article>';
   }
@@ -1476,6 +1747,7 @@
   }
 
   var ARROW_SVG = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+  var DEFAULT_STATEMENT_FR = "Contribuer à **intégrer la fonge** à la conservation de la biodiversité et à l’aménagement écosystémique des forêts — et à **faire connaître les champignons** du grand public.";
   var DEFAULT_STATEMENT = "Helping **integrate fungi** into biodiversity conservation and ecosystem-based forest management — and bringing fungi to **public attention.**";
 
   function renderHeroName(name){
@@ -1486,22 +1758,22 @@
   }
 
   function renderStatementView(d){
-    var statement = esc(d.statement || DEFAULT_STATEMENT).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>");
+    var statement = esc(LF(d, "statement") || (lang === "fr" ? DEFAULT_STATEMENT_FR : DEFAULT_STATEMENT)).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>");
     return '<section id="about" class="hx-sec hx-statement">' +
       '<h2 class="hx reveal">' + statement + '</h2>' +
       '<div class="hx-statement-side reveal">' +
         renderAboutPhoto(d) +
-        '<p class="bio" id="f-bio" contenteditable="false">' + esc(d.bio) + '</p>' +
+        '<p class="bio" id="f-bio" contenteditable="false">' + esc(LF(d, "bio")) + '</p>' +
       '</div>' +
     '</section>';
   }
 
   function renderFieldBand(d){
-    var sites = (d.studyAreas || []).map(function(a){ return '<li>' + esc(a.name) + '</li>'; }).join("");
+    var sites = (d.studyAreas || []).map(function(a){ return '<li>' + esc(LF(a, "name")) + '</li>'; }).join("");
     return '<section id="field" class="hx-sec hx-band">' +
       '<div class="hx-band-inner reveal">' +
-        '<p class="hx-eyebrow">In the field</p>' +
-        '<h2 class="hx">Where the research <i>happens.</i></h2>' +
+        '<p class="hx-eyebrow">' + t("In the field") + '</p>' +
+        '<h2 class="hx">' + t("Where the research <i>happens.</i>") + '</h2>' +
         (sites ? '<ul class="hx-sites">' + sites + '</ul>' : "") +
         '<a class="hx-cta" href="#study-areas">See the field sites ' + ARROW_SVG + '</a>' +
       '</div>' +
@@ -1534,7 +1806,7 @@
         '<div class="hx-hero-body"><div class="hx-col">' +
           '<p class="hx-eyebrow">' + esc(d.heroEyebrow || "Institut de recherche sur les forêts · UQAT") + '</p>' +
           '<h1 class="hx-name" id="f-name" contenteditable="false" aria-label="' + esc(d.name) + '">' + renderHeroName(d.name) + '</h1>' +
-          '<p class="hx-roll"><span class="fixed">Fungal&nbsp;</span><span class="cycle-word" id="topic-cycle"></span></p>' +
+          '<p class="hx-roll"><span class="fixed">' + (lang === "fr" ? "" : "Fungal&nbsp;") + '</span><span class="cycle-word" id="topic-cycle"></span></p>' +
           renderQuoteCycler(d.quotes) +
         '</div></div>' +
         '<a class="hx-cue" href="#about" aria-label="Scroll to the introduction"><span class="hx-cue-line" aria-hidden="true"></span>Scroll</a>' +
@@ -1659,7 +1931,7 @@
     return order.map(function(y){
       var items = map[y].slice().sort(function(a, b){ return (a.rank - b.rank) || (b.sort - a.sort) || (a.idx - b.idx); });
       return '<div class="cm-year" data-year="' + esc(y) + '">' +
-        '<h2 class="cm-year-num hx">' + esc(y) + '<small><span class="cm-year-n">' + items.length + '</span> entries</small></h2>' +
+        '<h2 class="cm-year-num hx">' + esc(y) + '<small><span class="cm-year-n">' + items.length + '</span> ' + t("entries") + '</small></h2>' +
         '<div class="cm-items">' + items.map(renderPubCard).join("") + '</div>' +
       '</div>';
     }).join("");
@@ -1685,8 +1957,8 @@
         '<img class="hx-hero-img" src="images/publications-hero.jpg" alt="Orange-gilled fungi growing on a moss-covered log" fetchpriority="high" />' +
         '<div class="hx-scrim"></div>' +
         '<div class="hx-hero-body"><div class="hx-col">' +
-          '<p class="hx-eyebrow">Publications' + (span ? ' · ' + span : '') + '</p>' +
-          '<h1 class="cm-title" aria-label="Publications"><span class="ln"><i>Publications</i></span><span class="ln"><i><em>papers, press &amp; more</em></i></span></h1>' +
+          '<p class="hx-eyebrow">' + t("Publications") + (span ? ' · ' + span : '') + '</p>' +
+          '<h1 class="cm-title" aria-label="' + esc(t("Publications")) + '"><span class="ln"><i>' + t("Publications") + '</i></span><span class="ln"><i><em>' + esc(t("papers, press & more")) + '</em></i></span></h1>' +
           '<div class="cm-stats">' +
             stat(published.length, "Publications", "book-open") + stat(counts["peer-reviewed"] || 0, "Peer-reviewed", "badge-check") + stat(firstAuthor, "As first author", "pen-line") + stat(publicWriting, "Public writing", "newspaper") +
           '</div>' +
@@ -1697,7 +1969,7 @@
         renderPubFeatured(views) +
         '<section id="pub-list" class="hx-sec cm-list">' +
           (published.length
-            ? '<div class="cm-search-wrap"><input id="cm-search" class="cm-search" type="search" placeholder="Search ' + published.length + ' publications — e.g. Mycosphere, Laboulbeniomycetes, Le Devoir…" aria-label="Search publications" autocomplete="off"></div>' +
+            ? '<div class="cm-search-wrap"><input id="cm-search" class="cm-search" type="search" placeholder="' + esc(tf("Search {n} publications — e.g. Mycosphere, Laboulbeniomycetes, Le Devoir…", { n: published.length })) + '" aria-label="' + esc(t("Search publications")) + '" autocomplete="off"></div>' +
               '<div class="cm-bar"><div class="cm-chips" role="group" aria-label="Filter publications by category">' + chips + '</div><p class="cm-count" id="comm-count" aria-live="polite"></p></div>' +
               '<div id="cm-years">' + renderPubYears(views) + '</div>' +
               '<p class="cm-empty" id="cm-empty" hidden>No publication matches your search.</p>'
@@ -1851,7 +2123,7 @@
     var titleHtml = hasLink ? '<a href="' + esc(c.url) + '" target="_blank" rel="noopener">' + esc(c.title) + '</a>' : esc(c.title);
     var thumb = "";
     if (media && media.kind === "video" && media.thumb){
-      thumb = '<button type="button" class="cm-thumb is-video" data-embed data-kind="video" data-src="' + esc(media.src) + '" data-title="' + esc(c.title) + '" aria-label="Play video"><img src="' + esc(media.thumb) + '" alt="" loading="lazy" /><span class="cm-playbadge">' + PLAY_ICON + '</span></button>';
+      thumb = '<button type="button" class="cm-thumb is-video" data-embed data-kind="video" data-src="' + esc(media.src) + '" data-title="' + esc(c.title) + '" aria-label="' + esc(t("Play video")) + '"><img src="' + esc(media.thumb) + '" alt="" loading="lazy" /><span class="cm-playbadge">' + PLAY_ICON + '</span></button>';
     } else if (c.image && !c.featured){
       thumb = '<span class="cm-thumb"><img src="' + esc(c.image) + '" alt="" loading="lazy" /></span>';
     }
@@ -1898,7 +2170,7 @@
     return order.map(function(y){
       var items = map[y].slice().sort(function(a, b){ return (b.sort - a.sort) || (a.idx - b.idx); });
       return '<div class="cm-year" data-year="' + esc(y) + '">' +
-        '<h2 class="cm-year-num hx">' + esc(y) + '<small><span class="cm-year-n">' + items.length + '</span> entries</small></h2>' +
+        '<h2 class="cm-year-num hx">' + esc(y) + '<small><span class="cm-year-n">' + items.length + '</span> ' + t("entries") + '</small></h2>' +
         '<div class="cm-items">' + items.map(renderCommCard).join("") + '</div>' +
       '</div>';
     }).join("");
@@ -1922,8 +2194,8 @@
         '<img class="hx-hero-img" src="images/outreach-hero.jpg" alt="Jonathan Cazabonne presenting at a conference in Amos, Québec" fetchpriority="high" />' +
         '<div class="hx-scrim"></div>' +
         '<div class="hx-hero-body"><div class="hx-col">' +
-          '<p class="hx-eyebrow">Outreach' + (span ? ' · ' + span : '') + '</p>' +
-          '<h1 class="cm-title" aria-label="Communication &amp; scientific outreach"><span class="ln"><i>Communication</i></span><span class="ln"><i>&amp; <em>scientific outreach</em></i></span></h1>' +
+          '<p class="hx-eyebrow">' + t("Outreach") + (span ? ' · ' + span : '') + '</p>' +
+          '<h1 class="cm-title" aria-label="' + esc(t("Communication & scientific outreach")) + '"><span class="ln"><i>' + t("Communication") + '</i></span><span class="ln"><i>&amp; <em>' + t("scientific outreach") + '</em></i></span></h1>' +
           '<div class="cm-stats">' +
             stat(list.length, "Entries", "library") + stat(counts.presentations || 0, "Talks", "presentation") + stat(counts.posters || 0, "Posters", "image") + stat(counts.media || 0, "Media", "radio") +
           '</div>' +
@@ -1934,7 +2206,7 @@
         renderCommFeatured(views) +
         '<section id="comm-list" class="hx-sec cm-list">' +
           (list.length
-            ? '<div class="cm-search-wrap"><input id="cm-search" class="cm-search" type="search" placeholder="Search ' + list.length + ' entries — e.g. Radio-Canada, poster, 2024…" aria-label="Search outreach entries" autocomplete="off"></div>' +
+            ? '<div class="cm-search-wrap"><input id="cm-search" class="cm-search" type="search" placeholder="' + esc(tf("Search {n} entries — e.g. Radio-Canada, poster, 2024…", { n: list.length })) + '" aria-label="' + esc(t("Search outreach entries")) + '" autocomplete="off"></div>' +
               '<div class="cm-bar"><div class="cm-chips" role="group" aria-label="Filter outreach by type">' + chips + '</div><p class="cm-count" id="comm-count" aria-live="polite"></p></div>' +
               '<div id="cm-years">' + renderCommYears(views) + '</div>' +
               '<p class="cm-empty" id="cm-empty" hidden>No entry matches your search.</p>'
@@ -2065,9 +2337,9 @@
       }).join("") + '</div>' : "";
     }
     var noteEl = document.getElementById("cf-note");
-    if (noteEl && !d.contactFormKey) noteEl.textContent = "Sending opens your email app with this message ready to go.";
+    if (noteEl) noteEl.textContent = d.contactFormKey ? t("Your message is sent securely to my inbox. Your name and email are used only to reply to you.") : t("Sending opens your email app with this message ready to go.");
     var sendBtn = document.getElementById("cf-send");
-    if (sendBtn && !d.contactFormKey) sendBtn.textContent = "Write the email";
+    if (sendBtn) sendBtn.textContent = d.contactFormKey ? t("Send message") : t("Write the email");
     var addressHtml = d.address ? '<div><h4>Address</h4><address>' + esc(d.address).replace(/\n/g, "<br>") + '</address></div>' : "";
     var linksHtml = (d.links || []).map(function(l){
       return '<li><a class="hx-elsewhere" href="' + esc(l.href) + '" target="_blank" rel="noopener">' + brandIcon(l.icon, l.href) + '<span>' + esc(l.label) + '</span></a></li>';
@@ -2081,13 +2353,13 @@
   }
   function areaMeta(a){
     var bits = [];
-    if (a.role) bits.push('<strong>' + esc(a.role) + '</strong>');
-    if (a.partners) bits.push('With ' + esc(a.partners));
-    bits.push("Approximate location");
+    if (LF(a, "role")) bits.push('<strong>' + esc(LF(a, "role")) + '</strong>');
+    if (a.partners) bits.push(esc(tf("With {x}", { x: LF(a, "partners") })));
+    bits.push(t("Approximate location"));
     return bits.join(" · ");
   }
   function fmEyebrow(a){
-    return esc([a.period, a.country].filter(Boolean).join(" · "));
+    return esc([LF(a, "period"), LF(a, "country")].filter(Boolean).join(" · "));
   }
 
   function renderStudyView(d){
@@ -2096,7 +2368,7 @@
     var nPhotos = 0;
     areas.forEach(function(a){ if (a.country) countries[a.country] = 1; nPhotos += areaPhotos(a).length; });
     var chips = areas.map(function(a, i){
-      return '<button type="button" class="fm-chip" data-site="' + i + '">' + lucide("map-pin") + esc(a.short || a.name) + '</button>';
+      return '<button type="button" class="fm-chip" data-site="' + i + '">' + lucide("map-pin") + esc(LF(a, "short") || LF(a, "name")) + '</button>';
     }).join("");
     function stat(n, label, ic){ return '<div>' + lucide(ic) + '<b>' + n + '</b><span>' + label + '</span></div>'; }
     var sections = areas.map(function(a, i){
@@ -2112,9 +2384,9 @@
         '<div class="fm-site-cover' + (cover ? '' : ' nocover') + '"' + (cover ? ' style="background-image:url(\'' + esc(cover) + '\')"' : '') + '>' +
           '<div class="fm-site-body reveal">' +
             '<p class="hx-eyebrow">' + fmEyebrow(a) + '</p>' +
-            '<h2 class="hx">' + esc(a.name) + '</h2>' +
-            (a.place ? '<p class="fm-place">' + esc(a.place) + '</p>' : '') +
-            (a.description ? '<p class="fm-desc">' + esc(a.description) + '</p>' : '') +
+            '<h2 class="hx">' + esc(LF(a, "name")) + '</h2>' +
+            (LF(a, "place") ? '<p class="fm-place">' + esc(LF(a, "place")) + '</p>' : '') +
+            (LF(a, "description") ? '<p class="fm-desc">' + esc(LF(a, "description")) + '</p>' : '') +
             '<p class="fm-meta">' + areaMeta(a) + '</p>' +
             '<button type="button" class="fm-more" data-showmap="' + i + '">Show on the map ' + ARROW_SVG + '</button>' +
           '</div>' +
@@ -2127,8 +2399,8 @@
         '<div class="fm-map" id="fm-map"></div>' +
         '<div class="fm-shade"></div>' +
         '<div class="fm-head">' +
-          '<p class="hx-eyebrow">Fieldwork</p>' +
-          '<h1>In the <em>field</em></h1>' +
+          '<p class="hx-eyebrow">' + t("Fieldwork") + '</p>' +
+          '<h1>' + t("In the <em>field</em>") + '</h1>' +
           '<p class="sub">Forests I have walked, sampled and learned from. Click a point on the map to explore.</p>' +
         '</div>' +
         '<aside class="fm-panel" id="fm-panel" aria-live="polite"></aside>' +
@@ -2181,10 +2453,10 @@
         '<div class="fm-panel-top"><div class="fm-nav"><button type="button" data-step="-1" aria-label="Previous site">&#8249;</button><button type="button" data-step="1" aria-label="Next site">&#8250;</button></div>' +
         '<button type="button" class="fm-close" data-closepanel aria-label="Close">&times;</button></div>' +
         '<p class="hx-eyebrow">' + fmEyebrow(a) + '</p>' +
-        '<h2 class="hx">' + esc(a.name) + '</h2>' +
-        (a.place ? '<p class="fm-place">' + esc(a.place) + '</p>' : '') +
+        '<h2 class="hx">' + esc(LF(a, "name")) + '</h2>' +
+        (LF(a, "place") ? '<p class="fm-place">' + esc(LF(a, "place")) + '</p>' : '') +
         thumbs +
-        (a.description ? '<p class="fm-desc">' + esc(a.description) + '</p>' : '') +
+        (LF(a, "description") ? '<p class="fm-desc">' + esc(LF(a, "description")) + '</p>' : '') +
         '<p class="fm-meta">' + areaMeta(a) + '</p>' +
         '<button type="button" class="fm-more" data-scrollsite="' + i + '">Read more below ' + ARROW_SVG.replace('M5 12h14M13 6l6 6-6 6', 'M12 5v14M6 13l6 6 6-6') + '</button>' +
       '</div>';
@@ -2203,6 +2475,7 @@
       selected = i;
       var a = areas[i];
       panel.innerHTML = panelHtml(i);
+      translateDom(panel);
       panel.scrollTop = 0;
       panel.classList.add("open");
       el.parentNode.classList.add("has-sel");
@@ -2255,7 +2528,7 @@
       if (!document.getElementById("fm-map") || el !== document.getElementById("fm-map")) return;
       var mobile = L.Browser.mobile;
       fieldMap = L.map(el, { zoomControl: false, scrollWheelZoom: false, worldCopyJump: true, minZoom: 2, maxZoom: 12, zoomSnap: 0.25, dragging: !mobile, tap: false }).setView([32, -40], 2);
-      L.control.zoom({ position: "bottomleft" }).addTo(fieldMap);
+      L.control.zoom({ position: "bottomleft", zoomInTitle: t("Zoom in"), zoomOutTitle: t("Zoom out") }).addTo(fieldMap);
       L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}", {
         maxZoom: 16, maxNativeZoom: 16,
         attribution: 'Tiles &copy; Esri &mdash; Esri, HERE, Garmin, FAO, NOAA, USGS | Map data &copy; OpenStreetMap contributors'
@@ -2263,8 +2536,8 @@
       L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}", { maxZoom: 16, maxNativeZoom: 16, opacity: .8 }).addTo(fieldMap);
       areas.forEach(function(a, i){
         if (!isFinite(a.lat) || !isFinite(a.lng)) { markers.push(L.marker([0, 0], { opacity: 0 })); return; }
-        var icon = L.divIcon({ className: "fm-pin-wrap", html: '<span class="fm-pin"><i></i><b>' + esc(a.short || a.name) + '</b></span>', iconSize: [18, 18], iconAnchor: [9, 9] });
-        var m = L.marker([a.lat, a.lng], { icon: icon, keyboard: true, title: a.short || a.name, riseOnHover: true }).addTo(fieldMap);
+        var icon = L.divIcon({ className: "fm-pin-wrap", html: '<span class="fm-pin"><i></i><b>' + esc(LF(a, "short") || LF(a, "name")) + '</b></span>', iconSize: [18, 18], iconAnchor: [9, 9] });
+        var m = L.marker([a.lat, a.lng], { icon: icon, keyboard: true, title: LF(a, "short") || LF(a, "name"), riseOnHover: true }).addTo(fieldMap);
         m.on("click", function(){ select(i); });
         markers.push(m);
       });
@@ -2273,9 +2546,9 @@
       labels();
       if (reduce) overview(false); else setTimeout(function(){ if (fieldMap && selected < 0) overview(true); }, 500);
     }, function(){
-      el.innerHTML = '<div class="fm-nomap">The map could not be loaded. Use the buttons below to browse the field sites.</div>';
+      el.innerHTML = '<div class="fm-nomap">' + esc(t("The map could not be loaded. Use the buttons below to browse the field sites.")) + '</div>';
       var first = areas.length ? 0 : -1;
-      if (first >= 0) panel.innerHTML = panelHtml(first);
+      if (first >= 0){ panel.innerHTML = panelHtml(first); translateDom(panel); }
     });
   }
 
@@ -2471,11 +2744,12 @@
     document.body.classList.toggle("is-home", HERO_VIEWS[view] === true);
     syncTopbar();
     app.innerHTML = renderView(current);
-    document.getElementById("site-footer-copyright").textContent = "© " + new Date().getFullYear() + " " + current.name + ". All rights reserved.";
+    document.getElementById("site-footer-copyright").textContent = tf("© {y} {n}. All rights reserved.", { y: new Date().getFullYear(), n: current.name });
     stopQuoteCycle();
-    if (view === "home"){ startCycle(current.topics); startQuoteCycle(current.quotes); } else { stopCycle(); }
+    if (view === "home"){ startCycle(LF(current, "topics")); startQuoteCycle(current.quotes); } else { stopCycle(); }
     wireViewHandlers();
     setupReveal();
+    translateDom(document.body);
   }
 
   function wireViewHandlers(){
@@ -2551,7 +2825,7 @@
         var nEl = block.querySelector(".cm-year-n");
         if (nEl) nEl.textContent = n;
       });
-      if (countEl) countEl.textContent = total + " of " + cards.length + " shown";
+      if (countEl) countEl.textContent = tf("{n} of {m} shown", { n: total, m: cards.length });
       if (emptyEl) emptyEl.hidden = total > 0;
     }
 
@@ -2581,7 +2855,7 @@
       if (existing){
         existing.remove();
         if (thumb) thumb.hidden = false;
-        if (play){ play.classList.remove("open"); play.lastChild.textContent = play.dataset.kind === "video" ? "Watch here" : "Listen here"; }
+        if (play){ play.classList.remove("open"); play.lastChild.textContent = t(play.dataset.kind === "video" ? "Watch here" : "Listen here"); }
         return;
       }
       var html = mediaPlayerHtml(btn.dataset.kind, btn.dataset.src, btn.dataset.h, btn.dataset.title || "");
@@ -2592,7 +2866,7 @@
         var anchor = card.querySelector(".cm-actions");
         anchor.insertAdjacentHTML("beforebegin", html);
         btn.classList.add("open");
-        btn.lastChild.textContent = "Close player";
+        btn.lastChild.textContent = t("Close player");
       }
     };
     appEl.addEventListener("click", appEl.__embedHandler);
@@ -2765,22 +3039,22 @@
   function srBuild(d){
     var out = [];
     function add(group, title, sub, extra, target){ if (title) out.push({ group: group, title: String(title), sub: sub || "", hay: srNorm([title, sub, extra].join(" ")), target: target }); }
-    [["Home", "home", "Home — research, outreach, field work"], ["Education & background", "background", "Degrees, experience, training, awards, teaching, people"],
+    [["Home", "home", "Home — research, outreach, field work"], ["Education and background", "background", "Degrees, experience, training, awards, teaching, people"],
      ["Publications", "publications", "Papers, press and more"], ["Communication & scientific outreach", "communications", "Talks, posters, interviews, press"],
-     ["In the field", "study-areas", "Interactive map of field sites"]].forEach(function(p){ add("Pages", p[0], p[2], "", { hash: p[1] === "home" ? "top" : p[1] }); });
-    (d.researchAxes || []).forEach(function(a){ add("Research", a.title, a.description, "research axis", { hash: "research-axes", id: "research-axes" }); });
+     ["In the field", "study-areas", "Interactive map of field sites"]].forEach(function(p){ add("Pages", t(p[0]), t(p[2]), "", { hash: p[1] === "home" ? "top" : p[1] }); });
+    (d.researchAxes || []).forEach(function(a){ add("Research", LF(a, "title"), LF(a, "description"), "research axis", { hash: "research-axes", id: "research-axes" }); });
     (d.publications || []).forEach(function(p){
       if (p.status === "in-review") return;
-      add("Publications", p.title, [p.year, p.venue, p.authors].filter(Boolean).join(" · "), PUB_SHORT[p.category] || p.category, { hash: "publications", key: srNorm(p.title) });
+      add("Publications", p.title, [p.year, p.venue, p.authors].filter(Boolean).join(" · "), (PUB_SHORT[p.category] || p.category) + " " + t(PUB_SHORT[p.category] || p.category), { hash: "publications", key: srNorm(p.title) });
     });
     (d.communications || []).forEach(function(c){
-      add("Outreach", c.title, [c.year, c.type, c.venue].filter(Boolean).join(" · "), c.authors, { hash: "communications", key: srNorm(c.title) });
+      add("Outreach", c.title, [c.year, t(c.type), c.venue].filter(Boolean).join(" · "), c.authors, { hash: "communications", key: srNorm(c.title) });
     });
     (d.studyAreas || []).forEach(function(a, i){
-      add("Field sites", a.name, [a.place, a.period].filter(Boolean).join(" · "), [a.description, a.country, a.partners, a.role].join(" "), { hash: "study-areas", id: "fa-" + i });
+      add("Field sites", LF(a, "name"), [LF(a, "place"), LF(a, "period")].filter(Boolean).join(" · "), [LF(a, "description"), LF(a, "country"), LF(a, "partners"), LF(a, "role")].join(" "), { hash: "study-areas", id: "fa-" + i });
     });
-    function bg(list, id, groupTitle, fn){ (list || []).forEach(function(x){ var r = fn(x); add("Background", r[0], r[1] ? groupTitle + " · " + r[1] : groupTitle, r[2] || "", { hash: id, id: id }); }); }
-    bg(d.education, "education", "Education", function(x){ return [x.degree, [x.institution, x.years].filter(Boolean).join(", "), x.detail]; });
+    function bg(list, id, groupTitle, fn){ (list || []).forEach(function(x){ var r = fn(x); add("Background", r[0], r[1] ? t(groupTitle) + " · " + r[1] : t(groupTitle), r[2] || "", { hash: id, id: id }); }); }
+    bg(d.education, "education", "Education", function(x){ return [LF(x, "degree"), [x.institution, LF(x, "years")].filter(Boolean).join(", "), LF(x, "detail")]; });
     bg(d.researchStays, "research-stays", "Experience", function(x){ return [x.institution, [x.location, x.period].filter(Boolean).join(", "), x.description]; });
     bg(d.training, "training", "Training", function(x){ return [x.title, [x.provider, x.year].filter(Boolean).join(", ")]; });
     bg(d.scientificAffiliations, "scientific-affiliations", "Affiliations", function(x){ return [x.organization, x.role]; });
@@ -2835,7 +3109,7 @@
     var html = "";
     order.forEach(function(g){
       var list = byGroup[g]; if (!list) return;
-      html += '<p class="sr-group">' + esc(g) + ' · ' + list.length + '</p><ul class="sr-list">';
+      html += '<p class="sr-group">' + esc(t(g)) + ' · ' + list.length + '</p><ul class="sr-list">';
       list.slice(0, 8).forEach(function(e){
         html += '<li><a class="sr-item" href="#" data-idx="' + srResults.length + '"><span class="sr-ico">' + lucide(SR_ICON[e.group] || "layout-grid") + '</span><span class="sr-txt"><span class="sr-title">' + srMark(e.title, tokens) + '</span>' +
           (e.sub ? '<span class="sr-sub">' + srMark(e.sub.length > 150 ? e.sub.slice(0, 150) + "…" : e.sub, tokens) + '</span>' : '') + '</span><span class="sr-go" aria-hidden="true">&#8629;</span></a></li>';
@@ -2843,7 +3117,7 @@
       });
       html += '</ul>';
     });
-    body.innerHTML = html || '<p class="sr-empty">Nothing found for “' + esc(q) + '”. Try another word, or write to me with the Contact button.</p>';
+    body.innerHTML = html || '<p class="sr-empty">' + esc(tf("Nothing found for “{q}”. Try another word, or write to me with the Contact button.", { q: q })) + '</p>';
     srActive = srResults.length ? 0 : -1;
     srHighlight();
   }
@@ -2960,7 +3234,7 @@
       window.location.href = "mailto:" + (to || "") + "?subject=" + encodeURIComponent(data.subject) + "&body=" + encodeURIComponent(body);
     }
     if (!key){ viaMailto(); return; }
-    btn.disabled = true; status.textContent = "Sending…";
+    btn.disabled = true; status.textContent = t("Sending…");
     fetch("https://api.web3forms.com/submit", {
       method: "POST",
       headers: { "Content-Type": "application/json", "Accept": "application/json" },
@@ -2976,7 +3250,7 @@
       document.getElementById("cf-done").hidden = false;
     }).catch(function(){
       status.className = "cf-status err";
-      status.innerHTML = "Sorry, the message couldn’t be sent. Please write to " + (to ? '<a href="mailto:' + esc(to) + '">' + esc(to) + '</a>' : "me by email") + ".";
+      status.innerHTML = tf("Sorry, the message couldn’t be sent. Please write to {to}.", { to: (to ? '<a href="mailto:' + esc(to) + '">' + esc(to) + '</a>' : "me by email") });
     }).then(function(){ btn.disabled = false; });
   });
 
@@ -2994,7 +3268,7 @@
     applyRoute(false);
     window.addEventListener("hashchange", function(){ applyRoute(true); });
   }).catch(function(err){
-    app.innerHTML = '<p style="padding:6rem 1.5rem;text-align:center;">Couldn’t load site content. Please refresh the page.</p>';
+    app.innerHTML = '<p style="padding:6rem 1.5rem;text-align:center;">' + t("Couldn’t load site content. Please refresh the page.") + '</p>';
     console.error(err);
   });
 
