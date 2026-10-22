@@ -1,0 +1,29 @@
+{
+  "items": [
+    {
+      "name": "Université du Québec en Abitibi-Témiscamingue (UQAT)",
+      "logo": "images/footer-uqat.png",
+      "url": "https://www.uqat.ca"
+    },
+    {
+      "name": "Centre d'étude de la forêt (CEF)",
+      "logo": "images/footer-cef.png",
+      "url": "https://www.cef-cfr.ca"
+    },
+    {
+      "name": "Université de Toulouse",
+      "logo": "images/footer-toulouse.png",
+      "url": "https://www.univ-toulouse.fr"
+    },
+    {
+      "name": "Mycosphaera",
+      "logo": "images/footer-mycosphaera.png",
+      "url": "https://www.mycosphaera.com"
+    },
+    {
+      "name": "IUCN SSC Mushroom, Bracket and Puffball Fungi Specialist Group",
+      "logo": "images/footer-iucn-mbp.png",
+      "url": "https://iucn.org/our-union/commissions/group/iucn-ssc-mushroom-bracket-and-puffball-specialist-group"
+    }
+  ]
+}

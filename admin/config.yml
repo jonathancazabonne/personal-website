@@ -188,6 +188,22 @@ collections:
                   - { label: "Photo", name: "src", widget: "image" }
                   - { label: "Caption", name: "caption", widget: "string", required: false }
 
+  - name: "footerLogos"
+    label: "Footer logos (affiliations)"
+    files:
+      - file: "data/footerLogos.json"
+        label: "Footer logos (affiliations)"
+        name: "footerLogos"
+        fields:
+          - label: "Logos (shown in the footer, in this order)"
+            name: "items"
+            widget: "list"
+            summary: "{{name}}"
+            fields:
+              - { label: "Organisation name", name: "name", widget: "string" }
+              - { label: "Logo", name: "logo", widget: "image" }
+              - { label: "Link (website)", name: "url", widget: "string", required: false }
+
   - name: "training"
     label: "Scientific and professional training"
     files:

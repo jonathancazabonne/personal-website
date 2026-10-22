@@ -540,11 +540,18 @@
   .hx-mail:hover{ background-size:100% 3px; }
   .hx-foot-cols{ display:grid; grid-template-columns:minmax(0,1.2fr) minmax(0,2fr); gap:48px; align-items:start; }
   .hx-foot-cols h4{ margin:0 0 14px; font-size:.63rem; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--mist); }
-  .hx-foot-cols address{ font-style:normal; color:#D3DCD2; line-height:1.7; font-size:.85rem; }
+  .hx-foot-cols address{ overflow-wrap:anywhere; font-style:normal; color:#D3DCD2; line-height:1.7; font-size:.85rem; }
   .hx-foot-cols ul{ margin:0; padding:0; list-style:none; columns:2; column-gap:48px; }
   .hx-foot-cols li{ break-inside:avoid; margin-bottom:8px; }
   .hx-foot-cols ul a{ text-decoration:none; color:#E6ECE4; font-size:.85rem; border-bottom:1px solid transparent; transition:border-color .2s, color .2s; }
   .hx-foot-cols ul a:hover{ color:var(--hx-accent); border-color:var(--hx-accent); }
+  .hx-foot-logos{ margin-top:56px; }
+  .hx-foot-logos h4{ margin:0 0 16px; font-size:.63rem; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--mist); }
+  .hx-logo-row{ display:flex; flex-wrap:wrap; gap:14px; }
+  .hx-logo{ display:flex; align-items:center; justify-content:center; width:176px; height:88px; padding:14px 20px; background:#fff; transition:transform .3s, box-shadow .3s; }
+  .hx-logo img{ max-width:100%; max-height:100%; width:auto; height:auto; object-fit:contain; display:block; }
+  a.hx-logo:hover{ transform:translateY(-4px); box-shadow:0 14px 30px rgba(0,0,0,.45); }
+  @media (max-width:640px){ .hx-logo{ width:calc(50% - 7px); height:76px; } }
   .hx-legal{ display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; padding-top:28px; border-top:1px solid rgba(243,246,241,.14); font-size:.68rem; color:var(--mist); }
 
   /* scroll reveal: elements fade/slide in as they enter the viewport (JS adds html.rv and .in) */
@@ -943,6 +950,7 @@
     </div>
     <div>
       <div class="hx-foot-cols" id="site-footer-contact"></div>
+      <div class="hx-foot-logos" id="site-footer-logos"></div>
       <div class="hx-legal" style="margin-top:56px">
         <span id="site-footer-copyright">© 2026 Jonathan Cazabonne. All rights reserved.</span>
       </div>
@@ -1792,6 +1800,14 @@
       if (d.email){ mailEl.href = "mailto:" + d.email; mailEl.textContent = d.email; }
       else mailEl.parentNode.style.display = "none";
     }
+    var logosEl = document.getElementById("site-footer-logos");
+    if (logosEl){
+      var logos = (d.footerLogos || []).filter(function(l){ return l && l.logo; });
+      logosEl.innerHTML = logos.length ? '<h4>Affiliations</h4><div class="hx-logo-row">' + logos.map(function(l){
+        var img = '<img src="' + esc(l.logo) + '" alt="' + esc(l.name) + '" loading="lazy" />';
+        return l.url ? '<a class="hx-logo" href="' + esc(l.url) + '" target="_blank" rel="noopener" title="' + esc(l.name) + '">' + img + '</a>' : '<span class="hx-logo" title="' + esc(l.name) + '">' + img + '</span>';
+      }).join("") + '</div>' : "";
+    }
     var noteEl = document.getElementById("cf-note");
     if (noteEl && !d.contactFormKey) noteEl.textContent = "Sending opens your email app with this message ready to go.";
     var sendBtn = document.getElementById("cf-send");
@@ -2164,7 +2180,7 @@
 
   // ---------- data loading ----------
   var DATA_FILES = ["site", "education", "links", "publications", "communications", "timeline", "studyAreas",
-    "training", "researchStays", "scientificAffiliations", "communityEngagement", "awards", "memberships", "committees", "peerReview", "editorialRoles", "teaching", "publicEngagement", "researchAxes", "homeGallery", "quotes"];
+    "training", "researchStays", "scientificAffiliations", "communityEngagement", "awards", "memberships", "committees", "peerReview", "editorialRoles", "teaching", "publicEngagement", "researchAxes", "homeGallery", "quotes", "footerLogos"];
 
   function loadSiteData(){
     if (window.__SITE_DATA__) return Promise.resolve(window.__SITE_DATA__);
