@@ -97,6 +97,7 @@ collections:
               - { label: "Year", name: "year", widget: "number", value_type: "int" }
               - { label: "Authors (optional — leave blank when the venue already credits the issuer, e.g. a press release)", name: "authors", widget: "string", required: false }
               - { label: "Title", name: "title", widget: "string" }
+              - { label: "Title — French translation (optional; shown on the French site, the original title appears below it)", name: "title_fr", widget: "string", required: false }
               - { label: "Venue", name: "venue", widget: "string" }
               - { label: "URL", name: "url", widget: "string" }
               - { label: "Show in the Selected work section (max 3)", name: "featured", widget: "boolean", default: false, required: false }
