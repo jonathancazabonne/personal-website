@@ -94,7 +94,8 @@
       "title": "'Invisible and uncharismatic' fungi need taxonomy champions, too",
       "venue": "Nature, 635(39)",
       "url": "https://doi.org/10.1038/d41586-024-03612-x",
-      "category": "correspondence"
+      "category": "correspondence",
+      "featured": true
     },
     {
       "year": 2024,
@@ -126,7 +127,8 @@
       "title": "The power of citizen science to advance fungal conservation",
       "venue": "Conservation Letters, e13013",
       "url": "https://doi.org/10.1111/conl.13013",
-      "category": "peer-reviewed"
+      "category": "peer-reviewed",
+      "featured": true
     },
     {
       "year": 2024,
@@ -134,7 +136,8 @@
       "title": "Singleton-based species names and fungal rarity: Does the number really matter?",
       "venue": "IMA Fungus, 15(1): 7",
       "url": "https://doi.org/10.1186/s43008-023-00137-2",
-      "category": "peer-reviewed"
+      "category": "peer-reviewed",
+      "featured": true
     },
     {
       "year": 2024,

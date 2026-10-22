@@ -678,11 +678,29 @@
     .cm-title .ln i{ animation:none; }
     .cm-thumb img, .cm-feat-card img, .cm-action{ transition:none; }
   }
+
+  /* publications page reuses the outreach (cm-*) components */
+  main.view-publications{ max-width:none; padding:0; }
+  .cm-hero.pubs .hx-hero-img{ object-position:10% 50%; }
+  .cm-hero.pubs .hx-scrim{ background:
+    linear-gradient(90deg, rgba(8,12,9,0) 0%, rgba(8,12,9,.1) 22%, rgba(8,12,9,.84) 52%, rgba(8,12,9,.95) 76%),
+    linear-gradient(180deg, rgba(8,12,9,.6) 0%, rgba(8,12,9,0) 24%, rgba(8,12,9,0) 60%, rgba(8,12,9,.7) 100%); }
+  @media (max-width:900px){
+    .cm-hero.pubs .hx-scrim{ background:linear-gradient(180deg, rgba(8,12,9,.5) 0%, rgba(8,12,9,.05) 28%, rgba(8,12,9,.6) 52%, rgba(8,12,9,.94) 78%); }
+    .cm-hero.pubs .hx-hero-img{ object-position:20% 20%; }
+  }
+  .cm-type.is-popular, .cm-type.is-press, .cm-type.is-press-release, .cm-type.is-bulletin{ color:#9a6a1a; }
+  .cm-type.is-preprint, .cm-type.is-correspondence{ color:#5b6f8c; }
+  .cm-type.is-literary, .cm-type.is-thesis-report, .cm-type.is-book-chapter{ color:#7a5a8a; }
+  .cm-feat-card .cm-feat-year{ position:absolute; top:18px; left:26px; font-family:var(--display); font-weight:800; font-size:clamp(70px,8vw,128px); line-height:1; letter-spacing:-.05em; color:rgba(243,246,241,.1); pointer-events:none; }
+  .cm-feat-card.text-only{ height:460px; }
+  .cm-feat-card .cm-authors{ color:#D3DCD2; margin-top:10px; }
+  .cm-feat-card .cm-authors strong{ color:#fff; }
 </style>
 
 </head>
 <body>
-<script>if(!/^#(publications|study-areas)$/.test(location.hash))document.body.classList.add("is-home");</script>
+<script>if(!/^#study-areas$/.test(location.hash))document.body.classList.add("is-home");</script>
 <a class="skip-link" href="#app">Skip to content</a>
 <div class="shell">
   <header class="topbar">
@@ -1083,16 +1101,6 @@
   }
 
   // ---------- publications page ----------
-  function renderYearAccordion(groups, itemRenderer){
-    return groups.map(function(g){
-      return '<details class="year-block">' +
-        '<summary><h2 class="year-num">' + esc(g.year) + '</h2>' +
-        '<span class="year-count">(<span class="lc">n</span> = ' + g.items.length + ')</span></summary>' +
-        '<ul class="entry-list">' + g.items.map(itemRenderer).join("") + '</ul>' +
-      '</details>';
-    }).join("");
-  }
-
   function boldAuthorHighlight(authors){
     var escaped = esc(authors);
     if (escaped.indexOf("Cazabonne") !== -1) return escaped.replace(/Cazabonne/g, "<strong>Cazabonne</strong>");
@@ -1127,64 +1135,126 @@
     { key: "press-release", label: "Press releases" }
   ];
 
-  function renderPubItem(p){
-    var hasLink = p.url && p.url !== "#";
-    var titleHtml = hasLink
-      ? '<a href="' + esc(p.url) + '" target="_blank" rel="noopener">' + esc(p.title) + '</a>'
-      : esc(p.title);
-    return '<li data-category="' + esc(p.category || "") + '"><span class="entry-title">' +
-      titleHtml + '</span>' +
-      (p.authors ? '<span class="entry-meta">' + boldAuthorHighlight(p.authors) + '</span>' : '') +
-      '<span class="entry-meta">' + esc(p.venue) + '</span></li>';
+  var PUB_SHORT = {};
+  PUB_CATEGORIES.forEach(function(c){ PUB_SHORT[c.key] = c.label; });
+
+  function pubView(p){
+    var cat = p.category || "peer-reviewed";
+    var venue = p.venue || "";
+    var dt = parseCommDate(venue), shown = venue;
+    if (dt){
+      var tail = new RegExp("[,\\s(]*" + dt.text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "\\)?\\s*$");
+      shown = venue.replace(tail, "") || venue;
+    }
+    var rank = PUB_CATEGORY_ORDER.indexOf(cat);
+    return { p: p, cat: cat, date: dt ? dt.text : "", sort: dt ? dt.month * 100 + dt.day : -1, rank: rank < 0 ? 99 : rank, venue: shown };
+  }
+  function pubActionLabel(p){
+    var u = p.url || "";
+    if (!u || u === "#") return "";
+    if (/doi\.org/i.test(u)) return "DOI";
+    if (/\.pdf($|\?)/i.test(u) || /^files\//i.test(u)) return "PDF";
+    if (/^(press|popular|bulletin)/.test(p.category || "")) return "Read";
+    return "Open";
+  }
+  function pubTagHtml(v){
+    return '<div class="cm-tag"><span class="cm-type is-' + v.cat + '">' + esc(PUB_SHORT[v.cat] || v.cat) + '</span>' +
+      (v.date ? '<span class="cm-date">' + esc(v.date) + '</span>' : '') + '</div>';
+  }
+  function pubSearchText(v){
+    return (v.p.title + " " + (v.p.authors || "") + " " + (v.p.venue || "") + " " + (PUB_SHORT[v.cat] || "") + " " + (v.p.year || "")).toLowerCase();
   }
 
-  function renderPubYearAccordion(groups){
-    return groups.map(function(g){
-      var byCat = {};
-      g.items.forEach(function(p){
-        var cat = p.category || "peer-reviewed";
-        (byCat[cat] = byCat[cat] || []).push(p);
-      });
-      var sections = PUB_CATEGORY_ORDER.filter(function(c){ return byCat[c] && byCat[c].length; }).map(function(c){
-        return '<div class="pub-category-group" data-category="' + c + '">' +
-          '<h3 class="pub-category-header">' + esc(PUB_CATEGORY_LABELS[c] || c) + ' (<span class="lc">n</span> = ' + byCat[c].length + ')</h3>' +
-          '<ul class="entry-list">' + byCat[c].map(renderPubItem).join("") + '</ul>' +
-        '</div>';
-      }).join("");
-      return '<details class="year-block">' +
-        '<summary><h2 class="year-num">' + esc(g.year) + '</h2>' +
-        '<span class="year-count">(<span class="lc">n</span> = ' + g.items.length + ')</span></summary>' +
-        sections +
-      '</details>';
-    }).join("");
+  function renderPubCard(v){
+    var p = v.p, label = pubActionLabel(p), hasLink = !!label;
+    var titleHtml = hasLink ? '<a href="' + esc(p.url) + '" target="_blank" rel="noopener">' + esc(p.title) + '</a>' : esc(p.title);
+    return '<article class="cm-card" data-group="' + esc(v.cat) + '" data-text="' + esc(pubSearchText(v)) + '">' +
+      pubTagHtml(v) +
+      '<h3>' + titleHtml + '</h3>' +
+      (p.authors ? '<p class="cm-authors">' + boldAuthorHighlight(p.authors) + '</p>' : '') +
+      '<p class="cm-venue">' + commVenueHtml(v.venue) + '</p>' +
+      (hasLink ? '<a class="cm-action" href="' + esc(p.url) + '" target="_blank" rel="noopener">' + label + ' ' + COMM_ARROW + '</a>' : '') +
+    '</article>';
   }
 
-  function renderPubFilters(published){
-    var counts = {};
-    published.forEach(function(p){ var c = p.category || "peer-reviewed"; counts[c] = (counts[c] || 0) + 1; });
-    var chips = PUB_CATEGORIES.map(function(c){
-      var n = c.key === "all" ? published.length : (counts[c.key] || 0);
-      return '<button type="button" class="chip' + (c.key === "all" ? " active" : "") + '" data-category="' + c.key + '" aria-pressed="' + (c.key === "all" ? "true" : "false") + '">' + c.label + ' (n = ' + n + ')</button>';
+  function renderPubFeatured(views){
+    var feat = views.filter(function(v){ return v.p.featured; }).slice(0, 3);
+    if (!feat.length) return "";
+    var cards = feat.map(function(v){
+      var p = v.p, label = pubActionLabel(p);
+      var inner = (p.image ? '<img src="' + esc(p.image) + '" alt="" loading="lazy" />' : '<span class="cm-feat-year" aria-hidden="true">' + esc(p.year || "") + '</span>') +
+        '<div class="cm-feat-body">' + pubTagHtml(v) + '<h3>' + esc(p.title) + '</h3>' +
+        (p.authors ? '<p class="cm-authors">' + boldAuthorHighlight(p.authors) + '</p>' : '') +
+        '<p class="cm-venue">' + commVenueHtml(v.venue) + '</p>' +
+        (label ? '<span class="cm-action">' + label + ' ' + COMM_ARROW + '</span>' : '') + '</div>';
+      var cls = 'cm-feat-card reveal' + (p.image ? '' : ' text-only');
+      return label
+        ? '<a class="' + cls + '" href="' + esc(p.url) + '" target="_blank" rel="noopener">' + inner + '</a>'
+        : '<article class="' + cls + '">' + inner + '</article>';
     }).join("");
-    return '<div class="pub-toolbar">' +
-      '<div class="filter-row" role="group" aria-label="Filter publications by category">' + chips + '</div>' +
-      '<p class="filter-count" id="pub-count" aria-live="polite"></p>' +
-    '</div>';
+    return '<section id="pub-highlights" class="hx-sec cm-feat">' +
+      '<div class="hx-sec-head reveal"><h2 class="hx">Selected work</h2></div>' +
+      '<div class="cm-feat-grid">' + cards + '</div>' +
+    '</section>';
+  }
+
+  function renderPubYears(views){
+    var map = {}, order = [];
+    views.forEach(function(v, i){
+      v.idx = i;
+      var y = v.p.year || "Undated";
+      if (!map[y]){ map[y] = []; order.push(y); }
+      map[y].push(v);
+    });
+    order.sort(function(a, b){ return (Number(b) || 0) - (Number(a) || 0); });
+    return order.map(function(y){
+      var items = map[y].slice().sort(function(a, b){ return (a.rank - b.rank) || (b.sort - a.sort) || (a.idx - b.idx); });
+      return '<div class="cm-year" data-year="' + esc(y) + '">' +
+        '<h2 class="cm-year-num hx">' + esc(y) + '<small><span class="cm-year-n">' + items.length + '</span> entries</small></h2>' +
+        '<div class="cm-items">' + items.map(renderPubCard).join("") + '</div>' +
+      '</div>';
+    }).join("");
   }
 
   function renderPublicationsView(d){
     var published = d.publications.filter(function(p){ return p.status !== "in-review"; });
-    var groups = groupByYear(published);
-    var body = groups.length
-      ? renderPubYearAccordion(groups)
-      : '<p class="page-intro">No publications listed yet.</p>';
-    var toolbar = published.length ? renderPubFilters(published) : "";
+    var views = published.map(pubView);
+    var counts = {};
+    views.forEach(function(v){ counts[v.cat] = (counts[v.cat] || 0) + 1; });
+    var years = published.map(function(p){ return Number(p.year); }).filter(Boolean);
+    var span = years.length ? Math.min.apply(null, years) + "–" + Math.max.apply(null, years) : "";
+    var firstAuthor = published.filter(function(p){ return /^Cazabonne, J\./.test(p.authors || ""); }).length;
+    var publicWriting = (counts["popular"] || 0) + (counts["press"] || 0) + (counts["press-release"] || 0);
+    function stat(n, label){ return '<div class="cm-stat"><b data-count="' + n + '">' + n + '</b><span>' + label + '</span></div>'; }
+    var chips = PUB_CATEGORIES.map(function(c){
+      var n = c.key === "all" ? published.length : (counts[c.key] || 0);
+      if (c.key !== "all" && !n) return "";
+      return '<button type="button" class="cm-chip' + (c.key === "all" ? " active" : "") + '" data-group="' + c.key + '" aria-pressed="' + (c.key === "all" ? "true" : "false") + '">' + c.label + '<small>' + n + '</small></button>';
+    }).join("");
     return '' +
-      '<section id="pub-top">' +
-        '<h1 class="page-title">Publications</h1>' +
-        toolbar +
+      '<section id="top" class="hx-hero hx-page cm-hero pubs">' +
+        '<img class="hx-hero-img" src="images/publications-hero.jpg" alt="Orange-gilled fungi growing on a moss-covered log" fetchpriority="high" />' +
+        '<div class="hx-scrim"></div>' +
+        '<div class="hx-hero-body"><div class="hx-col">' +
+          '<p class="hx-eyebrow">Publications' + (span ? ' · ' + span : '') + '</p>' +
+          '<h1 class="cm-title" aria-label="Publications"><span class="ln"><i>Publications</i></span><span class="ln"><i><em>papers, press &amp; more</em></i></span></h1>' +
+          '<div class="cm-stats">' +
+            stat(published.length, "Publications") + stat(counts["peer-reviewed"] || 0, "Peer-reviewed") + stat(firstAuthor, "As first author") + stat(publicWriting, "Public writing") +
+          '</div>' +
+        '</div></div>' +
+        '<a class="hx-cue" href="#publications" data-scroll="pub-highlights" aria-label="Scroll to the publications"><span class="hx-cue-line" aria-hidden="true"></span>Scroll</a>' +
       '</section>' +
-      '<section id="pub-list" class="' + (groups.length ? "year-accordion" : "") + '">' + body + '</section>';
+      '<div class="hx-page">' +
+        renderPubFeatured(views) +
+        '<section id="pub-list" class="hx-sec cm-list">' +
+          (published.length
+            ? '<div class="cm-search-wrap"><input id="cm-search" class="cm-search" type="search" placeholder="Search ' + published.length + ' publications — e.g. Mycosphere, Laboulbeniomycetes, Le Devoir…" aria-label="Search publications" autocomplete="off"></div>' +
+              '<div class="cm-bar"><div class="cm-chips" role="group" aria-label="Filter publications by category">' + chips + '</div><p class="cm-count" id="comm-count" aria-live="polite"></p></div>' +
+              '<div id="cm-years">' + renderPubYears(views) + '</div>' +
+              '<p class="cm-empty" id="cm-empty" hidden>No publication matches your search.</p>'
+            : '<p class="cm-empty">No publications listed yet.</p>') +
+        '</section>' +
+      '</div>';
   }
 
   // ---------- communications page ----------
@@ -1596,7 +1666,7 @@
     });
   }
 
-  var HERO_VIEWS = { home: true, communications: true };
+  var HERO_VIEWS = { home: true, communications: true, publications: true };
   function syncTopbar(){
     var bar = document.querySelector(".topbar");
     if (!bar) return;
@@ -1640,62 +1710,13 @@
     Array.prototype.forEach.call(document.querySelectorAll("[data-scroll]"), function(a){
       a.addEventListener("click", function(ev){
         ev.preventDefault();
-        var t = document.getElementById(a.dataset.scroll) || document.getElementById("comm-list");
+        var t = document.getElementById(a.dataset.scroll) || document.getElementById("comm-list") || document.getElementById("pub-list");
         if (t) t.scrollIntoView({ behavior: "smooth", block: "start" });
       });
     });
     if (view === "conservation") wireTimelineHandlers();
-    if (view === "publications") wirePublicationsHandlers();
+    if (view === "publications") wireCommunicationsHandlers();
     if (view === "communications") wireCommunicationsHandlers();
-  }
-
-  // ---------- publications: category filter ----------
-  function wirePublicationsHandlers(){
-    var chips = Array.prototype.slice.call(document.querySelectorAll(".pub-toolbar .chip"));
-    if (!chips.length) return;
-    var yearBlocks = Array.prototype.slice.call(document.querySelectorAll("#pub-list .year-block"));
-    var totalItems = document.querySelectorAll("#pub-list .entry-list li").length;
-    var countEl = document.getElementById("pub-count");
-    var active = "all";
-
-    function applyFilter(){
-      var visibleTotal = 0;
-      yearBlocks.forEach(function(block){
-        var groups = Array.prototype.slice.call(block.querySelectorAll(".pub-category-group"));
-        var visible = 0;
-        groups.forEach(function(group){
-          var show = active === "all" || group.dataset.category === active;
-          group.style.display = show ? "" : "none";
-          if (show) visible += group.querySelectorAll("li").length;
-        });
-        block.style.display = visible ? "" : "none";
-        var countSpan = block.querySelector(".year-count");
-        if (countSpan) countSpan.innerHTML = "(<span class=\"lc\">n</span> = " + visible + ")";
-        visibleTotal += visible;
-      });
-      if (countEl) countEl.textContent = visibleTotal + " of " + totalItems + " publications shown";
-    }
-
-    function withTransition(run){
-      if (document.startViewTransition) document.startViewTransition(run);
-      else run();
-    }
-
-    chips.forEach(function(chip){
-      chip.addEventListener("click", function(){
-        withTransition(function(){
-          active = chip.dataset.category;
-          chips.forEach(function(c){
-            var isActive = c === chip;
-            c.classList.toggle("active", isActive);
-            c.setAttribute("aria-pressed", isActive ? "true" : "false");
-          });
-          applyFilter();
-        });
-      });
-    });
-
-    applyFilter();
   }
 
   // ---------- outreach: type filter ----------
