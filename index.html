@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Jonathan Cazabonne</title>
+<script>try{var __t=localStorage.getItem("theme");if(!__t&&window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)__t="dark";if(__t==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Instrument+Serif:ital@0;1&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
@@ -47,7 +48,8 @@
   }
 
   *{ box-sizing:border-box; }
-  html{ color-scheme: light dark; font-size:19px; overflow-x:hidden; }
+  html{ color-scheme:light; font-size:19px; overflow-x:hidden; }
+  html[data-theme="dark"]{ color-scheme:dark; }
   body{
     margin:0;
     background:var(--bg);
@@ -992,6 +994,105 @@
   .cm-play:hover{ background:#3F5C3F; }
   .cm-play svg{ width:15px; height:15px; }
   .cm-play.open{ background:#E5A03A; color:#0D130E; }
+
+  /* =====================================================================
+     DARK THEME (toggle in the header; follows the visitor's system by default)
+     ===================================================================== */
+  .nav-theme{ display:inline-flex; align-items:center; justify-content:center; width:42px; height:42px; padding:0; border-radius:50%; cursor:pointer; border:1px solid currentColor; background:transparent; color:var(--ink); transition:background .2s, color .2s, border-color .2s; }
+  .nav-theme:hover{ background:var(--accent); color:var(--accent-contrast); border-color:var(--accent); }
+  .nav-theme svg{ width:18px; height:18px; display:block; }
+  body.is-home .nav-theme{ color:#F3F6F1; }
+  body.is-home .nav-theme:hover{ background:#E5A03A; border-color:#E5A03A; color:#0D130E; }
+  .nav-theme .i-sun{ display:none; }
+  html[data-theme="dark"] .nav-theme .i-sun{ display:block; }
+  html[data-theme="dark"] .nav-theme .i-moon{ display:none; }
+  .hx-teaser h2.hx em{ font-family:var(--serif); font-weight:400; color:#3F5C3F; }
+
+  html[data-theme="dark"]{
+    --dk-1:#0F1611; --dk-2:#141D17; --dk-3:#1B261E; --dk-ink:#E7EDE5; --dk-muted:#A9B7AA; --dk-line:rgba(243,246,241,.16); --dk-line-2:rgba(243,246,241,.28);
+    --dk-moss:#8FBB7B; --dk-amber:#E5A03A;
+  }
+  html[data-theme="dark"] body{ background:var(--dk-1); color:var(--dk-ink); }
+  /* surfaces */
+  html[data-theme="dark"] .hx-news, html[data-theme="dark"] .cm-list, html[data-theme="dark"] .bg-sec{ background:var(--dk-1); color:var(--dk-ink); }
+  html[data-theme="dark"] .hx-axes, html[data-theme="dark"] .cm-feat, html[data-theme="dark"] .hx-teaser, html[data-theme="dark"] .bg-sec.alt{ background:var(--dk-2); color:var(--dk-ink); }
+  html[data-theme="dark"] .bg-sec, html[data-theme="dark"] .bg-sec.alt{ border-bottom-color:var(--dk-line); }
+  html[data-theme="dark"] .hx-axes .hx-sec-head p, html[data-theme="dark"] .hx-teaser p{ color:var(--dk-muted); }
+  html[data-theme="dark"] .hx-teaser h2.hx em{ color:var(--dk-amber); }
+  html[data-theme="dark"] .hx-cta.dark{ background:#F3F6F1; color:#0D130E; }
+  /* news cards */
+  html[data-theme="dark"] .hx-news-card{ border-top-color:rgba(243,246,241,.8); color:var(--dk-ink); }
+  html[data-theme="dark"] .hx-news-card:hover{ border-color:var(--dk-amber); }
+  html[data-theme="dark"] .hx-tag{ color:var(--dk-moss); }
+  html[data-theme="dark"] .hx-tag span:last-child, html[data-theme="dark"] .hx-src{ color:var(--dk-muted); }
+  html[data-theme="dark"] .hx-news-card:hover .hx-src svg{ color:var(--dk-amber); }
+  /* outreach / publications */
+  html[data-theme="dark"] .cm-search{ background-color:var(--dk-3); border-color:var(--dk-line-2); color:var(--dk-ink); }
+  html[data-theme="dark"] .cm-bar{ background:rgba(15,22,17,.94); border-bottom-color:var(--dk-line); }
+  html[data-theme="dark"] .cm-chip{ border-color:var(--dk-line-2); color:var(--dk-ink); }
+  html[data-theme="dark"] .cm-chip:hover{ border-color:var(--dk-amber); }
+  html[data-theme="dark"] .cm-chip.active{ background:#F3F6F1; color:#0D130E; border-color:#F3F6F1; }
+  html[data-theme="dark"] .cm-count, html[data-theme="dark"] .cm-empty, html[data-theme="dark"] .cm-date, html[data-theme="dark"] .cm-venue{ color:var(--dk-muted); }
+  html[data-theme="dark"] .cm-year{ border-bottom-color:var(--dk-line); }
+  html[data-theme="dark"] .cm-year-num{ color:#27342b; }
+  html[data-theme="dark"] .cm-year-num small{ color:var(--dk-muted); }
+  html[data-theme="dark"] .cm-card{ border-top-color:rgba(243,246,241,.8); }
+  html[data-theme="dark"] .cm-card:hover{ border-color:var(--dk-amber); }
+  html[data-theme="dark"] .cm-card h3 a:hover, html[data-theme="dark"] .bg-card .entry-title a:hover, html[data-theme="dark"] .bg-what b a:hover{ color:var(--dk-amber); }
+  html[data-theme="dark"] .cm-type{ color:var(--dk-moss); }
+  html[data-theme="dark"] .cm-type.is-media, html[data-theme="dark"] .cm-type.is-popular, html[data-theme="dark"] .cm-type.is-press, html[data-theme="dark"] .cm-type.is-press-release, html[data-theme="dark"] .cm-type.is-bulletin{ color:var(--dk-amber); }
+  html[data-theme="dark"] .cm-type.is-posters, html[data-theme="dark"] .cm-type.is-preprint, html[data-theme="dark"] .cm-type.is-correspondence{ color:#93aed6; }
+  html[data-theme="dark"] .cm-type.is-literary, html[data-theme="dark"] .cm-type.is-thesis-report, html[data-theme="dark"] .cm-type.is-book-chapter{ color:#c3a3d2; }
+  html[data-theme="dark"] .cm-thumb{ background:var(--dk-3); }
+  html[data-theme="dark"] .cm-authors{ color:#CBD5C9; }
+  html[data-theme="dark"] .cm-todo{ color:var(--dk-amber); }
+  html[data-theme="dark"] .cm-action{ color:var(--dk-moss); }
+  html[data-theme="dark"] .cm-action:hover{ border-color:var(--dk-moss); }
+  html[data-theme="dark"] .cm-feat-card .cm-action{ color:var(--hx-accent); }
+  html[data-theme="dark"] .cm-play{ background:rgba(243,246,241,.14); color:#F3F6F1; }
+  html[data-theme="dark"] .cm-play:hover{ background:var(--dk-amber); color:#0D130E; }
+  html[data-theme="dark"] .cm-play.open{ background:var(--dk-amber); color:#0D130E; }
+  /* background page */
+  html[data-theme="dark"] .bg-h small, html[data-theme="dark"] .bg-when, html[data-theme="dark"] .bg-card .entry-meta:last-child{ color:var(--dk-amber); }
+  html[data-theme="dark"] .bg-card, html[data-theme="dark"] .bg-row:first-child{ border-top-color:rgba(243,246,241,.8); }
+  html[data-theme="dark"] .bg-row{ border-top-color:var(--dk-line); }
+  html[data-theme="dark"] .bg-row:first-child{ border-top-color:rgba(243,246,241,.8); }
+  html[data-theme="dark"] .bg-card .entry-list li + li{ border-top-color:var(--dk-line-2); }
+  html[data-theme="dark"] .bg-card .entry-meta, html[data-theme="dark"] .bg-what span{ color:var(--dk-muted); }
+  html[data-theme="dark"] .bg-card .entry-meta a{ text-decoration-color:var(--dk-line-2); }
+  html[data-theme="dark"] .bg-logos img{ border-color:transparent; }
+  /* dialogs */
+  html[data-theme="dark"] .cf-dialog{ background:var(--dk-2); color:var(--dk-ink); box-shadow:0 0 0 1px rgba(255,255,255,.1), 0 30px 80px rgba(0,0,0,.6); }
+  html[data-theme="dark"] .cf-close{ color:var(--dk-ink); }
+  html[data-theme="dark"] .cf-close:hover{ background:rgba(255,255,255,.1); }
+  html[data-theme="dark"] .cf-eyebrow{ color:var(--dk-amber); }
+  html[data-theme="dark"] .cf-lede, html[data-theme="dark"] .cf-field > span, html[data-theme="dark"] .cf-status, html[data-theme="dark"] .cf-note{ color:var(--dk-muted); }
+  html[data-theme="dark"] .cf-field input, html[data-theme="dark"] .cf-field textarea{ background:var(--dk-1); color:var(--dk-ink); border-color:var(--dk-line-2); }
+  html[data-theme="dark"] .cf-field input:focus, html[data-theme="dark"] .cf-field textarea:focus{ outline-color:var(--dk-amber); }
+  html[data-theme="dark"] .cf-send{ background:#F3F6F1; color:#0D130E; }
+  html[data-theme="dark"] .cf-send:hover{ background:var(--dk-amber); }
+  html[data-theme="dark"] .cf-status.err{ color:#ff8f8f; }
+  html[data-theme="dark"] .sr-dialog{ background:var(--dk-2); color:var(--dk-ink); box-shadow:0 0 0 1px rgba(255,255,255,.12), 0 50px 120px rgba(0,0,0,.7); }
+  html[data-theme="dark"] .sr-field{ background:var(--dk-1); border-color:var(--dk-line-2); box-shadow:none; }
+  html[data-theme="dark"] .sr-field:focus-within{ border-color:var(--dk-amber); box-shadow:0 0 0 4px rgba(229,160,58,.22); }
+  html[data-theme="dark"] .sr-field > svg{ color:var(--dk-moss); }
+  html[data-theme="dark"] .sr-input{ color:var(--dk-ink); }
+  html[data-theme="dark"] .sr-input::placeholder{ color:#6f7f72; }
+  html[data-theme="dark"] .sr-esc{ background:rgba(255,255,255,.1); color:var(--dk-muted); }
+  html[data-theme="dark"] .sr-esc:hover{ background:rgba(255,255,255,.18); }
+  html[data-theme="dark"] .sr-body{ scrollbar-color:#3a4a3e transparent; }
+  html[data-theme="dark"] .sr-group{ color:#7f8f82; }
+  html[data-theme="dark"] .sr-item.active, html[data-theme="dark"] .sr-item:hover{ background:rgba(255,255,255,.07); }
+  html[data-theme="dark"] .sr-ico{ background:var(--dk-1); border-color:var(--dk-line-2); color:var(--dk-moss); }
+  html[data-theme="dark"] .sr-item.active .sr-ico{ background:var(--dk-amber); border-color:var(--dk-amber); color:#0D130E; }
+  html[data-theme="dark"] .sr-sub, html[data-theme="dark"] .sr-empty{ color:var(--dk-muted); }
+  html[data-theme="dark"] .sr-go{ color:var(--dk-amber); }
+  html[data-theme="dark"] .sr-item mark{ background:rgba(229,160,58,.4); color:#fff; }
+  @media (max-width:720px){
+    .nav-theme{ display:none; }
+    .nav-theme-m{ display:inline-flex; position:absolute; top:12px; right:calc(clamp(20px,5vw,64px) + 46px); width:38px; height:38px; }
+  }
+  .nav-theme-m{ display:none; }
 </style>
 
 </head>
@@ -1006,6 +1107,7 @@
         <span class="wordmark-role">Mycologist, M.Sc | Ph.D. candidate</span>
       </div>
       <button type="button" class="nav-search nav-search-m" data-search aria-label="Search the site"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></button>
+      <button type="button" class="nav-theme nav-theme-m" data-theme-toggle aria-label="Switch between light and dark mode"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" /></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4" /> <path d="M12 2v2" /> <path d="M12 20v2" /> <path d="m4.93 4.93 1.41 1.41" /> <path d="m17.66 17.66 1.41 1.41" /> <path d="M2 12h2" /> <path d="M20 12h2" /> <path d="m6.34 17.66-1.41 1.41" /> <path d="m19.07 4.93-1.41 1.41" /></svg></button>
       <nav class="topnav">
         <div class="home-nav-item">
           <a href="#top" id="home-nav-link" aria-haspopup="true" aria-expanded="false" aria-controls="home-menu">Home</a>
@@ -1018,6 +1120,7 @@
         <!-- <a href="#conservation">Conservation</a> -->
         <a href="#study-areas">In the field</a>
         <button type="button" class="nav-search" data-search aria-label="Search the site" title="Search (press / )"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></button>
+        <button type="button" class="nav-theme" data-theme-toggle aria-label="Switch between light and dark mode" title="Light / dark mode"><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" /></svg><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4" /> <path d="M12 2v2" /> <path d="M12 20v2" /> <path d="m4.93 4.93 1.41 1.41" /> <path d="m17.66 17.66 1.41 1.41" /> <path d="M2 12h2" /> <path d="M20 12h2" /> <path d="m6.34 17.66-1.41 1.41" /> <path d="m19.07 4.93-1.41 1.41" /></svg></button>
         <button type="button" class="nav-contact" data-contact>Contact</button>
       </nav>
     </div>
@@ -1330,7 +1433,7 @@
     var n = (d.education || []).length;
     if (!n && !(d.researchStays || []).length) return "";
     return '<section id="background-teaser" class="hx-sec hx-teaser">' +
-      '<div class="reveal"><h2 class="hx">Education <em style="font-family:var(--serif);font-weight:400;color:#3F5C3F">&amp; background</em></h2>' +
+      '<div class="reveal"><h2 class="hx">Education <em>&amp; background</em></h2>' +
       '<p>Degrees, research stays, training, awards and funding, teaching and service — the path that led here.</p></div>' +
       '<a class="hx-cta dark reveal" href="#background">See the full background ' + ARROW_SVG + '</a>' +
     '</section>';
@@ -2808,6 +2911,17 @@
     var typing = /^(input|textarea|select)$/i.test((ev.target && ev.target.tagName) || "") || (ev.target && ev.target.isContentEditable);
     if ((ev.key === "k" || ev.key === "K") && (ev.metaKey || ev.ctrlKey)){ ev.preventDefault(); srOpen(""); }
     else if (ev.key === "/" && !typing && !dlgOpen){ ev.preventDefault(); srOpen(""); }
+  });
+
+  // ---------- light / dark theme ----------
+  function setTheme(t){
+    if (t === "dark") document.documentElement.setAttribute("data-theme", "dark");
+    else document.documentElement.removeAttribute("data-theme");
+    try { localStorage.setItem("theme", t); } catch (e) {}
+  }
+  document.addEventListener("click", function(ev){
+    if (!ev.target.closest("[data-theme-toggle]")) return;
+    setTheme(document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark");
   });
 
   // ---------- contact form ----------
