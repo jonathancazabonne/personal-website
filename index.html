@@ -451,6 +451,11 @@
 
   :focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
 
+  .seo-fallback{ min-height:100vh; padding:9rem clamp(20px,6vw,80px) 5rem; background:#0D130E; color:#E7EDE5; font-size:.95rem; line-height:1.7; }
+  .seo-fallback h1{ font-family:var(--display); font-size:clamp(2.4rem,7vw,4.5rem); line-height:1; margin:0 0 .4em; color:#F3F6F1; }
+  .seo-fallback h2{ font-family:var(--display); font-size:1.2rem; margin:1.6em 0 .4em; color:#E5A03A; text-transform:none; }
+  .seo-fallback p, .seo-fallback ul{ max-width:68ch; }
+  .seo-fallback a{ color:#F3F6F1; }
   .skip-link{
     position:absolute; left:-9999px; top:0; z-index:100;
     background:var(--accent); color:#fff; padding:12px 20px; border-radius:0 0 8px 0;
@@ -1192,7 +1197,22 @@
     </div>
   </header>
 
-  <main id="app" tabindex="-1"><noscript><div style="max-width:60ch;margin:0 auto;padding:7rem 1.5rem 4rem;line-height:1.6"><h1>Jonathan Cazabonne</h1><p>Mycologist and Ph.D. candidate at the Institut de recherche sur les forêts (Université du Québec en Abitibi-Témiscamingue). Fungal diversity, taxonomy, ecology and conservation.</p><p>Publications, scientific outreach, field sites and background are shown on this page — please enable JavaScript to view them. Profiles: <a href="https://orcid.org/0000-0001-9056-4368">ORCID</a>, <a href="https://scholar.google.com/citations?user=flLmD24AAAAJ">Google Scholar</a>, <a href="https://www.researchgate.net/profile/Jonathan-Cazabonne">ResearchGate</a>, <a href="https://www.linkedin.com/in/jonathan-cazabonne-7ab044177/">LinkedIn</a>.</p></div></noscript></main>
+  <main id="app" tabindex="-1"><div class="seo-fallback">
+    <h1>Jonathan Cazabonne</h1>
+    <p class="seo-role">Mycologist, M.Sc. | Ph.D. candidate — Institut de recherche sur les forêts, Université du Québec en Abitibi-Témiscamingue (UQAT)</p>
+    <p>I hold a B.Sc. in organismal, population and ecosystem biology and an M.Sc. in forest ecology and management, and I'm now a Ph.D. candidate at the Institut de recherche sur les forêts (UQAT), supervised by Maxence Martin and Mélanie Roy. My research aims for a finer understanding of fungal diversity — morphological and genetic — and of fungal interactions with other kingdoms, approached through molecular ecology, community ecology, integrative taxonomy, citizen science, and even literature and art.</p>
+    <h2>Research</h2>
+    <ul><li>Diversity and taxonomy</li><li>Community Ecology</li><li>Conservation and community science</li></ul>
+    <h2>Explore</h2>
+    <ul>
+      <li><a href="#publications">Publications</a> — peer-reviewed articles, preprints, popular science and press</li>
+      <li><a href="#communications">Communication &amp; scientific outreach</a> — talks, posters, interviews and podcasts</li>
+      <li><a href="#study-areas">In the field</a> — old-growth boreal forests, esker pine forests, France</li>
+      <li><a href="#background">Background</a> — education, experience, awards, teaching</li>
+    </ul>
+    <p>Profiles: <a href="https://orcid.org/0000-0001-9056-4368">ORCID</a> · <a href="https://scholar.google.com/citations?user=flLmD24AAAAJ">Google Scholar</a> · <a href="https://www.researchgate.net/profile/Jonathan-Cazabonne">ResearchGate</a> · <a href="https://www.linkedin.com/in/jonathan-cazabonne-7ab044177/">LinkedIn</a> · <a href="https://bsky.app/profile/jonathancazabonne.bsky.social">Bluesky</a></p>
+    <noscript><p>Please enable JavaScript to see the full interactive site.</p></noscript>
+  </div></main>
 
   <footer class="hx-foot hx-page">
     <div class="reveal">
@@ -3356,7 +3376,7 @@
     applyRoute(false);
     window.addEventListener("hashchange", function(){ applyRoute(true); });
   }).catch(function(err){
-    app.innerHTML = '<p style="padding:6rem 1.5rem;text-align:center;">' + t("Couldn’t load site content. Please refresh the page.") + '</p>';
+    var __f = app.querySelector(".seo-fallback"); if (__f) __f.insertAdjacentHTML("beforeend", '<p><em>' + t("Couldn’t load site content. Please refresh the page.") + '</em></p>'); else app.innerHTML = '<p style="padding:6rem 1.5rem;text-align:center;">' + t("Couldn’t load site content. Please refresh the page.") + '</p>';
     console.error(err);
   });
 
