@@ -1,2 +1,5 @@
 User-agent: *
 Disallow: /admin/
+Allow: /
+
+Sitemap: https://jonathancazabonne.github.io/personal-website/sitemap.xml

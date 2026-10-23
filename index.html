@@ -3,7 +3,53 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Jonathan Cazabonne</title>
+<title>Jonathan Cazabonne — Mycologist | Fungal ecology &amp; conservation</title>
+<meta name="description" content="Jonathan Cazabonne — mycologist and Ph.D. candidate (UQAT, Québec). Fungal diversity, taxonomy, ecology and conservation: publications, outreach, field sites and background.">
+<meta name="author" content="Jonathan Cazabonne">
+<link rel="canonical" href="https://jonathancazabonne.github.io/personal-website/">
+<link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Jonathan Cazabonne">
+<meta property="og:title" content="Jonathan Cazabonne — Mycologist | Fungal ecology &amp; conservation">
+<meta property="og:description" content="Jonathan Cazabonne — mycologist and Ph.D. candidate (UQAT, Québec). Fungal diversity, taxonomy, ecology and conservation: publications, outreach, field sites and background.">
+<meta property="og:url" content="https://jonathancazabonne.github.io/personal-website/">
+<meta property="og:image" content="https://jonathancazabonne.github.io/personal-website/images/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_CA">
+<meta property="og:locale:alternate" content="fr_CA">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Jonathan Cazabonne — Mycologist | Fungal ecology &amp; conservation">
+<meta name="twitter:description" content="Jonathan Cazabonne — mycologist and Ph.D. candidate (UQAT, Québec). Fungal diversity, taxonomy, ecology and conservation: publications, outreach, field sites and background.">
+<meta name="twitter:image" content="https://jonathancazabonne.github.io/personal-website/images/og-image.jpg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Jonathan Cazabonne",
+  "url": "https://jonathancazabonne.github.io/personal-website/",
+  "image": "https://jonathancazabonne.github.io/personal-website/images/og-image.jpg",
+  "jobTitle": "Mycologist, Ph.D. candidate",
+  "description": "Mycologist studying fungal diversity, taxonomy, ecology and conservation, with a focus on ectomycorrhizal symbioses, fungus–arthropod associations and old-growth boreal forests.",
+  "affiliation": [
+    { "@type": "CollegeOrUniversity", "name": "Université du Québec en Abitibi-Témiscamingue (UQAT)", "url": "https://www.uqat.ca" },
+    { "@type": "Organization", "name": "Mycosphaera", "url": "https://www.mycosphaera.com" }
+  ],
+  "alumniOf": [
+    { "@type": "CollegeOrUniversity", "name": "Université Paul Sabatier — Toulouse III" },
+    { "@type": "CollegeOrUniversity", "name": "Université du Québec en Abitibi-Témiscamingue (UQAT)" }
+  ],
+  "knowsAbout": ["Mycology", "Fungal conservation", "Fungal taxonomy", "Fungal ecology", "Boreal forests", "Laboulbeniomycetes", "Ectomycorrhizal fungi", "Citizen science"],
+  "knowsLanguage": ["fr", "en"],
+  "sameAs": [
+    "https://orcid.org/0000-0001-9056-4368",
+    "https://scholar.google.com/citations?user=flLmD24AAAAJ",
+    "https://www.researchgate.net/profile/Jonathan-Cazabonne",
+    "https://www.linkedin.com/in/jonathan-cazabonne-7ab044177/",
+    "https://bsky.app/profile/jonathancazabonne.bsky.social"
+  ]
+}
+</script>
 <script>try{var __t=localStorage.getItem("theme");if(!__t&&window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)__t="dark";if(__t==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1145,7 +1191,7 @@
     </div>
   </header>
 
-  <main id="app" tabindex="-1"></main>
+  <main id="app" tabindex="-1"><noscript><div style="max-width:60ch;margin:0 auto;padding:7rem 1.5rem 4rem;line-height:1.6"><h1>Jonathan Cazabonne</h1><p>Mycologist and Ph.D. candidate at the Institut de recherche sur les forêts (Université du Québec en Abitibi-Témiscamingue). Fungal diversity, taxonomy, ecology and conservation.</p><p>Publications, scientific outreach, field sites and background are shown on this page — please enable JavaScript to view them. Profiles: <a href="https://orcid.org/0000-0001-9056-4368">ORCID</a>, <a href="https://scholar.google.com/citations?user=flLmD24AAAAJ">Google Scholar</a>, <a href="https://www.researchgate.net/profile/Jonathan-Cazabonne">ResearchGate</a>, <a href="https://www.linkedin.com/in/jonathan-cazabonne-7ab044177/">LinkedIn</a>.</p></div></noscript></main>
 
   <footer class="hx-foot hx-page">
     <div class="reveal">
@@ -2772,8 +2818,15 @@
   window.addEventListener("scroll", function(){ syncTopbar(); }, { passive: true });
   window.addEventListener("resize", function(){ syncTopbar(); });
 
+  function setPageTitle(){
+    var names = { publications: "Publications", communications: "Communication & scientific outreach", "study-areas": "In the field", background: "Education and background" };
+    var base = "Jonathan Cazabonne";
+    document.title = names[view] ? t(names[view]) + " — " + base : base + " — " + (lang === "fr" ? "Mycologue | Écologie et conservation des champignons" : "Mycologist | Fungal ecology & conservation");
+  }
+
   function paint(){
     destroyFieldMap();
+    setPageTitle();
     app.className = "view-" + view;
     document.body.classList.toggle("is-home", HERO_VIEWS[view] === true);
     syncTopbar();
