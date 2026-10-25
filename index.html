@@ -1736,7 +1736,7 @@
     secs.forEach(function(sec){
       n++;
       html += '<section id="' + sec.id + '" class="hx-sec bg-sec' + (n % 2 === 0 ? ' alt' : '') + '">' +
-        '<div class="bg-grid"><h2 class="bg-h hx reveal"><small>' + (n < 10 ? "0" : "") + n + '</small>' + sec.title + '</h2>' +
+        '<div class="bg-grid"><h2 class="bg-h hx reveal">' + sec.title + '</h2>' +
         '<div class="bg-body reveal">' + sec.html + '</div></div></section>';
     });
     html = people + html;
@@ -2010,7 +2010,7 @@
     return order.map(function(y){
       var items = map[y].slice().sort(function(a, b){ return (a.rank - b.rank) || (b.sort - a.sort) || (a.idx - b.idx); });
       return '<div class="cm-year" data-year="' + esc(y) + '">' +
-        '<h2 class="cm-year-num hx">' + esc(y) + '<small><span class="cm-year-n">' + items.length + '</span> ' + t("entries") + '</small></h2>' +
+        '<h2 class="cm-year-num hx">' + esc(y) + '</h2>' +
         '<div class="cm-items">' + items.map(renderPubCard).join("") + '</div>' +
       '</div>';
     }).join("");
@@ -2247,7 +2247,7 @@
     return order.map(function(y){
       var items = map[y].slice().sort(function(a, b){ return (b.sort - a.sort) || (a.idx - b.idx); });
       return '<div class="cm-year" data-year="' + esc(y) + '">' +
-        '<h2 class="cm-year-num hx">' + esc(y) + '<small><span class="cm-year-n">' + items.length + '</span> ' + t("entries") + '</small></h2>' +
+        '<h2 class="cm-year-num hx">' + esc(y) + '</h2>' +
         '<div class="cm-items">' + items.map(renderCommCard).join("") + '</div>' +
       '</div>';
     }).join("");
