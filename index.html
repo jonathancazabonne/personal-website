@@ -2040,9 +2040,6 @@
         '<div class="hx-hero-body"><div class="hx-col">' +
           '<p class="hx-eyebrow">' + t("Publications") + (span ? ' · ' + span : '') + '</p>' +
           '<h1 class="cm-title" aria-label="' + esc(t("Publications")) + '"><span class="ln"><i>' + t("Publications") + '</i></span><span class="ln"><i><em>' + esc(t("papers, press & more")) + '</em></i></span></h1>' +
-          '<div class="cm-stats">' +
-            stat(published.length, "Publications", "book-open") + stat(counts["peer-reviewed"] || 0, "Peer-reviewed", "badge-check") + stat(firstAuthor, "As first author", "pen-line") + stat(publicWriting, "Public writing", "newspaper") +
-          '</div>' +
         '</div></div>' +
         '<a class="hx-cue" href="#publications" data-scroll="pub-highlights" aria-label="Scroll to the publications"><span class="hx-cue-line" aria-hidden="true"></span>Scroll</a>' +
       '</section>' +
@@ -2279,9 +2276,6 @@
         '<div class="hx-hero-body"><div class="hx-col">' +
           '<p class="hx-eyebrow">' + t("Outreach") + (span ? ' · ' + span : '') + '</p>' +
           '<h1 class="cm-title" aria-label="' + esc(t("Communication & scientific outreach")) + '"><span class="ln"><i>' + t("Communication") + '</i></span><span class="ln"><i>&amp; <em>' + t("scientific outreach") + '</em></i></span></h1>' +
-          '<div class="cm-stats">' +
-            stat(list.length, "Entries", "library") + stat(counts.presentations || 0, "Talks", "presentation") + stat(counts.posters || 0, "Posters", "image") + stat(counts.media || 0, "Media", "radio") +
-          '</div>' +
         '</div></div>' +
         '<a class="hx-cue" href="#communications" data-scroll="comm-highlights" aria-label="Scroll to the highlights"><span class="hx-cue-line" aria-hidden="true"></span>Scroll</a>' +
       '</section>' +
