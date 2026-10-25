@@ -1679,7 +1679,7 @@
       return '<figure class="reveal"><img src="' + esc(p.src) + '" alt="' + esc(p.caption || "") + '" loading="lazy" />' + (p.caption ? '<figcaption>' + esc(p.caption) + '</figcaption>' : '') + '</figure>';
     }).join("");
     return '<section id="people" class="bg-people">' +
-      '<div class="bg-people-head"><div><p class="hx-eyebrow">' + t("The human side") + '</p><h2 class="hx reveal">' + t("People <em>along the way</em>") + '</h2></div>' +
+      '<div class="bg-people-head"><div><h2 class="hx reveal">' + t("People <em>along the way</em>") + '</h2></div>' +
       '<p class="bg-people-text reveal">' + esc(LF(d, "connectionsIntro") || (lang === "fr" ? DEFAULT_PEOPLE_INTRO_FR : DEFAULT_PEOPLE_INTRO)) + '</p></div>' +
       '<div class="bg-wall">' + items + '</div>' +
     '</section>';
@@ -1750,9 +1750,7 @@
         '<img class="hx-hero-img" src="images/home-gallery-3.jpg" alt="Field team gathered in the snowy boreal forest" fetchpriority="high" />' +
         '<div class="hx-scrim"></div>' +
         '<div class="hx-hero-body"><div class="hx-col">' +
-          '<p class="hx-eyebrow">' + t("Background") + '</p>' +
           '<h1 class="cm-title" aria-label="' + esc(t("Education and background")) + '"><span class="ln"><i>' + t("Education") + '</i></span><span class="ln"><i><em>&amp; ' + t("background") + '</em></i></span></h1>' +
-          '<div class="cm-stats">' + stat(count(d.education), "Degrees", "graduation-cap") + stat(count(d.researchStays), "Positions &amp; stays", "briefcase") + stat(count(d.awards), "Awards &amp; grants", "award") + stat(count(d.teaching), "Courses taught", "school") + '</div>' +
         '</div></div>' +
         '<a class="hx-cue" href="#background" data-scroll="' + (people ? "people" : (secs[0] ? secs[0].id : "top")) + '" aria-label="Scroll to the content"><span class="hx-cue-line" aria-hidden="true"></span>Scroll</a>' +
       '</section>' +
@@ -2038,7 +2036,6 @@
         '<img class="hx-hero-img" src="images/publications-hero.jpg" alt="Orange-gilled fungi growing on a moss-covered log" fetchpriority="high" />' +
         '<div class="hx-scrim"></div>' +
         '<div class="hx-hero-body"><div class="hx-col">' +
-          '<p class="hx-eyebrow">' + t("Publications") + (span ? ' · ' + span : '') + '</p>' +
           '<h1 class="cm-title" aria-label="' + esc(t("Publications")) + '"><span class="ln"><i>' + t("Publications") + '</i></span><span class="ln"><i><em>' + esc(t("papers, press & more")) + '</em></i></span></h1>' +
         '</div></div>' +
         '<a class="hx-cue" href="#publications" data-scroll="pub-highlights" aria-label="Scroll to the publications"><span class="hx-cue-line" aria-hidden="true"></span>Scroll</a>' +
@@ -2274,7 +2271,6 @@
         '<img class="hx-hero-img" src="images/outreach-hero.jpg" alt="Jonathan Cazabonne presenting at a conference in Amos, Québec" fetchpriority="high" />' +
         '<div class="hx-scrim"></div>' +
         '<div class="hx-hero-body"><div class="hx-col">' +
-          '<p class="hx-eyebrow">' + t("Outreach") + (span ? ' · ' + span : '') + '</p>' +
           '<h1 class="cm-title" aria-label="' + esc(t("Communication & scientific outreach")) + '"><span class="ln"><i>' + t("Communication") + '</i></span><span class="ln"><i>&amp; <em>' + t("scientific outreach") + '</em></i></span></h1>' +
         '</div></div>' +
         '<a class="hx-cue" href="#communications" data-scroll="comm-highlights" aria-label="Scroll to the highlights"><span class="hx-cue-line" aria-hidden="true"></span>Scroll</a>' +
@@ -2471,7 +2467,6 @@
         '<div class="fm-map" id="fm-map"></div>' +
         '<div class="fm-shade"></div>' +
         '<div class="fm-head">' +
-          '<p class="hx-eyebrow">' + t("Fieldwork") + '</p>' +
           '<h1>' + t("In the field <em>and in the lab</em>") + '</h1>' +
           '<p class="sub">Forests I have walked, sampled and learned from. Click a point on the map to explore.</p>' +
         '</div>' +
