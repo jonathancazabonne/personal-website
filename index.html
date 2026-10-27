@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Jonathan Cazabonne — Mycologist | Fungal ecology &amp; conservation</title>
+<title>Jonathan Cazabonne | Fungal diversity &amp; conservation</title>
 <meta name="description" content="Jonathan Cazabonne — mycologist and Ph.D. candidate (UQAT, Québec). Fungal diversity, taxonomy, ecology and conservation: publications, outreach, field sites and background.">
 <meta name="author" content="Jonathan Cazabonne">
 <meta name="google-site-verification" content="kdQ3GMjU8IXbYPzPZKlq3GWIXtJwj9bl9yvkzIxj-Yg" />
@@ -11,7 +11,7 @@
 <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Jonathan Cazabonne">
-<meta property="og:title" content="Jonathan Cazabonne — Mycologist | Fungal ecology &amp; conservation">
+<meta property="og:title" content="Jonathan Cazabonne | Fungal diversity &amp; conservation">
 <meta property="og:description" content="Jonathan Cazabonne — mycologist and Ph.D. candidate (UQAT, Québec). Fungal diversity, taxonomy, ecology and conservation: publications, outreach, field sites and background.">
 <meta property="og:url" content="https://jonathancazabonne.github.io/personal-website/">
 <meta property="og:image" content="https://jonathancazabonne.github.io/personal-website/images/og-image.jpg">
@@ -20,9 +20,18 @@
 <meta property="og:locale" content="en_CA">
 <meta property="og:locale:alternate" content="fr_CA">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Jonathan Cazabonne — Mycologist | Fungal ecology &amp; conservation">
+<meta name="twitter:title" content="Jonathan Cazabonne | Fungal diversity &amp; conservation">
 <meta name="twitter:description" content="Jonathan Cazabonne — mycologist and Ph.D. candidate (UQAT, Québec). Fungal diversity, taxonomy, ecology and conservation: publications, outreach, field sites and background.">
 <meta name="twitter:image" content="https://jonathancazabonne.github.io/personal-website/images/og-image.jpg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Jonathan Cazabonne",
+  "alternateName": "Jonathan Cazabonne | Fungal diversity & conservation",
+  "url": "https://jonathancazabonne.github.io/personal-website/"
+}
+</script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -2800,7 +2809,7 @@
   function setPageTitle(){
     var names = { publications: "Publications", communications: "Communication & scientific outreach", "study-areas": "In the field and in the lab", background: "Education and background" };
     var base = "Jonathan Cazabonne";
-    document.title = names[view] ? t(names[view]) + " — " + base : base + " — " + (lang === "fr" ? "Mycologue | Écologie et conservation des champignons" : "Mycologist | Fungal ecology & conservation");
+    document.title = names[view] ? t(names[view]) + " | " + base : base + " | " + (lang === "fr" ? "Diversité et conservation fongiques" : "Fungal diversity & conservation");
   }
 
   function paint(){
