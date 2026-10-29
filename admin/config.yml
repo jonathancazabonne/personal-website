@@ -181,6 +181,15 @@ collections:
               - { label: "Short name (label next to the point on the map)", name: "short", widget: "string", required: false }
               - { label: "Place (e.g. station, reserve, region)", name: "place", widget: "string", required: false }
               - { label: "Country", name: "country", widget: "string", required: false }
+              - { label: "Country code (2 letters, for the flag: CA, FR, AM, AE, SE…)", name: "countryCode", widget: "string", required: false }
+              - label: "Kind"
+                name: "kind"
+                widget: "select"
+                default: "field"
+                options: [{ label: "Field / lab site", value: "field" }, { label: "Conference / event", value: "event" }]
+                required: false
+              - { label: "Location is approximate (shows an 'Approximate location' note)", name: "approximate", widget: "boolean", default: false, required: false }
+              - { label: "Logo (shown on a white tile — event logo, institution, etc.)", name: "logo", widget: "image", required: false }
               - { label: "Latitude (decimal, e.g. 48.5 — keep it approximate, a few km, to protect fragile sites)", name: "lat", widget: "number", value_type: "float", required: false }
               - { label: "Longitude (decimal, e.g. -79.4 — negative = west)", name: "lng", widget: "number", value_type: "float", required: false }
               - { label: "Period (e.g. Ph.D. · 2024–present)", name: "period", widget: "string", required: false }

@@ -863,6 +863,13 @@
   .fm-map.show-labels .fm-pin b, .fm-pin.active b{ opacity:1; }
   .fm-pin.active i{ background:#fff; box-shadow:0 0 0 2px #fff; }
   .fm-pin:hover i{ background:#fff; }
+  .fm-pin.is-event i{ background:#F3F6F1; box-shadow:0 0 0 1px #F3F6F1, 0 0 20px rgba(243,246,241,.7); }
+  .fm-pin.is-event i::after{ border-color:#F3F6F1; }
+  .fm-flag{ display:inline-block; width:20px; height:15px; margin:0 6px 0 2px; vertical-align:-2px; border-radius:2px; box-shadow:0 0 0 1px rgba(243,246,241,.25); }
+  .fm-logo{ display:flex; align-items:center; justify-content:center; width:fit-content; max-width:100%; height:78px; padding:12px 20px; margin:0 0 18px; background:#fff; }
+  .fm-logo img{ display:block; max-width:200px; max-height:100%; width:auto; height:auto; object-fit:contain; }
+  .fm-site-body .fm-logo{ height:92px; margin-bottom:26px; }
+  .fm-site-body .fm-logo img{ max-width:260px; }
 
   .fm-panel{ position:absolute; z-index:5; top:104px; bottom:24px; right:clamp(16px,3vw,48px); width:min(440px, calc(100vw - 32px)); background:rgba(13,19,14,.94); backdrop-filter:blur(10px); color:#F3F6F1; overflow:auto; transform:translateX(calc(100% + 60px)); opacity:0; visibility:hidden; transition:transform .6s cubic-bezier(.2,.8,.2,1), opacity .4s, visibility 0s .6s; }
   .fm-panel.open{ transform:none; opacity:1; visibility:visible; transition:transform .6s cubic-bezier(.2,.8,.2,1), opacity .4s, visibility 0s; }
@@ -1340,6 +1347,7 @@
     "I got your message and will get back to you soon.": "J’ai bien reçu votre message et je vous répondrai bientôt.",
     "Close": "Fermer",
     "Play video": "Lire la vidéo",
+    "Conference": "Conférence",
     "Satellite": "Satellite",
     "Map": "Carte",
     "Sending opens your email app with this message ready to go.": "L’envoi ouvre votre application de courriel avec le message prêt à partir.",
@@ -1857,7 +1865,7 @@
   }
 
   function renderFieldBand(d){
-    var sites = (d.studyAreas || []).map(function(a){ return '<li>' + esc(LF(a, "name")) + '</li>'; }).join("");
+    var sites = (d.studyAreas || []).filter(function(a){ return a.kind !== "event"; }).map(function(a){ return '<li>' + esc(LF(a, "name")) + '</li>'; }).join("");
     return '<section id="field" class="hx-sec hx-band">' +
       '<div class="hx-band-inner reveal">' +
         '<p class="hx-eyebrow">' + t("In the field") + '</p>' +
@@ -2433,11 +2441,21 @@
     var bits = [];
     if (LF(a, "role")) bits.push('<strong>' + esc(LF(a, "role")) + '</strong>');
     if (a.partners) bits.push(esc(tf("With {x}", { x: LF(a, "partners") })));
-    bits.push(t("Approximate location"));
+    if (a.approximate) bits.push(t("Approximate location"));
     return bits.join(" · ");
   }
+  function fmFlag(a){
+    return a.countryCode ? '<img class="fm-flag" src="images/flags/' + esc(String(a.countryCode).toLowerCase()) + '.svg" alt="" width="20" height="15" />' : "";
+  }
   function fmEyebrow(a){
-    return esc([LF(a, "period"), LF(a, "country")].filter(Boolean).join(" · "));
+    var parts = [];
+    if (a.kind === "event") parts.push(esc(t("Conference")));
+    if (LF(a, "period")) parts.push(esc(LF(a, "period")));
+    if (LF(a, "country")) parts.push(fmFlag(a) + esc(LF(a, "country")));
+    return parts.join(" · ");
+  }
+  function fmLogo(a){
+    return a.logo ? '<div class="fm-logo"><img src="' + esc(a.logo) + '" alt="" loading="lazy" /></div>' : "";
   }
 
   function renderStudyView(d){
@@ -2457,10 +2475,10 @@
             return '<figure><button type="button" class="fm-thumb" data-site="' + i + '" data-photo="' + j + '" aria-label="Enlarge photo"><img src="' + esc(p.src) + '" alt="' + esc(p.caption || a.name) + '" loading="lazy" /></button>' +
               (p.caption ? '<figcaption>' + esc(p.caption) + '</figcaption>' : '') + '</figure>';
           }).join("")
-        : '<p class="fm-mosaic-empty">Photos coming soon.</p>';
+        : "";
       return '<section id="fa-' + i + '" class="fm-site">' +
         '<div class="fm-site-cover' + (cover ? '' : ' nocover') + '"' + (cover ? ' style="background-image:url(\'' + esc(cover) + '\')"' : '') + '>' +
-          '<div class="fm-site-body reveal">' +
+          '<div class="fm-site-body reveal">' + fmLogo(a) +
             '<p class="hx-eyebrow">' + fmEyebrow(a) + '</p>' +
             '<h2 class="hx">' + esc(LF(a, "name")) + '</h2>' +
             (LF(a, "place") ? '<p class="fm-place">' + esc(LF(a, "place")) + '</p>' : '') +
@@ -2469,7 +2487,7 @@
             '<button type="button" class="fm-more" data-showmap="' + i + '">Show on the map ' + ARROW_SVG + '</button>' +
           '</div>' +
         '</div>' +
-        '<div class="fm-mosaic">' + mosaic + '</div>' +
+        (mosaic ? '<div class="fm-mosaic">' + mosaic + '</div>' : '') +
       '</section>';
     }).join("");
     return '' +
@@ -2521,10 +2539,10 @@
         ? '<div class="fm-photos">' + photos.slice(0, 6).map(function(p, j){
             return '<button type="button" class="fm-thumb" data-site="' + i + '" data-photo="' + j + '" aria-label="Enlarge photo"><img src="' + esc(p.src) + '" alt="' + esc(p.caption || a.name) + '" loading="lazy" /></button>';
           }).join("") + '</div>'
-        : '<p class="fm-nophoto">Photos coming soon.</p>';
+        : "";
       return '<div class="fm-panel-inner">' +
         '<div class="fm-panel-top"><div class="fm-nav"><button type="button" data-step="-1" aria-label="Previous site">&#8249;</button><button type="button" data-step="1" aria-label="Next site">&#8250;</button></div>' +
-        '<button type="button" class="fm-close" data-closepanel aria-label="Close">&times;</button></div>' +
+        '<button type="button" class="fm-close" data-closepanel aria-label="Close">&times;</button></div>' + fmLogo(a) +
         '<p class="hx-eyebrow">' + fmEyebrow(a) + '</p>' +
         '<h2 class="hx">' + esc(LF(a, "name")) + '</h2>' +
         (LF(a, "place") ? '<p class="fm-place">' + esc(LF(a, "place")) + '</p>' : '') +
@@ -2605,7 +2623,7 @@
       el.classList.add("is-sat");
       areas.forEach(function(a, i){
         if (!isFinite(a.lat) || !isFinite(a.lng)) { markers.push(L.marker([0, 0], { opacity: 0 })); return; }
-        var icon = L.divIcon({ className: "fm-pin-wrap", html: '<span class="fm-pin"><i></i><b>' + esc(LF(a, "short") || LF(a, "name")) + '</b></span>', iconSize: [18, 18], iconAnchor: [9, 9] });
+        var icon = L.divIcon({ className: "fm-pin-wrap", html: '<span class="fm-pin' + (a.kind === "event" ? " is-event" : "") + '"><i></i><b>' + esc(LF(a, "short") || LF(a, "name")) + '</b></span>', iconSize: [18, 18], iconAnchor: [9, 9] });
         var m = L.marker([a.lat, a.lng], { icon: icon, keyboard: true, title: LF(a, "short") || LF(a, "name"), riseOnHover: true }).addTo(fieldMap);
         m.on("click", function(){ select(i); });
         markers.push(m);
