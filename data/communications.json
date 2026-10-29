@@ -2,6 +2,14 @@
   "items": [
     {
       "year": 2026,
+      "type": "Invited talk",
+      "title": "State of fungal conservation in Québec and Canada",
+      "venue": "Journée Québec, Action Zone, Blue Zone, COP17 UN Biodiversity Conference, Yerevan, Armenia, 26 October 2026",
+      "url": "#",
+      "authors": "Cazabonne, J.*"
+    },
+    {
+      "year": 2026,
       "type": "Radio interview",
       "title": "COP-17 summit in Armenia sheds light on the importance of fungi",
       "venue": "World Report (Saturday’s top stories in 10 minutes), CBC Radio One, 24 October 2026",
