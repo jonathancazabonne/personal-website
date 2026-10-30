@@ -1,7 +1,7 @@
 {
   "items": [
     {
-      "name": "Old-growth mixed boreal forest — Lac Duparquet, Québec",
+      "name": "Old-growth mixed boreal forest, Lac Duparquet, Québec",
       "short": "Lac Duparquet old-growth",
       "place": "Lac Duparquet Teaching and Research Forest (SERLD), Abitibi-Témiscamingue",
       "country": "Canada",
@@ -10,7 +10,7 @@
       "period": "Ph.D. · 2024–present",
       "role": "Ph.D. fieldwork",
       "partners": "",
-      "description": "Soil fungal diversity and ecological functions in old-growth boreal stands of eastern Canada — my current Ph.D. fieldwork, looking at links between fungal communities, forest carbon cycling and canopy structure (airborne LiDAR, Potential Biodiversity Index).",
+      "description": "Soil fungal diversity and ecological functions in old-growth boreal stands of eastern Canada, my current Ph.D. fieldwork, looking at links between fungal communities, forest carbon cycling and canopy structure (airborne LiDAR, Potential Biodiversity Index).",
       "cover": "images/hero-forest.jpg",
       "photos": [
         {
@@ -22,12 +22,12 @@
           "caption": "Provisional photo — canopy"
         }
       ],
-      "name_fr": "Vieille forêt boréale mixte — lac Duparquet, Québec",
+      "name_fr": "Vieille forêt boréale mixte, lac Duparquet, Québec",
       "short_fr": "Vieille forêt du lac Duparquet",
       "place_fr": "Forêt d’enseignement et de recherche du lac Duparquet (FERLD), Abitibi-Témiscamingue",
       "period_fr": "Doctorat · 2024–présent",
       "role_fr": "Terrain de doctorat",
-      "description_fr": "Diversité fongique du sol et fonctions écologiques dans les vieux peuplements boréaux de l’est du Canada — mon terrain de doctorat actuel, qui explore les liens entre communautés fongiques, cycle du carbone forestier et structure de la canopée (LiDAR aéroporté, Indice de biodiversité potentielle).",
+      "description_fr": "Diversité fongique du sol et fonctions écologiques dans les vieux peuplements boréaux de l’est du Canada, mon terrain de doctorat actuel, qui explore les liens entre communautés fongiques, cycle du carbone forestier et structure de la canopée (LiDAR aéroporté, Indice de biodiversité potentielle).",
       "country_fr": "Canada",
       "kind": "field",
       "countryCode": "CA",
@@ -35,7 +35,7 @@
       "logo": "images/footer-uqat.png"
     },
     {
-      "name": "Esker jack pine forests — Abitibi, Québec",
+      "name": "Esker jack pine forests, Abitibi, Québec",
       "short": "Esker pine forests",
       "place": "Eskers near Saint-Mathieu-d’Harricana, Abitibi",
       "country": "Canada",
@@ -44,7 +44,7 @@
       "period": "M.Sc. · 2022–2024",
       "role": "M.Sc. research",
       "partners": "",
-      "description": "Soil fungal communities across the vertical zonation of natural jack pine stands on esker landforms — the subject of my M.Sc. research.",
+      "description": "Soil fungal communities across the vertical zonation of natural jack pine stands on esker landforms, the subject of my M.Sc. research.",
       "cover": "images/field-esker-1.jpg",
       "photos": [
         {
@@ -60,12 +60,12 @@
           "caption": "Provisional photo — esker field find"
         }
       ],
-      "name_fr": "Forêts d’esker de pin gris — Abitibi, Québec",
+      "name_fr": "Forêts d’esker de pin gris, Abitibi, Québec",
       "short_fr": "Eskers de pin gris",
       "place_fr": "Eskers près de Saint-Mathieu-d’Harricana, Abitibi",
       "period_fr": "M.Sc. · 2022–2024",
       "role_fr": "Recherche de maîtrise",
-      "description_fr": "Communautés fongiques du sol le long de la zonation verticale de peuplements naturels de pin gris sur des formes de relief de type esker — sujet de ma recherche de maîtrise.",
+      "description_fr": "Communautés fongiques du sol le long de la zonation verticale de peuplements naturels de pin gris sur des formes de relief de type esker, sujet de ma recherche de maîtrise.",
       "country_fr": "Canada",
       "kind": "field",
       "countryCode": "CA",
@@ -73,7 +73,7 @@
       "logo": "images/footer-uqat.png"
     },
     {
-      "name": "Forêt de la Seigneurie de Lotbinière — St. Lawrence Lowlands, Québec",
+      "name": "Forêt de la Seigneurie de Lotbinière, St. Lawrence Lowlands, Québec",
       "short": "FSL Lotbinière",
       "place": "Forêt de la Seigneurie de Lotbinière, Chaudière-Appalaches",
       "country": "Canada",
@@ -89,7 +89,7 @@
       "cover": "",
       "logo": "images/footer-mycosphaera.png",
       "photos": [],
-      "name_fr": "Forêt de la Seigneurie de Lotbinière — Basses-terres du Saint-Laurent, Québec",
+      "name_fr": "Forêt de la Seigneurie de Lotbinière, Basses-terres du Saint-Laurent, Québec",
       "short_fr": "FSL Lotbinière",
       "place_fr": "Forêt de la Seigneurie de Lotbinière, Chaudière-Appalaches",
       "country_fr": "Canada",
@@ -98,7 +98,7 @@
       "description_fr": "Inventaire de la biodiversité fongique de la Forêt de la Seigneurie de Lotbinière, dernier grand massif forestier d’un seul tenant des Basses-terres du Saint-Laurent, réalisé par Mycosphaera."
     },
     {
-      "name": "MetaMyco — Chamalières biological reserve, France",
+      "name": "MetaMyco, Chamalières biological reserve, France",
       "short": "Chamalières RBI (MetaMyco)",
       "place": "Chamalières integral biological reserve (RBI), Cantal",
       "country": "France",
@@ -110,7 +110,7 @@
       "description": "[X — short description of the MetaMyco project to write]",
       "cover": "",
       "photos": [],
-      "name_fr": "MetaMyco — réserve biologique de Chamalières, France",
+      "name_fr": "MetaMyco, réserve biologique de Chamalières, France",
       "short_fr": "RBI de Chamalières (MetaMyco)",
       "place_fr": "Réserve biologique intégrale (RBI) de Chamalières, Cantal",
       "period_fr": "[X — dates à confirmer]",
@@ -123,7 +123,7 @@
       "logo": "images/logo-onf.svg"
     },
     {
-      "name": "ORCHAMP — Pyrenees, France",
+      "name": "ORCHAMP, Pyrenees, France",
       "short": "ORCHAMP (Pyrenees)",
       "place": "Pyrenees mountains",
       "country": "France",
@@ -135,7 +135,7 @@
       "description": "[X — short description of the ORCHAMP project to write]",
       "cover": "",
       "photos": [],
-      "name_fr": "ORCHAMP — Pyrénées, France",
+      "name_fr": "ORCHAMP, Pyrénées, France",
       "short_fr": "ORCHAMP (Pyrénées)",
       "place_fr": "Massif des Pyrénées",
       "period_fr": "[X — dates à confirmer]",
@@ -147,7 +147,7 @@
       "approximate": true
     },
     {
-      "name": "COP17 — UN Biodiversity Conference, Yerevan, Armenia",
+      "name": "COP17, UN Biodiversity Conference, Yerevan, Armenia",
       "short": "COP17 (Yerevan)",
       "place": "Meridian Expo and Event Centre, Yerevan",
       "country": "Armenia",
@@ -163,7 +163,7 @@
       "cover": "",
       "logo": "images/logo-cop17.jpg",
       "photos": [],
-      "name_fr": "COP17 — Conférence des Nations Unies sur la biodiversité, Erevan, Arménie",
+      "name_fr": "COP17, Conférence des Nations Unies sur la biodiversité, Erevan, Arménie",
       "short_fr": "COP17 (Erevan)",
       "place_fr": "Meridian Expo and Event Centre, Erevan",
       "country_fr": "Arménie",
@@ -172,7 +172,7 @@
       "description_fr": "Conférence des Nations Unies sur la biodiversité (CDB COP17). Présentation de « State of fungal conservation in Québec and Canada » à la Journée Québec (Action Zone, Blue Zone) le 26 octobre, et entrevues dans les médias sur l’importance des champignons pour la biodiversité."
     },
     {
-      "name": "Fungal Conservation in Europe: Evidence to Action — Uppsala, Sweden",
+      "name": "Fungal Conservation in Europe: Evidence to Action, Uppsala, Sweden",
       "short": "Uppsala (FCE 2026)",
       "place": "SLU Campus Ultuna, Uppsala",
       "country": "Sweden",
@@ -188,7 +188,7 @@
       "cover": "",
       "logo": "images/logo-fce2026.png",
       "photos": [],
-      "name_fr": "Fungal Conservation in Europe: Evidence to Action — Uppsala, Suède",
+      "name_fr": "Fungal Conservation in Europe: Evidence to Action, Uppsala, Suède",
       "short_fr": "Uppsala (FCE 2026)",
       "place_fr": "Campus Ultuna de la SLU, Uppsala",
       "country_fr": "Suède",
@@ -197,7 +197,7 @@
       "description_fr": "Congrès sur la conservation de la fonge en Europe et atelier pratique sur la Liste rouge de l’UICN pour les champignons. Compte rendu du congrès publié dans Inoculum (juin 2026)."
     },
     {
-      "name": "IUCN World Conservation Congress — Abu Dhabi, United Arab Emirates",
+      "name": "IUCN World Conservation Congress, Abu Dhabi, United Arab Emirates",
       "short": "IUCN WCC (Abu Dhabi)",
       "place": "ADNEC, Abu Dhabi",
       "country": "United Arab Emirates",
@@ -213,7 +213,7 @@
       "cover": "",
       "logo": "images/logo-wcc-2025.png",
       "photos": [],
-      "name_fr": "Congrès mondial de la nature de l’UICN — Abou Dabi, Émirats arabes unis",
+      "name_fr": "Congrès mondial de la nature de l’UICN, Abou Dabi, Émirats arabes unis",
       "short_fr": "UICN WCC (Abou Dabi)",
       "place_fr": "ADNEC, Abou Dabi",
       "country_fr": "Émirats arabes unis",

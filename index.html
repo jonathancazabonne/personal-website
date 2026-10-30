@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Jonathan Cazabonne | Fungal diversity &amp; conservation</title>
-<meta name="description" content="Jonathan Cazabonne — mycologist and Ph.D. candidate (UQAT, Québec). Fungal diversity, taxonomy, ecology and conservation: publications, outreach, field sites and background.">
+<meta name="description" content="Jonathan Cazabonne, mycologist and Ph.D. candidate (UQAT, Québec). Fungal diversity, taxonomy, ecology and conservation: publications, outreach, field sites and background.">
 <meta name="author" content="Jonathan Cazabonne">
 <meta name="google-site-verification" content="kdQ3GMjU8IXbYPzPZKlq3GWIXtJwj9bl9yvkzIxj-Yg" />
 <link rel="canonical" href="https://jonathancazabonne.github.io/personal-website/">
@@ -12,7 +12,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Jonathan Cazabonne">
 <meta property="og:title" content="Jonathan Cazabonne | Fungal diversity &amp; conservation">
-<meta property="og:description" content="Jonathan Cazabonne — mycologist and Ph.D. candidate (UQAT, Québec). Fungal diversity, taxonomy, ecology and conservation: publications, outreach, field sites and background.">
+<meta property="og:description" content="Jonathan Cazabonne, mycologist and Ph.D. candidate (UQAT, Québec). Fungal diversity, taxonomy, ecology and conservation: publications, outreach, field sites and background.">
 <meta property="og:url" content="https://jonathancazabonne.github.io/personal-website/">
 <meta property="og:image" content="https://jonathancazabonne.github.io/personal-website/images/og-image.jpg">
 <meta property="og:image:width" content="1200">
@@ -21,7 +21,7 @@
 <meta property="og:locale:alternate" content="fr_CA">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Jonathan Cazabonne | Fungal diversity &amp; conservation">
-<meta name="twitter:description" content="Jonathan Cazabonne — mycologist and Ph.D. candidate (UQAT, Québec). Fungal diversity, taxonomy, ecology and conservation: publications, outreach, field sites and background.">
+<meta name="twitter:description" content="Jonathan Cazabonne, mycologist and Ph.D. candidate (UQAT, Québec). Fungal diversity, taxonomy, ecology and conservation: publications, outreach, field sites and background.">
 <meta name="twitter:image" content="https://jonathancazabonne.github.io/personal-website/images/og-image.jpg">
 <script type="application/ld+json">
 {
@@ -46,7 +46,7 @@
     { "@type": "Organization", "name": "Mycosphaera", "url": "https://www.mycosphaera.com" }
   ],
   "alumniOf": [
-    { "@type": "CollegeOrUniversity", "name": "Université Paul Sabatier — Toulouse III" },
+    { "@type": "CollegeOrUniversity", "name": "Université Paul Sabatier (Toulouse III)" },
     { "@type": "CollegeOrUniversity", "name": "Université du Québec en Abitibi-Témiscamingue (UQAT)" }
   ],
   "knowsAbout": ["Mycology", "Fungal conservation", "Fungal taxonomy", "Fungal ecology", "Boreal forests", "Laboulbeniomycetes", "Ectomycorrhizal fungi", "Citizen science"],
@@ -1309,6 +1309,36 @@
   .hx-cue{ font-size:.95rem !important; font-weight:400; letter-spacing:0 !important; text-transform:none !important; color:rgba(237,240,236,.85); gap:0; }
   .hx-cue:hover{ color:#fff; text-decoration:underline; text-underline-offset:4px; }
   .hx-statement .bio strong{ font-weight:600; color:#edf0ec; }
+
+  /* ===== less "template": calm motion, one-colour titles, compact inner headers, no decorative icons/arrows ===== */
+  .hx-name .ln i, .cm-title .ln i{ animation:none !important; }
+  .hx-hero-img{ animation:none !important; transform:none !important; }
+  .fm-pin i::after{ display:none; }
+  .hx-axis:hover .hx-axis-media img, .bg-wall figure:hover img, .cm-card:hover .cm-thumb img, .fm-thumb:hover img, a.cm-feat-card:hover img{ transform:none !important; }
+  a.hx-logo:hover{ transform:none; box-shadow:none; }
+  .hx-roll{ margin:22px 0 0; font-size:clamp(20px,2.2vw,32px); font-weight:400; line-height:1.25; color:#edf0ec; min-height:0; }
+
+  .cm-title .ln em, .fm-head h1 em, .bg-people-head h2.hx em, .hx-band h2 i, .hx-teaser h2.hx em{ color:inherit !important; font-weight:inherit !important; font-style:normal !important; }
+
+  .cm-hero, .cm-hero .hx-hero-body{ min-height:clamp(300px,44vh,420px) !important; }
+  .cm-hero .hx-hero-body{ justify-content:flex-end; align-items:flex-start; padding-top:120px; padding-bottom:44px; }
+  .cm-hero .hx-col{ width:auto; }
+  .cm-hero .hx-cue{ display:none; }
+  .cm-hero .hx-scrim{ background:linear-gradient(180deg, rgba(14,24,19,.6) 0%, rgba(14,24,19,.35) 45%, rgba(14,24,19,.86) 100%) !important; }
+  @media (max-width:900px){ .cm-hero .hx-scrim{ background:linear-gradient(180deg, rgba(14,24,19,.6) 0%, rgba(14,24,19,.4) 45%, rgba(14,24,19,.9) 100%) !important; } }
+
+  .cm-chip .ico, .cm-type .ico, .fm-chip .ico, .sr-ico{ display:none !important; }
+  .cm-chip .ico + *, .cm-type{ margin-left:0; }
+  .hx-src svg, .cm-action svg, .fm-more svg{ display:none !important; }
+  .hx-sec-head .hx-cta, .hx-band .hx-cta{ background:none !important; color:inherit !important; padding:0; min-height:0; border-radius:0; gap:0; font-size:.95rem; font-weight:500; text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:5px; }
+  .hx-sec-head .hx-cta svg, .hx-band .hx-cta svg, .hx-foot-actions .hx-cta svg{ display:none; }
+  .hx-sec-head .hx-cta:hover, .hx-band .hx-cta:hover{ text-decoration-thickness:2px; }
+
+  /* CV */
+  .cv-row{ display:flex; flex-wrap:wrap; gap:12px 18px; margin-top:28px; }
+  .cv-btn{ display:inline-flex; align-items:center; min-height:44px; padding:0 20px; border-radius:999px; border:1px solid rgba(237,240,236,.5); color:#edf0ec; text-decoration:none; font-size:.85rem; font-weight:500; transition:background .2s, color .2s; }
+  .cv-btn:hover{ background:#edf0ec; color:#14201a; }
+  .cm-chip small{ margin-left:7px !important; }
 </style>
 
 </head>
@@ -1333,6 +1363,7 @@
         <!-- Conservation page hidden on purpose — see PAGE_ROUTES below to bring it back online -->
         <!-- <a href="#conservation">Conservation</a> -->
         <a href="#study-areas">Field &amp; lab</a>
+        <a href="#" class="nav-cv" id="nav-cv" target="_blank" rel="noopener" hidden>CV</a>
         <button type="button" class="nav-lang" data-lang-toggle data-notr aria-label="Passer en français" title="Français">FR</button>
         <button type="button" class="nav-search" data-search aria-label="Search the site" title="Search (press / )"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></button>
         <button type="button" class="nav-contact" data-contact>Contact</button>
@@ -1342,16 +1373,16 @@
 
   <main id="app" tabindex="-1"><div class="seo-fallback">
     <h1>Jonathan Cazabonne</h1>
-    <p class="seo-role">Mycologist, M.Sc. | Ph.D. candidate — Institut de recherche sur les forêts, Université du Québec en Abitibi-Témiscamingue (UQAT)</p>
+    <p class="seo-role">Mycologist, M.Sc. | Ph.D. candidate, Institut de recherche sur les forêts, Université du Québec en Abitibi-Témiscamingue (UQAT)</p>
     <p>I seek to fill knowledge gaps in the diversity and ecology of fungi, and to help bring that knowledge into conservation frameworks and ecosystem-based forest management. We no longer have the luxury of time. Let’s fill the gaps and turn data into action. I’m deeply convinced that documenting and understanding the diversity of life in its environment — especially fungi — is essential if we want to protect it for the long term.</p>
     <h2>Research</h2>
     <ul><li>Diversity and taxonomy</li><li>Community Ecology</li><li>Conservation and community science</li></ul>
     <h2>Explore</h2>
     <ul>
-      <li><a href="#publications">Publications</a> — peer-reviewed articles, preprints, popular science and press</li>
-      <li><a href="#communications">Communication &amp; scientific outreach</a> — talks, posters, interviews and podcasts</li>
-      <li><a href="#study-areas">In the field and in the lab</a> — old-growth boreal forests, esker pine forests, France</li>
-      <li><a href="#background">Background</a> — education, experience, awards, teaching</li>
+      <li><a href="#publications">Publications</a>: peer-reviewed articles, preprints, popular science and press</li>
+      <li><a href="#communications">Communication &amp; scientific outreach</a>: talks, posters, interviews and podcasts</li>
+      <li><a href="#study-areas">In the field and in the lab</a>: old-growth boreal forests, esker pine forests, France</li>
+      <li><a href="#background">Background</a>: education, experience, awards, teaching</li>
     </ul>
     <p>Profiles: <a href="https://orcid.org/0000-0001-9056-4368">ORCID</a> · <a href="https://scholar.google.com/citations?user=flLmD24AAAAJ">Google Scholar</a> · <a href="https://www.researchgate.net/profile/Jonathan-Cazabonne">ResearchGate</a> · <a href="https://www.linkedin.com/in/jonathan-cazabonne-7ab044177/">LinkedIn</a> · <a href="https://bsky.app/profile/jonathancazabonne.bsky.social">Bluesky</a></p>
     <noscript><p>Please enable JavaScript to see the full interactive site.</p></noscript>
@@ -1379,7 +1410,7 @@
     <div id="cf-formwrap">
       <p class="cf-eyebrow">Contact</p>
       <h2 class="cf-title hx" id="cf-title">Write to me</h2>
-      <p class="cf-lede">Questions, collaborations, talks, press — I read everything and reply as soon as I can.</p>
+      <p class="cf-lede">Questions, collaborations, talks or press requests: I read everything and reply as soon as I can.</p>
       <form id="cf-form" novalidate>
         <div class="cf-row">
           <label class="cf-field"><span>Your name</span><input type="text" name="name" autocomplete="name" required></label>
@@ -1459,7 +1490,7 @@
     "Affiliations": "Affiliations",
     "© {y} {n}. All rights reserved.": "© {y} {n}. Tous droits réservés.",
     "Write to me": "Écrivez-moi",
-    "Questions, collaborations, talks, press — I read everything and reply as soon as I can.": "Questions, collaborations, conférences, presse — je lis tout et je réponds dès que possible.",
+    "Questions, collaborations, talks or press requests: I read everything and reply as soon as I can.": "Questions, collaborations, conférences ou demandes de presse : je lis tout et je réponds dès que possible.",
     "Your name": "Votre nom",
     "Your email": "Votre courriel",
     "Subject": "Objet",
@@ -1471,6 +1502,8 @@
     "I got your message and will get back to you soon.": "J’ai bien reçu votre message et je vous répondrai bientôt.",
     "Close": "Fermer",
     "Play video": "Lire la vidéo",
+    "Download my CV (English)": "Télécharger mon CV (anglais)",
+    "Download my CV (French)": "Télécharger mon CV (français)",
     "Scroll down ↓": "Défiler vers le bas ↓",
     "Open menu": "Ouvrir le menu",
     "Close menu": "Fermer le menu",
@@ -1619,7 +1652,7 @@
     "Where the research": "Là où la recherche",
     "Pages": "Pages",
     "Research": "Recherche",
-    "Home — research, outreach, field work": "Accueil — recherche, communications, terrain",
+    "Home: research, outreach, field work": "Accueil : recherche, communications, terrain",
     "Degrees, experience, training, awards, teaching, people": "Diplômes, expérience, formations, prix, enseignement, rencontres",
     "Papers, press and more": "Articles, presse et plus",
     "Talks, posters, interviews, press": "Conférences, affiches, entrevues, presse",
@@ -1839,8 +1872,8 @@
   }
   function bgRows(list, fn){ return '<ul class="bg-rows">' + list.map(fn).join("") + '</ul>'; }
 
-  var DEFAULT_PEOPLE_INTRO_FR = "La science est avant tout une aventure humaine. En chemin — en laboratoire, en forêt, dans les congrès et autour de longues tables — j’ai eu la chance de rencontrer et de travailler avec des gens extraordinaires. Ces photos sont pour elles et eux.";
-  var DEFAULT_PEOPLE_INTRO = "Science is first and foremost a human adventure. Along the way — in labs, in forests, at conferences and around long dinner tables — I have been lucky to meet and work with incredible people. These pictures are for them.";
+  var DEFAULT_PEOPLE_INTRO_FR = "La recherche est avant tout une aventure humaine. En chemin, en laboratoire, en forêt, dans les congrès et autour de longues tablées, j’ai eu la chance de rencontrer et de travailler avec des gens extraordinaires. Ces photos sont pour eux.";
+  var DEFAULT_PEOPLE_INTRO = "Research is above all a human adventure. Along the way, in labs, in forests, at conferences and around long dinner tables, I’ve had the chance to meet and work with incredible people. These photos are for them.";
   function renderPeople(d){
     if (!d.homeGallery || !d.homeGallery.length) return "";
     var items = d.homeGallery.map(function(p){
@@ -1866,11 +1899,11 @@
       return bgRow(x.period, linkedText(x.organization, x.url), esc(x.role));
     }));
     if (has(d.communityEngagement)) add("community-engagement", "Community", "Community &amp; volunteer engagement", bgRows(d.communityEngagement, function(x){
-      return bgRow(x.period, esc(x.organization), esc([x.role, x.description].filter(Boolean).join(" — ")));
+      return bgRow(x.period, esc(x.organization), esc([x.role, x.description].filter(Boolean).join(", ")));
     }));
     if (has(d.awards)) add("awards", "Awards", "Awards &amp; funding", bgRows(d.awards, function(x){
       var amt = x.amount != null ? 'CAD $' + Number(x.amount).toLocaleString("en-CA") : '';
-      return bgRow(x.year, esc(x.title), esc([amt, x.status].filter(Boolean).join(" — ")));
+      return bgRow(x.year, esc(x.title), esc([amt, x.status].filter(Boolean).join(", ")));
     }));
     if (has(d.memberships)) add("memberships", "Societies", "Society memberships", bgRows(d.memberships, function(x){
       return bgRow(x.period, esc(x.organization), esc(x.role));
@@ -2024,6 +2057,20 @@
     b.textContent = t(open ? "Show less" : "Read more");
   });
 
+  function cvButtons(d){
+    var links = [];
+    if (d.cvEn) links.push('<a class="cv-btn" href="' + esc(d.cvEn) + '" target="_blank" rel="noopener" download>' + esc(t("Download my CV (English)")) + '</a>');
+    if (d.cvFr) links.push('<a class="cv-btn" href="' + esc(d.cvFr) + '" target="_blank" rel="noopener" download>' + esc(t("Download my CV (French)")) + '</a>');
+    return links.length ? '<div class="cv-row">' + links.join("") + '</div>' : "";
+  }
+  function syncNavCv(){
+    var a = document.getElementById("nav-cv");
+    if (!a || !current) return;
+    var href = (lang === "fr" && current.cvFr) ? current.cvFr : (current.cvEn || current.cvFr || "");
+    a.hidden = !href;
+    if (href){ a.setAttribute("href", href); a.setAttribute("download", ""); }
+  }
+
   function renderStatementView(d){
     var statement = esc(LF(d, "statement") || (lang === "fr" ? DEFAULT_STATEMENT_FR : DEFAULT_STATEMENT)).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>");
     return '<section id="about" class="hx-sec hx-statement">' +
@@ -2035,6 +2082,7 @@
       '<div class="hx-about">' +
         '<h3 class="hx-about-title reveal">' + esc(t("About me")) + '</h3>' +
         bioHtml(LF(d, "bio")) +
+        cvButtons(d) +
       '</div>' +
     '</section>';
   }
@@ -2095,7 +2143,7 @@
         '<div class="hx-scrim"></div>' +
         '<div class="hx-hero-body"><div class="hx-col">' +
           '<h1 class="hx-name" id="f-name" contenteditable="false" aria-label="' + esc(d.name) + '">' + renderHeroName(d.name) + '</h1>' +
-          '<p class="hx-roll"><span class="fixed">' + (lang === "fr" ? "" : "Fungal&nbsp;") + '</span><span class="cycle-word" id="topic-cycle"></span></p>' +
+          '<p class="hx-roll">' + esc(LF(d, "tagline") || (lang === "fr" ? "Diversité, écologie et conservation de la fonge" : "Fungal diversity, ecology and conservation")) + '</p>' +
           renderQuoteCycler(d.quotes) +
         '</div></div>' +
         '<a class="hx-cue" href="#about" aria-label="Scroll to the introduction">Scroll down ↓</a>' +
@@ -2247,7 +2295,7 @@
         '<img class="hx-hero-img" src="images/publications-hero.jpg" alt="Orange-gilled fungi growing on a moss-covered log" fetchpriority="high" />' +
         '<div class="hx-scrim"></div>' +
         '<div class="hx-hero-body"><div class="hx-col">' +
-          '<h1 class="cm-title" aria-label="' + esc(t("Publications")) + '"><span class="ln"><i>' + t("Publications") + '</i></span><span class="ln"><i><em>' + esc(t("papers, press & more")) + '</em></i></span></h1>' +
+          '<h1 class="cm-title" aria-label="' + esc(t("Publications")) + '"><span class="ln"><i>' + t("Publications") + '</i></span></h1>' +
         '</div></div>' +
         '<a class="hx-cue" href="#publications" data-scroll="pub-highlights" aria-label="Scroll to the publications">Scroll down ↓</a>' +
       '</section>' +
@@ -2961,6 +3009,8 @@
   function setupReveal(){
     var root = document.documentElement;
     var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    // scroll-in animations switched off on purpose: content is simply there
+    root.classList.remove("rv"); return;
     if (!("IntersectionObserver" in window) || reduce){ root.classList.remove("rv"); return; }
     root.classList.add("rv");
     if (revealIO) revealIO.disconnect();
@@ -3027,13 +3077,15 @@
   function paint(){
     destroyFieldMap();
     setPageTitle();
+    syncNavCv();
     app.className = "view-" + view;
     document.body.classList.toggle("is-home", HERO_VIEWS[view] === true);
     syncTopbar();
     app.innerHTML = renderView(current);
     document.getElementById("site-footer-copyright").textContent = tf("© {y} {n}. All rights reserved.", { y: new Date().getFullYear(), n: current.name });
     stopQuoteCycle();
-    if (view === "home"){ startCycle(LF(current, "topics")); startQuoteCycle(current.quotes); } else { stopCycle(); }
+    stopCycle();
+    if (view === "home") startQuoteCycle(current.quotes);
     wireViewHandlers();
     setupReveal();
     translateDom(document.body);
@@ -3329,7 +3381,7 @@
   function srBuild(d){
     var out = [];
     function add(group, title, sub, extra, target){ if (title) out.push({ group: group, title: String(title), sub: sub || "", hay: srNorm([title, sub, extra].join(" ")), target: target }); }
-    [["Home", "home", "Home — research, outreach, field work"], ["Education and background", "background", "Degrees, experience, training, awards, teaching, people"],
+    [["Home", "home", "Home: research, outreach, field work"], ["Education and background", "background", "Degrees, experience, training, awards, teaching, people"],
      ["Publications", "publications", "Papers, press and more"], ["Communication & scientific outreach", "communications", "Talks, posters, interviews, press"],
      ["In the field and in the lab", "study-areas", "Interactive map of field sites"]].forEach(function(p){ add("Pages", t(p[0]), t(p[2]), "", { hash: p[1] === "home" ? "top" : p[1] }); });
     (d.researchAxes || []).forEach(function(a){ add("Research", LF(a, "title"), LF(a, "description"), "research axis", { hash: "research-axes", id: "research-axes" }); });
@@ -3354,7 +3406,7 @@
     bg(d.teaching, "teaching", "Teaching", function(x){ return [x.title, [x.institution, x.year].filter(Boolean).join(", ")]; });
     bg(d.publicEngagement, "public-engagement", "Public engagement", function(x){ return [x.title, x.year, x.description]; });
     bg(d.editorialRoles, "editorial", "Editorial", function(x){ return [x.description, x.period]; });
-    (d.peerReview || []).forEach(function(r){ add("Background", "Peer review — " + r.journal, "Editorial · " + r.count + " reviews", "", { hash: "editorial", id: "editorial" }); });
+    (d.peerReview || []).forEach(function(r){ add("Background", "Peer review: " + r.journal, "Editorial · " + r.count + " reviews", "", { hash: "editorial", id: "editorial" }); });
     return out;
   }
 

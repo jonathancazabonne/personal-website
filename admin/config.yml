@@ -18,7 +18,11 @@ collections:
         name: "site"
         fields:
           - { label: "Name", name: "name", widget: "string" }
-          - { label: "Rotating words (under name, on Home)", name: "topics", widget: "list" }
+          - { label: "Line under your name (Home)", name: "tagline", widget: "string", required: false }
+          - { label: "Line under your name — French", name: "tagline_fr", widget: "string", required: false }
+          - { label: "CV in English (PDF)", name: "cvEn", widget: "file", required: false }
+          - { label: "CV in French (PDF)", name: "cvFr", widget: "file", required: false }
+          - { label: "Rotating words (no longer shown)", name: "topics", widget: "list" }
           - { label: "Rotating phrases — French version (full phrases, e.g. Diversité fongique.)", name: "topics_fr", widget: "list", required: false }
           - { label: "Role / subtitle", name: "role", widget: "text" }
           - { label: "Role / subtitle — French version", name: "role_fr", widget: "text", required: false }
