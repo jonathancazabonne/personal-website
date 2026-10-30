@@ -1,25 +1,25 @@
 {
   "items": [
     {
-      "title": "Diversity and taxonomy",
-      "description": "Describing and classifying fungal diversity through integrative taxonomy — combining morphological characters with molecular data (DNA barcoding, phylogenetics) to resolve species boundaries, especially in understudied groups such as Laboulbeniomycetes and other arthropod-associated fungi.",
+      "title": "Diversity, taxonomy and systematics",
+      "description": "To protect fungi, we first need to be able to name what we want to protect. With the rise of environmental DNA (eDNA), most of the sequences we detect don’t match any described species, because reference databases still have big gaps. And as these methods become more common and easier to use, taxonomy — describing collections and species — tends to get sidelined in fungal diversity studies, even though it’s the foundation for understanding and protecting that diversity. Describing fungal diversity takes an integrative approach that combines morphological, ecological, habitat and molecular data, so that species are identified reliably and reference databases keep growing — the very databases that eDNA studies rely on.",
       "image": "images/axis-taxonomy.jpg",
-      "title_fr": "Diversité et taxonomie",
-      "description_fr": "Décrire et classer la diversité fongique grâce à la taxonomie intégrative — en combinant caractères morphologiques et données moléculaires (codes-barres ADN, phylogénétique) pour préciser les limites entre espèces, en particulier chez des groupes peu étudiés comme les Laboulbeniomycètes et d’autres champignons associés aux arthropodes."
+      "title_fr": "Diversité, taxonomie et systématique",
+      "description_fr": "Pour mieux protéger la fonge, il est indispensable de savoir nommer ce que l’on souhaite protéger. Avec l’utilisation grandissante de l’ADN environnemental (ADNe), la plupart des séquences détectées ne correspondent à aucune espèce décrite, faute de références dans les bases de données. Ces approches devenant de plus en plus répandues et accessibles, les travaux de taxonomie et de description des récoltes et des espèces tendent à être relégués au second plan dans les études de diversité fongique, alors qu’ils sont fondamentaux pour mieux comprendre et protéger cette diversité. Décrire la diversité fongique nécessite une approche intégrative, combinant données morphologiques, écologiques, d’habitat et moléculaires, afin d’assurer l’identification des espèces et d’enrichir les bases de données de référence sur lesquelles s’appuient notamment les travaux fondés sur l’ADNe."
     },
     {
-      "title": "Community Ecology",
-      "description": "Studying how fungal communities are structured and how they interact with other kingdoms — plants, arthropods, and beyond. My doctoral work focuses on soil fungal communities in old-growth boreal forests, looking at how factors like forest structure, canopy composition, and airborne LiDAR-derived habitat metrics shape fungal diversity.",
+      "title": "Community ecology",
+      "description": "Species don’t live in isolation: they come together as communities within ecosystems. Protecting fungi better therefore means characterizing the fungal communities present in the environment, and understanding the biotic and abiotic factors that shape them. I focus on soil, using short- and long-read eDNA approaches. Soil is a hotspot of fungal diversity: 59% of terrestrial biodiversity lives there, and up to 75% of the carbon in boreal ecosystems can be stored in it. Yet 33% of soils are already considered degraded, and more than 90% could be by 2050.",
       "image": "images/axis-ecology.jpg",
       "title_fr": "Écologie des communautés",
-      "description_fr": "Étudier comment les communautés fongiques sont structurées et comment elles interagissent avec les autres règnes — plantes, arthropodes, et au-delà. Mes travaux de doctorat portent sur les communautés fongiques du sol des vieilles forêts boréales, en examinant comment des facteurs comme la structure forestière, la composition de la canopée et des métriques d’habitat issues du LiDAR aéroporté influencent la diversité fongique."
+      "description_fr": "Les espèces ne vivent pas isolées : elles s’assemblent en communautés au sein des écosystèmes. Mieux protéger la fonge passe donc par la caractérisation des communautés fongiques présentes dans l’environnement et par la compréhension des facteurs biotiques et abiotiques qui les structurent. Je me concentre en particulier sur le sol, à l’aide d’approches d’ADNe en lectures courtes et longues. Le sol est un point chaud de diversité fongique : c’est là que réside 59 % de la biodiversité terrestre, et jusqu’à 75 % du carbone des écosystèmes boréaux peut y être stocké. Pourtant, 33 % des sols sont déjà considérés comme dégradés, et plus de 90 % pourraient l’être d’ici 2050."
     },
     {
-      "title": "Conservation and community science",
-      "description": "Working to bring fungi into biodiversity conservation and sustainable, ecosystem-based forest management — through applied research, citizen science, Red List assessments, and advocacy for the recognition of fungi as a distinct kingdom deserving the same conservation attention as plants and animals.",
+      "title": "Conservation and citizen science",
+      "description": "Collecting data is necessary to fill our knowledge gaps on fungal diversity. But the data we already have — and keep gathering — need to be translated into conservation frameworks so that fungi can be better protected. To get there, I work on several levers, such as citizen science, policy advocacy and mycology education.",
       "image": "images/axis-conservation.jpg",
       "title_fr": "Conservation et science citoyenne",
-      "description_fr": "Œuvrer pour intégrer les champignons à la conservation de la biodiversité et à un aménagement forestier durable, fondé sur les écosystèmes — par la recherche appliquée, la science citoyenne, les évaluations de la Liste rouge et le plaidoyer pour que la fonge soit reconnue comme un règne à part entière, digne de la même attention que les plantes et les animaux."
+      "description_fr": "Accumuler des données est nécessaire pour combler nos lacunes de connaissances sur la diversité fongique. Mais les données déjà acquises, et celles qui continuent de s’accumuler, doivent être traduites et intégrées aux cadres de conservation pour que les champignons soient mieux protégés. Pour y arriver, j’explore plusieurs leviers : la science citoyenne, le plaidoyer politique et l’éducation à la mycologie."
     }
   ]
 }

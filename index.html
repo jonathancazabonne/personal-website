@@ -588,7 +588,7 @@
     background:linear-gradient(var(--hx-accent),var(--hx-accent)) 0 100%/0 3px no-repeat; transition:background-size .5s cubic-bezier(.2,.7,.2,1); padding-bottom:6px; overflow-wrap:anywhere;
   }
   .hx-mail:hover{ background-size:100% 3px; }
-  .hx-mail.hx-foot-title{ margin:0; background:none; padding:0; text-transform:none; text-align:left; }
+  .hx-mail.hx-foot-title{ margin:0; background:none; padding:0; text-transform:none; text-align:left; font-weight:500; }
   .hx-addr-mail{ color:#edf0ec; text-decoration:underline; text-decoration-color:rgba(168,195,187,.7); text-underline-offset:3px; }
   .hx-addr-mail:hover{ color:var(--hx-accent); }
   .hx-foot-cols{ display:grid; grid-template-columns:minmax(0,1.2fr) minmax(0,2fr); gap:48px; align-items:start; }
@@ -1202,6 +1202,41 @@
   .hx-statement h2, .hx-band h2, .hx-roll .fixed{ font-weight:400; }
   .cm-year-num{ font-size:clamp(44px,5vw,80px); letter-spacing:-.01em; }
   .hx-name{ font-weight:500; }
+
+  /* Home — "What do I do?" + About me */
+  .hx-statement{ display:block; }
+  .hx-statement h2.hx-what-title{ margin:0 0 40px; font-family:var(--display); font-weight:500; font-size:clamp(40px,5.2vw,76px); line-height:1; letter-spacing:-.012em; }
+  .hx-what-grid{ display:grid; grid-template-columns:minmax(0,1.45fr) minmax(0,1fr); gap:56px 80px; align-items:start; }
+  .hx-what-text{ margin:0; font-size:clamp(22px,2.3vw,34px); line-height:1.38; font-weight:400; color:#edf0ec; max-width:30ch; }
+  .hx-what-text b{ font-weight:600; color:var(--hx-accent); }
+  .hx-about{ margin-top:88px; padding-top:44px; border-top:1px solid rgba(237,240,236,.18); }
+  .hx-about-title{ margin:0 0 22px; font-family:var(--display); font-weight:500; font-size:clamp(24px,2.2vw,32px); color:#edf0ec; }
+  .hx-statement .bio{ margin:0; font-size:.92rem; line-height:1.75; color:#D3DCD2; }
+  .hx-statement .bio p{ margin:0 0 1em; break-inside:avoid-column; }
+  .hx-statement .bio a{ color:#edf0ec; text-decoration:underline; text-decoration-color:rgba(168,195,187,.8); text-underline-offset:3px; }
+  .hx-statement .bio a:hover{ color:var(--hx-accent); }
+  @media (max-width:900px){ .hx-what-grid{ grid-template-columns:minmax(0,1fr); } .hx-what-text{ max-width:none; } .hx-about{ margin-top:56px; } }
+
+  /* research axes: photo on top, readable text below */
+  .hx-axis{ height:auto; min-height:0; display:flex; flex-direction:column; background:#edf0ec; color:#14201a; border-radius:22px; overflow:hidden; box-shadow:0 1px 2px rgba(20,32,26,.06); }
+  .hx-axis::after{ display:none; }
+  .hx-axis-media{ position:relative; aspect-ratio:4/3; overflow:hidden; background:linear-gradient(160deg,#2a3b30,#14201a); }
+  .hx-axis-media img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:auto; transition:transform 1.4s cubic-bezier(.2,.7,.2,1); }
+  .hx-axis:hover .hx-axis-media img{ transform:scale(1.05); }
+  .hx-axis img{ z-index:auto; }
+  .hx-axis-body{ position:static; padding:26px 28px 30px; }
+  .hx-axis h3{ color:#14201a; font-size:clamp(22px,1.9vw,28px); line-height:1.15; margin:0 0 14px; }
+  .hx-axis p{ margin:0; max-width:none; font-size:.84rem; line-height:1.7; color:#33423A; }
+  @media (max-width:900px){ .hx-axis{ min-height:0; } .hx-axis-body{ position:static; padding-top:24px; } }
+  html[data-theme="dark"] .hx-axis{ background:var(--dk-3); color:var(--dk-ink); }
+  html[data-theme="dark"] .hx-axis h3{ color:var(--dk-ink); }
+  html[data-theme="dark"] .hx-axis p{ color:var(--dk-muted); }
+
+  /* two "latest" blocks in a row */
+  .hx-news + .hx-news{ padding-top:0; }
+
+  /* footer headings: same font, no caps */
+  .hx-foot-cols h4, .hx-foot-logos h4{ font-family:var(--font); font-size:1rem; font-weight:500; letter-spacing:0; text-transform:none; color:#edf0ec; margin:0 0 12px; }
 </style>
 
 </head>
@@ -1237,7 +1272,7 @@
   <main id="app" tabindex="-1"><div class="seo-fallback">
     <h1>Jonathan Cazabonne</h1>
     <p class="seo-role">Mycologist, M.Sc. | Ph.D. candidate — Institut de recherche sur les forêts, Université du Québec en Abitibi-Témiscamingue (UQAT)</p>
-    <p>I hold a B.Sc. in organismal, population and ecosystem biology and an M.Sc. in forest ecology and management, and I'm now a Ph.D. candidate at the Institut de recherche sur les forêts (UQAT), supervised by Maxence Martin and Mélanie Roy. My research aims for a finer understanding of fungal diversity — morphological and genetic — and of fungal interactions with other kingdoms, approached through molecular ecology, community ecology, integrative taxonomy, citizen science, and even literature and art.</p>
+    <p>I seek to fill knowledge gaps in the diversity and ecology of fungi, and to help bring that knowledge into conservation frameworks and ecosystem-based forest management. We no longer have the luxury of time. Let’s fill the gaps and turn data into action. I’m deeply convinced that documenting and understanding the diversity of life in its environment — especially fungi — is essential if we want to protect it for the long term.</p>
     <h2>Research</h2>
     <ul><li>Diversity and taxonomy</li><li>Community Ecology</li><li>Conservation and community science</li></ul>
     <h2>Explore</h2>
@@ -1254,7 +1289,7 @@
   <footer class="hx-foot hx-page">
     <div class="reveal">
       <h2 class="hx hx-mail hx-foot-title">Get in touch</h2>
-      <div class="hx-foot-actions"><button type="button" class="hx-cta" data-contact>Send me a message <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+      <div class="hx-foot-actions"><button type="button" class="hx-cta" data-contact>Send me a message and let’s build mycelial connections <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
     </div>
     <div>
       <div class="hx-foot-cols" id="site-footer-contact"></div>
@@ -1364,6 +1399,13 @@
     "I got your message and will get back to you soon.": "J’ai bien reçu votre message et je vous répondrai bientôt.",
     "Close": "Fermer",
     "Play video": "Lire la vidéo",
+    "What do I do?": "Qu’est-ce que je fais ?",
+    "About me": "À propos de moi",
+    "Where do I do <i>my research?</i>": "Où est-ce que je mène <i>mes recherches ?</i>",
+    "Latest publications": "Dernières publications",
+    "All publications": "Toutes les publications",
+    "Send me a message and let’s build mycelial connections": "Écrivez-moi et tissons des liens mycéliens",
+    "Quick links": "Liens rapides",
     "Read more": "Lire la suite",
     "Show less": "Réduire",
     "Search publications…": "Rechercher dans les publications…",
@@ -1852,7 +1894,7 @@
 
   function renderResearchAxisItem(a){
     return '<article class="hx-axis reveal">' +
-      (a.image ? '<img src="' + esc(a.image) + '" alt="" loading="lazy" />' : '') +
+      '<div class="hx-axis-media">' + (a.image ? '<img src="' + esc(a.image) + '" alt="" loading="lazy" />' : '') + '</div>' +
       '<div class="hx-axis-body">' +
         '<h3>' + esc(LF(a, "title")) + '</h3>' +
         '<p>' + esc(LF(a, "description")) + '</p>' +
@@ -1876,8 +1918,8 @@
   }
 
   var ARROW_SVG = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
-  var DEFAULT_STATEMENT_FR = "Contribuer à **intégrer la fonge** à la conservation de la biodiversité et à l’aménagement écosystémique des forêts — et à **faire connaître les champignons** du grand public.";
-  var DEFAULT_STATEMENT = "Helping **integrate fungi** into biodiversity conservation and ecosystem-based forest management — and bringing fungi to **public attention.**";
+  var DEFAULT_STATEMENT_FR = "Je cherche à combler les lacunes de connaissances sur la diversité et l’écologie des champignons. **Comblons les lacunes et transformons les données en actions.**";
+  var DEFAULT_STATEMENT = "I seek to fill knowledge gaps in the diversity and ecology of fungi. **Let’s fill the gaps and turn data into action.**";
 
   function renderHeroName(name){
     var parts = String(name || "").trim().split(/\s+/);
@@ -1886,13 +1928,14 @@
     return '<span class="ln"><i>' + esc(first || last) + '</i></span>' + (first && last ? '<span class="ln"><i>' + esc(last) + '</i></span>' : "");
   }
 
+  function richText(text){
+    return esc(text).replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, function(_, label, url){
+      return '<a href="' + url + '" target="_blank" rel="noopener">' + label + '</a>';
+    });
+  }
   function bioHtml(text){
-    text = String(text || "");
-    var parts = text.split(/(?<=[.!?])\s+(?=[A-ZÀ-ÖÉ“"])/);
-    if (parts.length <= 3) return '<p class="bio reveal" id="f-bio">' + esc(text) + '</p>';
-    return '<p class="bio reveal" id="f-bio">' + esc(parts.slice(0, 3).join(" ")) +
-      '<span class="bio-more" id="bio-more" hidden> ' + esc(parts.slice(3).join(" ")) + '</span>' +
-      ' <button type="button" class="bio-toggle" data-biotoggle aria-expanded="false">' + esc(t("Read more")) + '</button></p>';
+    var paras = String(text || "").split(/\n\s*\n/).map(function(p){ return p.trim(); }).filter(Boolean);
+    return '<div class="bio reveal" id="f-bio">' + paras.map(function(p){ return '<p>' + richText(p) + '</p>'; }).join("") + '</div>';
   }
   document.addEventListener("click", function(ev){
     var b = ev.target.closest("[data-biotoggle]");
@@ -1907,9 +1950,15 @@
   function renderStatementView(d){
     var statement = esc(LF(d, "statement") || (lang === "fr" ? DEFAULT_STATEMENT_FR : DEFAULT_STATEMENT)).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>");
     return '<section id="about" class="hx-sec hx-statement">' +
-      '<h2 class="hx reveal">' + statement + '</h2>' +
-      '<div class="hx-statement-side reveal">' + renderAboutPhoto(d) + '</div>' +
-      bioHtml(LF(d, "bio")) +
+      '<h2 class="hx hx-what-title reveal">' + esc(t("What do I do?")) + '</h2>' +
+      '<div class="hx-what-grid">' +
+        '<p class="hx-what-text reveal">' + statement + '</p>' +
+        '<div class="hx-statement-side reveal">' + renderAboutPhoto(d) + '</div>' +
+      '</div>' +
+      '<div class="hx-about">' +
+        '<h3 class="hx-about-title reveal">' + esc(t("About me")) + '</h3>' +
+        bioHtml(LF(d, "bio")) +
+      '</div>' +
     '</section>';
   }
 
@@ -1917,9 +1966,30 @@
     var sites = (d.studyAreas || []).filter(function(a){ return a.kind !== "event"; }).map(function(a){ return '<li>' + esc(LF(a, "name")) + '</li>'; }).join("");
     return '<section id="field" class="hx-sec hx-band">' +
       '<div class="hx-band-inner reveal">' +
-        '<h2 class="hx">' + t("Where the research <i>happens.</i>") + '</h2>' +
+        '<h2 class="hx">' + t("Where do I do <i>my research?</i>") + '</h2>' +
         '<a class="hx-cta" href="#study-areas">See the field sites ' + ARROW_SVG + '</a>' +
       '</div>' +
+    '</section>';
+  }
+
+  function renderLatestPublications(d){
+    var list = (d.publications || []).filter(function(p){ return p.status !== "in-review"; }).map(pubView);
+    list.forEach(function(v, i){ v.idx = i; });
+    list.sort(function(a, b){ return ((Number(b.p.year) || 0) - (Number(a.p.year) || 0)) || (a.rank - b.rank) || (b.sort - a.sort) || (a.idx - b.idx); });
+    list = list.slice(0, 4);
+    if (!list.length) return "";
+    var cards = list.map(function(v){
+      var p = v.p, ext = p.url && p.url !== "#";
+      return '<a class="hx-news-card reveal" href="' + esc(ext ? p.url : "#publications") + '"' + (ext ? ' target="_blank" rel="noopener"' : "") + '>' +
+        '<div class="hx-tag"><span>' + esc(t(PUB_SHORT[v.cat] || v.cat)) + '</span><span>' + esc(p.year || "") + '</span></div>' +
+        '<h3>' + esc(p.title) + '</h3>' +
+        '<div class="hx-src"><span>' + esc(stripTodo(p.venue || "")) + '</span>' + ARROW_SVG + '</div>' +
+      '</a>';
+    }).join("");
+    return '<section id="latest-publications" class="hx-sec hx-news">' +
+      '<div class="hx-sec-head reveal"><h2 class="hx">Latest publications</h2>' +
+        '<a class="hx-cta dark" href="#publications">All publications ' + ARROW_SVG + '</a></div>' +
+      '<div class="hx-news-grid">' + cards + '</div>' +
     '</section>';
   }
 
@@ -1929,9 +1999,9 @@
     var cards = list.map(function(c){
       var ext = c.url && c.url !== "#";
       return '<a class="hx-news-card reveal" href="' + esc(ext ? c.url : "#communications") + '"' + (ext ? ' target="_blank" rel="noopener"' : "") + '>' +
-        '<div class="hx-tag"><span>' + esc(c.type || "") + '</span><span>' + esc(c.year || "") + '</span></div>' +
+        '<div class="hx-tag"><span>' + esc(t(c.type || "")) + '</span><span>' + esc(c.year || "") + '</span></div>' +
         '<h3>' + esc(c.title) + '</h3>' +
-        '<div class="hx-src"><span>' + esc(c.venue || "") + '</span>' + ARROW_SVG + '</div>' +
+        '<div class="hx-src"><span>' + esc(stripTodo(c.venue || "")) + '</span>' + ARROW_SVG + '</div>' +
       '</a>';
     }).join("");
     return '<section id="latest-outreach" class="hx-sec hx-news">' +
@@ -1958,8 +2028,8 @@
         renderStatementView(d) +
         renderResearchAxesView(d) +
         renderFieldBand(d) +
+        renderLatestPublications(d) +
         renderLatestOutreach(d) +
-        renderBackgroundTeaser(d) +
       '</div>';
   }
 
@@ -2477,7 +2547,7 @@
     var linksHtml = (d.links || []).map(function(l){
       return '<li><a class="hx-elsewhere" href="' + esc(l.href) + '" target="_blank" rel="noopener">' + brandIcon(l.icon, l.href) + '<span>' + esc(l.label) + '</span></a></li>';
     }).join("");
-    el.innerHTML = addressHtml + (linksHtml ? '<div><h4>Elsewhere</h4><ul>' + linksHtml + '</ul></div>' : "");
+    el.innerHTML = addressHtml + (linksHtml ? '<div><h4>Quick links</h4><ul>' + linksHtml + '</ul></div>' : "");
   }
 
   // ---------- study areas page ----------
@@ -3121,6 +3191,7 @@
   function homeSectionsMenu(d){
     var items = [];
     if (d.researchAxes && d.researchAxes.length) items.push({ id: "research-axes", label: "Research axes" });
+    if (d.publications && d.publications.length) items.push({ id: "latest-publications", label: "Latest publications" });
     if (d.communications && d.communications.length) items.push({ id: "latest-outreach", label: "Latest outreach" });
     if (d.homeGallery && d.homeGallery.length) items.push({ id: "people", label: "People along the way" });
     if (d.education && d.education.length) items.push({ id: "education", label: "Education" });

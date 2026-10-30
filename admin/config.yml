@@ -23,9 +23,9 @@ collections:
           - { label: "Small line above the name (Home hero)", name: "heroEyebrow", widget: "string", required: false }
           - { label: "Role / subtitle", name: "role", widget: "text" }
           - { label: "Role / subtitle — French version", name: "role_fr", widget: "text", required: false }
-          - { label: "Big statement on Home (wrap words in **double asterisks** to highlight them)", name: "statement", widget: "text", required: false }
+          - { label: "What do I do? — text on Home (wrap words in **double asterisks** to highlight them)", name: "statement", widget: "text", required: false }
           - { label: "Big statement on Home — French version", name: "statement_fr", widget: "text", required: false }
-          - { label: "Bio", name: "bio", widget: "text" }
+          - { label: "About me (leave a blank line between paragraphs; links: [text](https://…))", name: "bio", widget: "text" }
           - { label: "Bio — French version (shown when the site is in French)", name: "bio_fr", widget: "text", required: false }
           - { label: "About photo (next to bio, on Home)", name: "aboutPhoto", widget: "image", required: false }
           - { label: "About photo caption", name: "aboutPhotoCaption", widget: "string", required: false }
