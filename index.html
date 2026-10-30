@@ -1245,6 +1245,22 @@
   .hx-what-text{ font-size:clamp(26px,3.1vw,46px); line-height:1.28; max-width:none; }
   .hx-statement .about-photo{ max-width:380px; }
   @media (max-width:900px){ .hx-about{ margin-top:90px; } }
+
+  /* tighter vertical rhythm between sections */
+  :root{ --sec-y:clamp(60px,6.5vw,96px); }
+  .hx-statement, .hx-axes, .hx-news, .bg-people{ padding-top:var(--sec-y); padding-bottom:var(--sec-y); }
+  .hx-news + .hx-news{ padding-top:0; }
+  .hx-about{ margin-top:clamp(56px,6vw,88px); }
+  .hx-statement h2.hx-what-title, .hx-statement .hx-about-title{ margin-bottom:36px; }
+  .hx-sec-head{ margin-bottom:36px; }
+  .hx-band{ min-height:clamp(380px,42vw,520px); }
+  .hx-band-inner{ padding:64px 0; }
+  .bg-sec{ padding-top:clamp(52px,5.5vw,80px); padding-bottom:clamp(52px,5.5vw,80px); }
+  .bg-people-head{ margin-bottom:40px; }
+  .cm-list{ padding-top:56px; padding-bottom:80px; }
+  .cm-year{ padding-top:40px; }
+  footer.hx-foot{ padding-top:var(--sec-y); gap:56px; }
+  .hx-legal{ margin-top:40px !important; }
 </style>
 
 </head>
