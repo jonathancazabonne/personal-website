@@ -1304,6 +1304,11 @@
   .sr-group{ font-size:.78rem; font-weight:500; }
   .cf-eyebrow, .cf-field > span{ font-size:.8rem; font-weight:500; }
   .hx-cue{ font-size:.75rem; }
+
+  /* plain scroll hint, written like normal text */
+  .hx-cue{ font-size:.95rem !important; font-weight:400; letter-spacing:0 !important; text-transform:none !important; color:rgba(237,240,236,.85); gap:0; }
+  .hx-cue:hover{ color:#fff; text-decoration:underline; text-underline-offset:4px; }
+  .hx-statement .bio strong{ font-weight:600; color:#edf0ec; }
 </style>
 
 </head>
@@ -1466,6 +1471,7 @@
     "I got your message and will get back to you soon.": "J’ai bien reçu votre message et je vous répondrai bientôt.",
     "Close": "Fermer",
     "Play video": "Lire la vidéo",
+    "Scroll down ↓": "Défiler vers le bas ↓",
     "Open menu": "Ouvrir le menu",
     "Close menu": "Fermer le menu",
     "Dark mode": "Mode sombre",
@@ -1914,7 +1920,7 @@
         '<div class="hx-hero-body"><div class="hx-col">' +
           '<h1 class="cm-title" aria-label="' + esc(t("Education and background")) + '"><span class="ln"><i>' + t("Education") + '</i></span><span class="ln"><i><em>&amp; ' + t("background") + '</em></i></span></h1>' +
         '</div></div>' +
-        '<a class="hx-cue" href="#background" data-scroll="' + (people ? "people" : (secs[0] ? secs[0].id : "top")) + '" aria-label="Scroll to the content"><span class="hx-cue-line" aria-hidden="true"></span>Scroll</a>' +
+        '<a class="hx-cue" href="#background" data-scroll="' + (people ? "people" : (secs[0] ? secs[0].id : "top")) + '" aria-label="Scroll to the content">Scroll down ↓</a>' +
       '</section>' +
       '<div class="hx-page">' +
         '<div class="cm-bar" id="bg-bar" style="padding-top:12px"><div class="cm-chips" role="group" aria-label="Jump to a section">' + barChips + '</div></div>' +
@@ -2002,7 +2008,7 @@
   function richText(text){
     return esc(text).replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, function(_, label, url){
       return '<a href="' + url + '" target="_blank" rel="noopener">' + label + '</a>';
-    });
+    }).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
   }
   function bioHtml(text){
     var paras = String(text || "").split(/\n\s*\n/).map(function(p){ return p.trim(); }).filter(Boolean);
@@ -2088,12 +2094,11 @@
         '<img class="hx-hero-img" src="images/hero-forest.jpg" alt="Old-growth boreal forest" fetchpriority="high" />' +
         '<div class="hx-scrim"></div>' +
         '<div class="hx-hero-body"><div class="hx-col">' +
-          '<p class="hx-eyebrow">' + esc(d.heroEyebrow || "Institut de recherche sur les forêts · UQAT") + '</p>' +
           '<h1 class="hx-name" id="f-name" contenteditable="false" aria-label="' + esc(d.name) + '">' + renderHeroName(d.name) + '</h1>' +
           '<p class="hx-roll"><span class="fixed">' + (lang === "fr" ? "" : "Fungal&nbsp;") + '</span><span class="cycle-word" id="topic-cycle"></span></p>' +
           renderQuoteCycler(d.quotes) +
         '</div></div>' +
-        '<a class="hx-cue" href="#about" aria-label="Scroll to the introduction"><span class="hx-cue-line" aria-hidden="true"></span>Scroll</a>' +
+        '<a class="hx-cue" href="#about" aria-label="Scroll to the introduction">Scroll down ↓</a>' +
       '</section>' +
       '<div class="hx-page">' +
         renderStatementView(d) +
@@ -2244,7 +2249,7 @@
         '<div class="hx-hero-body"><div class="hx-col">' +
           '<h1 class="cm-title" aria-label="' + esc(t("Publications")) + '"><span class="ln"><i>' + t("Publications") + '</i></span><span class="ln"><i><em>' + esc(t("papers, press & more")) + '</em></i></span></h1>' +
         '</div></div>' +
-        '<a class="hx-cue" href="#publications" data-scroll="pub-highlights" aria-label="Scroll to the publications"><span class="hx-cue-line" aria-hidden="true"></span>Scroll</a>' +
+        '<a class="hx-cue" href="#publications" data-scroll="pub-highlights" aria-label="Scroll to the publications">Scroll down ↓</a>' +
       '</section>' +
       '<div class="hx-page">' +
         renderPubFeatured(views) +
@@ -2479,7 +2484,7 @@
         '<div class="hx-hero-body"><div class="hx-col">' +
           '<h1 class="cm-title" aria-label="' + esc(t("Communication & scientific outreach")) + '"><span class="ln"><i>' + t("Communication") + '</i></span><span class="ln"><i>&amp; <em>' + t("scientific outreach") + '</em></i></span></h1>' +
         '</div></div>' +
-        '<a class="hx-cue" href="#communications" data-scroll="comm-highlights" aria-label="Scroll to the highlights"><span class="hx-cue-line" aria-hidden="true"></span>Scroll</a>' +
+        '<a class="hx-cue" href="#communications" data-scroll="comm-highlights" aria-label="Scroll to the highlights">Scroll down ↓</a>' +
       '</section>' +
       '<div class="hx-page">' +
         renderCommFeatured(views) +
