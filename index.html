@@ -869,6 +869,7 @@
   .fm-meta{ margin:0 0 18px; padding:14px 0 0; border-top:1px solid rgba(237,240,236,.15); font-size:.75rem; color:var(--mist); }
   .fm-meta strong{ color:#edf0ec; font-weight:600; }
   .fm-photos{ display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:20px; }
+  .fm-thumb-more{ position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:rgba(14,24,19,.55); color:#fff; font-size:1.5rem; font-weight:500; letter-spacing:.02em; pointer-events:none; }
   .fm-thumb{ position:relative; display:block; padding:0; border:0; aspect-ratio:4/3; overflow:hidden; background:#1b241d; cursor:zoom-in; }
   .fm-thumb:first-child:nth-last-child(odd){ grid-column:1 / -1; aspect-ratio:16/10; }
   .fm-thumb img{ width:100%; height:100%; object-fit:cover; display:block; transition:transform .8s cubic-bezier(.2,.7,.2,1); }
@@ -2835,7 +2836,8 @@
       var a = areas[i], photos = areaPhotos(a);
       var thumbs = photos.length
         ? '<div class="fm-photos">' + photos.slice(0, 6).map(function(p, j){
-            return '<button type="button" class="fm-thumb" data-site="' + i + '" data-photo="' + j + '" aria-label="Enlarge photo"><img src="' + esc(p.src) + '" alt="' + esc(p.caption || a.name) + '" loading="lazy" /></button>';
+            var more = (j === 5 && photos.length > 6) ? '<span class="fm-thumb-more">+' + (photos.length - 6) + '</span>' : '';
+            return '<button type="button" class="fm-thumb" data-site="' + i + '" data-photo="' + j + '" aria-label="Enlarge photo"><img src="' + esc(p.src) + '" alt="' + esc(p.caption || a.name) + '" loading="lazy" />' + more + '</button>';
           }).join("") + '</div>'
         : "";
       return '<div class="fm-panel-inner">' +
