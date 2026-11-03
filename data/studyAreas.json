@@ -504,7 +504,7 @@
       "role": "Ph.D. fieldwork",
       "partners": "",
       "description": "",
-      "cover": "images/field-duparquet-5.jpg",
+      "cover": "images/field-duparquet-6.jpg",
       "photos": [
         {
           "src": "images/field-duparquet-1.jpg",
@@ -560,6 +560,34 @@
         },
         {
           "src": "images/field-duparquet-14.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-duparquet-15.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-duparquet-16.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-duparquet-17.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-duparquet-18.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-duparquet-19.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-duparquet-20.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-duparquet-21.jpg",
           "caption": ""
         }
       ],
