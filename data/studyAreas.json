@@ -172,9 +172,34 @@
       "role": "Panel at the Canada Pavilion",
       "partners": "",
       "description": "",
-      "cover": "",
+      "cover": "images/field-wcc-6.jpg",
       "logo": "images/logo-wcc-2025.png",
-      "photos": [],
+      "photos": [
+        {
+          "src": "images/field-wcc-1.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-wcc-2.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-wcc-3.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-wcc-4.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-wcc-5.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-wcc-6.jpg",
+          "caption": ""
+        }
+      ],
       "name_fr": "Congrès mondial de la nature de l’UICN, Abou Dabi, Émirats arabes unis",
       "short_fr": "UICN WCC (Abou Dabi)",
       "place_fr": "ADNEC, Abou Dabi",
@@ -184,8 +209,8 @@
       "description_fr": "",
       "links": [
         {
-          "label": "My session: “Le règne oublié : La fonge comme socle de la conservation”",
-          "label_fr": "Ma session : « Le règne oublié : La fonge comme socle de la conservation »",
+          "label": "Le règne oublié : La fonge comme socle de la conservation",
+          "label_fr": "Le règne oublié : La fonge comme socle de la conservation",
           "url": "https://www.iucncongress2025.org/programme/le-regne-oublie-la-fonge-comme-socle-de-la-conservation"
         },
         {
