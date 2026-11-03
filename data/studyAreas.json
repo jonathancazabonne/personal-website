@@ -494,8 +494,8 @@
       ]
     },
     {
-      "name": "Old-growth mixed boreal forest, Lac Duparquet, Québec",
-      "short": "Lac Duparquet old-growth",
+      "name": "Old-growth mixed boreal forests and managed forests, Lac Duparquet, Québec",
+      "short": "Lac Duparquet forests",
       "place": "Lac Duparquet Teaching and Research Forest (SERLD), Abitibi-Témiscamingue",
       "country": "Canada",
       "lat": 48.513,
@@ -504,19 +504,67 @@
       "role": "Ph.D. fieldwork",
       "partners": "",
       "description": "",
-      "cover": "images/hero-forest.jpg",
+      "cover": "images/field-duparquet-5.jpg",
       "photos": [
         {
-          "src": "images/hero-forest.jpg",
-          "caption": "Provisional photo — old-growth boreal forest"
+          "src": "images/field-duparquet-1.jpg",
+          "caption": ""
         },
         {
-          "src": "images/band-canopy.jpg",
-          "caption": "Provisional photo — canopy"
+          "src": "images/field-duparquet-2.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-duparquet-3.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-duparquet-4.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-duparquet-5.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-duparquet-6.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-duparquet-7.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-duparquet-8.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-duparquet-9.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-duparquet-10.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-duparquet-11.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-duparquet-12.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-duparquet-13.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-duparquet-14.jpg",
+          "caption": ""
         }
       ],
-      "name_fr": "Vieille forêt boréale mixte, lac Duparquet, Québec",
-      "short_fr": "Vieille forêt du lac Duparquet",
+      "name_fr": "Vieilles forêts boréales mixtes et forêts aménagées, lac Duparquet, Québec",
+      "short_fr": "Forêts du lac Duparquet",
       "place_fr": "Forêt d’enseignement et de recherche du lac Duparquet (FERLD), Abitibi-Témiscamingue",
       "period_fr": "2024–présent",
       "role_fr": "Terrain de doctorat",
