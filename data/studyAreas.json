@@ -14,9 +14,82 @@
       "role": "UQAT delegation · talk at Journée Québec",
       "partners": "",
       "description": "",
-      "cover": "",
+      "cover": "images/field-cop17-3.jpg",
       "logo": "images/logo-cop17.jpg",
-      "photos": [],
+      "photos": [
+        {
+          "src": "images/field-cop17-1.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-cop17-2.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-cop17-3.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-cop17-4.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-cop17-5.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-cop17-6.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-cop17-7.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-cop17-8.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-cop17-9.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-cop17-10.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-cop17-11.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-cop17-12.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-cop17-13.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-cop17-14.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-cop17-15.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-cop17-16.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-cop17-17.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-cop17-18.jpg",
+          "caption": ""
+        }
+      ],
       "name_fr": "COP17, Conférence des Nations Unies sur la biodiversité, Erevan, Arménie",
       "short_fr": "COP17 (Erevan)",
       "place_fr": "Meridian Expo and Event Centre, Erevan",
@@ -29,6 +102,11 @@
           "label": "UN Biodiversity Conference (COP17)",
           "label_fr": "Conférence des Nations Unies sur la biodiversité (COP17)",
           "url": "https://www.cbd.int/conferences/2026"
+        },
+        {
+          "label": "Global Strategy for Fungal Conservation",
+          "label_fr": "Stratégie mondiale pour la conservation de la fonge",
+          "url": "https://www.globalfungalconservation.org"
         }
       ]
     },
