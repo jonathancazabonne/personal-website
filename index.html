@@ -1391,7 +1391,7 @@
   <footer class="hx-foot hx-page">
     <div class="reveal">
       <h2 class="hx hx-mail hx-foot-title">Get in touch</h2>
-      <div class="hx-foot-actions"><button type="button" class="hx-cta" data-contact>Send me a message and let’s build mycelial connections <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+      <div class="hx-foot-actions"><button type="button" class="hx-cta" data-contact>Send me a message and let’s build mycelial connections! <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
     </div>
     <div>
       <div class="hx-foot-cols" id="site-footer-contact"></div>
@@ -1474,8 +1474,10 @@
     "Contact": "Contact",
     "Scroll": "Défiler",
     "Research axes": "Axes de recherche",
+    "Research themes": "Thèmes de recherche",
     "Where the research <i>happens.</i>": "Là où la recherche <i>se passe.</i>",
     "See the field sites": "Voir les terrains",
+    "See the places where I’ve worked and still work": "Voir les sites sur lesquels j’ai travaillé ou travaille encore",
     "Latest outreach": "Dernières communications",
     "All communications": "Toutes les communications",
     "Education": "Formation",
@@ -1514,7 +1516,7 @@
     "Where do I do <i>my research?</i>": "Où est-ce que je mène <i>mes recherches ?</i>",
     "Latest publications": "Dernières publications",
     "All publications": "Toutes les publications",
-    "Send me a message and let’s build mycelial connections": "Écrivez-moi et tissons des liens mycéliens",
+    "Send me a message and let’s build mycelial connections!": "Écrivez-moi et tissons des liens mycéliens !",
     "Quick links": "Liens rapides",
     "Read more": "Lire la suite",
     "Show less": "Réduire",
@@ -2014,7 +2016,7 @@
   function renderResearchAxesView(d){
     if (!d.researchAxes || !d.researchAxes.length) return "";
     return '<section id="research-axes" class="hx-sec hx-axes">' +
-      '<div class="hx-sec-head reveal"><h2 class="hx">Research axes</h2></div>' +
+      '<div class="hx-sec-head reveal"><h2 class="hx">Research themes</h2></div>' +
       '<div class="hx-axes-grid">' + d.researchAxes.map(renderResearchAxisItem).join("") + '</div>' +
     '</section>';
   }
@@ -2092,7 +2094,7 @@
     return '<section id="field" class="hx-sec hx-band">' +
       '<div class="hx-band-inner reveal">' +
         '<h2 class="hx">' + t("Where do I do <i>my research?</i>") + '</h2>' +
-        '<a class="hx-cta" href="#study-areas">See the field sites ' + ARROW_SVG + '</a>' +
+        '<a class="hx-cta" href="#study-areas">See the places where I’ve worked and still work ' + ARROW_SVG + '</a>' +
       '</div>' +
     '</section>';
   }
@@ -3319,7 +3321,7 @@
   // ---------- Home section jump-menu ----------
   function homeSectionsMenu(d){
     var items = [];
-    if (d.researchAxes && d.researchAxes.length) items.push({ id: "research-axes", label: "Research axes" });
+    if (d.researchAxes && d.researchAxes.length) items.push({ id: "research-axes", label: "Research themes" });
     if (d.publications && d.publications.length) items.push({ id: "latest-publications", label: "Latest publications" });
     if (d.communications && d.communications.length) items.push({ id: "latest-outreach", label: "Latest outreach" });
     if (d.homeGallery && d.homeGallery.length) items.push({ id: "people", label: "People along the way" });
