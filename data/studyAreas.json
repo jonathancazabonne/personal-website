@@ -105,7 +105,36 @@
       "description": "",
       "cover": "",
       "logo": "images/footer-mycosphaera.png",
-      "photos": [],
+      "photos": [
+        {
+          "src": "images/field-fsl-1.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-fsl-2.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-fsl-3.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-fsl-4.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-fsl-5.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-fsl-6.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-fsl-7.jpg",
+          "caption": ""
+        }
+      ],
       "name_fr": "Forêt de la Seigneurie de Lotbinière, Basses-terres du Saint-Laurent, Québec",
       "short_fr": "FSL Lotbinière",
       "place_fr": "Forêt de la Seigneurie de Lotbinière, Chaudière-Appalaches",
@@ -115,11 +144,18 @@
       "description_fr": "",
       "links": [
         {
+          "label": "Forêt de la Seigneurie de Lotbinière (MRC de Lotbinière)",
+          "label_fr": "Forêt de la Seigneurie de Lotbinière (MRC de Lotbinière)",
+          "url": "https://www.mrclotbiniere.org/mrc-de-lotbiniere/territoire/foret-seigneurie-lotbiniere/"
+        },
+        {
           "label": "Mycosphaera",
           "label_fr": "Mycosphaera",
           "url": "https://www.mycosphaera.com"
         }
-      ]
+      ],
+      "video": "https://www.youtube.com/watch?v=lBScQqns8IE",
+      "videoCredit": "Chad Carrières"
     },
     {
       "name": "Fungal Conservation in Europe: Evidence to Action, Uppsala, Sweden",
