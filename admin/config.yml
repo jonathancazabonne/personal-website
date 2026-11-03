@@ -207,6 +207,15 @@ collections:
               - { label: "Role — French", name: "role_fr", widget: "string", required: false }
               - { label: "Partners — French", name: "partners_fr", widget: "string", required: false }
               - { label: "Description — French", name: "description_fr", widget: "text", required: false }
+              - label: "Links (shown instead of a long description)"
+                name: "links"
+                widget: "list"
+                required: false
+                summary: "{{label}}"
+                fields:
+                  - { label: "Link text", name: "label", widget: "string" }
+                  - { label: "Link text — French", name: "label_fr", widget: "string", required: false }
+                  - { label: "URL", name: "url", widget: "string" }
               - label: "Photos"
                 name: "photos"
                 widget: "list"
