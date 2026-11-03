@@ -1376,7 +1376,6 @@
       <button type="button" class="nav-burger" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav"><span></span><span></span></button>
       <nav class="topnav" id="site-nav">
         <a href="#top" id="home-nav-link">Home</a>
-        <a href="#background">Background</a>
         <a href="#publications">Publications</a>
         <a href="#communications">Outreach</a>
         <!-- Conservation page hidden on purpose — see PAGE_ROUTES below to bring it back online -->
@@ -1401,7 +1400,6 @@
       <li><a href="#publications">Publications</a>: peer-reviewed articles, preprints, popular science and press</li>
       <li><a href="#communications">Communication &amp; scientific outreach</a>: talks, posters, interviews and podcasts</li>
       <li><a href="#study-areas">In the field and in the lab</a>: old-growth boreal forests, esker pine forests, France</li>
-      <li><a href="#background">Background</a>: education, experience, awards, teaching</li>
     </ul>
     <p>Profiles: <a href="https://orcid.org/0000-0001-9056-4368">ORCID</a> · <a href="https://scholar.google.com/citations?user=flLmD24AAAAJ">Google Scholar</a> · <a href="https://www.researchgate.net/profile/Jonathan-Cazabonne">ResearchGate</a> · <a href="https://www.linkedin.com/in/jonathan-cazabonne-7ab044177/">LinkedIn</a> · <a href="https://bsky.app/profile/jonathancazabonne.bsky.social">Bluesky</a></p>
     <noscript><p>Please enable JavaScript to see the full interactive site.</p></noscript>
@@ -1778,9 +1776,9 @@
   // ---------- routing ----------
   // Conservation page hidden on purpose (kept in the code, just unreachable) —
   // add back  conservation: true,  below to bring it back online.
-  var PAGE_ROUTES = { publications: true, communications: true, "study-areas": true, background: true };
+  var PAGE_ROUTES = { publications: true, communications: true, "study-areas": true };
   // anchors that live on the Education & background page
-  var BG_SECTION_IDS = { education: 1, "research-stays": 1, people: 1, training: 1, "scientific-affiliations": 1, "community-engagement": 1, awards: 1, memberships: 1, committees: 1, editorial: 1, teaching: 1, "public-engagement": 1 };
+  var BG_SECTION_IDS = {}; // the Education & background page was removed
   function currentRoute(){
     var h = (location.hash || "").replace(/^#/, "");
     if (PAGE_ROUTES[h]) return h;
@@ -1806,7 +1804,6 @@
     if (view === "communications") return renderCommunicationsView(d);
     if (view === "conservation") return renderConservationView(d);
     if (view === "study-areas") return renderStudyView(d);
-    if (view === "background") return renderBackgroundView(d);
     return renderHomeView(d);
   }
   // ---------- home page ----------
@@ -2340,14 +2337,16 @@
     "Poster": "posters",
     "Radio interview": "media", "TV interview": "media", "Podcast": "media", "Press feature": "media",
     "Public interview": "media", "Interview": "media", "Radio & press interview": "media", "Video feature": "media",
-    "Public reading": "readings"
+    "Public reading": "readings",
+    "Teaching": "teaching"
   };
-  var COMM_GROUP_ORDER = ["presentations", "posters", "media", "readings", "other"];
+  var COMM_GROUP_ORDER = ["presentations", "posters", "media", "teaching", "readings", "other"];
   var COMM_GROUP_LABELS = {
     presentations: "Conferences & talks",
     posters: "Scientific posters",
     media: "Media & interviews",
     readings: "Public readings",
+    teaching: "Teaching",
     other: "Other"
   };
   var COMM_GROUPS_FILTER = [
@@ -2355,9 +2354,10 @@
     { key: "presentations", label: "Conferences & talks", icon: "presentation" },
     { key: "posters", label: "Scientific posters", icon: "image" },
     { key: "media", label: "Media & interviews", icon: "radio" },
+    { key: "teaching", label: "Teaching", icon: "school" },
     { key: "readings", label: "Public readings", icon: "book-open-text" }
   ];
-  var COMM_GROUP_ICON = { presentations: "presentation", posters: "image", media: "radio", readings: "book-open-text", other: "sparkles" };
+  var COMM_GROUP_ICON = { presentations: "presentation", posters: "image", media: "radio", teaching: "school", readings: "book-open-text", other: "sparkles" };
 
   var MONTH_NAMES = "janvier|février|fevrier|mars|avril|mai|juin|juillet|août|aout|septembre|octobre|novembre|décembre|decembre|january|february|march|april|may|june|july|august|september|october|december|nov\\.|nov";
   var MONTH_NUM = { janvier:1, january:1, "février":2, fevrier:2, february:2, mars:3, march:3, avril:4, april:4, mai:5, may:5, juin:6, june:6,
@@ -3079,7 +3079,7 @@
     });
   }
 
-  var HERO_VIEWS = { home: true, communications: true, publications: true, "study-areas": true, background: true };
+  var HERO_VIEWS = { home: true, communications: true, publications: true, "study-areas": true };
   function syncTopbar(){
     var bar = document.querySelector(".topbar");
     if (!bar) return;
@@ -3402,7 +3402,7 @@
   function srBuild(d){
     var out = [];
     function add(group, title, sub, extra, target){ if (title) out.push({ group: group, title: String(title), sub: sub || "", hay: srNorm([title, sub, extra].join(" ")), target: target }); }
-    [["Home", "home", "Home: research, outreach, field work"], ["Education and background", "background", "Degrees, experience, training, awards, teaching, people"],
+    [["Home", "home", "Home: research, outreach, field work"],
      ["Publications", "publications", "Papers, press and more"], ["Communication & scientific outreach", "communications", "Talks, posters, interviews, press"],
      ["In the field and in the lab", "study-areas", "Interactive map of field sites"]].forEach(function(p){ add("Pages", t(p[0]), t(p[2]), "", { hash: p[1] === "home" ? "top" : p[1] }); });
     (d.researchAxes || []).forEach(function(a){ add("Research", LF(a, "title"), LF(a, "description"), "research axis", { hash: "research-axes", id: "research-axes" }); });
@@ -3416,18 +3416,6 @@
     (d.studyAreas || []).forEach(function(a, i){
       add("Field sites", LF(a, "name"), [LF(a, "place"), LF(a, "period")].filter(Boolean).join(" · "), [LF(a, "description"), LF(a, "country"), LF(a, "partners"), LF(a, "role")].join(" "), { hash: "study-areas", id: "fa-" + i });
     });
-    function bg(list, id, groupTitle, fn){ (list || []).forEach(function(x){ var r = fn(x); add("Background", r[0], r[1] ? t(groupTitle) + " · " + r[1] : t(groupTitle), r[2] || "", { hash: id, id: id }); }); }
-    bg(d.education, "education", "Education", function(x){ return [LF(x, "degree"), [x.institution, LF(x, "years")].filter(Boolean).join(", "), LF(x, "detail")]; });
-    bg(d.researchStays, "research-stays", "Experience", function(x){ return [x.institution, [x.location, x.period].filter(Boolean).join(", "), x.description]; });
-    bg(d.training, "training", "Training", function(x){ return [x.title, [x.provider, x.year].filter(Boolean).join(", ")]; });
-    bg(d.scientificAffiliations, "scientific-affiliations", "Affiliations", function(x){ return [x.organization, x.role]; });
-    bg(d.awards, "awards", "Awards & funding", function(x){ return [x.title, [x.year, x.status].filter(Boolean).join(", ")]; });
-    bg(d.memberships, "memberships", "Societies", function(x){ return [x.organization, x.role]; });
-    bg(d.committees, "committees", "Committees", function(x){ return [x.description, x.year]; });
-    bg(d.teaching, "teaching", "Teaching", function(x){ return [x.title, [x.institution, x.year].filter(Boolean).join(", ")]; });
-    bg(d.publicEngagement, "public-engagement", "Public engagement", function(x){ return [x.title, x.year, x.description]; });
-    bg(d.editorialRoles, "editorial", "Editorial", function(x){ return [x.description, x.period]; });
-    (d.peerReview || []).forEach(function(r){ add("Background", "Peer review: " + r.journal, "Editorial · " + r.count + " reviews", "", { hash: "editorial", id: "editorial" }); });
     return out;
   }
 

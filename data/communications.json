@@ -105,14 +105,6 @@
     },
     {
       "year": 2026,
-      "type": "Invited lecture",
-      "title": "Conservation de la fonge : État actuel, enjeux et opportunités futures",
-      "venue": "Cégep de Sainte-Foy, 18 mars 2026",
-      "url": "#",
-      "authors": "Cazabonne, J.*"
-    },
-    {
-      "year": 2026,
       "type": "Invited talk",
       "title": "Fonctions écologiques et services écosystémiques rendus par les champignons au sein des territoires forestiers boréaux dans un contexte de gestion durable des forêts",
       "venue": "Master en bioéthique et responsabilité, Université de Toulouse, 9 mars 2026",
@@ -467,6 +459,48 @@
       "title": "Champignons : le vrai du faux",
       "venue": "France 3 Télévision – Occitanie [X — year not given, please confirm]",
       "url": "https://x.com/jonathan_czb/status/1457466991019712517"
+    },
+    {
+      "year": 2026,
+      "type": "Teaching",
+      "title": "Cours sur la conservation de la fonge",
+      "venue": "Cégep de Sainte-Foy, technique de bioécologie, Enseignement Écologie de la conservation, 18 mars 2026",
+      "url": "#"
+    },
+    {
+      "year": 2026,
+      "type": "Teaching",
+      "title": "Cours sur fonctions écologiques et services écosystémiques rendus par les champignons au sein des territoires forestiers boréaux dans un contexte de gestion durable des forêts",
+      "venue": "Master en Bioéthique et Écoresponsabilité, Université de Toulouse, 9 mars 2026",
+      "url": "#"
+    },
+    {
+      "year": 2026,
+      "type": "Teaching",
+      "title": "Assistant de sorties mycologiques",
+      "venue": "Licence parcours Biodiversité & biologie environnementale, Université de Toulouse (KSVC5AFU Biodiversité des champignons)",
+      "url": "#"
+    },
+    {
+      "year": 2024,
+      "type": "Teaching",
+      "title": "Travaux dirigés en lichénologie et science citoyenne",
+      "venue": "Licence parcours Biodiversité & biologie environnementale, Université de Toulouse (KSVC5AFU Biodiversité des champignons)",
+      "url": "#"
+    },
+    {
+      "year": 2021,
+      "type": "Teaching",
+      "title": "Travaux pratiques et assistant de sorties mycologiques",
+      "venue": "Licence biologie des organismes, des populations et des écosystèmes, Université Paul Sabatier (UE ELSVC5JM Biodiversité des champignons)",
+      "url": "#"
+    },
+    {
+      "year": 2021,
+      "type": "Teaching",
+      "title": "Assistant de sorties mycologiques",
+      "venue": "Doctorat en pharmacie, Faculté de Pharmacie de Toulouse (6ème année) (UE11.3 Intoxications courantes, addictions et conseils à l'officine)",
+      "url": "#"
     }
   ]
 }
