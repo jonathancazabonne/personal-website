@@ -34,32 +34,74 @@
     },
     {
       "name": "ORCHAMP, Pyrenees, France",
-      "short": "ORCHAMP (Pyrenees)",
-      "place": "Pyrenees mountains",
+      "short": "ORCHAMP (Montious)",
+      "place": "Massif du Montious regional nature reserve, Hautes-Pyrénées",
       "country": "France",
-      "lat": 42.85,
-      "lng": 0.1,
+      "lat": 42.8659,
+      "lng": 0.4392,
       "period": "October 2026",
       "role": "[X — role to confirm]",
       "partners": "",
       "description": "Training forest rangers in eDNA sampling.",
       "cover": "",
-      "photos": [],
+      "photos": [
+        {
+          "src": "images/field-orchamp-1.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-orchamp-2.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-orchamp-3.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-orchamp-4.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-orchamp-5.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-orchamp-6.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-orchamp-7.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-orchamp-8.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-orchamp-9.jpg",
+          "caption": ""
+        }
+      ],
       "name_fr": "ORCHAMP, Pyrénées, France",
-      "short_fr": "ORCHAMP (Pyrénées)",
-      "place_fr": "Massif des Pyrénées",
+      "short_fr": "ORCHAMP (Montious)",
+      "place_fr": "Réserve naturelle régionale du massif du Montious, Hautes-Pyrénées",
       "period_fr": "Octobre 2026",
       "role_fr": "[X — rôle à confirmer]",
       "description_fr": "Formation des gardes forestiers à la collecte de données d’ADNe.",
       "country_fr": "France",
       "kind": "field",
       "countryCode": "FR",
-      "approximate": true,
+      "approximate": false,
       "links": [
         {
-          "label": "ORCHAMP observatory",
-          "label_fr": "Observatoire ORCHAMP",
-          "url": "https://orchamp.osug.fr/"
+          "label": "ORCHAMP monitoring (Pyrenees National Park)",
+          "label_fr": "Suivi ORCHAMP (Parc national des Pyrénées)",
+          "url": "https://observatoire.pyrenees-parcnational.fr/suivi-orchamp"
+        },
+        {
+          "label": "Massif du Montious regional nature reserve",
+          "label_fr": "Réserve naturelle régionale du massif du Montious",
+          "url": "https://rnr-massifdumontious.fr"
         }
       ]
     },
