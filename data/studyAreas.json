@@ -137,7 +137,64 @@
       "description": "",
       "cover": "",
       "logo": "images/logo-fce2026.png",
-      "photos": [],
+      "photos": [
+        {
+          "src": "images/field-uppsala-1.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-uppsala-2.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-uppsala-3.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-uppsala-4.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-uppsala-5.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-uppsala-6.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-uppsala-7.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-uppsala-8.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-uppsala-9.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-uppsala-10.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-uppsala-11.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-uppsala-12.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-uppsala-13.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-uppsala-14.jpg",
+          "caption": ""
+        }
+      ],
       "name_fr": "Fungal Conservation in Europe: Evidence to Action, Uppsala, Suède",
       "short_fr": "Uppsala (FCE 2026)",
       "place_fr": "Campus Ultuna de la SLU, Uppsala",
