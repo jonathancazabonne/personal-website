@@ -849,6 +849,7 @@
   .fm-pin:hover i{ background:#fff; }
   .fm-pin.is-event i{ background:#edf0ec; box-shadow:0 0 0 1px #edf0ec, 0 0 20px rgba(237,240,236,.7); }
   .fm-pin.is-event i::after{ border-color:#edf0ec; }
+  .fm-pin.label-left{ flex-direction:row-reverse; transform:translate(calc(-100% + 10px),-10px); }
   .fm-flag{ display:inline-block; width:20px; height:15px; margin:0 6px 0 2px; vertical-align:-2px; border-radius:2px; box-shadow:0 0 0 1px rgba(237,240,236,.25); }
   .fm-logo{ display:flex; align-items:center; justify-content:center; width:fit-content; max-width:100%; height:78px; padding:12px 20px; margin:0 0 18px; background:#fff; }
   .fm-logo img{ display:block; max-width:200px; max-height:100%; width:auto; height:auto; object-fit:contain; }
@@ -2930,7 +2931,7 @@
       el.classList.add("is-sat");
       areas.forEach(function(a, i){
         if (!isFinite(a.lat) || !isFinite(a.lng)) { markers.push(L.marker([0, 0], { opacity: 0 })); return; }
-        var icon = L.divIcon({ className: "fm-pin-wrap", html: '<span class="fm-pin' + (a.kind === "event" ? " is-event" : "") + '"><i></i><b>' + esc(LF(a, "short") || LF(a, "name")) + '</b></span>', iconSize: [18, 18], iconAnchor: [9, 9] });
+        var icon = L.divIcon({ className: "fm-pin-wrap", html: '<span class="fm-pin' + (a.kind === "event" ? " is-event" : "") + (a.labelLeft ? " label-left" : "") + '"><i></i><b>' + esc(LF(a, "short") || LF(a, "name")) + '</b></span>', iconSize: [18, 18], iconAnchor: [9, 9] });
         var m = L.marker([a.lat, a.lng], { icon: icon, keyboard: true, title: LF(a, "short") || LF(a, "name"), riseOnHover: true }).addTo(fieldMap);
         m.on("click", function(){ select(i); });
         markers.push(m);

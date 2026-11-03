@@ -2,7 +2,7 @@
   "items": [
     {
       "name": "COP17, UN Biodiversity Conference",
-      "short": "COP17 (Yerevan)",
+      "short": "UN CBD COP17",
       "place": "Yerevan, Armenia",
       "country": "Armenia",
       "countryCode": "AM",
@@ -91,7 +91,7 @@
         }
       ],
       "name_fr": "COP17, Conférence des Nations Unies sur la biodiversité",
-      "short_fr": "COP17 (Erevan)",
+      "short_fr": "COP17 de la CDB (ONU)",
       "place_fr": "Erevan, Arménie",
       "country_fr": "Arménie",
       "period_fr": "19–30 octobre 2026",
@@ -120,7 +120,7 @@
       "period": "October 2026",
       "role": "[X — role to confirm]",
       "partners": "",
-      "description": "Training forest rangers in eDNA sampling.",
+      "description": "",
       "cover": "",
       "photos": [
         {
@@ -165,7 +165,7 @@
       "place_fr": "Réserve naturelle régionale du massif du Montious, Hautes-Pyrénées, France",
       "period_fr": "Octobre 2026",
       "role_fr": "[X — rôle à confirmer]",
-      "description_fr": "Formation des gardes forestiers à la collecte de données d’ADNe.",
+      "description_fr": "",
       "country_fr": "France",
       "kind": "field",
       "countryCode": "FR",
@@ -185,7 +185,7 @@
     },
     {
       "name": "MetaMyco",
-      "short": "MetaMyco (Chamalière)",
+      "short": "MetaMyco (RBI Chamalière)",
       "place": "Chamalière and Peyre Ourse integral biological reserve, Cantal, France",
       "country": "France",
       "lat": 45.0917,
@@ -193,7 +193,7 @@
       "period": "October 2026",
       "role": "[X — role to confirm]",
       "partners": "Office national des forêts (ONF)",
-      "description": "Training ONF staff in eDNA sampling for the MetaMyco project.",
+      "description": "",
       "cover": "images/field-metamyco-4.jpg",
       "photos": [
         {
@@ -246,11 +246,11 @@
         }
       ],
       "name_fr": "MetaMyco",
-      "short_fr": "MetaMyco (Chamalière)",
+      "short_fr": "MetaMyco (RBI Chamalière)",
       "place_fr": "Réserve biologique intégrale de Chamalière et Peyre Ourse, Cantal, France",
       "period_fr": "Octobre 2026",
       "role_fr": "[X — rôle à confirmer]",
-      "description_fr": "Formation du personnel de l’ONF à la collecte de données d’ADNe pour le projet MetaMyco.",
+      "description_fr": "",
       "country_fr": "France",
       "kind": "field",
       "countryCode": "FR",
@@ -271,7 +271,7 @@
     },
     {
       "name": "Forêt de la Seigneurie de Lotbinière",
-      "short": "FSL Lotbinière",
+      "short": "Forêt de la Seigneurie de Lotbinière",
       "place": "Lotbinière Regional County Municipality, Québec",
       "country": "Canada",
       "countryCode": "CA",
@@ -316,7 +316,7 @@
         }
       ],
       "name_fr": "Forêt de la Seigneurie de Lotbinière",
-      "short_fr": "FSL Lotbinière",
+      "short_fr": "Forêt de la Seigneurie de Lotbinière",
       "place_fr": "MRC de Lotbinière, Québec",
       "country_fr": "Canada",
       "period_fr": "[X — dates à confirmer]",
@@ -339,7 +339,7 @@
     },
     {
       "name": "Fungal Conservation in Europe: Evidence to Action",
-      "short": "Uppsala (FCE 2026)",
+      "short": "Uppsala",
       "place": "Uppsala, Sweden",
       "country": "Sweden",
       "countryCode": "SE",
@@ -412,7 +412,7 @@
         }
       ],
       "name_fr": "Fungal Conservation in Europe: Evidence to Action",
-      "short_fr": "Uppsala (FCE 2026)",
+      "short_fr": "Uppsala",
       "place_fr": "Uppsala, Suède",
       "country_fr": "Suède",
       "period_fr": "Avril 2026",
@@ -433,7 +433,7 @@
     },
     {
       "name": "IUCN World Conservation Congress",
-      "short": "IUCN WCC (Abu Dhabi)",
+      "short": "IUCN WCC 2025",
       "place": "Abu Dhabi, United Arab Emirates",
       "country": "UAE",
       "countryCode": "AE",
@@ -474,7 +474,7 @@
         }
       ],
       "name_fr": "Congrès mondial de la nature de l’UICN",
-      "short_fr": "UICN WCC (Abou Dabi)",
+      "short_fr": "UICN WCC 2025",
       "place_fr": "Abou Dabi, Émirats arabes unis",
       "country_fr": "Émirats arabes unis",
       "period_fr": "9–15 octobre 2025",
@@ -495,7 +495,7 @@
     },
     {
       "name": "Old-growth mixed boreal forests and managed forests",
-      "short": "Lac Duparquet forests",
+      "short": "Teaching and Research Forest of Lake Duparquet",
       "place": "Teaching and Research Forest of Lake Duparquet, Québec",
       "country": "Canada",
       "lat": 48.513,
@@ -592,7 +592,7 @@
         }
       ],
       "name_fr": "Vieilles forêts boréales mixtes et forêts aménagées",
-      "short_fr": "Forêts du lac Duparquet",
+      "short_fr": "Forêt d’enseignement et de recherche du lac Duparquet",
       "place_fr": "Forêt d’enseignement et de recherche du lac Duparquet, Québec",
       "period_fr": "2024–présent",
       "role_fr": "Terrain de doctorat",
@@ -608,11 +608,12 @@
           "label_fr": "Forêt d’enseignement et de recherche du lac Duparquet (FERLD)",
           "url": "https://ferld.uqat.ca/"
         }
-      ]
+      ],
+      "labelLeft": true
     },
     {
       "name": "Mature jack pine forests in esker ecosystems",
-      "short": "Esker pine forests",
+      "short": "Esker jack pine forests",
       "place": "Abitibi Regional County Municipality, Québec",
       "country": "Canada",
       "lat": 48.473,
@@ -673,7 +674,7 @@
         }
       ],
       "name_fr": "Pinèdes grises matures des écosystèmes d’eskers",
-      "short_fr": "Eskers de pin gris",
+      "short_fr": "Pinèdes grises d’eskers",
       "place_fr": "MRC d’Abitibi, Québec",
       "period_fr": "2022–2024",
       "role_fr": "Recherche de maîtrise",
