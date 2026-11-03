@@ -854,6 +854,9 @@
   .fm-logo img{ display:block; max-width:200px; max-height:100%; width:auto; height:auto; object-fit:contain; }
   .fm-site-body .fm-logo{ height:92px; margin-bottom:26px; }
   .fm-site-body .fm-logo img{ max-width:260px; }
+  .fm-logos{ display:flex; flex-wrap:wrap; gap:10px; margin:0 0 18px; }
+  .fm-logos .fm-logo{ margin:0; }
+  .fm-site-body .fm-logos{ margin-bottom:26px; }
 
   .fm-panel{ position:absolute; z-index:5; top:104px; bottom:24px; right:clamp(16px,3vw,48px); width:min(440px, calc(100vw - 32px)); background:rgba(20,32,26,.94); backdrop-filter:blur(10px); color:#edf0ec; overflow:auto; transform:translateX(calc(100% + 60px)); opacity:0; visibility:hidden; transition:transform .6s cubic-bezier(.2,.8,.2,1), opacity .4s, visibility 0s .6s; }
   .fm-panel.open{ transform:none; opacity:1; visibility:visible; transition:transform .6s cubic-bezier(.2,.8,.2,1), opacity .4s, visibility 0s; }
@@ -2754,7 +2757,11 @@
     return parts.join(", ");
   }
   function fmLogo(a){
-    return a.logo ? '<div class="fm-logo"><img src="' + esc(a.logo) + '" alt="" loading="lazy" /></div>' : "";
+    var logos = [a.logo, a.logo2].filter(Boolean);
+    if (!logos.length) return "";
+    return '<div class="fm-logos">' + logos.map(function(src){
+      return '<div class="fm-logo"><img src="' + esc(src) + '" alt="" loading="lazy" /></div>';
+    }).join("") + '</div>';
   }
 
   function renderStudyView(d){

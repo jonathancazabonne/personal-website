@@ -193,6 +193,7 @@ collections:
                 required: false
               - { label: "Location is approximate (shows an 'Approximate location' note)", name: "approximate", widget: "boolean", default: false, required: false }
               - { label: "Logo (shown on a white tile — event logo, institution, etc.)", name: "logo", widget: "image", required: false }
+              - { label: "Logo 2 (optional second logo, shown next to the first)", name: "logo2", widget: "image", required: false }
               - { label: "Latitude (decimal, e.g. 48.5 — keep it approximate, a few km, to protect fragile sites)", name: "lat", widget: "number", value_type: "float", required: false }
               - { label: "Longitude (decimal, e.g. -79.4 — negative = west)", name: "lng", widget: "number", value_type: "float", required: false }
               - { label: "Period (e.g. Ph.D. · 2024–present)", name: "period", widget: "string", required: false }

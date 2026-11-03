@@ -1,9 +1,9 @@
 {
   "items": [
     {
-      "name": "COP17, UN Biodiversity Conference, Yerevan, Armenia",
+      "name": "COP17, UN Biodiversity Conference",
       "short": "COP17 (Yerevan)",
-      "place": "Meridian Expo and Event Centre, Yerevan",
+      "place": "Yerevan, Armenia",
       "country": "Armenia",
       "countryCode": "AM",
       "kind": "event",
@@ -90,9 +90,9 @@
           "caption": ""
         }
       ],
-      "name_fr": "COP17, Conférence des Nations Unies sur la biodiversité, Erevan, Arménie",
+      "name_fr": "COP17, Conférence des Nations Unies sur la biodiversité",
       "short_fr": "COP17 (Erevan)",
-      "place_fr": "Meridian Expo and Event Centre, Erevan",
+      "place_fr": "Erevan, Arménie",
       "country_fr": "Arménie",
       "period_fr": "19–30 octobre 2026",
       "role_fr": "Délégation de l’UQAT · conférence à la Journée Québec",
@@ -111,9 +111,9 @@
       ]
     },
     {
-      "name": "ORCHAMP, Pyrenees, France",
+      "name": "ORCHAMP",
       "short": "ORCHAMP (Montious)",
-      "place": "Massif du Montious regional nature reserve, Hautes-Pyrénées",
+      "place": "Massif du Montious regional nature reserve, Hautes-Pyrénées, France",
       "country": "France",
       "lat": 42.8659,
       "lng": 0.4392,
@@ -160,9 +160,9 @@
           "caption": ""
         }
       ],
-      "name_fr": "ORCHAMP, Pyrénées, France",
+      "name_fr": "ORCHAMP",
       "short_fr": "ORCHAMP (Montious)",
-      "place_fr": "Réserve naturelle régionale du massif du Montious, Hautes-Pyrénées",
+      "place_fr": "Réserve naturelle régionale du massif du Montious, Hautes-Pyrénées, France",
       "period_fr": "Octobre 2026",
       "role_fr": "[X — rôle à confirmer]",
       "description_fr": "Formation des gardes forestiers à la collecte de données d’ADNe.",
@@ -184,9 +184,9 @@
       ]
     },
     {
-      "name": "MetaMyco, Chamalières biological reserve, France",
-      "short": "Chamalières RBI (MetaMyco)",
-      "place": "Chamalières integral biological reserve (RBI), Cantal",
+      "name": "MetaMyco",
+      "short": "MetaMyco (Chamalière)",
+      "place": "Chamalière and Peyre Ourse integral biological reserve, Cantal, France",
       "country": "France",
       "lat": 45.0917,
       "lng": 2.7796,
@@ -245,9 +245,9 @@
           "caption": ""
         }
       ],
-      "name_fr": "MetaMyco, réserve biologique de Chamalières, France",
-      "short_fr": "RBI de Chamalières (MetaMyco)",
-      "place_fr": "Réserve biologique intégrale (RBI) de Chamalières, Cantal",
+      "name_fr": "MetaMyco",
+      "short_fr": "MetaMyco (Chamalière)",
+      "place_fr": "Réserve biologique intégrale de Chamalière et Peyre Ourse, Cantal, France",
       "period_fr": "Octobre 2026",
       "role_fr": "[X — rôle à confirmer]",
       "description_fr": "Formation du personnel de l’ONF à la collecte de données d’ADNe pour le projet MetaMyco.",
@@ -270,9 +270,9 @@
       ]
     },
     {
-      "name": "Forêt de la Seigneurie de Lotbinière, St. Lawrence Lowlands, Québec",
+      "name": "Forêt de la Seigneurie de Lotbinière",
       "short": "FSL Lotbinière",
-      "place": "Forêt de la Seigneurie de Lotbinière, Chaudière-Appalaches",
+      "place": "Lotbinière Regional County Municipality, Québec",
       "country": "Canada",
       "countryCode": "CA",
       "kind": "field",
@@ -315,9 +315,9 @@
           "caption": ""
         }
       ],
-      "name_fr": "Forêt de la Seigneurie de Lotbinière, Basses-terres du Saint-Laurent, Québec",
+      "name_fr": "Forêt de la Seigneurie de Lotbinière",
       "short_fr": "FSL Lotbinière",
-      "place_fr": "Forêt de la Seigneurie de Lotbinière, Chaudière-Appalaches",
+      "place_fr": "MRC de Lotbinière, Québec",
       "country_fr": "Canada",
       "period_fr": "[X — dates à confirmer]",
       "role_fr": "Inventaire fongique de Mycosphaera",
@@ -338,9 +338,9 @@
       "videoCredit": "Chad Carrières"
     },
     {
-      "name": "Fungal Conservation in Europe: Evidence to Action, Uppsala, Sweden",
+      "name": "Fungal Conservation in Europe: Evidence to Action",
       "short": "Uppsala (FCE 2026)",
-      "place": "SLU Campus Ultuna, Uppsala",
+      "place": "Uppsala, Sweden",
       "country": "Sweden",
       "countryCode": "SE",
       "kind": "event",
@@ -411,9 +411,9 @@
           "caption": ""
         }
       ],
-      "name_fr": "Fungal Conservation in Europe: Evidence to Action, Uppsala, Suède",
+      "name_fr": "Fungal Conservation in Europe: Evidence to Action",
       "short_fr": "Uppsala (FCE 2026)",
-      "place_fr": "Campus Ultuna de la SLU, Uppsala",
+      "place_fr": "Uppsala, Suède",
       "country_fr": "Suède",
       "period_fr": "Avril 2026",
       "role_fr": "Congrès et atelier sur la Liste rouge de l’UICN",
@@ -432,9 +432,9 @@
       ]
     },
     {
-      "name": "IUCN World Conservation Congress, Abu Dhabi, United Arab Emirates",
+      "name": "IUCN World Conservation Congress",
       "short": "IUCN WCC (Abu Dhabi)",
-      "place": "ADNEC, Abu Dhabi",
+      "place": "Abu Dhabi, United Arab Emirates",
       "country": "UAE",
       "countryCode": "AE",
       "kind": "event",
@@ -473,9 +473,9 @@
           "caption": ""
         }
       ],
-      "name_fr": "Congrès mondial de la nature de l’UICN, Abou Dabi, Émirats arabes unis",
+      "name_fr": "Congrès mondial de la nature de l’UICN",
       "short_fr": "UICN WCC (Abou Dabi)",
-      "place_fr": "ADNEC, Abou Dabi",
+      "place_fr": "Abou Dabi, Émirats arabes unis",
       "country_fr": "Émirats arabes unis",
       "period_fr": "9–15 octobre 2025",
       "role_fr": "Panel au Pavillon du Canada",
@@ -494,9 +494,9 @@
       ]
     },
     {
-      "name": "Old-growth mixed boreal forests and managed forests, Lac Duparquet, Québec",
+      "name": "Old-growth mixed boreal forests and managed forests",
       "short": "Lac Duparquet forests",
-      "place": "Lac Duparquet Teaching and Research Forest (SERLD), Abitibi-Témiscamingue",
+      "place": "Teaching and Research Forest of Lake Duparquet, Québec",
       "country": "Canada",
       "lat": 48.513,
       "lng": -79.3681,
@@ -591,9 +591,9 @@
           "caption": ""
         }
       ],
-      "name_fr": "Vieilles forêts boréales mixtes et forêts aménagées, lac Duparquet, Québec",
+      "name_fr": "Vieilles forêts boréales mixtes et forêts aménagées",
       "short_fr": "Forêts du lac Duparquet",
-      "place_fr": "Forêt d’enseignement et de recherche du lac Duparquet (FERLD), Abitibi-Témiscamingue",
+      "place_fr": "Forêt d’enseignement et de recherche du lac Duparquet, Québec",
       "period_fr": "2024–présent",
       "role_fr": "Terrain de doctorat",
       "description_fr": "",
@@ -611,9 +611,9 @@
       ]
     },
     {
-      "name": "Esker jack pine forests, Abitibi, Québec",
+      "name": "Mature jack pine forests in esker ecosystems",
       "short": "Esker pine forests",
-      "place": "Eskers near Saint-Mathieu-d’Harricana, Abitibi",
+      "place": "Abitibi Regional County Municipality, Québec",
       "country": "Canada",
       "lat": 48.473,
       "lng": -78.139,
@@ -672,9 +672,9 @@
           "caption": ""
         }
       ],
-      "name_fr": "Forêts d’esker de pin gris, Abitibi, Québec",
+      "name_fr": "Pinèdes grises matures des écosystèmes d’eskers",
       "short_fr": "Eskers de pin gris",
-      "place_fr": "Eskers près de Saint-Mathieu-d’Harricana, Abitibi",
+      "place_fr": "MRC d’Abitibi, Québec",
       "period_fr": "2022–2024",
       "role_fr": "Recherche de maîtrise",
       "description_fr": "",
@@ -685,11 +685,17 @@
       "logo": "images/footer-uqat.png",
       "links": [
         {
-          "label": "My M.Sc. thesis",
-          "label_fr": "Mon mémoire de maîtrise",
+          "label": "M.Sc. thesis “Influence du type de sol et de la zonation verticale sur les communautés fongiques dans les pinèdes grises naturelles des écosystèmes d’eskers”",
+          "label_fr": "Mémoire de maîtrise « Influence du type de sol et de la zonation verticale sur les communautés fongiques dans les pinèdes grises naturelles des écosystèmes d’eskers »",
           "url": "https://depositum.uqat.ca/id/eprint/1592"
+        },
+        {
+          "label": "GREMA (Groupe de recherche en écologie de la MRC Abitibi)",
+          "label_fr": "GREMA (Groupe de recherche en écologie de la MRC Abitibi)",
+          "url": "https://www.uqat.ca/recherche/grema/"
         }
-      ]
+      ],
+      "logo2": "images/logo-grema.png"
     }
   ]
 }
