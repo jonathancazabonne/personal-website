@@ -74,8 +74,57 @@
       "role": "[X — role to confirm]",
       "partners": "Office national des forêts (ONF)",
       "description": "Training ONF staff in eDNA sampling for the MetaMyco project.",
-      "cover": "",
-      "photos": [],
+      "cover": "images/field-metamyco-4.jpg",
+      "photos": [
+        {
+          "src": "images/field-metamyco-1.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-metamyco-2.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-metamyco-3.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-metamyco-4.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-metamyco-5.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-metamyco-6.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-metamyco-7.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-metamyco-8.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-metamyco-9.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-metamyco-10.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-metamyco-11.jpg",
+          "caption": ""
+        },
+        {
+          "src": "images/field-metamyco-12.jpg",
+          "caption": ""
+        }
+      ],
       "name_fr": "MetaMyco, réserve biologique de Chamalières, France",
       "short_fr": "RBI de Chamalières (MetaMyco)",
       "place_fr": "Réserve biologique intégrale (RBI) de Chamalières, Cantal",
@@ -87,7 +136,18 @@
       "countryCode": "FR",
       "approximate": true,
       "logo": "images/logo-onf.svg",
-      "links": []
+      "links": [
+        {
+          "label": "MetaMyco project (ONF)",
+          "label_fr": "Projet MetaMyco (ONF)",
+          "url": "https://www.onf.fr/vivre-la-foret/enjeux-foret/biodiversite-foret/%2B/2a4b::metamyco-biodiversite-forestiere-adn-environnemental.html"
+        },
+        {
+          "label": "Chamalière and Peyre Ourse integral biological reserve (ONF)",
+          "label_fr": "Réserve biologique intégrale de Chamalière et Peyre Ourse (ONF)",
+          "url": "https://www.onf.fr/vivre-la-foret/%2B/24d7::reserve-biologique-integrale-de-chamaliere-et-peyre-ourse.html"
+        }
+      ]
     },
     {
       "name": "Forêt de la Seigneurie de Lotbinière, St. Lawrence Lowlands, Québec",
