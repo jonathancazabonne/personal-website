@@ -146,7 +146,7 @@ collections:
               - { label: "URL", name: "url", widget: "string" }
               - { label: "Player link (optional — YouTube, Vimeo, Mixcloud, Spotify, SoundCloud, Apple Podcasts or an .mp3 link; shows a player right on the site. Leave blank to use the URL above when it is one of these)", name: "embed", widget: "string", required: false }
               - { label: "Show in the Highlights section (max 3)", name: "featured", widget: "boolean", default: false, required: false }
-              - { label: "Photo (shown on the card — optional; for a poster, a crop of its top)", name: "image", widget: "image", required: false }
+              - { label: "Photo (shown on the card — optional)", name: "image", widget: "image", required: false }
               - label: "Poster pages (images shown full screen with the View poster button — optional)"
                 name: "poster"
                 widget: "list"

@@ -174,11 +174,10 @@
     {
       "year": 2023,
       "type": "Poster",
-      "title": "Facteurs clés de la diversité écologique et biologique des 36 îles du lac Hébécourt, QC, Canada",
+      "title": "Facteurs clés responsables de la diversité biologique des 36 îles du Lac Hébécourt, QC, Canada",
       "venue": "3e rencontre annuelle de l'IRN Cold Forest, Station touristique Duchesnay, Québec, 3–5 octobre 2023",
       "url": "#",
       "authors": "Gaboriau, D.M.*, Lesven, J., Magne, G., Cazabonne, J., Olivier, M., Chavardès, R.D., Girona, M.M., Martin, M., Bergeron, Y.",
-      "image": "images/posters/gaboriau-2023-cold-forest-thumb.jpg",
       "poster": [
         {
           "src": "images/posters/gaboriau-2023-cold-forest.jpg",
@@ -238,11 +237,10 @@
     {
       "year": 2022,
       "type": "Poster",
-      "title": "Niches Partitioning of Soil Fungal Communities in Esker Forests",
+      "title": "Vertical Niches Partitioning of Soil Fungal Communities in Esker Forests",
       "venue": "Conférence annuelle de l'Association botanique du Canada, Rouyn-Noranda, Québec, 6–10 June 2022",
       "url": "#",
-      "authors": "Cazabonne, J.*, DesRochers, A., Girona, M.M.",
-      "image": "images/posters/cazabonne-2022-cba-thumb.jpg",
+      "authors": "Cazabonne, J.*, Girona, M.M., DesRochers, A.",
       "poster": [
         {
           "src": "images/posters/cazabonne-2022-cba.jpg",
@@ -290,18 +288,13 @@
       "venue": "23e colloque de la Chaire AFD, en ligne, 21 décembre 2021",
       "url": "#",
       "authors": "Cazabonne, J.*, DesRochers, A., Girona, M.M.",
-      "image": "images/posters/cazabonne-2021-chaire-afd-thumb.jpg",
       "poster": [
         {
-          "src": "images/posters/cazabonne-2021-chaire-afd-fr.jpg",
-          "label": "Français"
-        },
-        {
           "src": "images/posters/cazabonne-2021-chaire-afd-en.jpg",
-          "label": "English"
+          "label": ""
         }
       ],
-      "posterPdf": "files/posters/cazabonne-2021-chaire-afd.pdf"
+      "posterPdf": "files/posters/cazabonne-2021-chaire-afd-en.pdf"
     },
     {
       "year": 2022,

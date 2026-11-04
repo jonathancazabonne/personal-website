@@ -1200,8 +1200,6 @@
   .cf-dialog{ border-radius:22px; }
   .cf-field input, .cf-field textarea{ border-radius:12px; }
   .fm-dialog img{ border-radius:14px; }
-  .cm-thumb.is-poster{ position:relative; padding:0; border:0; cursor:zoom-in; border-bottom:1px solid #e6e8e6; }
-  .cm-thumb.is-poster img{ object-position:50% 0; }
   .pv-dialog{ width:100vw; height:100vh; height:100dvh; max-width:none; max-height:none; margin:0; padding:0; border:0; background:#0f1712; color:#edf0ec; }
   .pv-dialog[open]{ display:flex; flex-direction:column; }
   .pv-dialog::backdrop{ background:#0f1712; }
@@ -2535,7 +2533,7 @@
     var pages = (c.poster || []).filter(function(pg){ return pg && pg.src; });
     var posterData = pages.length ? esc(JSON.stringify({ title: c.title, pages: pages, pdf: c.posterPdf || "" })) : "";
     if (pages.length){
-      thumb = '<button type="button" class="cm-thumb is-poster" data-poster="' + posterData + '" aria-label="View poster"><img src="' + esc(c.image || pages[0].src) + '" alt="" loading="lazy" /></button>';
+      // posters: no preview on the card, only the View poster button
     } else if (media && media.kind === "video" && media.thumb){
       thumb = '<button type="button" class="cm-thumb is-video" data-embed data-kind="video" data-src="' + esc(media.src) + '" data-title="' + esc(c.title) + '" aria-label="' + esc(t("Play video")) + '"><img src="' + esc(media.thumb) + '" alt="" loading="lazy" /><span class="cm-playbadge">' + PLAY_ICON + '</span></button>';
     } else if (c.image && !c.featured){
