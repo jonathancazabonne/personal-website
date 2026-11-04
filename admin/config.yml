@@ -146,7 +146,16 @@ collections:
               - { label: "URL", name: "url", widget: "string" }
               - { label: "Player link (optional — YouTube, Vimeo, Mixcloud, Spotify, SoundCloud, Apple Podcasts or an .mp3 link; shows a player right on the site. Leave blank to use the URL above when it is one of these)", name: "embed", widget: "string", required: false }
               - { label: "Show in the Highlights section (max 3)", name: "featured", widget: "boolean", default: false, required: false }
-              - { label: "Photo (shown on the card — optional)", name: "image", widget: "image", required: false }
+              - { label: "Photo (shown on the card — optional; for a poster, a crop of its top)", name: "image", widget: "image", required: false }
+              - label: "Poster pages (images shown full screen with the View poster button — optional)"
+                name: "poster"
+                widget: "list"
+                required: false
+                summary: "{{label}} {{src}}"
+                fields:
+                  - { label: "Page image (JPG/PNG, about 3000 px on the long side)", name: "src", widget: "image" }
+                  - { label: "Page label (e.g. Français / English — leave blank for a single page)", name: "label", widget: "string", required: false }
+              - { label: "Poster PDF (offered as a download — optional)", name: "posterPdf", widget: "file", required: false }
 
   - name: "timeline"
     label: "Conservation timeline"

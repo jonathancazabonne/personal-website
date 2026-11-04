@@ -1200,6 +1200,26 @@
   .cf-dialog{ border-radius:22px; }
   .cf-field input, .cf-field textarea{ border-radius:12px; }
   .fm-dialog img{ border-radius:14px; }
+  .cm-thumb.is-poster{ position:relative; padding:0; border:0; cursor:zoom-in; border-bottom:1px solid #e6e8e6; }
+  .cm-thumb.is-poster img{ object-position:50% 0; }
+  .pv-dialog{ width:100vw; height:100vh; height:100dvh; max-width:none; max-height:none; margin:0; padding:0; border:0; background:#0f1712; color:#edf0ec; }
+  .pv-dialog[open]{ display:flex; flex-direction:column; }
+  .pv-dialog::backdrop{ background:#0f1712; }
+  .pv-bar{ display:flex; align-items:center; gap:10px 18px; flex-wrap:wrap; padding:12px clamp(14px,3vw,28px); border-bottom:1px solid rgba(237,240,236,.14); }
+  .pv-title{ flex:1 1 280px; min-width:0; margin:0; font-size:.86rem; font-weight:500; line-height:1.35; }
+  .pv-pages{ display:flex; gap:6px; }
+  .pv-pages button{ font:inherit; font-size:.75rem; font-weight:600; padding:7px 14px; border-radius:999px; border:1px solid rgba(237,240,236,.35); background:transparent; color:#edf0ec; cursor:pointer; }
+  .pv-pages button[aria-pressed="true"]{ background:#edf0ec; color:#14201a; border-color:#edf0ec; }
+  .pv-hint{ font-size:.72rem; color:#a9b7aa; }
+  .pv-pdf{ font-size:.75rem; font-weight:600; color:#a8c3bb; text-decoration:none; border-bottom:1px solid transparent; }
+  .pv-pdf:hover{ border-color:#a8c3bb; }
+  .pv-close{ width:40px; height:40px; flex:0 0 auto; border-radius:50%; border:1px solid rgba(237,240,236,.4); background:transparent; color:#edf0ec; font-size:1.3rem; line-height:1; cursor:pointer; }
+  .pv-close:hover{ background:#a8c3bb; color:#14201a; border-color:#a8c3bb; }
+  .pv-stage{ flex:1; min-height:0; overflow:auto; display:flex; padding:16px; cursor:zoom-in; }
+  .pv-stage img{ display:block; margin:auto; max-width:100%; max-height:100%; width:auto; height:auto; background:#fff; border-radius:4px; }
+  .pv-dialog.is-zoomed .pv-stage{ cursor:zoom-out; }
+  .pv-dialog.is-zoomed .pv-stage img{ max-width:none; max-height:none; }
+  @media (max-width:720px){ .pv-hint{ display:none; } .pv-title{ flex:1 1 calc(100% - 64px); order:-2; } .pv-close{ order:-1; } }
   .hx-axis h3{ text-transform:none; letter-spacing:-.006em; }
 
   /* Jost tuning */
@@ -1476,6 +1496,17 @@
   <div class="fm-lb-bar"><button type="button" id="fm-lb-prev" aria-label="Previous photo">&#8249;</button><button type="button" id="fm-lb-close" aria-label="Close">&times;</button><button type="button" id="fm-lb-next" aria-label="Next photo">&#8250;</button></div>
 </dialog>
 
+<dialog id="pv-dialog" class="pv-dialog" aria-label="Poster viewer">
+  <div class="pv-bar">
+    <p class="pv-title" id="pv-title" data-notr></p>
+    <div class="pv-pages" id="pv-pages" data-notr></div>
+    <span class="pv-hint">Click the poster to zoom</span>
+    <a class="pv-pdf" id="pv-pdf" href="" download>Download PDF</a>
+    <button type="button" class="pv-close" id="pv-close" aria-label="Close">&times;</button>
+  </div>
+  <div class="pv-stage" id="pv-stage"><img id="pv-img" src="" alt=""></div>
+</dialog>
+
 <dialog id="sr-dialog" class="sr-dialog" aria-label="Search the site">
   <div class="sr-head">
     <div class="sr-field">
@@ -1632,6 +1663,9 @@
     "Watch here": "Regarder ici",
     "Open original": "Ouvrir l’original",
     "Close player": "Fermer le lecteur",
+    "View poster": "Voir le poster",
+    "Download PDF": "Télécharger le PDF",
+    "Click the poster to zoom": "Cliquez sur le poster pour zoomer",
     "No publication matches your search.": "Aucune publication ne correspond à votre recherche.",
     "No entry matches your search.": "Aucune entrée ne correspond à votre recherche.",
     "Nothing listed yet.": "Rien pour l’instant.",
@@ -2498,7 +2532,11 @@
     var media = mediaEmbed(c.embed || c.url);
     var titleHtml = hasLink ? '<a href="' + esc(c.url) + '" target="_blank" rel="noopener">' + esc(c.title) + '</a>' : esc(c.title);
     var thumb = "";
-    if (media && media.kind === "video" && media.thumb){
+    var pages = (c.poster || []).filter(function(pg){ return pg && pg.src; });
+    var posterData = pages.length ? esc(JSON.stringify({ title: c.title, pages: pages, pdf: c.posterPdf || "" })) : "";
+    if (pages.length){
+      thumb = '<button type="button" class="cm-thumb is-poster" data-poster="' + posterData + '" aria-label="View poster"><img src="' + esc(c.image || pages[0].src) + '" alt="" loading="lazy" /></button>';
+    } else if (media && media.kind === "video" && media.thumb){
       thumb = '<button type="button" class="cm-thumb is-video" data-embed data-kind="video" data-src="' + esc(media.src) + '" data-title="' + esc(c.title) + '" aria-label="' + esc(t("Play video")) + '"><img src="' + esc(media.thumb) + '" alt="" loading="lazy" /><span class="cm-playbadge">' + PLAY_ICON + '</span></button>';
     } else if (c.image && !c.featured){
       thumb = '<span class="cm-thumb"><img src="' + esc(c.image) + '" alt="" loading="lazy" /></span>';
@@ -2506,12 +2544,14 @@
     var playBtn = media && !(media.kind === "video" && media.thumb)
       ? '<button type="button" class="cm-play" data-embed data-kind="' + media.kind + '" data-src="' + esc(media.src) + '"' + (media.h ? ' data-h="' + media.h + '"' : '') + ' data-title="' + esc(c.title) + '">' + PLAY_ICON + (media.kind === "video" ? 'Watch here' : 'Listen here') + '</button>' : '';
     var openLink = hasLink ? '<a class="cm-action" href="' + esc(c.url) + '" target="_blank" rel="noopener">' + (media ? 'Open original' : label) + ' ' + COMM_ARROW + '</a>' : '';
+    var posterBtn = pages.length ? '<button type="button" class="cm-play" data-poster="' + posterData + '">View poster</button>' +
+      (c.posterPdf ? '<a class="cm-action" href="' + esc(c.posterPdf) + '" download>Download PDF ' + COMM_ARROW + '</a>' : '') : '';
     return '<article class="cm-card' + (media ? ' has-media' : '') + '" data-key="' + esc(srNorm(c.title)) + '" data-group="' + v.group + '" data-text="' + esc(commSearchText(v)) + '">' +
       commTagHtml(v) + thumb +
       '<h3>' + titleHtml + '</h3>' +
       (c.authors ? '<p class="cm-authors">' + boldAuthorHighlight(c.authors) + '</p>' : '') +
       '<p class="cm-venue">' + commVenueHtml(v.venue) + '</p>' +
-      ((playBtn || openLink) ? '<div class="cm-actions">' + playBtn + openLink + '</div>' : '') +
+      ((posterBtn || playBtn || openLink) ? '<div class="cm-actions">' + posterBtn + playBtn + openLink + '</div>' : '') +
     '</article>';
   }
 
@@ -2977,6 +3017,59 @@
     if (!dlg.open) return;
     if (ev.key === "ArrowLeft"){ lbPhoto--; lbShow(); }
     if (ev.key === "ArrowRight"){ lbPhoto++; lbShow(); }
+  });
+
+  // ---------- poster viewer ----------
+  var pvData = null, pvPage = 0;
+  function pvShow(i){
+    var dlg = document.getElementById("pv-dialog"), img = document.getElementById("pv-img");
+    pvPage = (i + pvData.pages.length) % pvData.pages.length;
+    dlg.classList.remove("is-zoomed");
+    img.src = pvData.pages[pvPage].src;
+    img.alt = pvData.title;
+    Array.prototype.forEach.call(document.querySelectorAll("#pv-pages button"), function(b, k){ b.setAttribute("aria-pressed", k === pvPage ? "true" : "false"); });
+  }
+  document.addEventListener("click", function(ev){
+    var btn = ev.target.closest && ev.target.closest("[data-poster]");
+    if (!btn) return;
+    var dlg = document.getElementById("pv-dialog");
+    try { pvData = JSON.parse(btn.dataset.poster); } catch (e) { return; }
+    document.getElementById("pv-title").textContent = pvData.title || "";
+    document.getElementById("pv-pages").innerHTML = pvData.pages.length > 1
+      ? pvData.pages.map(function(pg, k){ return '<button type="button" data-pvpage="' + k + '">' + esc(pg.label || String(k + 1)) + '</button>'; }).join("") : "";
+    var pdf = document.getElementById("pv-pdf");
+    pdf.hidden = !pvData.pdf;
+    pdf.setAttribute("href", pvData.pdf || "");
+    pvShow(0);
+    translateDom(dlg);
+    if (typeof dlg.showModal === "function") { if (!dlg.open) dlg.showModal(); } else dlg.setAttribute("open", "");
+  });
+  document.getElementById("pv-pages").addEventListener("click", function(ev){
+    var b = ev.target.closest("[data-pvpage]");
+    if (b) pvShow(Number(b.dataset.pvpage));
+  });
+  document.getElementById("pv-stage").addEventListener("click", function(ev){
+    var dlg = document.getElementById("pv-dialog"), stage = this, img = document.getElementById("pv-img");
+    if (ev.target !== img){ if (!dlg.classList.contains("is-zoomed")) dlg.close(); return; }
+    var r = img.getBoundingClientRect(), fx = (ev.clientX - r.left) / r.width, fy = (ev.clientY - r.top) / r.height;
+    var s = stage.getBoundingClientRect();
+    dlg.classList.toggle("is-zoomed");
+    if (dlg.classList.contains("is-zoomed")){
+      var z = img.getBoundingClientRect();
+      stage.scrollLeft = fx * z.width - (ev.clientX - s.left);
+      stage.scrollTop = fy * z.height - (ev.clientY - s.top);
+    }
+  });
+  document.getElementById("pv-close").addEventListener("click", function(){ document.getElementById("pv-dialog").close(); });
+  document.getElementById("pv-dialog").addEventListener("close", function(){
+    this.classList.remove("is-zoomed");
+    document.getElementById("pv-img").removeAttribute("src");
+  });
+  document.addEventListener("keydown", function(ev){
+    var dlg = document.getElementById("pv-dialog");
+    if (!dlg.open || !pvData || pvData.pages.length < 2) return;
+    if (ev.key === "ArrowLeft") pvShow(pvPage - 1);
+    if (ev.key === "ArrowRight") pvShow(pvPage + 1);
   });
 
   // ---------- topic typewriter ----------
@@ -3578,7 +3671,7 @@
     else if (ev.key === "Enter"){ ev.preventDefault(); if (srResults[srActive]) srGo(srResults[srActive]); }
   });
   document.addEventListener("keydown", function(ev){
-    var dlgOpen = document.getElementById("sr-dialog").open || (document.getElementById("contact-dialog") || {}).open || (document.getElementById("fm-lightbox") || {}).open;
+    var dlgOpen = document.getElementById("sr-dialog").open || (document.getElementById("contact-dialog") || {}).open || (document.getElementById("fm-lightbox") || {}).open || (document.getElementById("pv-dialog") || {}).open;
     var typing = /^(input|textarea|select)$/i.test((ev.target && ev.target.tagName) || "") || (ev.target && ev.target.isContentEditable);
     if ((ev.key === "k" || ev.key === "K") && (ev.metaKey || ev.ctrlKey)){ ev.preventDefault(); srOpen(""); }
     else if (ev.key === "/" && !typing && !dlgOpen){ ev.preventDefault(); srOpen(""); }
