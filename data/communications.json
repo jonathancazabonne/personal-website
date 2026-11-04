@@ -68,10 +68,32 @@
     {
       "year": 2026,
       "type": "Poster",
-      "title": "Diversité et hétérogénéité locale des communautés fongiques du sol le long d'une chronoséquence post-feu de vieilles forêts boréales",
+      "title": "Changes in composition and diversity of soil fungal communities along an age gradient of old-growth boreal forests in northwestern Quebec, Canada",
       "venue": "19e colloque annuel du CEF, Québec city, 25-26 mai 2026",
       "url": "#",
-      "authors": "Cazabonne, J.*, Roy, M., Martin, M."
+      "authors": "Cazabonne, J.*, Roy, M., Calderon-Sanou, I., Revertegat, C., Lionnel, C., Hedde, M., Gelly, L., Charron, D., Bergeron, Y., Paré, D., Thuiller, W., Martin, M.",
+      "poster": [
+        {
+          "src": "images/posters/cazabonne-2026-cef.jpg",
+          "label": ""
+        }
+      ],
+      "posterPdf": "files/posters/cazabonne-2026-cef.pdf"
+    },
+    {
+      "year": 2026,
+      "type": "Poster",
+      "title": "Faire avancer la conservation de la fonge au Québec",
+      "venue": "19e colloque annuel du CEF, Québec city, 25-26 mai 2026",
+      "url": "#",
+      "authors": "Cazabonne, J.*, Fortier, D., Berthelot, L., Gauthier, T., Bérubé-Simard, F.-A., Hassenauer, P., Roméro-Luarca, C., Jensen-Lynch, J., Paradis, N., Doyon, É., Gagné, P., Jeannotte, R., Tav, C., Wauthy, K., Guay, F., Caux, J., Rocheleau-Duplain, M.",
+      "poster": [
+        {
+          "src": "images/posters/mycosphaera-2026-cef.jpg",
+          "label": ""
+        }
+      ],
+      "posterPdf": "files/posters/mycosphaera-2026-cef.pdf"
     },
     {
       "year": 2025,
@@ -79,7 +101,14 @@
       "title": "Diversité et rôles écologiques des communautés fongiques du sol dans les vieilles forêts boréales de l'est du Canada : perspectives pour la conservation de la fonge forestière",
       "venue": "18e colloque annuel du CEF, Rimouski, 7-8 mai 2025",
       "url": "#",
-      "authors": "Cazabonne, J.*, Roy, M., Martin, M."
+      "authors": "Cazabonne, J.*, Roy, M., Martin, M.",
+      "poster": [
+        {
+          "src": "images/posters/cazabonne-2025-cef.jpg",
+          "label": ""
+        }
+      ],
+      "posterPdf": "files/posters/cazabonne-2025-cef.pdf"
     },
     {
       "year": 2026,
@@ -161,7 +190,14 @@
       "title": "Intégrer les champignons du sol des vieilles forêts boréales mixtes et les services écosystémiques qu'ils fournissent dans la gestion durable des forêts",
       "venue": "26e colloque de la Chaire AFD, Val d'Or, Québec, 20 novembre 2024",
       "url": "#",
-      "authors": "Cazabonne, J.*, Roy, M., Martin, M."
+      "authors": "Cazabonne, J.*, Roy, M., Martin, M.",
+      "poster": [
+        {
+          "src": "images/posters/cazabonne-2024-chaire-afd.jpg",
+          "label": ""
+        }
+      ],
+      "posterPdf": "files/posters/cazabonne-2024-chaire-afd.pdf"
     },
     {
       "year": 2023,
@@ -192,7 +228,14 @@
       "title": "Biological knowledge shortfalls of Laboulbeniomycetes as a case study for poorly studied taxa",
       "venue": "Mycological Society of America annual meeting “Elevating Mycology”, Flagstaff, Arizona, 30 July – 3 August 2023",
       "url": "#",
-      "authors": "Haelewaters, D.*, Matthews, T.J., Wayman, J.P., Cazabonne, J., Heyman, F., Martin, T.E., Quandt, A."
+      "authors": "Haelewaters, D.*, Matthews, T.J., Wayman, J.P., Cazabonne, J., Heyman, F., Martin, T.E., Quandt, A.",
+      "poster": [
+        {
+          "src": "images/posters/haelewaters-2023-msa.jpg",
+          "label": ""
+        }
+      ],
+      "posterPdf": "files/posters/haelewaters-2023-msa.pdf"
     },
     {
       "year": 2023,

@@ -104,6 +104,15 @@ collections:
               - { label: "URL", name: "url", widget: "string" }
               - { label: "Show in the Selected work section (max 3)", name: "featured", widget: "boolean", default: false, required: false }
               - { label: "Photo (shown on the card — optional)", name: "image", widget: "image", required: false }
+              - label: "Poster summarising the article (images shown full screen with the View poster button — optional)"
+                name: "poster"
+                widget: "list"
+                required: false
+                summary: "{{label}} {{src}}"
+                fields:
+                  - { label: "Page image (JPG/PNG, about 3000 px on the long side)", name: "src", widget: "image" }
+                  - { label: "Page label (leave blank for a single page)", name: "label", widget: "string", required: false }
+              - { label: "Poster PDF (offered as a download — optional)", name: "posterPdf", widget: "file", required: false }
               - label: "Category"
                 name: "category"
                 widget: "select"

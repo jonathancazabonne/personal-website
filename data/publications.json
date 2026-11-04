@@ -169,7 +169,14 @@
       "title": "Biological knowledge shortfalls impede conservation efforts in poorly studied taxa – a case study of Laboulbeniomycetes",
       "venue": "Journal of Biogeography, 1–11",
       "url": "https://doi.org/10.1111/jbi.14725",
-      "category": "peer-reviewed"
+      "category": "peer-reviewed",
+      "poster": [
+        {
+          "src": "images/posters/haelewaters-2024-laboul-shortfalls.jpg",
+          "label": ""
+        }
+      ],
+      "posterPdf": "files/posters/haelewaters-2024-laboul-shortfalls.pdf"
     },
     {
       "year": 2024,
