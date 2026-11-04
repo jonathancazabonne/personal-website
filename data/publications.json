@@ -318,9 +318,10 @@
       "year": 2025,
       "authors": "Cazabonne, J.",
       "title": "Et si nous étions eux",
-      "venue": "In: Eskers (Hope, J., Bérard, C., Cyr, C. & Montoro Girona, M., eds), Publications Zinc, numéro 67",
+      "venue": "In: Eskers (Hope, J., Bérard, C., Cyr, C., Grosbois, G. & Montoro Girona, M., eds), Publications Zinc, numéro 67",
       "url": "https://revuezinc.com/numero-67/",
-      "category": "literary"
+      "category": "literary",
+      "cover": "images/covers/zinc-67-eskers.jpg"
     },
     {
       "year": 2024,
@@ -328,7 +329,8 @@
       "title": "La maison de Berry",
       "venue": "In: Boréaliser (Hope, J., Bérard, C., Cyr, C. & Montoro Girona, M., eds), Publications Zinc, numéro 64",
       "url": "https://revuezinc.com/numero-64/",
-      "category": "literary"
+      "category": "literary",
+      "cover": "images/covers/zinc-64-borealiser.jpg"
     },
     {
       "year": 2026,

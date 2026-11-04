@@ -1494,11 +1494,11 @@
   <div class="fm-lb-bar"><button type="button" id="fm-lb-prev" aria-label="Previous photo">&#8249;</button><button type="button" id="fm-lb-close" aria-label="Close">&times;</button><button type="button" id="fm-lb-next" aria-label="Next photo">&#8250;</button></div>
 </dialog>
 
-<dialog id="pv-dialog" class="pv-dialog" aria-label="Poster viewer">
+<dialog id="pv-dialog" class="pv-dialog" aria-label="Image viewer">
   <div class="pv-bar">
     <p class="pv-title" id="pv-title" data-notr></p>
     <div class="pv-pages" id="pv-pages" data-notr></div>
-    <span class="pv-hint">Click the poster to zoom</span>
+    <span class="pv-hint">Click the image to zoom</span>
     <a class="pv-pdf" id="pv-pdf" href="" download>Download PDF</a>
     <button type="button" class="pv-close" id="pv-close" aria-label="Close">&times;</button>
   </div>
@@ -1663,7 +1663,8 @@
     "Close player": "Fermer le lecteur",
     "View poster": "Voir le poster",
     "Download PDF": "Télécharger le PDF",
-    "Click the poster to zoom": "Cliquez sur le poster pour zoomer",
+    "Click the image to zoom": "Cliquez sur l’image pour zoomer",
+    "View cover": "Voir la première de couverture",
     "No publication matches your search.": "Aucune publication ne correspond à votre recherche.",
     "No entry matches your search.": "Aucune entrée ne correspond à votre recherche.",
     "Nothing listed yet.": "Rien pour l’instant.",
@@ -2294,20 +2295,24 @@
     return (v.p.title + " " + (v.p.authors || "") + " " + (v.p.venue || "") + " " + (PUB_SHORT[v.cat] || "") + " " + (v.p.year || "")).toLowerCase();
   }
 
-  // "View poster" button + PDF download, for any outreach entry or publication with poster pages
-  function posterActions(x){
+  // "View poster" (+ PDF download) and "View cover" buttons; both open the full-screen viewer
+  function viewerActions(x){
+    function data(pages, pdf){ return esc(JSON.stringify({ title: x.title, pages: pages, pdf: pdf || "" })); }
     var pages = (x.poster || []).filter(function(pg){ return pg && pg.src; });
-    if (!pages.length) return "";
-    var data = esc(JSON.stringify({ title: x.title, pages: pages, pdf: x.posterPdf || "" }));
-    return '<button type="button" class="cm-play" data-poster="' + data + '">View poster</button>' +
-      (x.posterPdf ? '<a class="cm-action" href="' + esc(x.posterPdf) + '" download>Download PDF ' + COMM_ARROW + '</a>' : '');
+    var html = "";
+    if (pages.length){
+      html += '<button type="button" class="cm-play" data-poster="' + data(pages, x.posterPdf) + '">View poster</button>' +
+        (x.posterPdf ? '<a class="cm-action" href="' + esc(x.posterPdf) + '" download>Download PDF ' + COMM_ARROW + '</a>' : '');
+    }
+    if (x.cover) html += '<button type="button" class="cm-play" data-poster="' + data([{ src: x.cover }]) + '">View cover</button>';
+    return html;
   }
 
   function renderPubCard(v){
     var p = v.p, label = pubActionLabel(p), hasLink = !!label;
     var titleHtml = hasLink ? '<a href="' + esc(p.url) + '" target="_blank" rel="noopener">' + esc(p.title) + '</a>' : esc(p.title);
     var openLink = hasLink ? '<a class="cm-action" href="' + esc(p.url) + '" target="_blank" rel="noopener">' + label + ' ' + COMM_ARROW + '</a>' : '';
-    var posterBtn = posterActions(p);
+    var posterBtn = viewerActions(p);
     return '<article class="cm-card" data-key="' + esc(srNorm(p.title)) + '" data-group="' + esc(v.cat) + '" data-text="' + esc(pubSearchText(v)) + '">' +
       pubTagHtml(v) +
       '<h3>' + titleHtml + '</h3>' +
@@ -2549,7 +2554,7 @@
     var playBtn = media && !(media.kind === "video" && media.thumb)
       ? '<button type="button" class="cm-play" data-embed data-kind="' + media.kind + '" data-src="' + esc(media.src) + '"' + (media.h ? ' data-h="' + media.h + '"' : '') + ' data-title="' + esc(c.title) + '">' + PLAY_ICON + (media.kind === "video" ? 'Watch here' : 'Listen here') + '</button>' : '';
     var openLink = hasLink ? '<a class="cm-action" href="' + esc(c.url) + '" target="_blank" rel="noopener">' + (media ? 'Open original' : label) + ' ' + COMM_ARROW + '</a>' : '';
-    var posterBtn = posterActions(c);
+    var posterBtn = viewerActions(c);
     return '<article class="cm-card' + (media ? ' has-media' : '') + '" data-key="' + esc(srNorm(c.title)) + '" data-group="' + v.group + '" data-text="' + esc(commSearchText(v)) + '">' +
       commTagHtml(v) + thumb +
       '<h3>' + titleHtml + '</h3>' +
