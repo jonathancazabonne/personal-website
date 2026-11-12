@@ -2,6 +2,13 @@
   "items": [
     {
       "year": 2026,
+      "type": "Podcast",
+      "title": "La protection des champignons, et des taxes sur les homards pour financer la guerre",
+      "venue": "Olivier Niquet 24/7 (en jaquette), balado Radio-Canada OHdio, discussion de ma lettre ouverte parue dans Le Devoir, 11 novembre 2026",
+      "url": "https://ici.radio-canada.ca/ohdio/balados/12095/olivier-niquet-24-7-en-jaquette/1288602/la-protection-des-champignons-et-des-taxes-sur-les-homards-pour-financer-la-guerre"
+    },
+    {
+      "year": 2026,
       "type": "Invited talk",
       "title": "State of fungal conservation in Québec and Canada",
       "venue": "Journée Québec, Action Zone, Blue Zone, COP17 UN Biodiversity Conference, Yerevan, Armenia, 26 October 2026",

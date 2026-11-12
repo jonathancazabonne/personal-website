@@ -2,6 +2,22 @@
   "items": [
     {
       "year": 2026,
+      "authors": "Cazabonne, J. et 12 cosignataires",
+      "title": "Les champignons ont leur stratégie mondiale de conservation",
+      "venue": "Le Devoir, 11 novembre 2026",
+      "url": "https://www.ledevoir.com/opinion/idees/1023953/champignons-ont-strategie-mondiale-conservation",
+      "category": "press"
+    },
+    {
+      "year": 2026,
+      "authors": "Roy, D., Fequino, L. et plus de 30 cosignataires (incl. Cazabonne, J.)",
+      "title": "COP17 : Pour une société québécoise qui prend soin de sa biodiversité",
+      "venue": "Ateliers pour la biodiversité, 7 novembre 2026",
+      "url": "https://www.ateliersbiodiversite.org/post/lettre-cop17-pour-une-soci%C3%A9t%C3%A9-qu%C3%A9b%C3%A9coise-qui-prend-soin-de-sa-biodiversit%C3%A9",
+      "category": "press"
+    },
+    {
+      "year": 2026,
       "authors": "Cazabonne, J. & Martin, M.",
       "title": "Et la conservation des champignons, on en parle?",
       "venue": "Le Progrès forestier, Association forestière du sud du Québec (AFSQ), automne 2026",
@@ -28,7 +44,7 @@
       "year": 2026,
       "authors": "Fequino, L. et plus de 50 cosignataires (incl. Cazabonne, J.)",
       "title": "Les jeunes du Québec veulent qu'on protège mieux la biodiversité : est-ce que les élu·es seront au rendez-vous?",
-      "venue": "Les Ateliers de la biodiversité",
+      "venue": "Ateliers pour la biodiversité",
       "url": "https://www.ateliersbiodiversite.org/post/les-jeunes-du-qu%C3%A9bec-veulent-qu-on-prot%C3%A8ge-mieux-la-biodiversit%C3%A9-est-ce-que-les-%C3%A9lu-es-seront-au-r",
       "category": "press"
     },
