@@ -2,6 +2,13 @@
   "items": [
     {
       "year": 2026,
+      "type": "Radio interview",
+      "title": "Faune, flore… et fonge : les champignons sous les projecteurs à la COP17",
+      "venue": "Chronique environnement avec Raphaëlle Laverdière, Les matins de l’Ouest, ICI Première, Radio-Canada, 11 novembre 2026",
+      "url": "https://ici.radio-canada.ca/ohdio/premiere/emissions/les-matins-de-l-ouest/segments/rattrapage/2526999/chronique-environnement-avec-raphaelle-laverdiere-champignons"
+    },
+    {
+      "year": 2026,
       "type": "Podcast",
       "title": "La protection des champignons, et des taxes sur les homards pour financer la guerre",
       "venue": "Olivier Niquet 24/7 (en jaquette), balado Radio-Canada OHdio, 11 novembre 2026",
